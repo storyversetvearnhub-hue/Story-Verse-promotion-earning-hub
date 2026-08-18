@@ -3,217 +3,301 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
-
-<title>StoryVerse Admin</title>
+<title>StoryVerse Admin Dashboard</title>
 
 <style>
 
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
 }
 
 body{
-background:#f3f4f6;
-color:#111827;
+  background:#f3f4f6;
+  color:#111827;
 }
 
 header{
-background:linear-gradient(135deg,#111827,#2563eb);
-color:white;
-padding:25px 15px;
-text-align:center;
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
+  padding:25px 15px;
+  text-align:center;
 }
 
 header h1{
-font-size:24px;
+  font-size:25px;
 }
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:15px;
+header p{
+  margin-top:7px;
 }
 
-.card{
-background:white;
-padding:20px;
-border-radius:15px;
-margin-bottom:15px;
-box-shadow:0 3px 12px rgba(0,0,0,.08);
+.login-box{
+  max-width:430px;
+  margin:50px auto;
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 5px 25px rgba(0,0,0,.12);
+}
+
+.login-box h2{
+  text-align:center;
+  margin-bottom:20px;
 }
 
 input,
 textarea,
 select{
-width:100%;
-padding:12px;
-margin:6px 0 12px;
-border:1px solid #d1d5db;
-border-radius:9px;
+  width:100%;
+  padding:13px;
+  border:1px solid #d1d5db;
+  border-radius:9px;
+  margin:6px 0 12px;
+  outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:#2563eb;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
 }
 
 button{
-cursor:pointer;
+  cursor:pointer;
 }
 
 .btn{
-width:100%;
-padding:13px;
-border:0;
-border-radius:9px;
-background:#2563eb;
-color:white;
-font-weight:bold;
-margin-top:7px;
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:9px;
+  background:#2563eb;
+  color:white;
+  font-weight:bold;
+  margin-top:7px;
 }
 
 .green{
-background:#16a34a;
+  background:#16a34a;
 }
 
 .red{
-background:#dc2626;
+  background:#dc2626;
 }
 
 .gray{
-background:#4b5563;
+  background:#4b5563;
 }
 
 .orange{
-background:#ea580c;
+  background:#ea580c;
 }
 
-.hidden{
-display:none!important;
+.logout{
+  background:#dc2626;
 }
 
-.nav{
-display:flex;
-overflow-x:auto;
-background:white;
-border-bottom:1px solid #ddd;
-position:sticky;
-top:0;
-z-index:20;
+.link-btn{
+  border:0;
+  background:none;
+  color:#2563eb;
+  text-decoration:underline;
+  margin-top:15px;
 }
 
-.nav button{
-min-width:130px;
-flex:1;
-padding:14px 6px;
-border:0;
-background:white;
-font-weight:bold;
+#adminPanel{
+  display:none;
+}
+
+nav{
+  display:flex;
+  overflow-x:auto;
+  background:white;
+  border-bottom:1px solid #ddd;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+nav button{
+  flex:1;
+  min-width:120px;
+  padding:14px 8px;
+  border:0;
+  background:white;
+  font-weight:bold;
+}
+
+nav button:hover{
+  background:#eff6ff;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:15px;
 }
 
 .section{
-display:none;
+  display:none;
 }
 
 .section.active{
-display:block;
+  display:block;
 }
 
-.order,
-.user,
-.task{
-border:1px solid #e5e7eb;
-border-radius:12px;
-padding:15px;
-margin-top:12px;
+.card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.proof-image{
-display:block;
-width:100%;
-max-width:600px;
-max-height:500px;
-object-fit:contain;
-margin:12px auto;
-border-radius:10px;
-border:1px solid #ddd;
-background:#f9fafb;
-}
-
-.status{
-display:inline-block;
-padding:6px 10px;
-border-radius:20px;
-font-size:12px;
-font-weight:bold;
-}
-
-.pending{
-background:#fef3c7;
-color:#92400e;
-}
-
-.approved{
-background:#dcfce7;
-color:#166534;
-}
-
-.rejected{
-background:#fee2e2;
-color:#991b1b;
-}
-
-.small{
-font-size:13px;
-color:#6b7280;
-line-height:1.5;
-}
-
-.message{
-display:none;
-padding:12px;
-border-radius:8px;
-margin-top:10px;
-}
-
-.success{
-display:block;
-background:#dcfce7;
-color:#166534;
-}
-
-.error{
-display:block;
-background:#fee2e2;
-color:#991b1b;
+.card h2{
+  margin-bottom:15px;
 }
 
 .stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-margin-bottom:15px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:15px;
 }
 
 .stat{
-background:white;
-padding:18px;
-border-radius:12px;
-box-shadow:0 3px 12px rgba(0,0,0,.07);
+  background:white;
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
 }
 
 .stat strong{
-display:block;
-font-size:25px;
-margin-top:6px;
+  display:block;
+  font-size:24px;
+  margin-top:6px;
+}
+
+.item{
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:15px;
+  margin-top:12px;
+}
+
+.item h3{
+  margin-bottom:10px;
+}
+
+.small{
+  font-size:13px;
+  color:#6b7280;
+  line-height:1.5;
+}
+
+.status{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+  margin-top:7px;
+}
+
+.pending{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.approved{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.rejected{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.proof-image{
+  display:block;
+  width:100%;
+  max-width:600px;
+  max-height:500px;
+  object-fit:contain;
+  margin:15px auto;
+  border-radius:12px;
+  border:1px solid #ddd;
+  background:#f9fafb;
+}
+
+.proof-title{
+  font-weight:bold;
+  margin-top:15px;
+  margin-bottom:5px;
+}
+
+.msg{
+  display:none;
+  padding:12px;
+  border-radius:8px;
+  margin-top:10px;
+}
+
+.success{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.error{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.warning{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.admin-email{
+  background:#eff6ff;
+  color:#1e40af;
+  padding:10px;
+  border-radius:8px;
+  margin-top:10px;
+  font-size:13px;
+  text-align:center;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.empty{
+  text-align:center;
+  padding:20px;
+  color:#6b7280;
 }
 
 @media(max-width:700px){
 
-.stats{
-grid-template-columns:repeat(2,1fr);
-}
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  nav button{
+    min-width:110px;
+  }
 
 }
 
@@ -224,6 +308,10 @@ grid-template-columns:repeat(2,1fr);
 <body>
 
 
+<!-- =========================================================
+HEADER
+========================================================= -->
+
 <header>
 
 <h1>🚀 StoryVerse Admin Dashboard</h1>
@@ -233,58 +321,72 @@ grid-template-columns:repeat(2,1fr);
 </header>
 
 
-<!-- =================================================
-ADMIN LOGIN
-================================================= -->
+<!-- =========================================================
+LOGIN
+========================================================= -->
 
-<div
-id="loginArea"
-class="container">
+<div id="loginPanel">
 
-<div class="card">
+<div class="login-box">
 
 <h2>🔐 Admin Login</h2>
 
-<p class="small">
-Login with your authorized Firebase administrator account.
+<p class="small" style="text-align:center;">
+Sign in with your authorized StoryVerse admin account.
 </p>
 
-<input
-id="adminEmail"
-type="email"
-placeholder="Admin email">
+<div class="admin-email">
+Admin: storyversetvearnhub@gmail.com
+</div>
+
+<br>
 
 <input
-id="adminPassword"
-type="password"
-placeholder="Admin password">
+  type="email"
+  id="loginEmail"
+  placeholder="Admin email"
+>
+
+<input
+  type="password"
+  id="loginPassword"
+  placeholder="Password"
+>
 
 <button
-class="btn"
-onclick="adminLogin()">
-Login
+  class="btn"
+  id="loginBtn"
+>
+🔐 Login
+</button>
+
+<button
+  class="link-btn"
+  id="forgotBtn"
+>
+Forgot Password?
 </button>
 
 <div
-id="loginMessage"
-class="message">
-</div>
+  id="loginMessage"
+  class="msg"
+></div>
 
 </div>
 
 </div>
 
 
-<!-- =================================================
-ADMIN AREA
-================================================= -->
+<!-- =========================================================
+ADMIN PANEL
+========================================================= -->
 
-<div
-id="adminArea"
-class="hidden">
+<div id="adminPanel">
 
 
-<div class="nav">
+<!-- NAVIGATION -->
+
+<nav>
 
 <button onclick="showSection('dashboard')">
 🏠 Dashboard
@@ -295,11 +397,7 @@ class="hidden">
 </button>
 
 <button onclick="showSection('proofs')">
-🖼️ Task Proofs
-</button>
-
-<button onclick="showSection('promotions')">
-📢 Promotions
+🖼️ Proofs
 </button>
 
 <button onclick="showSection('users')">
@@ -310,23 +408,31 @@ class="hidden">
 💸 Withdrawals
 </button>
 
-<button onclick="adminLogout()">
+<button onclick="showSection('promotions')">
+📢 Promotions
+</button>
+
+<button
+  onclick="logoutAdmin()"
+  style="color:#dc2626;"
+>
 🚪 Logout
 </button>
 
-</div>
+</nav>
 
 
 <div class="container">
 
 
-<!-- =================================================
+<!-- =========================================================
 DASHBOARD
-================================================= -->
+========================================================= -->
 
 <section
-id="dashboard"
-class="section active">
+  id="dashboard"
+  class="section active"
+>
 
 <div class="stats">
 
@@ -341,13 +447,13 @@ Pending Proofs
 </div>
 
 <div class="stat">
-Promotions
-<strong id="pendingPromotions">0</strong>
+Withdrawals
+<strong id="pendingWithdrawals">0</strong>
 </div>
 
 <div class="stat">
-Withdrawals
-<strong id="pendingWithdrawals">0</strong>
+Promotions
+<strong id="pendingPromotions">0</strong>
 </div>
 
 </div>
@@ -358,16 +464,21 @@ Withdrawals
 <h2>⚡ Admin Dashboard</h2>
 
 <p class="small">
-Admin account:
-<strong>
-storyversetvearnhub@gmail.com
-</strong>
+You are logged in as the authorized administrator.
 </p>
 
 <button
-class="btn"
-onclick="refreshAll()">
+  class="btn gray"
+  onclick="refreshEverything()"
+>
 🔄 Refresh Everything
+</button>
+
+<button
+  class="btn logout"
+  onclick="logoutAdmin()"
+>
+🚪 Logout
 </button>
 
 </div>
@@ -375,47 +486,66 @@ onclick="refreshAll()">
 </section>
 
 
-<!-- =================================================
+<!-- =========================================================
 TASKS
-================================================= -->
+========================================================= -->
 
 <section
-id="tasks"
-class="section">
+  id="tasks"
+  class="section"
+>
 
 <div class="card">
 
 <h2>➕ Add Daily Task</h2>
 
 <input
-id="taskTitle"
-placeholder="Task title">
+  type="text"
+  id="taskTitle"
+  placeholder="Task title"
+>
 
 <textarea
-id="taskDescription"
-placeholder="Task description"></textarea>
+  id="taskDescription"
+  placeholder="Task description"
+></textarea>
 
 <input
-id="taskLink"
-type="url"
-placeholder="Task link">
+  type="url"
+  id="taskLink"
+  placeholder="Task link"
+>
 
 <input
-id="taskReward"
-type="number"
-min="0"
-placeholder="Reward ₦">
+  type="number"
+  id="taskReward"
+  placeholder="Reward e.g. 100"
+  min="0"
+>
+
+<select id="taskActive">
+
+<option value="true">
+Active
+</option>
+
+<option value="false">
+Inactive
+</option>
+
+</select>
 
 <button
-class="btn green"
-onclick="addTask()">
+  class="btn green"
+  onclick="addTask()"
+>
 ➕ Add Task
 </button>
 
 <div
-id="taskMessage"
-class="message">
-</div>
+  id="taskMessage"
+  class="msg"
+></div>
 
 </div>
 
@@ -425,13 +555,18 @@ class="message">
 <h2>📋 Existing Tasks</h2>
 
 <button
-class="btn gray"
-onclick="loadTasks()">
-🔄 Refresh
+  class="btn gray"
+  onclick="loadAdminTasks()"
+>
+🔄 Refresh Tasks
 </button>
 
-<div id="taskList">
+<div id="adminTaskList">
+
+<p class="small">
 Loading...
+</p>
+
 </div>
 
 </div>
@@ -439,57 +574,36 @@ Loading...
 </section>
 
 
-<!-- =================================================
-TASK PROOFS
-================================================= -->
+<!-- =========================================================
+PROOFS
+========================================================= -->
 
 <section
-id="proofs"
-class="section">
+  id="proofs"
+  class="section"
+>
 
 <div class="card">
 
-<h2>🖼️ Task Proofs</h2>
+<h2>🖼️ Submitted Task Proofs</h2>
+
+<p class="small">
+Review task screenshots submitted by users.
+</p>
 
 <button
-class="btn gray"
-onclick="loadProofs()">
+  class="btn gray"
+  onclick="loadProofs()"
+>
 🔄 Refresh Proofs
 </button>
 
 <div id="proofList">
-Loading...
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =================================================
-PROMOTIONS
-================================================= -->
-
-<section
-id="promotions"
-class="section">
-
-<div class="card">
-
-<h2>📢 Promotion Orders</h2>
 
 <p class="small">
-Payment proof images are displayed directly below each order.
+Loading...
 </p>
 
-<button
-class="btn gray"
-onclick="loadPromotions()">
-🔄 Refresh Orders
-</button>
-
-<div id="promotionList">
-Loading...
 </div>
 
 </div>
@@ -497,26 +611,32 @@ Loading...
 </section>
 
 
-<!-- =================================================
+<!-- =========================================================
 USERS
-================================================= -->
+========================================================= -->
 
 <section
-id="users"
-class="section">
+  id="users"
+  class="section"
+>
 
 <div class="card">
 
 <h2>👥 Registered Users</h2>
 
 <button
-class="btn gray"
-onclick="loadUsers()">
+  class="btn gray"
+  onclick="loadUsers()"
+>
 🔄 Refresh Users
 </button>
 
 <div id="userList">
+
+<p class="small">
 Loading...
+</p>
+
 </div>
 
 </div>
@@ -524,26 +644,69 @@ Loading...
 </section>
 
 
-<!-- =================================================
+<!-- =========================================================
 WITHDRAWALS
-================================================= -->
+========================================================= -->
 
 <section
-id="withdrawals"
-class="section">
+  id="withdrawals"
+  class="section"
+>
 
 <div class="card">
 
 <h2>💸 Withdrawal Requests</h2>
 
 <button
-class="btn gray"
-onclick="loadWithdrawals()">
-🔄 Refresh
+  class="btn gray"
+  onclick="loadWithdrawals()"
+>
+🔄 Refresh Withdrawals
 </button>
 
 <div id="withdrawalList">
+
+<p class="small">
 Loading...
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+PROMOTIONS
+========================================================= -->
+
+<section
+  id="promotions"
+  class="section"
+>
+
+<div class="card">
+
+<h2>📢 Promotion Orders</h2>
+
+<p class="small">
+Payment proof images are displayed directly under each order.
+</p>
+
+<button
+  class="btn gray"
+  onclick="loadPromotions()"
+>
+🔄 Refresh Promotion Orders
+</button>
+
+<div id="promotionList">
+
+<p class="small">
+Loading...
+</p>
+
 </div>
 
 </div>
@@ -556,47 +719,51 @@ Loading...
 </div>
 
 
+<!-- =========================================================
+FIREBASE
+========================================================= -->
+
 <script type="module">
 
 
-/* =================================================
-FIREBASE
-================================================= */
-
 import {
-initializeApp
+  initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
-getAuth,
-signInWithEmailAndPassword,
-onAuthStateChanged,
-signOut
+  getAuth,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  onAuthStateChanged
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
 import {
-getFirestore,
-collection,
-doc,
-addDoc,
-getDocs,
-getDoc,
-query,
-where,
-updateDoc,
-serverTimestamp
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  query,
+  where,
+  updateDoc,
+  serverTimestamp
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-const firebaseConfig={
+/* =========================================================
+FIREBASE CONFIG
+========================================================= */
+
+const firebaseConfig = {
 
 apiKey:
 "AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
@@ -625,73 +792,100 @@ measurementId:
 };
 
 
-const app=
+const app =
 initializeApp(firebaseConfig);
 
-const auth=
+
+const auth =
 getAuth(app);
 
-const db=
+
+const db =
 getFirestore(app);
 
 
-const ADMIN_EMAIL=
+/* =========================================================
+ADMIN EMAIL
+========================================================= */
+
+const ADMIN_EMAIL =
 "storyversetvearnhub@gmail.com";
 
 
-/* =================================================
-HELPER
-================================================= */
+/* =========================================================
+LOGIN MESSAGE
+========================================================= */
 
-function safe(value){
+function showLoginMessage(text,type="error"){
 
-return String(value??"")
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+const box =
+document.getElementById("loginMessage");
 
-}
+box.style.display="block";
 
-
-function message(id,text,type="success"){
-
-const box=
-document.getElementById(id);
+box.className =
+type === "success"
+? "msg success"
+: "msg error";
 
 box.textContent=text;
 
-box.className=
-"message "+type;
-
 }
 
 
-/* =================================================
-ADMIN LOGIN
-================================================= */
+/* =========================================================
+LOGIN
+========================================================= */
 
-window.adminLogin=async function(){
+document
+.getElementById("loginBtn")
+.addEventListener("click",async()=>{
 
-const email=
-document.getElementById("adminEmail")
-.value.trim();
+const email =
+document
+.getElementById("loginEmail")
+.value
+.trim()
+.toLowerCase();
 
-const password=
-document.getElementById("adminPassword")
+const password =
+document
+.getElementById("loginPassword")
 .value;
 
-if(email.toLowerCase()!==ADMIN_EMAIL){
 
-message(
-"loginMessage",
-"This account is not authorized as admin.",
-"error"
+if(!email){
+
+showLoginMessage(
+"Please enter your admin email."
 );
 
 return;
+
 }
+
+
+if(!password){
+
+showLoginMessage(
+"Please enter your password."
+);
+
+return;
+
+}
+
+
+if(email !== ADMIN_EMAIL){
+
+showLoginMessage(
+"Only the authorized admin account can access this page."
+);
+
+return;
+
+}
+
 
 try{
 
@@ -702,129 +896,276 @@ password
 );
 
 }
+
 catch(error){
 
-message(
-"loginMessage",
-"Login failed: "+error.message,
-"error"
+console.error(error);
+
+showLoginMessage(
+"Login failed: " + getFirebaseError(error)
 );
 
 }
 
-};
+});
 
 
-/* =================================================
+/* =========================================================
+FORGOT PASSWORD
+========================================================= */
+
+document
+.getElementById("forgotBtn")
+.addEventListener("click",async()=>{
+
+const email =
+document
+.getElementById("loginEmail")
+.value
+.trim()
+.toLowerCase();
+
+
+if(!email){
+
+showLoginMessage(
+"Enter your admin email first."
+);
+
+return;
+
+}
+
+
+if(email !== ADMIN_EMAIL){
+
+showLoginMessage(
+"Password reset is only available for the authorized admin email."
+);
+
+return;
+
+}
+
+
+try{
+
+await sendPasswordResetEmail(
+auth,
+email
+);
+
+showLoginMessage(
+"Password reset email sent. Check your Gmail inbox.",
+"success"
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+showLoginMessage(
+"Could not send reset email: " +
+getFirebaseError(error)
+);
+
+}
+
+});
+
+
+/* =========================================================
 AUTH STATE
-================================================= */
+========================================================= */
 
 onAuthStateChanged(
 auth,
 async(user)=>{
 
-if(user &&
-user.email.toLowerCase()===ADMIN_EMAIL){
-
-document
-.getElementById("loginArea")
-.classList.add("hidden");
-
-document
-.getElementById("adminArea")
-.classList.remove("hidden");
-
-await refreshAll();
-
-}
-else{
-
 if(user){
 
+if(
+user.email &&
+user.email.toLowerCase() === ADMIN_EMAIL
+){
+
+document
+.getElementById("loginPanel")
+.style.display="none";
+
+document
+.getElementById("adminPanel")
+.style.display="block";
+
+await refreshEverything();
+
+}else{
+
 await signOut(auth);
 
-}
+document
+.getElementById("loginPanel")
+.style.display="block";
 
 document
-.getElementById("loginArea")
-.classList.remove("hidden");
+.getElementById("adminPanel")
+.style.display="none";
 
-document
-.getElementById("adminArea")
-.classList.add("hidden");
-
-}
-
-}
+showLoginMessage(
+"This account is not authorized as admin."
 );
 
+}
 
-/* =================================================
+}else{
+
+document
+.getElementById("loginPanel")
+.style.display="block";
+
+document
+.getElementById("adminPanel")
+.style.display="none";
+
+}
+
+});
+
+
+/* =========================================================
 LOGOUT
-================================================= */
+========================================================= */
 
-window.adminLogout=async function(){
+window.logoutAdmin =
+async function(){
+
+try{
 
 await signOut(auth);
+
+}
+catch(error){
+
+console.error(error);
+
+}
 
 };
 
 
-/* =================================================
+/* =========================================================
 NAVIGATION
-================================================= */
+========================================================= */
 
-window.showSection=function(name){
+window.showSection =
+function(name){
 
 document
 .querySelectorAll(".section")
-.forEach(x=>
-x.classList.remove("active")
-);
+.forEach(section=>{
 
-document
-.getElementById(name)
-.classList.add("active");
+section
+.classList
+.remove("active");
+
+});
+
+
+const section =
+document.getElementById(name);
+
+if(section){
+
+section
+.classList
+.add("active");
+
+}
 
 };
 
 
-/* =================================================
+/* =========================================================
 ADD TASK
-================================================= */
+========================================================= */
 
-window.addTask=async function(){
+window.addTask =
+async function(){
 
-const title=
-document.getElementById("taskTitle")
-.value.trim();
+const title =
+document
+.getElementById("taskTitle")
+.value
+.trim();
 
-const description=
-document.getElementById("taskDescription")
-.value.trim();
+const description =
+document
+.getElementById("taskDescription")
+.value
+.trim();
 
-const link=
-document.getElementById("taskLink")
-.value.trim();
+const link =
+document
+.getElementById("taskLink")
+.value
+.trim();
 
-const reward=
+const reward =
 Number(
-document.getElementById("taskReward")
+document
+.getElementById("taskReward")
 .value
 );
 
-if(!title ||
-!description ||
-reward<0){
+const active =
+document
+.getElementById("taskActive")
+.value === "true";
 
-message(
+
+if(!title){
+
+showMessage(
 "taskMessage",
-"Complete the task information.",
+"Please enter a task title.",
 "error"
 );
 
 return;
+
 }
+
+
+if(!description){
+
+showMessage(
+"taskMessage",
+"Please enter a task description.",
+"error"
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(reward) ||
+reward < 0
+){
+
+showMessage(
+"taskMessage",
+"Enter a valid reward.",
+"error"
+);
+
+return;
+
+}
+
 
 try{
 
@@ -840,36 +1181,52 @@ link:link,
 
 reward:reward,
 
-active:true,
+active:active,
 
-createdAt:serverTimestamp(),
+createdBy:auth.currentUser.uid,
 
-createdBy:auth.currentUser.uid
+createdAt:serverTimestamp()
 
 }
 );
 
-message(
+
+showMessage(
 "taskMessage",
-"✅ Task added successfully."
+"✅ Task added successfully.",
+"success"
 );
 
-document.getElementById("taskTitle").value="";
 
-document.getElementById("taskDescription").value="";
+document
+.getElementById("taskTitle")
+.value="";
 
-document.getElementById("taskLink").value="";
+document
+.getElementById("taskDescription")
+.value="";
 
-document.getElementById("taskReward").value="";
+document
+.getElementById("taskLink")
+.value="";
 
-loadTasks();
+document
+.getElementById("taskReward")
+.value="";
+
+
+await loadAdminTasks();
 
 }
+
 catch(error){
 
-message(
+console.error(error);
+
+showMessage(
 "taskMessage",
-"Could not add task: "+error.message,
+"Could not add task: " +
+getFirebaseError(error),
 "error"
 );
 
@@ -878,304 +1235,486 @@ message(
 };
 
 
-/* =================================================
+/* =========================================================
 LOAD TASKS
-================================================= */
+========================================================= */
 
-window.loadTasks=async function(){
+window.loadAdminTasks =
+async function(){
 
-const list=
-document.getElementById("taskList");
+const list =
+document.getElementById(
+"adminTaskList"
+);
 
-list.innerHTML=
+list.innerHTML =
 "<p class='small'>Loading...</p>";
+
 
 try{
 
-const snap=
+const snap =
 await getDocs(
 collection(db,"tasks")
 );
 
+
 if(snap.empty){
 
-list.innerHTML=
-"<p class='small'>No tasks.</p>";
+list.innerHTML =
+"<p class='empty'>No tasks created yet.</p>";
 
 return;
+
 }
+
 
 list.innerHTML="";
 
+
 snap.forEach(taskDoc=>{
 
-const d=taskDoc.data();
+const d =
+taskDoc.data();
 
-const div=
+
+const div =
 document.createElement("div");
 
-div.className="task";
+div.className="item";
+
 
 div.innerHTML=`
 
-<h3>${safe(d.title)}</h3>
-
-<p>${safe(d.description)}</p>
+<h3>
+${safe(d.title || "Task")}
+</h3>
 
 <p>
-<strong>Reward:</strong>
-₦${Number(d.reward||0).toLocaleString()}
+${safe(d.description || "")}
 </p>
 
 <p>
-<strong>Status:</strong>
-${d.active?"Active":"Inactive"}
+Reward:
+<strong>
+₦${Number(d.reward || 0).toLocaleString()}
+</strong>
 </p>
+
+<p>
+Status:
+<strong>
+${d.active === true ? "Active" : "Inactive"}
+</strong>
+</p>
+
+<button
+class="btn ${d.active === true ? "red" : "green"}"
+onclick="toggleTask('${taskDoc.id}',${d.active === true})"
+>
+${d.active === true
+? "⛔ Disable Task"
+: "✅ Activate Task"}
+</button>
 
 `;
 
-const button=
-document.createElement("button");
-
-button.className=
-"d.active?'btn red':'btn green'";
-
-button.className=
-d.active?"btn red":"btn green";
-
-button.textContent=
-d.active?"Disable Task":"Activate Task";
-
-button.onclick=async()=>{
-
-await updateDoc(
-doc(db,"tasks",taskDoc.id),
-{
-active:!d.active
-}
-);
-
-loadTasks();
-
-};
-
-div.appendChild(button);
 
 list.appendChild(div);
 
 });
 
 }
+
 catch(error){
 
-list.innerHTML=
-"<p class='small'>Could not load tasks: "
-+safe(error.message)
-+"</p>";
+console.error(error);
+
+list.innerHTML =
+"<p class='small'>Could not load tasks: " +
+safe(getFirebaseError(error)) +
+"</p>";
 
 }
 
 };
 
 
-/* =================================================
-LOAD TASK PROOFS
-================================================= */
+/* =========================================================
+TOGGLE TASK
+========================================================= */
 
-window.loadProofs=async function(){
-
-const list=
-document.getElementById("proofList");
-
-list.innerHTML=
-"<p class='small'>Loading...</p>";
+window.toggleTask =
+async function(
+taskId,
+currentStatus
+){
 
 try{
 
-const snap=
+await updateDoc(
+doc(db,"tasks",taskId),
+{
+
+active:!currentStatus,
+
+updatedAt:serverTimestamp()
+
+}
+);
+
+
+await loadAdminTasks();
+
+}
+
+catch(error){
+
+alert(
+"Could not update task: " +
+getFirebaseError(error)
+);
+
+}
+
+};
+
+
+/* =========================================================
+LOAD TASK PROOFS
+========================================================= */
+
+window.loadProofs =
+async function(){
+
+const list =
+document.getElementById(
+"proofList"
+);
+
+list.innerHTML =
+"<p class='small'>Loading proof images...</p>";
+
+
+try{
+
+const snap =
 await getDocs(
 collection(db,"taskSubmissions")
 );
 
+
 let pending=0;
 
-list.innerHTML="";
 
 if(snap.empty){
 
-list.innerHTML=
-"<p class='small'>No proofs.</p>";
+list.innerHTML =
+"<p class='empty'>No submitted task proofs.</p>";
 
-document.getElementById("pendingProofs")
+document
+.getElementById("pendingProofs")
 .textContent="0";
 
 return;
+
 }
 
-snap.forEach(proofDoc=>{
 
-const d=proofDoc.data();
+list.innerHTML="";
 
-if(d.status==="Pending"){
+
+snap.forEach(submissionDoc=>{
+
+const d =
+submissionDoc.data();
+
+
+if(
+(d.status || "Pending")
+===
+"Pending"
+){
+
 pending++;
+
 }
 
-const div=
+
+const div =
 document.createElement("div");
 
-div.className="order";
+div.className="item";
 
-let cls="pending";
 
-if(d.status==="Approved"){
-cls="approved";
-}
+let status =
+d.status || "Pending";
 
-if(d.status==="Rejected"){
-cls="rejected";
-}
+let statusClass =
+"pending";
+
+
+if(status==="Approved")
+statusClass="approved";
+
+if(status==="Rejected")
+statusClass="rejected";
+
 
 div.innerHTML=`
 
-<h3>📝 ${safe(d.taskTitle||"Task")}</h3>
+<h3>
+📝 ${safe(d.taskTitle || "Task")}
+</h3>
 
 <p>
-<strong>User:</strong>
-${safe(d.email||d.uid||"")}
+User:
+${safe(d.email || d.uid || "")}
 </p>
 
 <p>
-<strong>Reward:</strong>
-₦${Number(d.reward||0).toLocaleString()}
+Reward:
+<strong>
+₦${Number(d.reward || 0).toLocaleString()}
+</strong>
 </p>
 
-<p>
-<strong>Status:</strong>
-<span class="status ${cls}">
-${safe(d.status||"Pending")}
+<span class="status ${statusClass}">
+${safe(status)}
 </span>
-</p>
 
 `;
 
-if(d.proofImage){
 
-const img=
+const imageUrl =
+d.proofImage ||
+d.proofUrl ||
+d.imageUrl ||
+d.proof;
+
+
+if(imageUrl){
+
+const title =
+document.createElement("div");
+
+title.className="proof-title";
+
+title.textContent =
+"🖼️ Submitted Proof:";
+
+div.appendChild(title);
+
+
+const img =
 document.createElement("img");
-
-img.src=d.proofImage;
 
 img.className="proof-image";
 
+img.src=imageUrl;
+
 img.alt="Task proof image";
+
+img.loading="lazy";
+
+
+img.onerror=function(){
+
+img.style.display="none";
+
+const errorText =
+document.createElement("p");
+
+errorText.className="small";
+
+errorText.textContent =
+"Proof image could not be displayed.";
+
+div.appendChild(errorText);
+
+};
+
 
 div.appendChild(img);
 
 }
 
-if(d.status==="Pending"){
 
-const approve=
+if(d.proofText){
+
+const text =
+document.createElement("p");
+
+text.className="small";
+
+text.innerHTML =
+"<strong>User explanation:</strong><br>" +
+safe(d.proofText);
+
+div.appendChild(text);
+
+}
+
+
+if(status==="Pending"){
+
+const approve =
 document.createElement("button");
 
 approve.className="btn green";
 
-approve.textContent=
+approve.textContent =
 "✅ Approve Proof";
+
 
 approve.onclick=()=>{
 
 approveProof(
-proofDoc.id,
+submissionDoc.id,
 d.uid,
-Number(d.reward||0)
+Number(d.reward || 0)
 );
 
 };
 
+
 div.appendChild(approve);
 
 
-const reject=
+const reject =
 document.createElement("button");
 
 reject.className="btn red";
 
-reject.textContent=
+reject.textContent =
 "❌ Reject Proof";
+
 
 reject.onclick=()=>{
 
-rejectProof(proofDoc.id);
+rejectProof(
+submissionDoc.id
+);
 
 };
+
 
 div.appendChild(reject);
 
 }
 
+
 list.appendChild(div);
 
 });
 
-document.getElementById("pendingProofs")
+
+document
+.getElementById("pendingProofs")
 .textContent=pending;
 
 }
+
 catch(error){
 
-list.innerHTML=
-"<p class='small'>Could not load proofs: "
-+safe(error.message)
-+"</p>";
+console.error(error);
+
+list.innerHTML =
+"<p class='small'>Could not load proofs: " +
+safe(getFirebaseError(error)) +
+"</p>";
 
 }
 
 };
 
 
-/* =================================================
+/* =========================================================
 APPROVE PROOF
-================================================= */
+========================================================= */
 
-window.approveProof=async function(
+window.approveProof =
+async function(
 submissionId,
 uid,
 reward
 ){
 
-if(!confirm(
-"Approve this proof and add ₦"+
-reward.toLocaleString()+
+if(!uid){
+
+alert(
+"User UID is missing from this submission."
+);
+
+return;
+
+}
+
+
+if(
+!confirm(
+"Approve this proof and add ₦" +
+reward.toLocaleString() +
 " to the user's balance?"
-))return;
+)
+){
+
+return;
+
+}
+
 
 try{
 
-const userRef=
-doc(db,"users",uid);
+const q =
+query(
+collection(db,"users"),
+where("uid","==",uid)
+);
 
-const userSnap=
-await getDoc(userRef);
 
-if(!userSnap.exists()){
+const userSnap =
+await getDocs(q);
 
-alert("User record not found.");
+
+if(userSnap.empty){
+
+alert(
+"User record was not found."
+);
 
 return;
+
 }
 
-const currentBalance=
+
+const userDoc =
+userSnap.docs[0];
+
+
+const currentBalance =
 Number(
-userSnap.data().balance||0
+userDoc.data().balance || 0
 );
+
 
 await updateDoc(
-userRef,
+doc(
+db,
+"users",
+userDoc.id
+),
 {
-balance:currentBalance+reward
+
+balance:
+currentBalance + reward,
+
+updatedAt:
+serverTimestamp()
+
 }
 );
+
 
 await updateDoc(
 doc(
@@ -1187,27 +1726,34 @@ submissionId
 
 status:"Approved",
 
-approvedAt:serverTimestamp(),
+approvedAt:
+serverTimestamp(),
 
-approvedBy:auth.currentUser.uid
+approvedBy:
+auth.currentUser.email
 
 }
 );
+
 
 alert(
-"✅ Proof approved and balance updated."
+"Proof approved successfully."
 );
 
-loadProofs();
 
-loadUsers();
+await loadProofs();
+
+await loadUsers();
 
 }
+
 catch(error){
 
+console.error(error);
+
 alert(
-"Could not approve proof: "+
-error.message
+"Could not approve proof: " +
+getFirebaseError(error)
 );
 
 }
@@ -1215,18 +1761,27 @@ error.message
 };
 
 
-/* =================================================
+/* =========================================================
 REJECT PROOF
-================================================= */
+========================================================= */
 
-window.rejectProof=async function(
+window.rejectProof =
+async function(
 submissionId
 ){
 
-const reason=
-prompt("Enter rejection reason:");
+const reason =
+prompt(
+"Enter rejection reason:"
+);
 
-if(reason===null)return;
+
+if(reason===null){
+
+return;
+
+}
+
 
 try{
 
@@ -1240,25 +1795,35 @@ submissionId
 
 status:"Rejected",
 
-rejectionReason:reason,
+rejectionReason:
+reason,
 
-rejectedAt:serverTimestamp(),
+rejectedAt:
+serverTimestamp(),
 
-rejectedBy:auth.currentUser.uid
+rejectedBy:
+auth.currentUser.email
 
 }
 );
 
-alert("Proof rejected.");
-
-loadProofs();
-
-}
-catch(error){
 
 alert(
-"Could not reject proof: "+
-error.message
+"Proof rejected."
+);
+
+
+await loadProofs();
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Could not reject proof: " +
+getFirebaseError(error)
 );
 
 }
@@ -1266,419 +1831,202 @@ error.message
 };
 
 
-/* =================================================
-PROMOTION ORDERS
-================================================= */
+/* =========================================================
+LOAD USERS
+========================================================= */
 
-window.loadPromotions=async function(){
+window.loadUsers =
+async function(){
 
-const list=
-document.getElementById("promotionList");
+const list =
+document.getElementById(
+"userList"
+);
 
-list.innerHTML=
-"<p class='small'>Loading...</p>";
+list.innerHTML =
+"<p class='small'>Loading users...</p>";
+
 
 try{
 
-const snap=
-await getDocs(
-collection(db,"promotionOrders")
-);
-
-let pending=0;
-
-list.innerHTML="";
-
-if(snap.empty){
-
-list.innerHTML=
-"<p class='small'>No promotion orders.</p>";
-
-document
-.getElementById("pendingPromotions")
-.textContent="0";
-
-return;
-}
-
-snap.forEach(orderDoc=>{
-
-const d=orderDoc.data();
-
-if(d.promotionStatus==="Pending"){
-pending++;
-}
-
-const div=
-document.createElement("div");
-
-div.className="order";
-
-let statusClass="pending";
-
-if(d.promotionStatus==="Approved"){
-statusClass="approved";
-}
-
-if(d.promotionStatus==="Rejected"){
-statusClass="rejected";
-}
-
-div.innerHTML=`
-
-<h3>
-📢 ${safe(d.promotionType||"Promotion")}
-</h3>
-
-<p>
-<strong>User:</strong>
-${safe(d.email||"")}
-</p>
-
-<p>
-<strong>Amount:</strong>
-₦${Number(d.amount||0).toLocaleString()}
-</p>
-
-<p>
-<strong>Promotion Link:</strong><br>
-
-<a
-href="${safe(d.promotionLink||"#")}"
-target="_blank">
-
-${safe(d.promotionLink||"")}
-
-</a>
-
-</p>
-
-<p>
-<strong>Payment Status:</strong>
-${safe(d.paymentStatus||"Pending")}
-</p>
-
-<p>
-<strong>Promotion Status:</strong>
-
-<span class="status ${statusClass}">
-${safe(d.promotionStatus||"Pending")}
-</span>
-
-</p>
-
-`;
-
-
-/* ================================================
-PAYMENT PROOF IMAGE DIRECTLY UNDER ORDER
-================================================ */
-
-if(d.proofImage){
-
-const label=
-document.createElement("p");
-
-label.style.marginTop="15px";
-
-label.innerHTML=
-"<strong>🖼️ Payment Proof Image:</strong>";
-
-div.appendChild(label);
-
-
-const img=
-document.createElement("img");
-
-img.src=d.proofImage;
-
-img.className="proof-image";
-
-img.alt=
-"Customer payment proof";
-
-div.appendChild(img);
-
-}
-
-
-/* ================================================
-APPROVE / REJECT
-================================================ */
-
-if(d.promotionStatus==="Pending"){
-
-const approve=
-document.createElement("button");
-
-approve.className="btn green";
-
-approve.textContent=
-"✅ Approve Promotion";
-
-approve.onclick=()=>{
-
-updatePromotion(
-orderDoc.id,
-"Approved"
-);
-
-};
-
-div.appendChild(approve);
-
-
-const reject=
-document.createElement("button");
-
-reject.className="btn red";
-
-reject.textContent=
-"❌ Reject Promotion";
-
-reject.onclick=()=>{
-
-updatePromotion(
-orderDoc.id,
-"Rejected"
-);
-
-};
-
-div.appendChild(reject);
-
-}
-
-list.appendChild(div);
-
-});
-
-document
-.getElementById("pendingPromotions")
-.textContent=pending;
-
-}
-catch(error){
-
-list.innerHTML=
-"<p class='small'>Could not load promotions: "
-+safe(error.message)
-+"</p>";
-
-}
-
-};
-
-
-/* =================================================
-UPDATE PROMOTION
-================================================= */
-
-window.updatePromotion=async function(
-orderId,
-status
-){
-
-let reason="";
-
-if(status==="Rejected"){
-
-reason=
-prompt("Enter rejection reason:");
-
-if(reason===null)return;
-
-}
-
-try{
-
-const updateData={
-
-promotionStatus:status,
-
-updatedAt:serverTimestamp(),
-
-updatedBy:auth.currentUser.uid
-
-};
-
-if(status==="Approved"){
-
-updateData.paymentStatus="Approved";
-
-}
-
-if(status==="Rejected"){
-
-updateData.paymentStatus="Rejected";
-
-updateData.rejectionReason=reason;
-
-}
-
-await updateDoc(
-doc(
-db,
-"promotionOrders",
-orderId
-),
-updateData
-);
-
-alert(
-"Promotion status changed to "+status
-);
-
-loadPromotions();
-
-}
-catch(error){
-
-alert(
-"Could not update promotion: "+
-error.message
-);
-
-}
-
-};
-
-
-/* =================================================
-USERS
-================================================= */
-
-window.loadUsers=async function(){
-
-const list=
-document.getElementById("userList");
-
-list.innerHTML=
-"<p class='small'>Loading...</p>";
-
-try{
-
-const snap=
+const snap =
 await getDocs(
 collection(db,"users")
 );
+
 
 document
 .getElementById("totalUsers")
 .textContent=snap.size;
 
+
+if(snap.empty){
+
+list.innerHTML =
+"<p class='empty'>No users found.</p>";
+
+return;
+
+}
+
+
 list.innerHTML="";
+
 
 snap.forEach(userDoc=>{
 
-const d=userDoc.data();
+const d =
+userDoc.data();
 
-const div=
+
+const div =
 document.createElement("div");
 
-div.className="user";
+div.className="item";
+
 
 div.innerHTML=`
 
-<h3>👤 ${safe(d.email||"User")}</h3>
+<h3>
+👤 ${safe(d.email || "User")}
+</h3>
 
 <p>
 UID:
-${safe(d.uid||userDoc.id)}
+${safe(d.uid || userDoc.id)}
 </p>
 
 <p>
 Balance:
 <strong>
-₦${Number(d.balance||0).toLocaleString()}
+₦${Number(d.balance || 0).toLocaleString()}
 </strong>
+</p>
+
+<p>
+Role:
+${safe(d.role || "user")}
 </p>
 
 <input
 type="number"
-id="balance_${userDoc.id}"
-placeholder="New balance">
+id="balance-${userDoc.id}"
+placeholder="Enter new balance"
+min="0"
+>
 
 <button
 class="btn"
-onclick="changeBalance('${userDoc.id}')">
-
-💰 Change Balance
-
+onclick="changeBalance('${userDoc.id}')"
+>
+💰 Update Balance
 </button>
 
 `;
+
 
 list.appendChild(div);
 
 });
 
 }
+
 catch(error){
 
-list.innerHTML=
-"<p class='small'>Could not load users: "
-+safe(error.message)
-+"</p>";
+console.error(error);
+
+list.innerHTML =
+"<p class='small'>Could not load users: " +
+safe(getFirebaseError(error)) +
+"</p>";
 
 }
 
 };
 
 
-/* =================================================
+/* =========================================================
 CHANGE BALANCE
-================================================= */
+========================================================= */
 
-window.changeBalance=async function(
-userId
-){
+window.changeBalance =
+async function(userDocId){
 
-const input=
+const input =
 document.getElementById(
-"balance_"+userId
+"balance-" + userDocId
 );
 
-const amount=
+
+const newBalance =
 Number(input.value);
 
-if(isNaN(amount)||amount<0){
 
-alert("Enter a valid balance.");
+if(
+!Number.isFinite(newBalance) ||
+newBalance < 0
+){
+
+alert(
+"Enter a valid balance."
+);
 
 return;
+
 }
 
-if(!confirm(
-"Set this user's balance to ₦"+
-amount.toLocaleString()+"?"
-))return;
+
+if(
+!confirm(
+"Set this user's balance to ₦" +
+newBalance.toLocaleString() +
+"? "
+)
+){
+
+return;
+
+}
+
 
 try{
 
 await updateDoc(
-doc(db,"users",userId),
+doc(
+db,
+"users",
+userDocId
+),
 {
-balance:amount,
 
-balanceUpdatedAt:
+balance:newBalance,
+
+updatedAt:
 serverTimestamp(),
 
 balanceUpdatedBy:
-auth.currentUser.uid
+auth.currentUser.email
+
 }
 );
 
-alert("Balance updated.");
-
-loadUsers();
-
-}
-catch(error){
 
 alert(
-"Could not change balance: "+
-error.message
+"Balance updated successfully."
+);
+
+
+await loadUsers();
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Could not update balance: " +
+getFirebaseError(error)
 );
 
 }
@@ -1686,179 +2034,218 @@ error.message
 };
 
 
-/* =================================================
-WITHDRAWALS
-================================================= */
+/* =========================================================
+LOAD WITHDRAWALS
+========================================================= */
 
-window.loadWithdrawals=async function(){
+window.loadWithdrawals =
+async function(){
 
-const list=
-document.getElementById("withdrawalList");
+const list =
+document.getElementById(
+"withdrawalList"
+);
 
-list.innerHTML=
-"<p class='small'>Loading...</p>";
+list.innerHTML =
+"<p class='small'>Loading withdrawals...</p>";
+
 
 try{
 
-const snap=
+const snap =
 await getDocs(
 collection(db,"withdrawals")
 );
 
+
 let pending=0;
 
-list.innerHTML="";
 
 if(snap.empty){
 
-list.innerHTML=
-"<p class='small'>No withdrawal requests.</p>";
+list.innerHTML =
+"<p class='empty'>No withdrawal requests.</p>";
 
 document
 .getElementById("pendingWithdrawals")
 .textContent="0";
 
 return;
+
 }
+
+
+list.innerHTML="";
+
 
 snap.forEach(withdrawalDoc=>{
 
-const d=
+const d =
 withdrawalDoc.data();
 
-if(d.status==="Pending"){
+
+const status =
+d.status || "Pending";
+
+
+if(status==="Pending")
 pending++;
-}
 
-let cls="pending";
 
-if(d.status==="Approved"){
-cls="approved";
-}
+let statusClass =
+"pending";
 
-if(d.status==="Rejected"){
-cls="rejected";
-}
 
-const div=
+if(status==="Approved")
+statusClass="approved";
+
+if(status==="Rejected")
+statusClass="rejected";
+
+
+const div =
 document.createElement("div");
 
-div.className="order";
+div.className="item";
+
 
 div.innerHTML=`
 
 <h3>
-💸 ₦${Number(d.amount||0).toLocaleString()}
+💸 ₦${Number(d.amount || 0).toLocaleString()}
 </h3>
 
 <p>
 Email:
-${safe(d.email||"")}
+${safe(d.email || "")}
 </p>
 
 <p>
 Bank:
-${safe(d.bankName||"")}
+${safe(d.bankName || d.bank || "")}
 </p>
 
 <p>
 Account Number:
-${safe(d.accountNumber||"")}
+${safe(d.accountNumber || "")}
 </p>
 
 <p>
 Account Name:
-${safe(d.accountName||"")}
+${safe(d.accountName || "")}
 </p>
 
-<p>
-Status:
-
-<span class="status ${cls}">
-${safe(d.status||"Pending")}
+<span class="status ${statusClass}">
+${safe(status)}
 </span>
-
-</p>
 
 `;
 
-if(d.status==="Pending"){
 
-const approve=
+if(status==="Pending"){
+
+const approve =
 document.createElement("button");
 
 approve.className="btn green";
 
-approve.textContent=
+approve.textContent =
 "✅ Approve Withdrawal";
+
 
 approve.onclick=()=>{
 
-updateWithdrawal(
+updateWithdrawalStatus(
 withdrawalDoc.id,
 "Approved"
 );
 
 };
 
+
 div.appendChild(approve);
 
 
-const reject=
+const reject =
 document.createElement("button");
 
 reject.className="btn red";
 
-reject.textContent=
+reject.textContent =
 "❌ Reject Withdrawal";
+
 
 reject.onclick=()=>{
 
-updateWithdrawal(
+updateWithdrawalStatus(
 withdrawalDoc.id,
 "Rejected"
 );
 
 };
 
+
 div.appendChild(reject);
 
 }
 
+
 list.appendChild(div);
 
 });
+
 
 document
 .getElementById("pendingWithdrawals")
 .textContent=pending;
 
 }
+
 catch(error){
 
-list.innerHTML=
-"<p class='small'>Could not load withdrawals: "
-+safe(error.message)
-+"</p>";
+console.error(error);
+
+list.innerHTML =
+"<p class='small'>Could not load withdrawals: " +
+safe(getFirebaseError(error)) +
+"</p>";
 
 }
 
 };
 
 
-/* =================================================
+/* =========================================================
 UPDATE WITHDRAWAL
-================================================= */
+========================================================= */
 
-window.updateWithdrawal=async function(
-id,
+window.updateWithdrawalStatus =
+async function(
+withdrawalId,
 status
 ){
+
+if(
+!confirm(
+"Change withdrawal status to " +
+status +
+"? "
+)
+){
+
+return;
+
+}
+
 
 try{
 
 await updateDoc(
-doc(db,"withdrawals",id),
+doc(
+db,
+"withdrawals",
+withdrawalId
+),
 {
 
 status:status,
@@ -1867,49 +2254,610 @@ processedAt:
 serverTimestamp(),
 
 processedBy:
-auth.currentUser.uid
+auth.currentUser.email
 
 }
 );
 
+
 alert(
-"Withdrawal marked "+status
+"Withdrawal status updated."
 );
 
-loadWithdrawals();
+
+await loadWithdrawals();
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Could not update withdrawal: " +
+getFirebaseError(error)
+);
+
+}
+
+};
+
+
+/* =========================================================
+LOAD PROMOTIONS
+========================================================= */
+
+window.loadPromotions =
+async function(){
+
+const list =
+document.getElementById(
+"promotionList"
+);
+
+list.innerHTML =
+"<p class='small'>Loading promotion orders...</p>";
+
+
+try{
+
+const snap =
+await getDocs(
+collection(db,"promotionOrders")
+);
+
+
+let pending=0;
+
+
+if(snap.empty){
+
+list.innerHTML =
+"<p class='empty'>No promotion orders found.</p>";
+
+document
+.getElementById("pendingPromotions")
+.textContent="0";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+snap.forEach(promotionDoc=>{
+
+const d =
+promotionDoc.data();
+
+
+const promotionStatus =
+d.promotionStatus ||
+d.status ||
+"Pending";
+
+
+if(
+promotionStatus==="Pending"
+){
+
+pending++;
+
+}
+
+
+let statusClass =
+"pending";
+
+
+if(
+promotionStatus==="Approved"
+){
+
+statusClass="approved";
+
+}
+
+
+if(
+promotionStatus==="Rejected"
+){
+
+statusClass="rejected";
+
+}
+
+
+const div =
+document.createElement("div");
+
+div.className="item";
+
+
+div.innerHTML=`
+
+<h3>
+📢 ${safe(
+d.promotionType ||
+d.service ||
+"Promotion Order"
+)}
+</h3>
+
+<p>
+👤 User:
+${safe(d.email || d.uid || "")}
+</p>
+
+<p>
+🔗 Promotion Link:
+</p>
+
+<p style="word-break:break-all;">
+${safe(
+d.promotionLink ||
+d.link ||
+d.targetLink ||
+""
+)}
+</p>
+
+<p>
+💰 Amount:
+<strong>
+₦${Number(
+d.amount ||
+d.price ||
+0
+).toLocaleString()}
+</strong>
+</p>
+
+<p>
+💳 Payment Status:
+<strong>
+${safe(
+d.paymentStatus ||
+"Pending"
+)}
+</strong>
+</p>
+
+<p>
+📌 Promotion Status:
+</p>
+
+<span class="status ${statusClass}">
+${safe(promotionStatus)}
+</span>
+
+`;
+
+
+/* =========================================================
+PAYMENT PROOF IMAGE
+========================================================= */
+
+const proofImage =
+d.paymentProofImage ||
+d.paymentProof ||
+d.proofImage ||
+d.proofUrl ||
+d.paymentProofUrl ||
+d.imageUrl;
+
+
+if(proofImage){
+
+const proofHeading =
+document.createElement("div");
+
+proofHeading.className =
+"proof-title";
+
+proofHeading.textContent =
+"💳 Payment Proof:";
+
+div.appendChild(
+proofHeading
+);
+
+
+const img =
+document.createElement("img");
+
+img.className =
+"proof-image";
+
+img.src =
+proofImage;
+
+img.alt =
+"Payment proof image";
+
+img.loading =
+"lazy";
+
+
+img.onerror=function(){
+
+img.style.display="none";
+
+
+const errorText =
+document.createElement("p");
+
+errorText.className =
+"small";
+
+errorText.textContent =
+"Payment proof image could not be displayed. The saved image URL may be invalid or the Firebase Storage file may not be publicly readable.";
+
+div.appendChild(
+errorText
+);
+
+};
+
+
+div.appendChild(img);
+
+
+const openLink =
+document.createElement("a");
+
+openLink.href =
+proofImage;
+
+openLink.target="_blank";
+
+openLink.rel="noopener noreferrer";
+
+openLink.textContent =
+"🔎 Open Payment Proof";
+
+openLink.style.display =
+"block";
+
+openLink.style.marginTop =
+"8px";
+
+openLink.style.color =
+"#2563eb";
+
+div.appendChild(openLink);
+
+}else{
+
+const noProof =
+document.createElement("p");
+
+noProof.className =
+"small";
+
+noProof.innerHTML =
+"<strong>💳 Payment Proof:</strong> No proof image saved with this order.";
+
+div.appendChild(noProof);
+
+}
+
+
+/* =========================================================
+APPROVE / REJECT
+========================================================= */
+
+if(
+promotionStatus==="Pending"
+){
+
+const approve =
+document.createElement("button");
+
+approve.className =
+"btn green";
+
+approve.textContent =
+"✅ Approve Promotion";
+
+
+approve.onclick=()=>{
+
+updatePromotion(
+promotionDoc.id,
+"Approved"
+);
+
+};
+
+
+div.appendChild(
+approve
+);
+
+
+const reject =
+document.createElement("button");
+
+reject.className =
+"btn red";
+
+reject.textContent =
+"❌ Reject Promotion";
+
+
+reject.onclick=()=>{
+
+updatePromotion(
+promotionDoc.id,
+"Rejected"
+);
+
+};
+
+
+div.appendChild(
+reject
+);
+
+}
+
+
+list.appendChild(div);
+
+});
+
+
+document
+.getElementById("pendingPromotions")
+.textContent=pending;
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML =
+"<p class='small'>Could not load promotion orders: " +
+safe(getFirebaseError(error)) +
+"</p>";
+
+}
+
+};
+
+
+/* =========================================================
+UPDATE PROMOTION
+========================================================= */
+
+window.updatePromotion =
+async function(
+promotionId,
+status
+){
+
+if(
+!confirm(
+"Change promotion status to " +
+status +
+"? "
+)
+){
+
+return;
+
+}
+
+
+try{
+
+await updateDoc(
+doc(
+db,
+"promotionOrders",
+promotionId
+),
+{
+
+promotionStatus:
+status,
+
+updatedAt:
+serverTimestamp(),
+
+updatedBy:
+auth.currentUser.email
+
+}
+);
+
+
+alert(
+"Promotion status updated successfully."
+);
+
+
+await loadPromotions();
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Could not update promotion: " +
+getFirebaseError(error)
+);
+
+}
+
+};
+
+
+/* =========================================================
+REFRESH EVERYTHING
+========================================================= */
+
+window.refreshEverything =
+async function(){
+
+try{
+
+await loadUsers();
+
+await loadProofs();
+
+await loadWithdrawals();
+
+await loadPromotions();
+
+await loadAdminTasks();
 
 }
 catch(error){
 
-alert(
-"Could not update withdrawal: "+
-error.message
-);
+console.error(error);
 
 }
 
 };
 
 
-/* =================================================
-REFRESH
-================================================= */
+/* =========================================================
+MESSAGE
+========================================================= */
 
-window.refreshAll=async function(){
+function showMessage(
+id,
+text,
+type="success"
+){
 
-await loadUsers();
+const box =
+document.getElementById(id);
 
-await loadTasks();
+if(!box)
+return;
 
-await loadProofs();
 
-await loadPromotions();
+box.style.display="block";
 
-await loadWithdrawals();
+box.className =
+type === "error"
+? "msg error"
+: type === "warning"
+? "msg warning"
+: "msg success";
 
-};
+
+box.textContent=text;
+
+}
+
+
+/* =========================================================
+SAFE TEXT
+========================================================= */
+
+function safe(value){
+
+return String(value ?? "")
+
+.replaceAll("&","&amp;")
+
+.replaceAll("<","&lt;")
+
+.replaceAll(">","&gt;")
+
+.replaceAll('"',"&quot;")
+
+.replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+FIREBASE ERROR
+========================================================= */
+
+function getFirebaseError(error){
+
+if(!error)
+return "Unknown error";
+
+
+if(
+error.code ===
+"permission-denied"
+){
+
+return "Missing or insufficient permissions. Make sure you are logged in with the authorized admin account and your Firestore rules allow this admin action.";
+
+}
+
+
+if(
+error.code ===
+"auth/invalid-credential"
+){
+
+return "Incorrect email or password.";
+
+}
+
+
+if(
+error.code ===
+"auth/invalid-email"
+){
+
+return "Invalid email address.";
+
+}
+
+
+if(
+error.code ===
+"auth/user-not-found"
+){
+
+return "Admin account was not found in Firebase Authentication.";
+
+}
+
+
+if(
+error.code ===
+"auth/wrong-password"
+){
+
+return "Incorrect password.";
+
+}
+
+
+if(
+error.code ===
+"auth/too-many-requests"
+){
+
+return "Too many login attempts. Please wait and try again.";
+
+}
+
+
+return error.message ||
+"Unknown Firebase error.";
+
+}
+
 
 </script>
 
 </body>
-  </html>
+</html>
