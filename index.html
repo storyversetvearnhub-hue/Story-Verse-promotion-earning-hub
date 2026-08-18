@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>StoryVerse Promotion & Earning Hub</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -19,6 +20,149 @@ body{
   color:#222;
 }
 
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* =========================
+AUTH SCREEN
+========================= */
+
+#authScreen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#111827,#2563eb);
+}
+
+.authBox{
+  width:100%;
+  max-width:430px;
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 10px 35px rgba(0,0,0,.25);
+}
+
+.authLogo{
+  text-align:center;
+  font-size:55px;
+  margin-bottom:5px;
+}
+
+.authBox h1{
+  text-align:center;
+  color:#2563eb;
+  margin-bottom:8px;
+}
+
+.authBox p{
+  text-align:center;
+  color:#666;
+  margin-bottom:20px;
+}
+
+/* =========================
+FORM
+========================= */
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:13px;
+  margin:7px 0 12px;
+  border:1px solid #d1d5db;
+  border-radius:9px;
+  background:white;
+  outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:#2563eb;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.btn{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:9px;
+  color:white;
+  background:#2563eb;
+  font-weight:bold;
+  margin-top:7px;
+}
+
+.green{
+  background:#16a34a;
+}
+
+.red{
+  background:#dc2626;
+}
+
+.gray{
+  background:#4b5563;
+}
+
+.orange{
+  background:#ea580c;
+}
+
+.whatsapp{
+  background:#25D366;
+}
+
+.copy{
+  background:#111827;
+}
+
+/* =========================
+MESSAGES
+========================= */
+
+.msg{
+  display:none;
+  padding:11px;
+  margin-top:10px;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.success{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.error{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+/* =========================
+APP
+========================= */
+
+#app{
+  display:none;
+}
+
 header{
   background:linear-gradient(135deg,#111827,#2563eb);
   color:white;
@@ -27,38 +171,44 @@ header{
 }
 
 header h1{
-  font-size:25px;
+  font-size:24px;
 }
 
 header p{
-  margin-top:8px;
-  opacity:.9;
+  margin-top:7px;
 }
+
+/* =========================
+NAVIGATION
+========================= */
 
 nav{
   display:flex;
   overflow-x:auto;
   background:white;
-  border-bottom:1px solid #ddd;
   position:sticky;
   top:0;
   z-index:10;
+  border-bottom:1px solid #ddd;
 }
 
 nav button{
+  min-width:95px;
   flex:1;
-  min-width:100px;
+  padding:14px 7px;
   border:0;
   background:white;
-  padding:14px 8px;
-  cursor:pointer;
   font-weight:bold;
-  font-size:13px;
+  white-space:nowrap;
 }
 
 nav button:hover{
   background:#eef2ff;
 }
+
+/* =========================
+LAYOUT
+========================= */
 
 .container{
   max-width:950px;
@@ -76,8 +226,8 @@ nav button:hover{
 
 .card{
   background:white;
-  border-radius:15px;
   padding:20px;
+  border-radius:15px;
   margin-bottom:15px;
   box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
@@ -86,85 +236,37 @@ nav button:hover{
   margin-bottom:12px;
 }
 
-input,
-select,
-textarea{
-  width:100%;
-  padding:13px;
-  margin:7px 0 12px;
-  border:1px solid #d1d5db;
-  border-radius:9px;
-  font-size:15px;
+.card h3{
+  margin-bottom:8px;
 }
 
-textarea{
-  min-height:100px;
-  resize:vertical;
-}
-
-button.primary{
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:9px;
-  background:#2563eb;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:6px;
-}
-
-button.green{
-  background:#16a34a;
-}
-
-button.red{
-  background:#dc2626;
-}
-
-button.orange{
-  background:#ea580c;
-}
-
-button.gray{
-  background:#4b5563;
-}
-
-button.whatsapp{
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:9px;
-  background:#25D366;
-  color:white;
-  font-weight:bold;
-  margin-top:8px;
-  cursor:pointer;
-}
+/* =========================
+BALANCE
+========================= */
 
 .balanceBox{
   background:linear-gradient(135deg,#111827,#2563eb);
   color:white;
-  border-radius:15px;
   padding:22px;
+  border-radius:15px;
   margin-bottom:15px;
 }
 
 .balance{
-  font-size:32px;
+  font-size:30px;
   font-weight:bold;
   margin-top:8px;
 }
 
+/* =========================
+TASK
+========================= */
+
 .task{
   border:1px solid #e5e7eb;
-  border-radius:12px;
   padding:15px;
+  border-radius:12px;
   margin-top:12px;
-}
-
-.task h3{
-  margin-bottom:8px;
 }
 
 .reward{
@@ -173,14 +275,17 @@ button.whatsapp{
   color:#166534;
   padding:6px 10px;
   border-radius:20px;
-  font-weight:bold;
-  font-size:13px;
   margin:8px 0;
+  font-weight:bold;
 }
+
+/* =========================
+STATUS
+========================= */
 
 .status{
   display:inline-block;
-  padding:5px 9px;
+  padding:5px 10px;
   border-radius:20px;
   font-size:12px;
   font-weight:bold;
@@ -201,45 +306,59 @@ button.whatsapp{
   color:#991b1b;
 }
 
-.package{
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:15px;
-  margin:10px 0;
+/* =========================
+PAYMENT
+========================= */
+
+.paymentBox{
+  background:#eff6ff;
+  border:2px solid #2563eb;
+  padding:18px;
+  border-radius:12px;
+  margin-top:15px;
 }
 
-.message{
-  display:none;
-  padding:11px;
-  border-radius:8px;
-  margin-top:10px;
+.paymentBox p{
+  margin:8px 0;
 }
 
-.successMessage{
-  background:#dcfce7;
-  color:#166534;
+.accountNumber{
+  font-size:25px;
+  font-weight:bold;
+  letter-spacing:1px;
 }
 
-.errorMessage{
-  background:#fee2e2;
-  color:#991b1b;
-}
-
-.infoMessage{
-  background:#dbeafe;
-  color:#1e40af;
-}
+/* =========================
+INFO
+========================= */
 
 .small{
-  color:#6b7280;
   font-size:13px;
+  color:#6b7280;
+}
+
+.info{
+  background:#f3f4f6;
+  padding:12px;
+  border-radius:9px;
+  margin-top:10px;
 }
 
 hr{
   border:0;
   border-top:1px solid #eee;
-  margin:15px 0;
+  margin:20px 0;
 }
+
+.empty{
+  text-align:center;
+  color:#777;
+  padding:20px;
+}
+
+/* =========================
+FOOTER
+========================= */
 
 footer{
   text-align:center;
@@ -247,498 +366,810 @@ footer{
   color:#777;
   font-size:13px;
 }
+
 </style>
 </head>
 
 <body>
 
+
+<!-- =====================================================
+LOGIN / REGISTER
+===================================================== -->
+
+<div id="authScreen">
+
+<div class="authBox">
+
+<div class="authLogo">
+🚀
+</div>
+
+<h1>StoryVerse</h1>
+
+<p>
+Promotion & Earning Hub
+</p>
+
+<input
+type="email"
+id="authEmail"
+placeholder="Email address"
+autocomplete="email"
+>
+
+<input
+type="password"
+id="authPassword"
+placeholder="Password"
+autocomplete="current-password"
+>
+
+<button
+class="btn"
+onclick="registerUser()">
+📝 Create Account
+</button>
+
+<button
+class="btn green"
+onclick="loginUser()">
+🔐 Login
+</button>
+
+<button
+class="btn orange"
+onclick="resetPassword()">
+🔑 Forgot Password
+</button>
+
+<button
+class="btn whatsapp"
+onclick="contactSupport()">
+💬 Customer Service
+</button>
+
+<div
+id="authMessage"
+class="msg">
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+MAIN APP
+===================================================== -->
+
+<div id="app">
+
 <header>
-  <h1>🚀 StoryVerse Promotion & Earning Hub</h1>
-  <p>Promote • Earn • Grow</p>
+
+<h1>
+🚀 StoryVerse Promotion & Earning Hub
+</h1>
+
+<p>
+Promote • Earn • Grow
+</p>
+
 </header>
 
 
+<!-- NAVIGATION -->
+
 <nav>
-  <button onclick="showSection('home')">🏠 Home</button>
-  <button onclick="showSection('promotion')">📢 Promote</button>
-  <button onclick="showSection('earning')">💰 Earn</button>
-  <button onclick="showSection('withdraw')">💸 Withdraw</button>
-  <button onclick="showSection('account')">👤 Account</button>
-  <button onclick="showSection('support')">📞 Support</button>
+
+<button onclick="showSection('home')">
+🏠 Home
+</button>
+
+<button onclick="showSection('promotion')">
+📢 Promote
+</button>
+
+<button onclick="showSection('earning')">
+💰 Earn
+</button>
+
+<button onclick="showSection('withdraw')">
+💸 Withdraw
+</button>
+
+<button onclick="showSection('account')">
+👤 Account
+</button>
+
+<button onclick="showSection('support')">
+📞 Support
+</button>
+
 </nav>
 
 
 <div class="container">
 
 
-<!-- =========================
+<!-- =====================================================
 HOME
-========================= -->
+===================================================== -->
 
-<section id="home" class="section active">
+<section
+id="home"
+class="section active"
+>
 
-  <div class="card">
-    <h2>👋 Welcome</h2>
+<div class="card">
 
-    <p>
-      Welcome to StoryVerse Promotion & Earning Hub.
-      Promote your platforms or complete approved tasks
-      and earn rewards.
-    </p>
-  </div>
+<h2>
+👋 Welcome
+</h2>
 
+<p>
+Welcome to StoryVerse Promotion & Earning Hub.
+</p>
 
-  <div class="card">
+<br>
 
-    <h2>📢 Promotion Hub</h2>
+<p>
+Promote your platforms, complete available tasks,
+submit proof and earn approved rewards.
+</p>
 
-    <p>
-      Promote your WhatsApp Channel, TikTok, YouTube,
-      Telegram, Facebook, website, referral link or app.
-    </p>
-
-    <button
-      class="primary"
-      onclick="showSection('promotion')">
-      📢 Promote Now
-    </button>
-
-  </div>
+</div>
 
 
-  <div class="card">
+<div class="balanceBox">
 
-    <h2>💰 Earning Hub</h2>
+<p>
+💰 Your Available Balance
+</p>
 
-    <p>
-      Complete available tasks and submit proof
-      for admin review.
-    </p>
+<div class="balance">
+₦<span id="balance">0</span>
+</div>
 
-    <button
-      class="primary green"
-      onclick="showSection('earning')">
-      💰 View Tasks
-    </button>
+</div>
 
-  </div>
+
+<div class="card">
+
+<h2>
+📢 Promotion Hub
+</h2>
+
+<p>
+Promote WhatsApp, TikTok, YouTube, Telegram,
+Facebook, websites, referral links and mobile apps.
+</p>
+
+<button
+class="btn"
+onclick="showSection('promotion')">
+📢 Promote Now
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+💰 Earning Hub
+</h2>
+
+<p>
+Complete available tasks and submit proof for review.
+</p>
+
+<button
+class="btn green"
+onclick="showSection('earning')">
+📋 View Tasks
+</button>
+
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
 PROMOTION
-========================= -->
+===================================================== -->
 
-<section id="promotion" class="section">
+<section
+id="promotion"
+class="section"
+>
 
-  <div class="card">
+<div class="card">
 
-    <h2>📢 Promote Your Platform</h2>
+<h2>
+📢 Promote Your Platform
+</h2>
 
-    <p class="small">
-      Select a service, enter your link and submit
-      your promotion request.
-    </p>
+<p>
+Choose what you want to promote.
+</p>
 
-    <label>Promotion Type</label>
+<label>
+Promotion Type
+</label>
 
-    <select id="promotionType">
+<select id="promotionType">
 
-      <option>WhatsApp Channel</option>
-      <option>WhatsApp Group</option>
-      <option>TikTok</option>
-      <option>YouTube</option>
-      <option>Telegram</option>
-      <option>Facebook</option>
-      <option>Website</option>
-      <option>Referral Link</option>
-      <option>Mobile App</option>
+<option>
+WhatsApp Channel
+</option>
 
-    </select>
+<option>
+WhatsApp Group
+</option>
 
+<option>
+TikTok
+</option>
 
-    <label>Your Promotion Link</label>
+<option>
+YouTube
+</option>
 
-    <input
-      type="url"
-      id="promotionLink"
-      placeholder="https://..."
-    >
+<option>
+Telegram
+</option>
 
+<option>
+Facebook
+</option>
 
-    <label>Choose Package</label>
+<option>
+Website
+</option>
 
-    <select id="promotionPackage">
+<option>
+Referral Link
+</option>
 
-      <option value="500">
-        ₦500 = 30 Followers
-      </option>
+<option>
+Mobile App
+</option>
 
-      <option value="1000">
-        ₦1,000 = 80 Followers
-      </option>
-
-      <option value="1500">
-        ₦1,500 = 120 Followers
-      </option>
-
-      <option value="2000">
-        ₦2,000 = 180 Followers
-      </option>
-
-      <option value="2500">
-        ₦2,500 = 250 Followers
-      </option>
-
-      <option value="3000">
-        ₦3,000 = 320 Followers
-      </option>
-
-      <option value="4000">
-        ₦4,000 = 450 Followers
-      </option>
-
-      <option value="5000">
-        ₦5,000 = 600 Followers
-      </option>
-
-      <option value="7500">
-        ₦7,500 = 900 Followers
-      </option>
-
-      <option value="10000">
-        ₦10,000 = 1,300 Followers
-      </option>
-
-      <option value="15000">
-        ₦15,000 = 2,000 Followers
-      </option>
-
-      <option value="20000">
-        ₦20,000 = 3,000 Followers
-      </option>
-
-    </select>
+</select>
 
 
-    <button
-      class="primary"
-      onclick="submitPromotion()">
-      📢 Submit Promotion
-    </button>
+<label>
+Your Promotion Link
+</label>
 
-    <div
-      id="promotionMessage"
-      class="message">
-    </div>
-
-  </div>
+<input
+type="url"
+id="promotionLink"
+placeholder="Paste your promotion link"
+>
 
 
-  <div class="card">
+<label>
+Promotion Package
+</label>
 
-    <h2>📋 My Promotion Orders</h2>
+<select id="promotionPackage">
 
-    <div id="myPromotionOrders">
-      <p class="small">
-        Login to view your orders.
-      </p>
-    </div>
+<option value="500">
+₦500 = 30 Followers
+</option>
 
-  </div>
+<option value="1000">
+₦1,000 = 80 Followers
+</option>
+
+<option value="1500">
+₦1,500 = 120 Followers
+</option>
+
+<option value="2000">
+₦2,000 = 180 Followers
+</option>
+
+<option value="2500">
+₦2,500 = 250 Followers
+</option>
+
+<option value="3000">
+₦3,000 = 320 Followers
+</option>
+
+<option value="4000">
+₦4,000 = 450 Followers
+</option>
+
+<option value="5000">
+₦5,000 = 600 Followers
+</option>
+
+<option value="7500">
+₦7,500 = 900 Followers
+</option>
+
+<option value="10000">
+₦10,000 = 1,300 Followers
+</option>
+
+<option value="15000">
+₦15,000 = 2,000 Followers
+</option>
+
+<option value="20000">
+₦20,000 = 3,000 Followers
+</option>
+
+</select>
+
+</div>
+
+
+<!-- PAYMENT -->
+
+<div class="card">
+
+<h2>
+💳 Promotion Payment
+</h2>
+
+<p>
+After choosing your package, make payment
+to the account below.
+</p>
+
+
+<div class="paymentBox">
+
+<p>
+<strong>
+🏦 Bank:
+</strong>
+OPay
+</p>
+
+
+<p>
+<strong>
+👤 Account Name:
+</strong>
+ANSELEM CHUKWUEBUKA AGBOM
+</p>
+
+
+<p>
+<strong>
+🔢 Account Number:
+</strong>
+</p>
+
+<p class="accountNumber">
+6587578800
+</p>
+
+
+<button
+class="btn copy"
+onclick="copyPaymentAccount()">
+📋 Copy Account Number
+</button>
+
+</div>
+
+
+<br>
+
+<p class="small">
+⚠️ After making payment, enter your transaction
+reference below. Your payment will be verified
+manually by the admin.
+</p>
+
+</div>
+
+
+<!-- PAYMENT PROOF -->
+
+<div class="card">
+
+<h2>
+🧾 Payment Proof
+</h2>
+
+<label>
+Payment Transaction Reference
+</label>
+
+<input
+type="text"
+id="paymentReference"
+placeholder="Enter transaction/reference ID"
+>
+
+
+<label>
+Payment Proof / Details
+</label>
+
+<textarea
+id="paymentProof"
+placeholder="Enter payment proof details"
+></textarea>
+
+
+<button
+class="btn"
+onclick="submitPromotion()">
+📢 Submit Promotion Request
+</button>
+
+<div
+id="promotionMessage"
+class="msg">
+</div>
+
+</div>
+
+
+<!-- ORDERS -->
+
+<div class="card">
+
+<h2>
+📋 My Promotion Orders
+</h2>
+
+<div id="promotionOrders">
+
+<p class="small">
+Loading...
+</p>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
 EARNING
-========================= -->
+===================================================== -->
 
-<section id="earning" class="section">
+<section
+id="earning"
+class="section"
+>
 
+<div class="balanceBox">
 
-  <div class="balanceBox">
+<p>
+💰 Available Balance
+</p>
 
-    <p>💰 Available Balance</p>
+<div class="balance">
+₦<span id="earningBalance">0</span>
+</div>
 
-    <div class="balance">
-      ₦<span id="balance">0</span>
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>📋 Daily Tasks</h2>
-
-    <p class="small">
-      Tasks are added from your Firebase Firestore
-      database. Only active tasks are shown.
-    </p>
-
-    <button
-      class="primary"
-      onclick="loadTasks()">
-      🔄 Refresh Tasks
-    </button>
-
-    <div id="taskList">
-      <p class="small">
-        Please login to view tasks.
-      </p>
-    </div>
-
-  </div>
+</div>
 
 
-  <div class="card">
+<!-- TASKS -->
 
-    <h2>📝 My Task Submissions</h2>
+<div class="card">
 
-    <button
-      class="primary gray"
-      onclick="loadMySubmissions()">
-      🔄 Check My Submissions
-    </button>
+<h2>
+📋 Daily Tasks
+</h2>
 
-    <div id="submissionList">
-      <p class="small">
-        Login to view your submissions.
-      </p>
-    </div>
-
-  </div>
+<p class="small">
+Tasks added by the administrator in Firebase
+will appear here.
+</p>
 
 
-  <div class="card">
+<button
+class="btn"
+onclick="loadTasks()">
+🔄 Refresh Tasks
+</button>
 
-    <h2>👥 Referral</h2>
 
-    <p>
-      Your referral ID:
-    </p>
+<div id="taskList">
 
-    <strong id="referralId">
-      Login to see your referral ID.
-    </strong>
+<p class="empty">
+Loading tasks...
+</p>
 
-    <button
-      class="primary"
-      onclick="copyReferral()">
-      📋 Copy Referral Link
-    </button>
+</div>
 
-  </div>
+</div>
+
+
+<!-- PROOFS -->
+
+<div class="card">
+
+<h2>
+📝 My Task Proofs
+</h2>
+
+<button
+class="btn gray"
+onclick="loadSubmissions()">
+🔄 Refresh Proofs
+</button>
+
+
+<div id="submissionList">
+
+<p class="empty">
+Loading...
+</p>
+
+</div>
+
+</div>
+
+
+<!-- REFERRAL -->
+
+<div class="card">
+
+<h2>
+👥 Referral
+</h2>
+
+<p>
+Share your referral link with friends.
+</p>
+
+<br>
+
+<p>
+<strong>
+Your Referral ID:
+</strong>
+</p>
+
+<p id="referralId">
+Loading...
+</p>
+
+
+<button
+class="btn"
+onclick="copyReferral()">
+📋 Copy Referral Link
+</button>
+
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
 WITHDRAW
-========================= -->
+===================================================== -->
 
-<section id="withdraw" class="section">
+<section
+id="withdraw"
+class="section"
+>
 
-  <div class="card">
+<div class="card">
 
-    <h2>💸 Request Withdrawal</h2>
+<h2>
+💸 Withdrawal Request
+</h2>
 
-    <p class="small">
-      Your withdrawal request will be reviewed by admin.
-    </p>
-
-    <input
-      type="number"
-      id="withdrawAmount"
-      placeholder="Amount"
-      min="1"
-    >
-
-    <input
-      type="text"
-      id="bankName"
-      placeholder="Bank Name"
-    >
-
-    <input
-      type="text"
-      id="accountNumber"
-      placeholder="10-digit Account Number"
-      maxlength="10"
-    >
-
-    <input
-      type="text"
-      id="accountName"
-      placeholder="Account Name"
-    >
-
-    <button
-      class="primary"
-      onclick="submitWithdrawal()">
-      💸 Submit Withdrawal
-    </button>
-
-    <div
-      id="withdrawMessage"
-      class="message">
-    </div>
-
-  </div>
+<p class="small">
+Withdrawal requests are reviewed manually.
+</p>
 
 
-  <div class="card">
+<input
+type="number"
+id="withdrawAmount"
+placeholder="Amount to withdraw"
+>
 
-    <h2>📜 My Withdrawals</h2>
 
-    <button
-      class="primary gray"
-      onclick="loadWithdrawals()">
-      🔄 Check Withdrawal Status
-    </button>
+<input
+type="text"
+id="bankName"
+placeholder="Bank Name"
+>
 
-    <div id="withdrawalList">
-      <p class="small">
-        Login to view withdrawals.
-      </p>
-    </div>
 
-  </div>
+<input
+type="text"
+id="accountNumber"
+maxlength="10"
+inputmode="numeric"
+placeholder="10-digit Account Number"
+>
+
+
+<input
+type="text"
+id="accountName"
+placeholder="Account Name"
+>
+
+
+<button
+class="btn"
+onclick="submitWithdrawal()">
+💸 Submit Withdrawal
+</button>
+
+
+<div
+id="withdrawMessage"
+class="msg">
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+📜 My Withdrawals
+</h2>
+
+
+<button
+class="btn gray"
+onclick="loadWithdrawals()">
+🔄 Refresh
+</button>
+
+
+<div id="withdrawalList">
+
+<p class="empty">
+Loading...
+</p>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
 ACCOUNT
-========================= -->
+===================================================== -->
 
-<section id="account" class="section">
+<section
+id="account"
+class="section"
+>
 
-  <div class="card">
+<div class="card">
 
-    <h2>👤 Account</h2>
+<h2>
+👤 My Account
+</h2>
 
+<p>
+<strong>
+Email
+</strong>
+</p>
 
-    <label>Email</label>
-
-    <input
-      type="email"
-      id="email"
-      placeholder="Enter your email"
-    >
-
-
-    <label>Password</label>
-
-    <input
-      type="password"
-      id="password"
-      placeholder="Enter password"
-    >
+<p id="userEmail">
+Loading...
+</p>
 
 
-    <button
-      class="primary"
-      onclick="registerUser()">
-      📝 Register
-    </button>
+<br>
 
 
-    <button
-      class="primary green"
-      onclick="loginUser()">
-      🔐 Login
-    </button>
+<p>
+<strong>
+User ID
+</strong>
+</p>
+
+<p
+id="userId"
+class="small">
+Loading...
+</p>
 
 
-    <button
-      class="primary red"
-      onclick="logoutUser()">
-      🚪 Logout
-    </button>
+<br>
 
 
-    <div
-      id="authMessage"
-      class="message">
-    </div>
+<p>
+<strong>
+Account Status
+</strong>
+</p>
 
-  </div>
+<p>
+✅ Logged In
+</p>
 
 
-  <div class="card">
+<hr>
 
-    <h2>👤 My Account</h2>
 
-    <p>Email</p>
+<button
+class="btn red"
+onclick="logoutUser()">
+🚪 Logout
+</button>
 
-    <strong id="userEmail">
-      Not logged in
-    </strong>
-
-    <hr>
-
-    <p>User ID</p>
-
-    <small id="userId">
-      Not logged in
-    </small>
-
-    <hr>
-
-    <p>Account Status</p>
-
-    <strong id="accountStatus">
-      Not logged in
-    </strong>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
 SUPPORT
-========================= -->
+===================================================== -->
 
-<section id="support" class="section">
+<section
+id="support"
+class="section"
+>
 
-  <div class="card">
+<div class="card">
 
-    <h2>📞 Customer Service</h2>
+<h2>
+📞 Customer Service
+</h2>
 
-    <p>
-      Need help? Contact StoryVerse customer service
-      through WhatsApp.
-    </p>
-
-
-    <button
-      class="whatsapp"
-      onclick="contactWhatsApp1()">
-      💬 WhatsApp Customer Service 1
-    </button>
+<p>
+Need help? Contact StoryVerse customer service.
+</p>
 
 
-    <button
-      class="whatsapp"
-      onclick="contactWhatsApp2()">
-      💬 WhatsApp Customer Service 2
-    </button>
+<br>
 
-  </div>
+
+<button
+class="btn whatsapp"
+onclick="contactSupport()">
+💬 WhatsApp Customer Service
+</button>
+
+
+<button
+class="btn whatsapp"
+onclick="contactSupport2()">
+💬 WhatsApp Customer Service 2
+</button>
+
+<p class="small">
+The second customer-service number can be
+changed later inside the code.
+</p>
+
+</div>
 
 </section>
+
 
 </div>
 
 
 <footer>
-  © 2026 StoryVerse Promotion & Earning Hub
+
+© 2026 StoryVerse Promotion & Earning Hub
+
 </footer>
 
+</div>
 
 
 <!-- =====================================================
@@ -748,33 +1179,33 @@ FIREBASE
 <script type="module">
 
 import {
-  initializeApp
+initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+sendPasswordResetEmail,
+signOut,
+onAuthStateChanged
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  query,
-  where,
-  orderBy,
-  limit,
-  serverTimestamp
+getFirestore,
+collection,
+addDoc,
+getDocs,
+query,
+where,
+limit,
+serverTimestamp
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
@@ -786,135 +1217,87 @@ FIREBASE CONFIG
 
 const firebaseConfig = {
 
-  apiKey:
-  "AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
+apiKey:
+"AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
 
-  authDomain:
-  "story-verse-earnig.firebaseapp.com",
+authDomain:
+"story-verse-earnig.firebaseapp.com",
 
-  databaseURL:
-  "https://story-verse-earnig-default-rtdb.firebaseio.com",
+databaseURL:
+"https://story-verse-earnig-default-rtdb.firebaseio.com",
 
-  projectId:
-  "story-verse-earnig",
+projectId:
+"story-verse-earnig",
 
-  storageBucket:
-  "story-verse-earnig.firebasestorage.app",
+storageBucket:
+"story-verse-earnig.firebasestorage.app",
 
-  messagingSenderId:
-  "650131396615",
+messagingSenderId:
+"650131396615",
 
-  appId:
-  "1:650131396615:web:ad655e6412de909d8db2a2",
+appId:
+"1:650131396615:web:ad655e6412de909d8db2a2",
 
-  measurementId:
-  "G-ZLQ6G156LX"
+measurementId:
+"G-ZLQ6G156LX"
 
 };
 
 
-const app =
+const firebaseApp =
 initializeApp(firebaseConfig);
 
 
 const auth =
-getAuth(app);
+getAuth(firebaseApp);
 
 
 const db =
-getFirestore(app);
-
+getFirestore(firebaseApp);
 
 
 /* =====================================================
 CUSTOMER SERVICE NUMBERS
-CHANGE NUMBER 2 LATER
 ===================================================== */
 
-const CUSTOMER_SERVICE_1 =
+const SUPPORT_1 =
 "2347035349951";
 
+/*
+CHANGE THIS NUMBER LATER
+*/
 
-const CUSTOMER_SERVICE_2 =
-"CHANGE_THIS_NUMBER_LATER";
-
-
-
-/* =====================================================
-NAVIGATION
-===================================================== */
-
-window.showSection =
-function(sectionName){
-
-  document
-  .querySelectorAll(".section")
-  .forEach(section => {
-
-    section.classList.remove("active");
-
-  });
-
-
-  const section =
-  document.getElementById(sectionName);
-
-
-  if(section){
-
-    section.classList.add("active");
-
-  }
-
-};
-
+const SUPPORT_2 =
+"CHANGE_NUMBER_LATER";
 
 
 /* =====================================================
-MESSAGE
+MESSAGE FUNCTION
 ===================================================== */
 
 function showMessage(
-  id,
-  text,
-  type="success"
+id,
+text,
+type="success"
 ){
 
-  const box =
-  document.getElementById(id);
+const box =
+document.getElementById(id);
 
+if(!box)return;
 
-  box.style.display =
-  "block";
+box.style.display="block";
 
+box.className =
+type==="error"
+?
+"msg error"
+:
+"msg success";
 
-  if(type === "error"){
-
-    box.className =
-    "message errorMessage";
-
-  }
-
-  else if(type === "info"){
-
-    box.className =
-    "message infoMessage";
-
-  }
-
-  else{
-
-    box.className =
-    "message successMessage";
-
-  }
-
-
-  box.textContent =
-  text;
+box.textContent=text;
 
 }
-
 
 
 /* =====================================================
@@ -924,101 +1307,102 @@ REGISTER
 window.registerUser =
 async function(){
 
-  const email =
-  document
-  .getElementById("email")
-  .value
-  .trim();
+const email =
+document
+.getElementById("authEmail")
+.value
+.trim();
+
+const password =
+document
+.getElementById("authPassword")
+.value;
 
 
-  const password =
-  document
-  .getElementById("password")
-  .value;
+if(!email || !password){
+
+showMessage(
+"authMessage",
+"Please enter your email and password.",
+"error"
+);
+
+return;
+
+}
 
 
-  if(!email || !password){
+if(password.length < 6){
 
-    showMessage(
-      "authMessage",
-      "Please enter your email and password.",
-      "error"
-    );
+showMessage(
+"authMessage",
+"Password must be at least 6 characters.",
+"error"
+);
 
-    return;
+return;
 
-  }
-
-
-  if(password.length < 6){
-
-    showMessage(
-      "authMessage",
-      "Password must contain at least 6 characters.",
-      "error"
-    );
-
-    return;
-
-  }
+}
 
 
-  try{
+try{
 
-    const result =
-    await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-
-    await addDoc(
-      collection(db,"users"),
-      {
-
-        uid:
-        result.user.uid,
-
-        email:
-        email,
-
-        balance:
-        0,
-
-        role:
-        "user",
-
-        referralId:
-        result.user.uid.substring(0,8),
-
-        createdAt:
-        serverTimestamp()
-
-      }
-    );
+const result =
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
 
 
-    showMessage(
-      "authMessage",
-      "Account created successfully."
-    );
+/*
+Create user record.
+*/
+
+await addDoc(
+collection(db,"users"),
+{
+
+uid:
+result.user.uid,
+
+email:
+email,
+
+balance:
+0,
+
+role:
+"user",
+
+referralId:
+result.user.uid.substring(0,8),
+
+createdAt:
+serverTimestamp()
+
+}
+);
 
 
-  }
+showMessage(
+"authMessage",
+"Account created successfully."
+);
 
-  catch(error){
+}
 
-    showMessage(
-      "authMessage",
-      error.message,
-      "error"
-    );
+catch(error){
 
-  }
+showMessage(
+"authMessage",
+error.message,
+"error"
+);
+
+}
 
 };
-
 
 
 /* =====================================================
@@ -1028,60 +1412,106 @@ LOGIN
 window.loginUser =
 async function(){
 
-  const email =
-  document
-  .getElementById("email")
-  .value
-  .trim();
+const email =
+document
+.getElementById("authEmail")
+.value
+.trim();
+
+const password =
+document
+.getElementById("authPassword")
+.value;
 
 
-  const password =
-  document
-  .getElementById("password")
-  .value;
+if(!email || !password){
+
+showMessage(
+"authMessage",
+"Enter your email and password.",
+"error"
+);
+
+return;
+
+}
 
 
-  if(!email || !password){
+try{
 
-    showMessage(
-      "authMessage",
-      "Enter your email and password.",
-      "error"
-    );
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
 
-    return;
+}
 
-  }
+catch(error){
 
+showMessage(
+"authMessage",
+"Login failed: "+error.message,
+"error"
+);
 
-  try{
-
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-
-    showMessage(
-      "authMessage",
-      "Login successful."
-    );
-
-  }
-
-  catch(error){
-
-    showMessage(
-      "authMessage",
-      error.message,
-      "error"
-    );
-
-  }
+}
 
 };
 
+
+/* =====================================================
+PASSWORD RESET
+===================================================== */
+
+window.resetPassword =
+async function(){
+
+const email =
+document
+.getElementById("authEmail")
+.value
+.trim();
+
+
+if(!email){
+
+showMessage(
+"authMessage",
+"Enter your email first.",
+"error"
+);
+
+return;
+
+}
+
+
+try{
+
+await sendPasswordResetEmail(
+auth,
+email
+);
+
+showMessage(
+"authMessage",
+"Password reset email sent. Check your email."
+);
+
+}
+
+catch(error){
+
+showMessage(
+"authMessage",
+error.message,
+"error"
+);
+
+}
+
+};
 
 
 /* =====================================================
@@ -1091,87 +1521,101 @@ LOGOUT
 window.logoutUser =
 async function(){
 
-  await signOut(auth);
-
-
-  showMessage(
-    "authMessage",
-    "You have been logged out."
-  );
+await signOut(auth);
 
 };
 
 
-
 /* =====================================================
-AUTH STATE
+AUTHENTICATION GATE
 ===================================================== */
 
 onAuthStateChanged(
 auth,
-async user => {
+async(user)=>{
 
-  if(user){
+if(user){
 
-    document
-    .getElementById("userEmail")
-    .textContent =
-    user.email;
+document
+.getElementById("authScreen")
+.style.display="none";
 
-
-    document
-    .getElementById("userId")
-    .textContent =
-    user.uid;
+document
+.getElementById("app")
+.style.display="block";
 
 
-    document
-    .getElementById("accountStatus")
-    .textContent =
-    "Logged in";
+document
+.getElementById("userEmail")
+.textContent=
+user.email;
 
 
-    document
-    .getElementById("referralId")
-    .textContent =
-    user.uid.substring(0,8);
+document
+.getElementById("userId")
+.textContent=
+user.uid;
 
 
-    await loadBalance();
-
-    await loadTasks();
-
-    await loadMySubmissions();
-
-    await loadWithdrawals();
-
-    await loadMyPromotionOrders();
-
-  }
-
-  else{
-
-    document
-    .getElementById("userEmail")
-    .textContent =
-    "Not logged in";
+document
+.getElementById("referralId")
+.textContent=
+user.uid.substring(0,8);
 
 
-    document
-    .getElementById("userId")
-    .textContent =
-    "Not logged in";
+await loadBalance();
+
+await loadTasks();
+
+await loadSubmissions();
+
+await loadWithdrawals();
+
+await loadPromotionOrders();
+
+}
+
+else{
+
+document
+.getElementById("authScreen")
+.style.display="flex";
+
+document
+.getElementById("app")
+.style.display="none";
+
+}
+
+}
+);
 
 
-    document
-    .getElementById("accountStatus")
-    .textContent =
-    "Not logged in";
+/* =====================================================
+NAVIGATION
+===================================================== */
 
-  }
+window.showSection =
+function(name){
 
-});
+document
+.querySelectorAll(".section")
+.forEach(
+section =>
+section.classList.remove("active")
+);
 
+
+const target =
+document.getElementById(name);
+
+if(target){
+
+target.classList.add("active");
+
+}
+
+};
 
 
 /* =====================================================
@@ -1180,64 +1624,64 @@ LOAD BALANCE
 
 async function loadBalance(){
 
-  const user =
-  auth.currentUser;
+const user =
+auth.currentUser;
+
+if(!user)return;
 
 
-  if(!user)
-  return;
+try{
+
+const q =
+query(
+collection(db,"users"),
+where("uid","==",user.uid),
+limit(1)
+);
 
 
-  try{
-
-    const q =
-    query(
-      collection(db,"users"),
-      where("uid","==",user.uid),
-      limit(1)
-    );
+const snap =
+await getDocs(q);
 
 
-    const snapshot =
-    await getDocs(q);
+let balance=0;
 
 
-    if(snapshot.empty){
+snap.forEach(
+doc=>{
 
-      document
-      .getElementById("balance")
-      .textContent =
-      "0";
+balance =
+Number(
+doc.data().balance || 0
+);
 
-      return;
-
-    }
-
-
-    snapshot.forEach(doc => {
-
-      const data =
-      doc.data();
+}
+);
 
 
-      document
-      .getElementById("balance")
-      .textContent =
-      Number(data.balance || 0)
-      .toLocaleString();
+document
+.getElementById("balance")
+.textContent=
+balance.toLocaleString();
 
-    });
 
-  }
-
-  catch(error){
-
-    console.error(error);
-
-  }
+document
+.getElementById("earningBalance")
+.textContent=
+balance.toLocaleString();
 
 }
 
+catch(error){
+
+console.error(
+"Balance error:",
+error
+);
+
+}
+
+}
 
 
 /* =====================================================
@@ -1247,123 +1691,110 @@ LOAD FIREBASE TASKS
 window.loadTasks =
 async function(){
 
-  const user =
-  auth.currentUser;
+const list =
+document.getElementById("taskList");
 
 
-  const list =
-  document.getElementById("taskList");
+list.innerHTML =
+"<p class='empty'>Loading tasks...</p>";
 
 
-  if(!user){
+try{
 
-    list.innerHTML =
-    "<p class='small'>Please login first.</p>";
-
-    return;
-
-  }
-
-
-  list.innerHTML =
-  "<p class='small'>Loading tasks...</p>";
+const q =
+query(
+collection(db,"tasks"),
+where("active","==",true)
+);
 
 
-  try{
-
-    const q =
-    query(
-      collection(db,"tasks"),
-      where("active","==",true)
-    );
+const snap =
+await getDocs(q);
 
 
-    const snapshot =
-    await getDocs(q);
+if(snap.empty){
+
+list.innerHTML =
+"<p class='empty'>No tasks available right now.</p>";
+
+return;
+
+}
 
 
-    if(snapshot.empty){
-
-      list.innerHTML =
-      "<p class='small'>No tasks available right now.</p>";
-
-      return;
-
-    }
+list.innerHTML="";
 
 
-    list.innerHTML =
-    "";
+snap.forEach(
+doc=>{
+
+const task =
+doc.data();
 
 
-    snapshot.forEach(doc => {
-
-      const task =
-      doc.data();
+const div =
+document.createElement("div");
 
 
-      const taskId =
-      doc.id;
+div.className="task";
 
 
-      const div =
-      document.createElement("div");
+div.innerHTML=`
+
+<h3>
+${safe(task.title || "Task")}
+</h3>
+
+<p>
+${safe(task.description || "")}
+</p>
+
+<div class="reward">
+💰 ₦${Number(task.reward || 0).toLocaleString()}
+</div>
+
+<br>
+
+<button
+class="btn"
+onclick="openTask('${encodeURIComponent(task.link || "#")}')">
+🔗 Open Task
+</button>
+
+<button
+class="btn green"
+onclick="showProofForm(
+'${encodeURIComponent(doc.id)}',
+'${encodeURIComponent(task.title || "Task")}',
+${Number(task.reward || 0)}
+)">
+📝 Submit Proof
+</button>
+
+`;
 
 
-      div.className =
-      "task";
+list.appendChild(div);
+
+}
+);
+
+}
+
+catch(error){
+
+console.error(
+"Task error:",
+error
+);
 
 
-      div.innerHTML = `
+list.innerHTML =
+"<p class='empty'>Could not load tasks. Check your Firebase rules and task collection.</p>";
 
-        <h3>
-          ${escapeHTML(task.title || "Task")}
-        </h3>
-
-        <p>
-          ${escapeHTML(task.description || "")}
-        </p>
-
-        <div class="reward">
-          💰 Reward:
-          ₦${Number(task.reward || 0).toLocaleString()}
-        </div>
-
-        <br>
-
-        <button
-          class="primary"
-          onclick="openTask('${encodeURIComponent(task.link || "#")}')">
-          🔗 Open Task
-        </button>
-
-        <button
-          class="primary green"
-          onclick="openProof('${encodeURIComponent(taskId)}','${encodeURIComponent(task.title || "")}',${Number(task.reward || 0)})">
-          📝 Submit Proof
-        >
-
-      `;
-
-
-      list.appendChild(div);
-
-    });
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-
-    list.innerHTML =
-    "<p class='small'>Unable to load tasks.</p>";
-
-  }
+}
 
 };
-
 
 
 /* =====================================================
@@ -1371,120 +1802,116 @@ OPEN TASK
 ===================================================== */
 
 window.openTask =
-function(encodedLink){
+function(link){
 
-  const link =
-  decodeURIComponent(encodedLink);
+link =
+decodeURIComponent(link);
 
 
-  if(link && link !== "#"){
+if(
+link &&
+link!=="#"
+){
 
-    window.open(
-      link,
-      "_blank"
-    );
+window.open(
+link,
+"_blank"
+);
 
-  }
+}
 
-  else{
+else{
 
-    alert(
-      "This task does not have a link yet."
-    );
+alert(
+"This task does not have a link."
+);
 
-  }
+}
 
 };
-
 
 
 /* =====================================================
-PROOF FORM
+SHOW PROOF FORM
 ===================================================== */
 
-window.openProof =
+window.showProofForm =
 function(
-  encodedTaskId,
-  encodedTaskTitle,
-  reward
+taskId,
+taskTitle,
+reward
 ){
 
-  const taskId =
-  decodeURIComponent(encodedTaskId);
+taskId =
+decodeURIComponent(taskId);
+
+taskTitle =
+decodeURIComponent(taskTitle);
 
 
-  const taskTitle =
-  decodeURIComponent(encodedTaskTitle);
+document
+.getElementById("taskList")
+.innerHTML=`
+
+<div class="card">
+
+<h2>
+📝 Submit Task Proof
+</h2>
+
+<p>
+<strong>Task:</strong>
+${safe(taskTitle)}
+</p>
+
+<br>
+
+<p>
+<strong>Reward:</strong>
+₦${Number(reward).toLocaleString()}
+</p>
+
+<br>
+
+<input
+id="proofLink"
+placeholder="Proof link / screenshot link / username"
+>
+
+<textarea
+id="proofText"
+placeholder="Explain how you completed the task"
+></textarea>
 
 
-  const list =
-  document.getElementById("taskList");
+<button
+class="btn green"
+onclick="submitProof(
+'${encodeURIComponent(taskId)}',
+'${encodeURIComponent(taskTitle)}',
+${Number(reward)}
+)">
+✅ Submit Proof
+</button>
 
 
-  list.innerHTML = `
+<button
+class="btn gray"
+onclick="loadTasks()">
+← Cancel
+</button>
 
-    <div class="card">
 
-      <h2>📝 Submit Task Proof</h2>
+<div
+id="proofMessage"
+class="msg">
+</div>
 
-      <p>
-        <strong>Task:</strong>
-        ${escapeHTML(taskTitle)}
-      </p>
+</div>
 
-      <p>
-        <strong>Reward:</strong>
-        ₦${Number(reward).toLocaleString()}
-      </p>
-
-      <br>
-
-      <label>
-        Proof link or username
-      </label>
-
-      <input
-        type="text"
-        id="proofLink"
-        placeholder="Paste proof link or username"
-      >
-
-      <label>
-        Explain how you completed the task
-      </label>
-
-      <textarea
-        id="proofText"
-        placeholder="Enter your proof details here..."
-      ></textarea>
-
-      <button
-        class="primary green"
-        onclick="submitProof(
-          '${encodeURIComponent(taskId)}',
-          '${encodeURIComponent(taskTitle)}',
-          ${Number(reward)}
-        )">
-        ✅ Submit Proof
-      </button>
-
-      <button
-        class="primary gray"
-        onclick="loadTasks()">
-        ← Cancel
-      </button>
-
-      <div
-        id="proofMessage"
-        class="message">
-      </div>
-
-    </div>
-
-  `;
+`;
 
 };
-
 
 
 /* =====================================================
@@ -1493,237 +1920,269 @@ SUBMIT PROOF
 
 window.submitProof =
 async function(
-  encodedTaskId,
-  encodedTaskTitle,
-  reward
+taskId,
+taskTitle,
+reward
 ){
 
-  const user =
-  auth.currentUser;
+const user =
+auth.currentUser;
+
+if(!user){
+
+alert(
+"Please login first."
+);
+
+return;
+
+}
 
 
-  if(!user){
+taskId =
+decodeURIComponent(taskId);
 
-    alert("Please login first.");
-
-    return;
-
-  }
+taskTitle =
+decodeURIComponent(taskTitle);
 
 
-  const taskId =
-  decodeURIComponent(encodedTaskId);
+const proofLink =
+document
+.getElementById("proofLink")
+.value
+.trim();
 
 
-  const taskTitle =
-  decodeURIComponent(encodedTaskTitle);
+const proofText =
+document
+.getElementById("proofText")
+.value
+.trim();
 
 
-  const proofLink =
-  document
-  .getElementById("proofLink")
-  .value
-  .trim();
+if(!proofLink && !proofText){
+
+showMessage(
+"proofMessage",
+"Please provide proof.",
+"error"
+);
+
+return;
+
+}
 
 
-  const proofText =
-  document
-  .getElementById("proofText")
-  .value
-  .trim();
+try{
+
+await addDoc(
+collection(db,"taskSubmissions"),
+{
+
+uid:
+user.uid,
+
+email:
+user.email,
+
+taskId:
+taskId,
+
+taskTitle:
+taskTitle,
+
+reward:
+Number(reward),
+
+proofLink:
+proofLink,
+
+proofText:
+proofText,
+
+status:
+"Pending",
+
+submittedAt:
+serverTimestamp()
+
+}
+);
 
 
-  if(!proofLink && !proofText){
-
-    showMessage(
-      "proofMessage",
-      "Please provide proof.",
-      "error"
-    );
-
-    return;
-
-  }
+showMessage(
+"proofMessage",
+"Proof submitted successfully. Waiting for admin approval."
+);
 
 
-  try{
+setTimeout(
+loadTasks,
+1200
+);
 
-    await addDoc(
-      collection(db,"taskSubmissions"),
-      {
+}
 
-        uid:
-        user.uid,
+catch(error){
 
-        email:
-        user.email,
+showMessage(
+"proofMessage",
+error.message,
+"error"
+);
 
-        taskId:
-        taskId,
-
-        taskTitle:
-        taskTitle,
-
-        reward:
-        Number(reward),
-
-        proofLink:
-        proofLink,
-
-        proofText:
-        proofText,
-
-        status:
-        "Pending",
-
-        submittedAt:
-        serverTimestamp()
-
-      }
-    );
-
-
-    showMessage(
-      "proofMessage",
-      "Proof submitted successfully. Status: Pending."
-    );
-
-
-    setTimeout(
-      () => loadTasks(),
-      1200
-    );
-
-  }
-
-  catch(error){
-
-    showMessage(
-      "proofMessage",
-      error.message,
-      "error"
-    );
-
-  }
+}
 
 };
-
 
 
 /* =====================================================
-LOAD MY SUBMISSIONS
+LOAD SUBMISSIONS
 ===================================================== */
 
-window.loadMySubmissions =
+window.loadSubmissions =
 async function(){
 
-  const user =
-  auth.currentUser;
+const user =
+auth.currentUser;
+
+if(!user)return;
 
 
-  const list =
-  document.getElementById("submissionList");
+const list =
+document
+.getElementById("submissionList");
 
 
-  if(!user){
-
-    list.innerHTML =
-    "<p class='small'>Please login first.</p>";
-
-    return;
-
-  }
+list.innerHTML =
+"<p class='empty'>Loading...</p>";
 
 
-  try{
+try{
 
-    const q =
-    query(
-      collection(db,"taskSubmissions"),
-      where("uid","==",user.uid)
-    );
-
-
-    const snapshot =
-    await getDocs(q);
+const q =
+query(
+collection(db,"taskSubmissions"),
+where("uid","==",user.uid)
+);
 
 
-    if(snapshot.empty){
-
-      list.innerHTML =
-      "<p class='small'>No submissions yet.</p>";
-
-      return;
-
-    }
+const snap =
+await getDocs(q);
 
 
-    list.innerHTML =
-    "";
+if(snap.empty){
+
+list.innerHTML =
+"<p class='empty'>No task submissions yet.</p>";
+
+return;
+
+}
 
 
-    snapshot.forEach(doc => {
-
-      const data =
-      doc.data();
+list.innerHTML="";
 
 
-      let statusClass =
-      "pending";
+snap.forEach(
+doc=>{
+
+const data =
+doc.data();
 
 
-      if(data.status === "Approved")
-      statusClass =
-      "approved";
+let statusClass =
+"pending";
 
 
-      if(data.status === "Rejected")
-      statusClass =
-      "rejected";
+if(data.status==="Approved")
+statusClass="approved";
 
 
-      const div =
-      document.createElement("div");
+if(data.status==="Rejected")
+statusClass="rejected";
 
 
-      div.className =
-      "task";
+const div =
+document.createElement("div");
 
 
-      div.innerHTML = `
-
-        <h3>
-          ${escapeHTML(data.taskTitle || "Task")}
-        </h3>
-
-        <p>
-          Reward:
-          ₦${Number(data.reward || 0).toLocaleString()}
-        </p>
-
-        <br>
-
-        <span class="status ${statusClass}">
-          ${escapeHTML(data.status || "Pending")}
-        </span>
-
-      `;
+div.className="task";
 
 
-      list.appendChild(div);
+div.innerHTML=`
 
-    });
+<h3>
+${safe(data.taskTitle || "Task")}
+</h3>
 
-  }
+<p>
+Reward:
+₦${Number(data.reward || 0).toLocaleString()}
+</p>
 
-  catch(error){
+<br>
 
-    console.error(error);
+<span class="status ${statusClass}">
+${safe(data.status || "Pending")}
+</span>
 
-  }
+`;
+
+
+list.appendChild(div);
+
+}
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML =
+"<p class='empty'>Could not load submissions.</p>";
+
+}
 
 };
 
+
+/* =====================================================
+PROMOTION PAYMENT ACCOUNT
+===================================================== */
+
+window.copyPaymentAccount =
+function(){
+
+const accountNumber =
+"6587578800";
+
+
+navigator
+.clipboard
+.writeText(accountNumber)
+.then(
+()=>{
+
+alert(
+"OPay account number copied successfully!"
+);
+
+}
+)
+.catch(
+()=>{
+
+alert(
+"OPay Account Number: 6587578800"
+);
+
+}
+);
+
+};
 
 
 /* =====================================================
@@ -1733,226 +2192,257 @@ SUBMIT PROMOTION
 window.submitPromotion =
 async function(){
 
-  const user =
-  auth.currentUser;
+const user =
+auth.currentUser;
+
+if(!user){
+
+alert(
+"Please login first."
+);
+
+return;
+
+}
 
 
-  if(!user){
-
-    showMessage(
-      "promotionMessage",
-      "Please login before submitting a promotion.",
-      "error"
-    );
-
-    return;
-
-  }
+const type =
+document
+.getElementById("promotionType")
+.value;
 
 
-  const type =
-  document
-  .getElementById("promotionType")
-  .value;
+const link =
+document
+.getElementById("promotionLink")
+.value
+.trim();
 
 
-  const link =
-  document
-  .getElementById("promotionLink")
-  .value
-  .trim();
+const amount =
+Number(
+document
+.getElementById("promotionPackage")
+.value
+);
 
 
-  const amount =
-  Number(
-    document
-    .getElementById("promotionPackage")
-    .value
-  );
+const paymentReference =
+document
+.getElementById("paymentReference")
+.value
+.trim();
 
 
-  if(!link){
-
-    showMessage(
-      "promotionMessage",
-      "Please enter your promotion link.",
-      "error"
-    );
-
-    return;
-
-  }
+const paymentProof =
+document
+.getElementById("paymentProof")
+.value
+.trim();
 
 
-  try{
+if(!link){
 
-    await addDoc(
-      collection(db,"promotionOrders"),
-      {
+showMessage(
+"promotionMessage",
+"Please enter your promotion link.",
+"error"
+);
 
-        uid:
-        user.uid,
+return;
 
-        email:
-        user.email,
-
-        promotionType:
-        type,
-
-        promotionLink:
-        link,
-
-        amount:
-        amount,
-
-        paymentStatus:
-        "Pending",
-
-        promotionStatus:
-        "Pending",
-
-        createdAt:
-        serverTimestamp()
-
-      }
-    );
+}
 
 
-    showMessage(
-      "promotionMessage",
-      "Promotion request submitted successfully."
-    );
+if(
+!paymentReference &&
+!paymentProof
+){
+
+showMessage(
+"promotionMessage",
+"Please enter your payment reference or payment proof.",
+"error"
+);
+
+return;
+
+}
 
 
-    document
-    .getElementById("promotionLink")
-    .value = "";
+try{
+
+await addDoc(
+collection(db,"promotionOrders"),
+{
+
+uid:
+user.uid,
+
+email:
+user.email,
+
+promotionType:
+type,
+
+promotionLink:
+link,
+
+amount:
+amount,
+
+paymentReference:
+paymentReference,
+
+paymentProof:
+paymentProof,
+
+paymentStatus:
+"Pending",
+
+promotionStatus:
+"Pending",
+
+createdAt:
+serverTimestamp()
+
+}
+);
 
 
-    loadMyPromotionOrders();
+showMessage(
+"promotionMessage",
+"Promotion request submitted successfully. Your payment is pending verification."
+);
 
-  }
 
-  catch(error){
+document
+.getElementById("promotionLink")
+.value="";
 
-    showMessage(
-      "promotionMessage",
-      error.message,
-      "error"
-    );
 
-  }
+document
+.getElementById("paymentReference")
+.value="";
+
+
+document
+.getElementById("paymentProof")
+.value="";
+
+
+loadPromotionOrders();
+
+}
+
+catch(error){
+
+showMessage(
+"promotionMessage",
+error.message,
+"error"
+);
+
+}
 
 };
-
 
 
 /* =====================================================
-MY PROMOTION ORDERS
+LOAD PROMOTION ORDERS
 ===================================================== */
 
-window.loadMyPromotionOrders =
-async function(){
+async function loadPromotionOrders(){
 
-  const user =
-  auth.currentUser;
+const user =
+auth.currentUser;
 
-
-  const list =
-  document.getElementById(
-    "myPromotionOrders"
-  );
+if(!user)return;
 
 
-  if(!user){
-
-    list.innerHTML =
-    "<p class='small'>Please login first.</p>";
-
-    return;
-
-  }
+const list =
+document
+.getElementById("promotionOrders");
 
 
-  try{
+try{
 
-    const q =
-    query(
-      collection(db,"promotionOrders"),
-      where("uid","==",user.uid)
-    );
-
-
-    const snapshot =
-    await getDocs(q);
+const q =
+query(
+collection(db,"promotionOrders"),
+where("uid","==",user.uid)
+);
 
 
-    if(snapshot.empty){
-
-      list.innerHTML =
-      "<p class='small'>No promotion orders yet.</p>";
-
-      return;
-
-    }
+const snap =
+await getDocs(q);
 
 
-    list.innerHTML =
-    "";
+if(snap.empty){
+
+list.innerHTML =
+"<p class='empty'>No promotion orders yet.</p>";
+
+return;
+
+}
 
 
-    snapshot.forEach(doc => {
-
-      const data =
-      doc.data();
+list.innerHTML="";
 
 
-      const div =
-      document.createElement("div");
+snap.forEach(
+doc=>{
+
+const d =
+doc.data();
 
 
-      div.className =
-      "task";
+const div =
+document.createElement("div");
 
 
-      div.innerHTML = `
-
-        <h3>
-          ${escapeHTML(data.promotionType || "")}
-        </h3>
-
-        <p>
-          Amount:
-          ₦${Number(data.amount || 0).toLocaleString()}
-        </p>
-
-        <p>
-          Payment:
-          ${escapeHTML(data.paymentStatus || "Pending")}
-        </p>
-
-        <p>
-          Promotion:
-          ${escapeHTML(data.promotionStatus || "Pending")}
-        </p>
-
-      `;
+div.className="task";
 
 
-      list.appendChild(div);
+div.innerHTML=`
 
-    });
+<h3>
+${safe(d.promotionType || "Promotion")}
+</h3>
 
-  }
+<p>
+Amount:
+₦${Number(d.amount || 0).toLocaleString()}
+</p>
 
-  catch(error){
+<p>
+Payment Status:
+${safe(d.paymentStatus || "Pending")}
+</p>
 
-    console.error(error);
+<p>
+Promotion Status:
+${safe(d.promotionStatus || "Pending")}
+</p>
 
-  }
+`;
 
-};
 
+list.appendChild(div);
+
+}
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+}
+
+}
 
 
 /* =====================================================
@@ -1962,137 +2452,149 @@ WITHDRAWAL
 window.submitWithdrawal =
 async function(){
 
-  const user =
-  auth.currentUser;
+const user =
+auth.currentUser;
+
+if(!user)return;
 
 
-  if(!user){
-
-    showMessage(
-      "withdrawMessage",
-      "Please login first.",
-      "error"
-    );
-
-    return;
-
-  }
+const amount =
+Number(
+document
+.getElementById("withdrawAmount")
+.value
+);
 
 
-  const amount =
-  Number(
-    document
-    .getElementById("withdrawAmount")
-    .value
-  );
+const bank =
+document
+.getElementById("bankName")
+.value
+.trim();
 
 
-  const bankName =
-  document
-  .getElementById("bankName")
-  .value
-  .trim();
+const account =
+document
+.getElementById("accountNumber")
+.value
+.trim();
 
 
-  const accountNumber =
-  document
-  .getElementById("accountNumber")
-  .value
-  .trim();
+const name =
+document
+.getElementById("accountName")
+.value
+.trim();
 
 
-  const accountName =
-  document
-  .getElementById("accountName")
-  .value
-  .trim();
+if(
+!amount ||
+!bank ||
+!account ||
+!name
+){
+
+showMessage(
+"withdrawMessage",
+"Please complete all fields.",
+"error"
+);
+
+return;
+
+}
 
 
-  if(
-    !amount ||
-    !bankName ||
-    !accountNumber ||
-    !accountName
-  ){
+if(
+!/^[0-9]{10}$/.test(account)
+){
 
-    showMessage(
-      "withdrawMessage",
-      "Please complete all fields.",
-      "error"
-    );
+showMessage(
+"withdrawMessage",
+"Account number must contain exactly 10 digits.",
+"error"
+);
 
-    return;
+return;
 
-  }
+}
 
 
-  if(!/^[0-9]{10}$/.test(accountNumber)){
+try{
 
-    showMessage(
-      "withdrawMessage",
-      "Account number must contain exactly 10 digits.",
-      "error"
-    );
+await addDoc(
+collection(db,"withdrawals"),
+{
 
-    return;
+uid:
+user.uid,
 
-  }
+email:
+user.email,
 
+amount:
+amount,
 
-  try{
+bankName:
+bank,
 
-    await addDoc(
-      collection(db,"withdrawals"),
-      {
+accountNumber:
+account,
 
-        uid:
-        user.uid,
+accountName:
+name,
 
-        email:
-        user.email,
+status:
+"Pending",
 
-        amount:
-        amount,
+createdAt:
+serverTimestamp()
 
-        bankName:
-        bankName,
-
-        accountNumber:
-        accountNumber,
-
-        accountName:
-        accountName,
-
-        status:
-        "Pending",
-
-        createdAt:
-        serverTimestamp()
-
-      }
-    );
+}
+);
 
 
-    showMessage(
-      "withdrawMessage",
-      "Withdrawal submitted successfully. Status: Pending."
-    );
+showMessage(
+"withdrawMessage",
+"Withdrawal request submitted. Status: Pending."
+);
 
 
-  }
+document
+.getElementById("withdrawAmount")
+.value="";
 
-  catch(error){
 
-    showMessage(
-      "withdrawMessage",
-      error.message,
-      "error"
-    );
+document
+.getElementById("bankName")
+.value="";
 
-  }
+
+document
+.getElementById("accountNumber")
+.value="";
+
+
+document
+.getElementById("accountName")
+.value="";
+
+
+loadWithdrawals();
+
+}
+
+catch(error){
+
+showMessage(
+"withdrawMessage",
+error.message,
+"error"
+);
+
+}
 
 };
-
 
 
 /* =====================================================
@@ -2102,106 +2604,110 @@ LOAD WITHDRAWALS
 window.loadWithdrawals =
 async function(){
 
-  const user =
-  auth.currentUser;
+const user =
+auth.currentUser;
+
+if(!user)return;
 
 
-  const list =
-  document.getElementById(
-    "withdrawalList"
-  );
+const list =
+document
+.getElementById("withdrawalList");
 
 
-  if(!user){
-
-    list.innerHTML =
-    "<p class='small'>Please login first.</p>";
-
-    return;
-
-  }
+list.innerHTML =
+"<p class='empty'>Loading...</p>";
 
 
-  try{
+try{
 
-    const q =
-    query(
-      collection(db,"withdrawals"),
-      where("uid","==",user.uid)
-    );
-
-
-    const snapshot =
-    await getDocs(q);
+const q =
+query(
+collection(db,"withdrawals"),
+where("uid","==",user.uid)
+);
 
 
-    if(snapshot.empty){
-
-      list.innerHTML =
-      "<p class='small'>No withdrawal requests yet.</p>";
-
-      return;
-
-    }
+const snap =
+await getDocs(q);
 
 
-    list.innerHTML =
-    "";
+if(snap.empty){
+
+list.innerHTML =
+"<p class='empty'>No withdrawals yet.</p>";
+
+return;
+
+}
 
 
-    snapshot.forEach(doc => {
-
-      const data =
-      doc.data();
+list.innerHTML="";
 
 
-      const div =
-      document.createElement("div");
+snap.forEach(
+doc=>{
+
+const d =
+doc.data();
 
 
-      div.className =
-      "task";
+let statusClass =
+"pending";
 
 
-      div.innerHTML = `
-
-        <h3>
-          ₦${Number(data.amount || 0).toLocaleString()}
-        </h3>
-
-        <p>
-          Bank:
-          ${escapeHTML(data.bankName || "")}
-        </p>
-
-        <p>
-          Account:
-          ${escapeHTML(data.accountNumber || "")}
-        </p>
-
-        <br>
-
-        <span class="status pending">
-          ${escapeHTML(data.status || "Pending")}
-        </span>
-
-      `;
+if(d.status==="Approved")
+statusClass="approved";
 
 
-      list.appendChild(div);
+if(d.status==="Rejected")
+statusClass="rejected";
 
-    });
 
-  }
+const div =
+document.createElement("div");
 
-  catch(error){
 
-    console.error(error);
+div.className="task";
 
-  }
+
+div.innerHTML=`
+
+<h3>
+₦${Number(d.amount || 0).toLocaleString()}
+</h3>
+
+<p>
+${safe(d.bankName || "")}
+</p>
+
+<p>
+${safe(d.accountNumber || "")}
+</p>
+
+<br>
+
+<span class="status ${statusClass}">
+${safe(d.status || "Pending")}
+</span>
+
+`;
+
+
+list.appendChild(div);
+
+}
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+}
 
 };
-
 
 
 /* =====================================================
@@ -2211,122 +2717,132 @@ REFERRAL
 window.copyReferral =
 function(){
 
-  const user =
-  auth.currentUser;
+const user =
+auth.currentUser;
+
+if(!user)return;
 
 
-  if(!user){
-
-    alert(
-      "Please login first."
-    );
-
-    return;
-
-  }
+const id =
+user.uid.substring(0,8);
 
 
-  const referralId =
-  user.uid.substring(0,8);
+const link =
+window.location.origin +
+window.location.pathname +
+"?ref=" +
+id;
 
 
-  const referralLink =
-  window.location.origin +
-  window.location.pathname +
-  "?ref=" +
-  referralId;
-
-
-  navigator.clipboard
-  .writeText(referralLink)
-  .then(() => {
-
-    alert(
-      "Referral link copied!"
-    );
-
-  });
+navigator
+.clipboard
+.writeText(link)
+.then(
+()=>alert(
+"Referral link copied!"
+)
+)
+.catch(
+()=>alert(link)
+);
 
 };
-
 
 
 /* =====================================================
-WHATSAPP
+CUSTOMER SERVICE
 ===================================================== */
 
-window.contactWhatsApp1 =
+window.contactSupport =
 function(){
 
-  const message =
-  encodeURIComponent(
-    "Hello StoryVerse Customer Service, I need assistance."
-  );
+const message =
+encodeURIComponent(
+"Hello StoryVerse Customer Service, I need assistance."
+);
 
 
-  window.open(
-    "https://wa.me/" +
-    CUSTOMER_SERVICE_1 +
-    "?text=" +
-    message,
-    "_blank"
-  );
+window.open(
+"https://wa.me/" +
+SUPPORT_1 +
+"?text=" +
+message,
+"_blank"
+);
 
 };
 
 
-
-window.contactWhatsApp2 =
+window.contactSupport2 =
 function(){
 
-  if(
-    CUSTOMER_SERVICE_2 ===
-    "CHANGE_THIS_NUMBER_LATER"
-  ){
+if(
+SUPPORT_2 ===
+"CHANGE_NUMBER_LATER"
+){
 
-    alert(
-      "Customer Service 2 number has not been added yet."
-    );
+alert(
+"Customer Service 2 number has not been added yet."
+);
 
-    return;
+return;
 
-  }
-
-
-  const message =
-  encodeURIComponent(
-    "Hello StoryVerse Customer Service, I need assistance."
-  );
+}
 
 
-  window.open(
-    "https://wa.me/" +
-    CUSTOMER_SERVICE_2 +
-    "?text=" +
-    message,
-    "_blank"
-  );
+const message =
+encodeURIComponent(
+"Hello StoryVerse Customer Service, I need assistance."
+);
+
+
+window.open(
+"https://wa.me/" +
+SUPPORT_2 +
+"?text=" +
+message,
+"_blank"
+);
 
 };
-
 
 
 /* =====================================================
-SECURITY HELPERS
+SAFE TEXT
 ===================================================== */
 
-function escapeHTML(value){
+function safe(value){
 
-  return String(value)
-  .replaceAll("&","&amp;")
-  .replaceAll("<","&lt;")
-  .replaceAll(">","&gt;")
-  .replaceAll('"',"&quot;")
-  .replaceAll("'","&#039;");
+return String(value)
+
+.replaceAll(
+"&",
+"&amp;"
+)
+
+.replaceAll(
+"<",
+"&lt;"
+)
+
+.replaceAll(
+">",
+"&gt;"
+)
+
+.replaceAll(
+'"',
+"&quot;"
+)
+
+.replaceAll(
+"'",
+"&#039;"
+);
 
 }
 
 </script>
 
 </body>
-</html>
+  </html>
