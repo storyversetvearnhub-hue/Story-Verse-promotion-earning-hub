@@ -1,438 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>StoryVerse Promotion & Earning Hub</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>StoryVerse Admin Panel</title>
 
 <style>
 
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
 }
 
 body{
-  background:#f4f6f9;
-  color:#222;
+background:#f3f4f6;
+color:#222;
 }
 
 button,
-input,
-textarea,
-select{
-  font:inherit;
+input{
+font:inherit;
 }
 
-button{
-  cursor:pointer;
+#loginScreen{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:linear-gradient(135deg,#111827,#2563eb);
 }
 
-/* =========================
-AUTH SCREEN
-========================= */
-
-#authScreen{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:linear-gradient(135deg,#111827,#2563eb);
+.loginBox{
+width:100%;
+max-width:420px;
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 35px rgba(0,0,0,.25);
 }
 
-.authBox{
-  width:100%;
-  max-width:430px;
-  background:white;
-  padding:25px;
-  border-radius:18px;
-  box-shadow:0 10px 35px rgba(0,0,0,.25);
+.loginBox h1{
+text-align:center;
+color:#2563eb;
+margin-bottom:8px;
 }
 
-.authLogo{
-  text-align:center;
-  font-size:55px;
-  margin-bottom:5px;
+.loginBox p{
+text-align:center;
+color:#666;
+margin-bottom:20px;
 }
 
-.authBox h1{
-  text-align:center;
-  color:#2563eb;
-  margin-bottom:8px;
-}
-
-.authBox p{
-  text-align:center;
-  color:#666;
-  margin-bottom:20px;
-}
-
-/* =========================
-FORM
-========================= */
-
-input,
-textarea,
-select{
-  width:100%;
-  padding:13px;
-  margin:7px 0 12px;
-  border:1px solid #d1d5db;
-  border-radius:9px;
-  background:white;
-  outline:none;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:#2563eb;
-}
-
-textarea{
-  min-height:100px;
-  resize:vertical;
+input{
+width:100%;
+padding:13px;
+margin:7px 0 12px;
+border:1px solid #d1d5db;
+border-radius:9px;
 }
 
 .btn{
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:9px;
-  color:white;
-  background:#2563eb;
-  font-weight:bold;
-  margin-top:7px;
+width:100%;
+padding:13px;
+border:0;
+border-radius:9px;
+color:white;
+background:#2563eb;
+font-weight:bold;
+margin-top:7px;
+cursor:pointer;
 }
 
 .green{
-  background:#16a34a;
+background:#16a34a;
 }
 
 .red{
-  background:#dc2626;
+background:#dc2626;
 }
 
 .gray{
-  background:#4b5563;
+background:#4b5563;
 }
-
-.orange{
-  background:#ea580c;
-}
-
-.whatsapp{
-  background:#25D366;
-}
-
-.copy{
-  background:#111827;
-}
-
-/* =========================
-MESSAGES
-========================= */
 
 .msg{
-  display:none;
-  padding:11px;
-  margin-top:10px;
-  border-radius:8px;
-  font-size:14px;
+display:none;
+padding:11px;
+margin-top:10px;
+border-radius:8px;
+font-size:14px;
 }
 
 .success{
-  background:#dcfce7;
-  color:#166534;
+background:#dcfce7;
+color:#166534;
 }
 
 .error{
-  background:#fee2e2;
-  color:#991b1b;
+background:#fee2e2;
+color:#991b1b;
 }
 
-/* =========================
-APP
-========================= */
-
-#app{
-  display:none;
+#adminApp{
+display:none;
 }
 
 header{
-  background:linear-gradient(135deg,#111827,#2563eb);
-  color:white;
-  padding:25px 15px;
-  text-align:center;
+background:linear-gradient(135deg,#111827,#2563eb);
+color:white;
+padding:25px 15px;
+text-align:center;
 }
 
 header h1{
-  font-size:24px;
+font-size:24px;
 }
 
 header p{
-  margin-top:7px;
+margin-top:7px;
 }
-
-/* =========================
-NAVIGATION
-========================= */
-
-nav{
-  display:flex;
-  overflow-x:auto;
-  background:white;
-  position:sticky;
-  top:0;
-  z-index:10;
-  border-bottom:1px solid #ddd;
-}
-
-nav button{
-  min-width:95px;
-  flex:1;
-  padding:14px 7px;
-  border:0;
-  background:white;
-  font-weight:bold;
-  white-space:nowrap;
-}
-
-nav button:hover{
-  background:#eef2ff;
-}
-
-/* =========================
-LAYOUT
-========================= */
 
 .container{
-  max-width:950px;
-  margin:auto;
-  padding:15px;
+max-width:1000px;
+margin:auto;
+padding:15px;
 }
 
-.section{
-  display:none;
+.dashboard{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:12px;
+margin-bottom:15px;
 }
 
-.section.active{
-  display:block;
+.stat{
+background:white;
+padding:20px;
+border-radius:14px;
+box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.stat h3{
+font-size:14px;
+color:#6b7280;
+margin-bottom:8px;
+}
+
+.stat strong{
+font-size:27px;
 }
 
 .card{
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  margin-bottom:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
+background:white;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.card h2{
-  margin-bottom:12px;
+.submission{
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:16px;
+margin-top:15px;
 }
 
-.card h3{
-  margin-bottom:8px;
-}
-
-/* =========================
-BALANCE
-========================= */
-
-.balanceBox{
-  background:linear-gradient(135deg,#111827,#2563eb);
-  color:white;
-  padding:22px;
-  border-radius:15px;
-  margin-bottom:15px;
-}
-
-.balance{
-  font-size:30px;
-  font-weight:bold;
-  margin-top:8px;
-}
-
-/* =========================
-TASK
-========================= */
-
-.task{
-  border:1px solid #e5e7eb;
-  padding:15px;
-  border-radius:12px;
-  margin-top:12px;
-}
-
-.reward{
-  display:inline-block;
-  background:#dcfce7;
-  color:#166534;
-  padding:6px 10px;
-  border-radius:20px;
-  margin:8px 0;
-  font-weight:bold;
-}
-
-/* =========================
-STATUS
-========================= */
-
-.status{
-  display:inline-block;
-  padding:5px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
-}
-
-.pending{
-  background:#fef3c7;
-  color:#92400e;
-}
-
-.approved{
-  background:#dcfce7;
-  color:#166534;
-}
-
-.rejected{
-  background:#fee2e2;
-  color:#991b1b;
-}
-
-/* =========================
-PAYMENT
-========================= */
-
-.paymentBox{
-  background:#eff6ff;
-  border:2px solid #2563eb;
-  padding:18px;
-  border-radius:12px;
-  margin-top:15px;
-}
-
-.paymentBox p{
-  margin:8px 0;
-}
-
-.accountNumber{
-  font-size:25px;
-  font-weight:bold;
-  letter-spacing:1px;
-}
-
-/* =========================
-INFO
-========================= */
-
-.small{
-  font-size:13px;
-  color:#6b7280;
+.submission h3{
+margin-bottom:8px;
 }
 
 .info{
-  background:#f3f4f6;
-  padding:12px;
-  border-radius:9px;
-  margin-top:10px;
+font-size:14px;
+line-height:1.7;
+color:#374151;
 }
 
-hr{
-  border:0;
-  border-top:1px solid #eee;
-  margin:20px 0;
+.proofImage{
+width:100%;
+max-height:500px;
+object-fit:contain;
+margin-top:12px;
+border-radius:10px;
+border:1px solid #ddd;
+background:#f9fafb;
 }
 
-.empty{
-  text-align:center;
-  color:#777;
-  padding:20px;
+.status{
+display:inline-block;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+margin-top:10px;
 }
 
-/* =========================
-FOOTER
-========================= */
+.pending{
+background:#fef3c7;
+color:#92400e;
+}
+
+.approved{
+background:#dcfce7;
+color:#166534;
+}
+
+.rejected{
+background:#fee2e2;
+color:#991b1b;
+}
+
+.actions{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.actions button{
+flex:1;
+}
+
+.small{
+font-size:13px;
+color:#6b7280;
+}
 
 footer{
-  text-align:center;
-  padding:25px;
-  color:#777;
-  font-size:13px;
+text-align:center;
+padding:25px;
+color:#777;
+}
+
+@media(max-width:600px){
+
+.actions{
+flex-direction:column;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 
 <!-- =====================================================
-LOGIN / REGISTER
+ADMIN LOGIN
 ===================================================== -->
 
-<div id="authScreen">
+<div id="loginScreen">
 
-<div class="authBox">
+<div class="loginBox">
 
-<div class="authLogo">
-🚀
-</div>
-
-<h1>StoryVerse</h1>
+<h1>🔐 StoryVerse Admin</h1>
 
 <p>
-Promotion & Earning Hub
+Admin Panel Login
 </p>
 
 <input
 type="email"
-id="authEmail"
-placeholder="Email address"
-autocomplete="email"
+id="adminEmail"
+placeholder="Admin email"
 >
 
 <input
 type="password"
-id="authPassword"
-placeholder="Password"
-autocomplete="current-password"
+id="adminPassword"
+placeholder="Admin password"
 >
 
 <button
 class="btn"
-onclick="registerUser()">
-📝 Create Account
-</button>
-
-<button
-class="btn green"
-onclick="loginUser()">
-🔐 Login
-</button>
-
-<button
-class="btn orange"
-onclick="resetPassword()">
-🔑 Forgot Password
-</button>
-
-<button
-class="btn whatsapp"
-onclick="contactSupport()">
-💬 Customer Service
+onclick="adminLogin()"
+>
+🔐 Login as Admin
 </button>
 
 <div
-id="authMessage"
-class="msg">
-</div>
+id="loginMessage"
+class="msg"
+></div>
 
 </div>
 
@@ -440,724 +296,136 @@ class="msg">
 
 
 <!-- =====================================================
-MAIN APP
+ADMIN APPLICATION
 ===================================================== -->
 
-<div id="app">
+<div id="adminApp">
+
 
 <header>
 
 <h1>
-🚀 StoryVerse Promotion & Earning Hub
+🛠️ StoryVerse Admin Panel
 </h1>
 
 <p>
-Promote • Earn • Grow
+Manage Task Proofs & Rewards
 </p>
 
 </header>
-
-
-<!-- NAVIGATION -->
-
-<nav>
-
-<button onclick="showSection('home')">
-🏠 Home
-</button>
-
-<button onclick="showSection('promotion')">
-📢 Promote
-</button>
-
-<button onclick="showSection('earning')">
-💰 Earn
-</button>
-
-<button onclick="showSection('withdraw')">
-💸 Withdraw
-</button>
-
-<button onclick="showSection('account')">
-👤 Account
-</button>
-
-<button onclick="showSection('support')">
-📞 Support
-</button>
-
-</nav>
 
 
 <div class="container">
 
 
 <!-- =====================================================
-HOME
+STATISTICS
 ===================================================== -->
 
-<section
-id="home"
-class="section active"
->
+<div class="dashboard">
+
+<div class="stat">
+
+<h3>Total Submissions</h3>
+
+<strong id="totalSubmissions">
+0
+</strong>
+
+</div>
+
+
+<div class="stat">
+
+<h3>Pending</h3>
+
+<strong id="pendingSubmissions">
+0
+</strong>
+
+</div>
+
+
+<div class="stat">
+
+<h3>Approved</h3>
+
+<strong id="approvedSubmissions">
+0
+</strong>
+
+</div>
+
+
+<div class="stat">
+
+<h3>Rejected</h3>
+
+<strong id="rejectedSubmissions">
+0
+</strong>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ADMIN INFORMATION
+===================================================== -->
 
 <div class="card">
 
-<h2>
-👋 Welcome
-</h2>
-
-<p>
-Welcome to StoryVerse Promotion & Earning Hub.
-</p>
+<h2>👤 Admin Account</h2>
 
 <br>
 
 <p>
-Promote your platforms, complete available tasks,
-submit proof and earn approved rewards.
+Logged in as:
 </p>
 
-</div>
-
-
-<div class="balanceBox">
-
-<p>
-💰 Your Available Balance
-</p>
-
-<div class="balance">
-₦<span id="balance">0</span>
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>
-📢 Promotion Hub
-</h2>
-
-<p>
-Promote WhatsApp, TikTok, YouTube, Telegram,
-Facebook, websites, referral links and mobile apps.
-</p>
-
-<button
-class="btn"
-onclick="showSection('promotion')">
-📢 Promote Now
-</button>
-
-</div>
-
-
-<div class="card">
-
-<h2>
-💰 Earning Hub
-</h2>
-
-<p>
-Complete available tasks and submit proof for review.
-</p>
-
-<button
-class="btn green"
-onclick="showSection('earning')">
-📋 View Tasks
-</button>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-PROMOTION
-===================================================== -->
-
-<section
-id="promotion"
-class="section"
->
-
-<div class="card">
-
-<h2>
-📢 Promote Your Platform
-</h2>
-
-<p>
-Choose what you want to promote.
-</p>
-
-<label>
-Promotion Type
-</label>
-
-<select id="promotionType">
-
-<option>
-WhatsApp Channel
-</option>
-
-<option>
-WhatsApp Group
-</option>
-
-<option>
-TikTok
-</option>
-
-<option>
-YouTube
-</option>
-
-<option>
-Telegram
-</option>
-
-<option>
-Facebook
-</option>
-
-<option>
-Website
-</option>
-
-<option>
-Referral Link
-</option>
-
-<option>
-Mobile App
-</option>
-
-</select>
-
-
-<label>
-Your Promotion Link
-</label>
-
-<input
-type="url"
-id="promotionLink"
-placeholder="Paste your promotion link"
->
-
-
-<label>
-Promotion Package
-</label>
-
-<select id="promotionPackage">
-
-<option value="500">
-₦500 = 30 Followers
-</option>
-
-<option value="1000">
-₦1,000 = 80 Followers
-</option>
-
-<option value="1500">
-₦1,500 = 120 Followers
-</option>
-
-<option value="2000">
-₦2,000 = 180 Followers
-</option>
-
-<option value="2500">
-₦2,500 = 250 Followers
-</option>
-
-<option value="3000">
-₦3,000 = 320 Followers
-</option>
-
-<option value="4000">
-₦4,000 = 450 Followers
-</option>
-
-<option value="5000">
-₦5,000 = 600 Followers
-</option>
-
-<option value="7500">
-₦7,500 = 900 Followers
-</option>
-
-<option value="10000">
-₦10,000 = 1,300 Followers
-</option>
-
-<option value="15000">
-₦15,000 = 2,000 Followers
-</option>
-
-<option value="20000">
-₦20,000 = 3,000 Followers
-</option>
-
-</select>
-
-</div>
-
-
-<!-- PAYMENT -->
-
-<div class="card">
-
-<h2>
-💳 Promotion Payment
-</h2>
-
-<p>
-After choosing your package, make payment
-to the account below.
-</p>
-
-
-<div class="paymentBox">
-
-<p>
-<strong>
-🏦 Bank:
-</strong>
-OPay
-</p>
-
-
-<p>
-<strong>
-👤 Account Name:
-</strong>
-ANSELEM CHUKWUEBUKA AGBOM
-</p>
-
-
-<p>
-<strong>
-🔢 Account Number:
-</strong>
-</p>
-
-<p class="accountNumber">
-6587578800
-</p>
-
-
-<button
-class="btn copy"
-onclick="copyPaymentAccount()">
-📋 Copy Account Number
-</button>
-
-</div>
-
-
-<br>
-
-<p class="small">
-⚠️ After making payment, enter your transaction
-reference below. Your payment will be verified
-manually by the admin.
-</p>
-
-</div>
-
-
-<!-- PAYMENT PROOF -->
-
-<div class="card">
-
-<h2>
-🧾 Payment Proof
-</h2>
-
-<label>
-Payment Transaction Reference
-</label>
-
-<input
-type="text"
-id="paymentReference"
-placeholder="Enter transaction/reference ID"
->
-
-
-<label>
-Payment Proof / Details
-</label>
-
-<textarea
-id="paymentProof"
-placeholder="Enter payment proof details"
-></textarea>
-
-
-<button
-class="btn"
-onclick="submitPromotion()">
-📢 Submit Promotion Request
-</button>
-
-<div
-id="promotionMessage"
-class="msg">
-</div>
-
-</div>
-
-
-<!-- ORDERS -->
-
-<div class="card">
-
-<h2>
-📋 My Promotion Orders
-</h2>
-
-<div id="promotionOrders">
-
-<p class="small">
-Loading...
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-EARNING
-===================================================== -->
-
-<section
-id="earning"
-class="section"
->
-
-<div class="balanceBox">
-
-<p>
-💰 Available Balance
-</p>
-
-<div class="balance">
-₦<span id="earningBalance">0</span>
-</div>
-
-</div>
-
-
-<!-- TASKS -->
-
-<div class="card">
-
-<h2>
-📋 Daily Tasks
-</h2>
-
-<p class="small">
-Tasks added by the administrator in Firebase
-will appear here.
-</p>
-
-
-<button
-class="btn"
-onclick="loadTasks()">
-🔄 Refresh Tasks
-</button>
-
-
-<div id="taskList">
-
-<p class="empty">
-Loading tasks...
-</p>
-
-</div>
-
-</div>
-
-
-<!-- PROOFS -->
-
-<div class="card">
-
-<h2>
-📝 My Task Proofs
-</h2>
+<strong id="loggedAdminEmail"></strong>
 
 <button
 class="btn gray"
-onclick="loadSubmissions()">
-🔄 Refresh Proofs
+onclick="loadSubmissions()"
+>
+🔄 Refresh Submissions
 </button>
-
-
-<div id="submissionList">
-
-<p class="empty">
-Loading...
-</p>
-
-</div>
-
-</div>
-
-
-<!-- REFERRAL -->
-
-<div class="card">
-
-<h2>
-👥 Referral
-</h2>
-
-<p>
-Share your referral link with friends.
-</p>
-
-<br>
-
-<p>
-<strong>
-Your Referral ID:
-</strong>
-</p>
-
-<p id="referralId">
-Loading...
-</p>
-
-
-<button
-class="btn"
-onclick="copyReferral()">
-📋 Copy Referral Link
-</button>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-WITHDRAW
-===================================================== -->
-
-<section
-id="withdraw"
-class="section"
->
-
-<div class="card">
-
-<h2>
-💸 Withdrawal Request
-</h2>
-
-<p class="small">
-Withdrawal requests are reviewed manually.
-</p>
-
-
-<input
-type="number"
-id="withdrawAmount"
-placeholder="Amount to withdraw"
->
-
-
-<input
-type="text"
-id="bankName"
-placeholder="Bank Name"
->
-
-
-<input
-type="text"
-id="accountNumber"
-maxlength="10"
-inputmode="numeric"
-placeholder="10-digit Account Number"
->
-
-
-<input
-type="text"
-id="accountName"
-placeholder="Account Name"
->
-
-
-<button
-class="btn"
-onclick="submitWithdrawal()">
-💸 Submit Withdrawal
-</button>
-
-
-<div
-id="withdrawMessage"
-class="msg">
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>
-📜 My Withdrawals
-</h2>
-
-
-<button
-class="btn gray"
-onclick="loadWithdrawals()">
-🔄 Refresh
-</button>
-
-
-<div id="withdrawalList">
-
-<p class="empty">
-Loading...
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-ACCOUNT
-===================================================== -->
-
-<section
-id="account"
-class="section"
->
-
-<div class="card">
-
-<h2>
-👤 My Account
-</h2>
-
-<p>
-<strong>
-Email
-</strong>
-</p>
-
-<p id="userEmail">
-Loading...
-</p>
-
-
-<br>
-
-
-<p>
-<strong>
-User ID
-</strong>
-</p>
-
-<p
-id="userId"
-class="small">
-Loading...
-</p>
-
-
-<br>
-
-
-<p>
-<strong>
-Account Status
-</strong>
-</p>
-
-<p>
-✅ Logged In
-</p>
-
-
-<hr>
-
 
 <button
 class="btn red"
-onclick="logoutUser()">
+onclick="adminLogout()"
+>
 🚪 Logout
 </button>
 
 </div>
 
-</section>
-
 
 <!-- =====================================================
-SUPPORT
+SUBMISSIONS
 ===================================================== -->
-
-<section
-id="support"
-class="section"
->
 
 <div class="card">
 
 <h2>
-📞 Customer Service
+📋 Task Proof Submissions
 </h2>
 
-<p>
-Need help? Contact StoryVerse customer service.
+<p class="small">
+Review the proof image before approving the reward.
 </p>
 
-
-<br>
-
-
-<button
-class="btn whatsapp"
-onclick="contactSupport()">
-💬 WhatsApp Customer Service
-</button>
-
-
-<button
-class="btn whatsapp"
-onclick="contactSupport2()">
-💬 WhatsApp Customer Service 2
-</button>
+<div id="submissionList">
 
 <p class="small">
-The second customer-service number can be
-changed later inside the code.
+Loading submissions...
 </p>
 
 </div>
 
-</section>
+</div>
 
 
 </div>
@@ -1172,11 +440,13 @@ changed later inside the code.
 </div>
 
 
+
 <!-- =====================================================
 FIREBASE
 ===================================================== -->
 
 <script type="module">
+
 
 import {
 initializeApp
@@ -1187,9 +457,7 @@ from
 
 import {
 getAuth,
-createUserWithEmailAndPassword,
 signInWithEmailAndPassword,
-sendPasswordResetEmail,
 signOut,
 onAuthStateChanged
 }
@@ -1200,12 +468,14 @@ from
 import {
 getFirestore,
 collection,
-addDoc,
 getDocs,
 query,
+orderBy,
+doc,
+getDoc,
+updateDoc,
 where,
-limit,
-serverTimestamp
+runTransaction
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
@@ -1244,35 +514,29 @@ measurementId:
 };
 
 
-const firebaseApp =
+const app =
 initializeApp(firebaseConfig);
 
 
 const auth =
-getAuth(firebaseApp);
+getAuth(app);
 
 
 const db =
-getFirestore(firebaseApp);
+getFirestore(app);
 
 
 /* =====================================================
-CUSTOMER SERVICE NUMBERS
+IMPORTANT:
+CHANGE THIS TO YOUR ADMIN EMAIL
 ===================================================== */
 
-const SUPPORT_1 =
-"2347035349951";
-
-/*
-CHANGE THIS NUMBER LATER
-*/
-
-const SUPPORT_2 =
-"CHANGE_NUMBER_LATER";
+const ADMIN_EMAIL =
+"YOUR_ADMIN_EMAIL@gmail.com";
 
 
 /* =====================================================
-MESSAGE FUNCTION
+MESSAGE
 ===================================================== */
 
 function showMessage(
@@ -1290,10 +554,8 @@ box.style.display="block";
 
 box.className =
 type==="error"
-?
-"msg error"
-:
-"msg success";
+? "msg error"
+: "msg success";
 
 box.textContent=text;
 
@@ -1301,134 +563,49 @@ box.textContent=text;
 
 
 /* =====================================================
-REGISTER
+ADMIN LOGIN
 ===================================================== */
 
-window.registerUser =
+window.adminLogin =
 async function(){
 
 const email =
 document
-.getElementById("authEmail")
+.getElementById("adminEmail")
 .value
 .trim();
 
 const password =
 document
-.getElementById("authPassword")
+.getElementById("adminPassword")
 .value;
 
 
 if(!email || !password){
 
 showMessage(
-"authMessage",
-"Please enter your email and password.",
+"loginMessage",
+"Enter your admin email and password.",
 "error"
 );
 
 return;
 
 }
-
-
-if(password.length < 6){
-
-showMessage(
-"authMessage",
-"Password must be at least 6 characters.",
-"error"
-);
-
-return;
-
-}
-
-
-try{
-
-const result =
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
 
 
 /*
-Create user record.
+Check email before login.
 */
 
-await addDoc(
-collection(db,"users"),
-{
-
-uid:
-result.user.uid,
-
-email:
-email,
-
-balance:
-0,
-
-role:
-"user",
-
-referralId:
-result.user.uid.substring(0,8),
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
+if(
+email.toLowerCase() !==
+ADMIN_EMAIL.toLowerCase()
+){
 
 showMessage(
-"authMessage",
-"Account created successfully."
-);
-
-}
-
-catch(error){
-
-showMessage(
-"authMessage",
-error.message,
-"error"
-);
-
-}
-
-};
-
-
-/* =====================================================
-LOGIN
-===================================================== */
-
-window.loginUser =
-async function(){
-
-const email =
-document
-.getElementById("authEmail")
-.value
-.trim();
-
-const password =
-document
-.getElementById("authPassword")
-.value;
-
-
-if(!email || !password){
-
-showMessage(
-"authMessage",
-"Enter your email and password.",
+"loginMessage",
+"This email is not authorized as an admin.",
 "error"
 );
 
@@ -1450,7 +627,7 @@ password
 catch(error){
 
 showMessage(
-"authMessage",
+"loginMessage",
 "Login failed: "+error.message,
 "error"
 );
@@ -1461,25 +638,41 @@ showMessage(
 
 
 /* =====================================================
-PASSWORD RESET
+AUTH STATE
 ===================================================== */
 
-window.resetPassword =
-async function(){
+onAuthStateChanged(
+auth,
+async(user)=>{
 
-const email =
+if(!user){
+
 document
-.getElementById("authEmail")
-.value
-.trim();
+.getElementById("loginScreen")
+.style.display="flex";
+
+document
+.getElementById("adminApp")
+.style.display="none";
+
+return;
+
+}
 
 
-if(!email){
+/*
+Double-check admin email.
+*/
 
-showMessage(
-"authMessage",
-"Enter your email first.",
-"error"
+if(
+user.email.toLowerCase() !==
+ADMIN_EMAIL.toLowerCase()
+){
+
+await signOut(auth);
+
+alert(
+"This account is not authorized for the admin panel."
 );
 
 return;
@@ -1487,38 +680,31 @@ return;
 }
 
 
-try{
+document
+.getElementById("loginScreen")
+.style.display="none";
 
-await sendPasswordResetEmail(
-auth,
-email
-);
+document
+.getElementById("adminApp")
+.style.display="block";
 
-showMessage(
-"authMessage",
-"Password reset email sent. Check your email."
-);
 
-}
+document
+.getElementById("loggedAdminEmail")
+.textContent=user.email;
 
-catch(error){
 
-showMessage(
-"authMessage",
-error.message,
-"error"
-);
+await loadSubmissions();
 
 }
-
-};
+);
 
 
 /* =====================================================
 LOGOUT
 ===================================================== */
 
-window.logoutUser =
+window.adminLogout =
 async function(){
 
 await signOut(auth);
@@ -1527,554 +713,78 @@ await signOut(auth);
 
 
 /* =====================================================
-AUTHENTICATION GATE
-===================================================== */
-
-onAuthStateChanged(
-auth,
-async(user)=>{
-
-if(user){
-
-document
-.getElementById("authScreen")
-.style.display="none";
-
-document
-.getElementById("app")
-.style.display="block";
-
-
-document
-.getElementById("userEmail")
-.textContent=
-user.email;
-
-
-document
-.getElementById("userId")
-.textContent=
-user.uid;
-
-
-document
-.getElementById("referralId")
-.textContent=
-user.uid.substring(0,8);
-
-
-await loadBalance();
-
-await loadTasks();
-
-await loadSubmissions();
-
-await loadWithdrawals();
-
-await loadPromotionOrders();
-
-}
-
-else{
-
-document
-.getElementById("authScreen")
-.style.display="flex";
-
-document
-.getElementById("app")
-.style.display="none";
-
-}
-
-}
-);
-
-
-/* =====================================================
-NAVIGATION
-===================================================== */
-
-window.showSection =
-function(name){
-
-document
-.querySelectorAll(".section")
-.forEach(
-section =>
-section.classList.remove("active")
-);
-
-
-const target =
-document.getElementById(name);
-
-if(target){
-
-target.classList.add("active");
-
-}
-
-};
-
-
-/* =====================================================
-LOAD BALANCE
-===================================================== */
-
-async function loadBalance(){
-
-const user =
-auth.currentUser;
-
-if(!user)return;
-
-
-try{
-
-const q =
-query(
-collection(db,"users"),
-where("uid","==",user.uid),
-limit(1)
-);
-
-
-const snap =
-await getDocs(q);
-
-
-let balance=0;
-
-
-snap.forEach(
-doc=>{
-
-balance =
-Number(
-doc.data().balance || 0
-);
-
-}
-);
-
-
-document
-.getElementById("balance")
-.textContent=
-balance.toLocaleString();
-
-
-document
-.getElementById("earningBalance")
-.textContent=
-balance.toLocaleString();
-
-}
-
-catch(error){
-
-console.error(
-"Balance error:",
-error
-);
-
-}
-
-}
-
-
-/* =====================================================
-LOAD FIREBASE TASKS
-===================================================== */
-
-window.loadTasks =
-async function(){
-
-const list =
-document.getElementById("taskList");
-
-
-list.innerHTML =
-"<p class='empty'>Loading tasks...</p>";
-
-
-try{
-
-const q =
-query(
-collection(db,"tasks"),
-where("active","==",true)
-);
-
-
-const snap =
-await getDocs(q);
-
-
-if(snap.empty){
-
-list.innerHTML =
-"<p class='empty'>No tasks available right now.</p>";
-
-return;
-
-}
-
-
-list.innerHTML="";
-
-
-snap.forEach(
-doc=>{
-
-const task =
-doc.data();
-
-
-const div =
-document.createElement("div");
-
-
-div.className="task";
-
-
-div.innerHTML=`
-
-<h3>
-${safe(task.title || "Task")}
-</h3>
-
-<p>
-${safe(task.description || "")}
-</p>
-
-<div class="reward">
-💰 ₦${Number(task.reward || 0).toLocaleString()}
-</div>
-
-<br>
-
-<button
-class="btn"
-onclick="openTask('${encodeURIComponent(task.link || "#")}')">
-🔗 Open Task
-</button>
-
-<button
-class="btn green"
-onclick="showProofForm(
-'${encodeURIComponent(doc.id)}',
-'${encodeURIComponent(task.title || "Task")}',
-${Number(task.reward || 0)}
-)">
-📝 Submit Proof
-</button>
-
-`;
-
-
-list.appendChild(div);
-
-}
-);
-
-}
-
-catch(error){
-
-console.error(
-"Task error:",
-error
-);
-
-
-list.innerHTML =
-"<p class='empty'>Could not load tasks. Check your Firebase rules and task collection.</p>";
-
-}
-
-};
-
-
-/* =====================================================
-OPEN TASK
-===================================================== */
-
-window.openTask =
-function(link){
-
-link =
-decodeURIComponent(link);
-
-
-if(
-link &&
-link!=="#"
-){
-
-window.open(
-link,
-"_blank"
-);
-
-}
-
-else{
-
-alert(
-"This task does not have a link."
-);
-
-}
-
-};
-
-
-/* =====================================================
-SHOW PROOF FORM
-===================================================== */
-
-window.showProofForm =
-function(
-taskId,
-taskTitle,
-reward
-){
-
-taskId =
-decodeURIComponent(taskId);
-
-taskTitle =
-decodeURIComponent(taskTitle);
-
-
-document
-.getElementById("taskList")
-.innerHTML=`
-
-<div class="card">
-
-<h2>
-📝 Submit Task Proof
-</h2>
-
-<p>
-<strong>Task:</strong>
-${safe(taskTitle)}
-</p>
-
-<br>
-
-<p>
-<strong>Reward:</strong>
-₦${Number(reward).toLocaleString()}
-</p>
-
-<br>
-
-<input
-id="proofLink"
-placeholder="Proof link / screenshot link / username"
->
-
-<textarea
-id="proofText"
-placeholder="Explain how you completed the task"
-></textarea>
-
-
-<button
-class="btn green"
-onclick="submitProof(
-'${encodeURIComponent(taskId)}',
-'${encodeURIComponent(taskTitle)}',
-${Number(reward)}
-)">
-✅ Submit Proof
-</button>
-
-
-<button
-class="btn gray"
-onclick="loadTasks()">
-← Cancel
-</button>
-
-
-<div
-id="proofMessage"
-class="msg">
-</div>
-
-</div>
-
-`;
-
-};
-
-
-/* =====================================================
-SUBMIT PROOF
-===================================================== */
-
-window.submitProof =
-async function(
-taskId,
-taskTitle,
-reward
-){
-
-const user =
-auth.currentUser;
-
-if(!user){
-
-alert(
-"Please login first."
-);
-
-return;
-
-}
-
-
-taskId =
-decodeURIComponent(taskId);
-
-taskTitle =
-decodeURIComponent(taskTitle);
-
-
-const proofLink =
-document
-.getElementById("proofLink")
-.value
-.trim();
-
-
-const proofText =
-document
-.getElementById("proofText")
-.value
-.trim();
-
-
-if(!proofLink && !proofText){
-
-showMessage(
-"proofMessage",
-"Please provide proof.",
-"error"
-);
-
-return;
-
-}
-
-
-try{
-
-await addDoc(
-collection(db,"taskSubmissions"),
-{
-
-uid:
-user.uid,
-
-email:
-user.email,
-
-taskId:
-taskId,
-
-taskTitle:
-taskTitle,
-
-reward:
-Number(reward),
-
-proofLink:
-proofLink,
-
-proofText:
-proofText,
-
-status:
-"Pending",
-
-submittedAt:
-serverTimestamp()
-
-}
-);
-
-
-showMessage(
-"proofMessage",
-"Proof submitted successfully. Waiting for admin approval."
-);
-
-
-setTimeout(
-loadTasks,
-1200
-);
-
-}
-
-catch(error){
-
-showMessage(
-"proofMessage",
-error.message,
-"error"
-);
-
-}
-
-};
-
-
-/* =====================================================
-LOAD SUBMISSIONS
+LOAD ALL SUBMISSIONS
 ===================================================== */
 
 window.loadSubmissions =
 async function(){
 
-const user =
-auth.currentUser;
-
-if(!user)return;
-
-
 const list =
-document
-.getElementById("submissionList");
-
+document.getElementById(
+"submissionList"
+);
 
 list.innerHTML =
-"<p class='empty'>Loading...</p>";
+"<p class='small'>Loading submissions...</p>";
 
+
+try{
+
+const submissionsRef =
+collection(
+db,
+"taskSubmissions"
+);
+
+
+/*
+Try newest first.
+*/
+
+let snap;
 
 try{
 
 const q =
 query(
-collection(db,"taskSubmissions"),
-where("uid","==",user.uid)
+submissionsRef,
+orderBy(
+"submittedAt",
+"desc"
+)
 );
 
-
-const snap =
+snap =
 await getDocs(q);
+
+}
+
+catch(orderError){
+
+/*
+If Firestore asks for an index,
+fall back to normal query.
+*/
+
+console.log(
+"Ordered query failed. Using normal query.",
+orderError
+);
+
+snap =
+await getDocs(
+submissionsRef
+);
+
+}
 
 
 if(snap.empty){
 
 list.innerHTML =
-"<p class='empty'>No task submissions yet.</p>";
+"<p class='small'>No task submissions found.</p>";
+
+updateStats([]);
 
 return;
 
@@ -2084,620 +794,546 @@ return;
 list.innerHTML="";
 
 
+let allData=[];
+
+
 snap.forEach(
-doc=>{
+(documentSnapshot)=>{
 
 const data =
-doc.data();
+documentSnapshot.data();
+
+allData.push(data);
+
+
+const submission =
+document.createElement("div");
+
+submission.className =
+"submission";
 
 
 let statusClass =
 "pending";
 
 
-if(data.status==="Approved")
-statusClass="approved";
+if(
+data.status === "Approved"
+){
+
+statusClass =
+"approved";
+
+}
 
 
-if(data.status==="Rejected")
-statusClass="rejected";
+if(
+data.status === "Rejected"
+){
+
+statusClass =
+"rejected";
+
+}
 
 
-const div =
-document.createElement("div");
+/*
+Image stored directly inside Firestore.
+*/
+
+let imageHTML="";
 
 
-div.className="task";
+if(data.proofImage){
+
+imageHTML = `
+
+<img
+src="${data.proofImage}"
+class="proofImage"
+alt="Task proof image"
+>
+
+`;
+
+}
+else{
+
+imageHTML = `
+
+<p class="small">
+⚠️ No proof image found.
+</p>
+
+`;
+
+}
 
 
-div.innerHTML=`
+/*
+Only show action buttons for Pending.
+*/
+
+let actionHTML="";
+
+
+if(
+data.status === "Pending"
+||
+!data.status
+){
+
+actionHTML = `
+
+<div class="actions">
+
+<button
+class="btn green"
+onclick="approveSubmission('${documentSnapshot.id}')"
+>
+✅ Approve
+</button>
+
+<button
+class="btn red"
+onclick="rejectSubmission('${documentSnapshot.id}')"
+>
+❌ Reject
+</button>
+
+</div>
+
+`;
+
+}
+else{
+
+actionHTML = `
+
+<p class="small">
+This submission has already been reviewed.
+</p>
+
+`;
+
+}
+
+
+submission.innerHTML = `
 
 <h3>
-${safe(data.taskTitle || "Task")}
+📋 ${safe(data.taskTitle || "Task")}
 </h3>
 
-<p>
-Reward:
-₦${Number(data.reward || 0).toLocaleString()}
-</p>
+
+<div class="info">
+
+<strong>👤 User:</strong>
+${safe(data.email || "Unknown")}
 
 <br>
 
-<span class="status ${statusClass}">
-${safe(data.status || "Pending")}
-</span>
-
-`;
-
-
-list.appendChild(div);
-
-}
-);
-
-}
-
-catch(error){
-
-console.error(error);
-
-list.innerHTML =
-"<p class='empty'>Could not load submissions.</p>";
-
-}
-
-};
-
-
-/* =====================================================
-PROMOTION PAYMENT ACCOUNT
-===================================================== */
-
-window.copyPaymentAccount =
-function(){
-
-const accountNumber =
-"6587578800";
-
-
-navigator
-.clipboard
-.writeText(accountNumber)
-.then(
-()=>{
-
-alert(
-"OPay account number copied successfully!"
-);
-
-}
-)
-.catch(
-()=>{
-
-alert(
-"OPay Account Number: 6587578800"
-);
-
-}
-);
-
-};
-
-
-/* =====================================================
-SUBMIT PROMOTION
-===================================================== */
-
-window.submitPromotion =
-async function(){
-
-const user =
-auth.currentUser;
-
-if(!user){
-
-alert(
-"Please login first."
-);
-
-return;
-
-}
-
-
-const type =
-document
-.getElementById("promotionType")
-.value;
-
-
-const link =
-document
-.getElementById("promotionLink")
-.value
-.trim();
-
-
-const amount =
-Number(
-document
-.getElementById("promotionPackage")
-.value
-);
-
-
-const paymentReference =
-document
-.getElementById("paymentReference")
-.value
-.trim();
-
-
-const paymentProof =
-document
-.getElementById("paymentProof")
-.value
-.trim();
-
-
-if(!link){
-
-showMessage(
-"promotionMessage",
-"Please enter your promotion link.",
-"error"
-);
-
-return;
-
-}
-
-
-if(
-!paymentReference &&
-!paymentProof
-){
-
-showMessage(
-"promotionMessage",
-"Please enter your payment reference or payment proof.",
-"error"
-);
-
-return;
-
-}
-
-
-try{
-
-await addDoc(
-collection(db,"promotionOrders"),
-{
-
-uid:
-user.uid,
-
-email:
-user.email,
-
-promotionType:
-type,
-
-promotionLink:
-link,
-
-amount:
-amount,
-
-paymentReference:
-paymentReference,
-
-paymentProof:
-paymentProof,
-
-paymentStatus:
-"Pending",
-
-promotionStatus:
-"Pending",
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-
-showMessage(
-"promotionMessage",
-"Promotion request submitted successfully. Your payment is pending verification."
-);
-
-
-document
-.getElementById("promotionLink")
-.value="";
-
-
-document
-.getElementById("paymentReference")
-.value="";
-
-
-document
-.getElementById("paymentProof")
-.value="";
-
-
-loadPromotionOrders();
-
-}
-
-catch(error){
-
-showMessage(
-"promotionMessage",
-error.message,
-"error"
-);
-
-}
-
-};
-
-
-/* =====================================================
-LOAD PROMOTION ORDERS
-===================================================== */
-
-async function loadPromotionOrders(){
-
-const user =
-auth.currentUser;
-
-if(!user)return;
-
-
-const list =
-document
-.getElementById("promotionOrders");
-
-
-try{
-
-const q =
-query(
-collection(db,"promotionOrders"),
-where("uid","==",user.uid)
-);
-
-
-const snap =
-await getDocs(q);
-
-
-if(snap.empty){
-
-list.innerHTML =
-"<p class='empty'>No promotion orders yet.</p>";
-
-return;
-
-}
-
-
-list.innerHTML="";
-
-
-snap.forEach(
-doc=>{
-
-const d =
-doc.data();
-
-
-const div =
-document.createElement("div");
-
-
-div.className="task";
-
-
-div.innerHTML=`
-
-<h3>
-${safe(d.promotionType || "Promotion")}
-</h3>
-
-<p>
-Amount:
-₦${Number(d.amount || 0).toLocaleString()}
-</p>
-
-<p>
-Payment Status:
-${safe(d.paymentStatus || "Pending")}
-</p>
-
-<p>
-Promotion Status:
-${safe(d.promotionStatus || "Pending")}
-</p>
-
-`;
-
-
-list.appendChild(div);
-
-}
-);
-
-}
-
-catch(error){
-
-console.error(error);
-
-}
-
-}
-
-
-/* =====================================================
-WITHDRAWAL
-===================================================== */
-
-window.submitWithdrawal =
-async function(){
-
-const user =
-auth.currentUser;
-
-if(!user)return;
-
-
-const amount =
-Number(
-document
-.getElementById("withdrawAmount")
-.value
-);
-
-
-const bank =
-document
-.getElementById("bankName")
-.value
-.trim();
-
-
-const account =
-document
-.getElementById("accountNumber")
-.value
-.trim();
-
-
-const name =
-document
-.getElementById("accountName")
-.value
-.trim();
-
-
-if(
-!amount ||
-!bank ||
-!account ||
-!name
-){
-
-showMessage(
-"withdrawMessage",
-"Please complete all fields.",
-"error"
-);
-
-return;
-
-}
-
-
-if(
-!/^[0-9]{10}$/.test(account)
-){
-
-showMessage(
-"withdrawMessage",
-"Account number must contain exactly 10 digits.",
-"error"
-);
-
-return;
-
-}
-
-
-try{
-
-await addDoc(
-collection(db,"withdrawals"),
-{
-
-uid:
-user.uid,
-
-email:
-user.email,
-
-amount:
-amount,
-
-bankName:
-bank,
-
-accountNumber:
-account,
-
-accountName:
-name,
-
-status:
-"Pending",
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-
-showMessage(
-"withdrawMessage",
-"Withdrawal request submitted. Status: Pending."
-);
-
-
-document
-.getElementById("withdrawAmount")
-.value="";
-
-
-document
-.getElementById("bankName")
-.value="";
-
-
-document
-.getElementById("accountNumber")
-.value="";
-
-
-document
-.getElementById("accountName")
-.value="";
-
-
-loadWithdrawals();
-
-}
-
-catch(error){
-
-showMessage(
-"withdrawMessage",
-error.message,
-"error"
-);
-
-}
-
-};
-
-
-/* =====================================================
-LOAD WITHDRAWALS
-===================================================== */
-
-window.loadWithdrawals =
-async function(){
-
-const user =
-auth.currentUser;
-
-if(!user)return;
-
-
-const list =
-document
-.getElementById("withdrawalList");
-
-
-list.innerHTML =
-"<p class='empty'>Loading...</p>";
-
-
-try{
-
-const q =
-query(
-collection(db,"withdrawals"),
-where("uid","==",user.uid)
-);
-
-
-const snap =
-await getDocs(q);
-
-
-if(snap.empty){
-
-list.innerHTML =
-"<p class='empty'>No withdrawals yet.</p>";
-
-return;
-
-}
-
-
-list.innerHTML="";
-
-
-snap.forEach(
-doc=>{
-
-const d =
-doc.data();
-
-
-let statusClass =
-"pending";
-
-
-if(d.status==="Approved")
-statusClass="approved";
-
-
-if(d.status==="Rejected")
-statusClass="rejected";
-
-
-const div =
-document.createElement("div");
-
-
-div.className="task";
-
-
-div.innerHTML=`
-
-<h3>
-₦${Number(d.amount || 0).toLocaleString()}
-</h3>
-
-<p>
-${safe(d.bankName || "")}
-</p>
-
-<p>
-${safe(d.accountNumber || "")}
-</p>
+<strong>🆔 User ID:</strong>
+${safe(data.uid || "")}
 
 <br>
 
-<span class="status ${statusClass}">
-${safe(d.status || "Pending")}
+<strong>💰 Reward:</strong>
+₦${Number(
+data.reward || 0
+).toLocaleString()}
+
+<br>
+
+<strong>📝 Explanation:</strong>
+${safe(
+data.proofText ||
+"No explanation provided."
+)}
+
+</div>
+
+
+<span
+class="status ${statusClass}"
+>
+${safe(
+data.status ||
+"Pending"
+)}
 </span>
+
+
+${imageHTML}
+
+
+${actionHTML}
 
 `;
 
 
-list.appendChild(div);
+list.appendChild(submission);
+
+});
+
+
+updateStats(allData);
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML = `
+
+<p class="small">
+Could not load submissions.
+</p>
+
+<p class="small">
+${safe(error.message)}
+</p>
+
+`;
+
+}
+
+};
+
+
+/* =====================================================
+STATISTICS
+===================================================== */
+
+function updateStats(data){
+
+let total=0;
+let pending=0;
+let approved=0;
+let rejected=0;
+
+
+data.forEach(item=>{
+
+total++;
+
+
+if(
+item.status === "Approved"
+){
+
+approved++;
+
+}
+else if(
+item.status === "Rejected"
+){
+
+rejected++;
+
+}
+else{
+
+pending++;
+
+}
+
+});
+
+
+document
+.getElementById(
+"totalSubmissions"
+)
+.textContent=total;
+
+
+document
+.getElementById(
+"pendingSubmissions"
+)
+.textContent=pending;
+
+
+document
+.getElementById(
+"approvedSubmissions"
+)
+.textContent=approved;
+
+
+document
+.getElementById(
+"rejectedSubmissions"
+)
+.textContent=rejected;
+
+}
+
+
+/* =====================================================
+APPROVE SUBMISSION
+===================================================== */
+
+window.approveSubmission =
+async function(submissionId){
+
+const confirmApprove =
+confirm(
+"Approve this task proof and add the reward to the user's balance?"
+);
+
+
+if(!confirmApprove)return;
+
+
+try{
+
+await runTransaction(
+db,
+async(transaction)=>{
+
+
+const submissionRef =
+doc(
+db,
+"taskSubmissions",
+submissionId
+);
+
+
+const submissionSnap =
+await transaction.get(
+submissionRef
+);
+
+
+if(!submissionSnap.exists()){
+
+throw new Error(
+"Submission no longer exists."
+);
+
+}
+
+
+const submission =
+submissionSnap.data();
+
+
+/*
+Prevent double payment.
+*/
+
+if(
+submission.status === "Approved"
+){
+
+throw new Error(
+"This submission has already been approved."
+);
+
+}
+
+
+/*
+Only pending submissions can be approved.
+*/
+
+if(
+submission.status === "Rejected"
+){
+
+throw new Error(
+"This submission has already been rejected."
+);
+
+}
+
+
+const reward =
+Number(
+submission.reward || 0
+);
+
+
+const uid =
+submission.uid;
+
+
+if(!uid){
+
+throw new Error(
+"This submission has no user ID."
+);
+
+}
+
+
+/*
+Find the user document.
+
+Your registration code creates the user
+document with addDoc, so we search by uid.
+*/
+
+const usersQuery =
+query(
+collection(db,"users"),
+where("uid","==",uid)
+);
+
+
+const usersSnap =
+await getDocs(usersQuery);
+
+
+if(usersSnap.empty){
+
+throw new Error(
+"User account record was not found."
+);
+
+}
+
+
+const userDoc =
+usersSnap.docs[0];
+
+
+const userRef =
+doc(
+db,
+"users",
+userDoc.id
+);
+
+
+const userSnap =
+await transaction.get(
+userRef
+);
+
+
+if(!userSnap.exists()){
+
+throw new Error(
+"User account does not exist."
+);
+
+}
+
+
+const currentBalance =
+Number(
+userSnap.data().balance || 0
+);
+
+
+const newBalance =
+currentBalance + reward;
+
+
+/*
+Update balance.
+*/
+
+transaction.update(
+userRef,
+{
+
+balance:newBalance
 
 }
 );
+
+
+/*
+Mark proof approved.
+*/
+
+transaction.update(
+submissionRef,
+{
+
+status:"Approved",
+
+approvedAt:new Date(),
+
+approvedBy:auth.currentUser.email,
+
+balanceAdded:reward
+
+}
+);
+
+});
+
+
+
+alert(
+"✅ Proof approved and ₦"+
+
+Number(
+(
+await getApprovedReward(
+submissionId
+)
+)||0
+).toLocaleString()+
+
+" was added to the user's balance."
+);
+
+
+await loadSubmissions();
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"❌ Approval failed: "+
+error.message
+);
+
+}
+
+};
+
+
+/* =====================================================
+GET APPROVED REWARD
+===================================================== */
+
+async function getApprovedReward(
+submissionId
+){
+
+try{
+
+const ref =
+doc(
+db,
+"taskSubmissions",
+submissionId
+);
+
+const snap =
+await getDoc(ref);
+
+if(
+snap.exists()
+){
+
+return Number(
+snap.data().balanceAdded || 0
+);
+
+}
 
 }
 
@@ -2707,82 +1343,53 @@ console.error(error);
 
 }
 
-};
+return 0;
+
+}
 
 
 /* =====================================================
-REFERRAL
+REJECT SUBMISSION
 ===================================================== */
 
-window.copyReferral =
-function(){
+window.rejectSubmission =
+async function(submissionId){
 
-const user =
-auth.currentUser;
-
-if(!user)return;
-
-
-const id =
-user.uid.substring(0,8);
-
-
-const link =
-window.location.origin +
-window.location.pathname +
-"?ref=" +
-id;
-
-
-navigator
-.clipboard
-.writeText(link)
-.then(
-()=>alert(
-"Referral link copied!"
-)
-)
-.catch(
-()=>alert(link)
-);
-
-};
-
-
-/* =====================================================
-CUSTOMER SERVICE
-===================================================== */
-
-window.contactSupport =
-function(){
-
-const message =
-encodeURIComponent(
-"Hello StoryVerse Customer Service, I need assistance."
+const reason =
+prompt(
+"Enter rejection reason (optional):"
 );
 
 
-window.open(
-"https://wa.me/" +
-SUPPORT_1 +
-"?text=" +
-message,
-"_blank"
+const confirmReject =
+confirm(
+"Reject this task proof?"
 );
 
-};
+
+if(!confirmReject)return;
 
 
-window.contactSupport2 =
-function(){
+try{
 
-if(
-SUPPORT_2 ===
-"CHANGE_NUMBER_LATER"
-){
+const submissionRef =
+doc(
+db,
+"taskSubmissions",
+submissionId
+);
+
+
+const submissionSnap =
+await getDoc(
+submissionRef
+);
+
+
+if(!submissionSnap.exists()){
 
 alert(
-"Customer Service 2 number has not been added yet."
+"Submission no longer exists."
 );
 
 return;
@@ -2790,19 +1397,60 @@ return;
 }
 
 
-const message =
-encodeURIComponent(
-"Hello StoryVerse Customer Service, I need assistance."
+const submission =
+submissionSnap.data();
+
+
+if(
+submission.status === "Approved"
+){
+
+alert(
+"This submission is already approved and cannot be rejected."
+);
+
+return;
+
+}
+
+
+await updateDoc(
+submissionRef,
+{
+
+status:"Rejected",
+
+rejectionReason:
+reason || "",
+
+rejectedAt:new Date(),
+
+rejectedBy:
+auth.currentUser.email
+
+}
 );
 
 
-window.open(
-"https://wa.me/" +
-SUPPORT_2 +
-"?text=" +
-message,
-"_blank"
+alert(
+"❌ Proof rejected."
 );
+
+
+await loadSubmissions();
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Could not reject submission: "+
+error.message
+);
+
+}
 
 };
 
@@ -2845,4 +1493,4 @@ return String(value)
 </script>
 
 </body>
-  </html>
+</html>
