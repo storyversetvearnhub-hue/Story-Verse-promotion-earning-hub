@@ -3,353 +3,217 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>StoryVerseTV Admin Dashboard</title>
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>StoryVerse Admin</title>
 
 <style>
 
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
 }
 
 body{
-  background:#f3f4f6;
-  color:#111827;
+background:#f3f4f6;
+color:#111827;
 }
 
 header{
-  background:linear-gradient(135deg,#111827,#2563eb);
-  color:white;
-  padding:25px 15px;
-  text-align:center;
+background:linear-gradient(135deg,#111827,#2563eb);
+color:white;
+padding:25px 15px;
+text-align:center;
 }
 
 header h1{
-  font-size:25px;
+font-size:24px;
 }
 
-header p{
-  margin-top:7px;
-  opacity:.9;
+.container{
+max-width:1100px;
+margin:auto;
+padding:15px;
 }
 
-/* LOGIN */
-
-#loginPage{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:linear-gradient(135deg,#111827,#2563eb);
-}
-
-.loginBox{
-  background:white;
-  width:100%;
-  max-width:420px;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 10px 40px rgba(0,0,0,.25);
-}
-
-.loginBox h2{
-  text-align:center;
-  margin-bottom:8px;
-}
-
-.loginBox p{
-  text-align:center;
-  color:#6b7280;
-  margin-bottom:20px;
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
 input,
 textarea,
 select{
-  width:100%;
-  padding:13px;
-  margin:7px 0 12px;
-  border:1px solid #d1d5db;
-  border-radius:9px;
-  outline:none;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:#2563eb;
-}
-
-textarea{
-  min-height:100px;
-  resize:vertical;
+width:100%;
+padding:12px;
+margin:6px 0 12px;
+border:1px solid #d1d5db;
+border-radius:9px;
 }
 
 button{
-  cursor:pointer;
+cursor:pointer;
 }
 
 .btn{
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:9px;
-  color:white;
-  font-weight:bold;
-  margin-top:7px;
-}
-
-.blue{
-  background:#2563eb;
+width:100%;
+padding:13px;
+border:0;
+border-radius:9px;
+background:#2563eb;
+color:white;
+font-weight:bold;
+margin-top:7px;
 }
 
 .green{
-  background:#16a34a;
+background:#16a34a;
 }
 
 .red{
-  background:#dc2626;
+background:#dc2626;
 }
 
 .gray{
-  background:#4b5563;
+background:#4b5563;
 }
 
 .orange{
-  background:#ea580c;
+background:#ea580c;
 }
 
-.logout{
-  background:#dc2626;
-  padding:10px 15px;
-  border:0;
-  border-radius:8px;
-  color:white;
-  font-weight:bold;
+.hidden{
+display:none!important;
 }
 
-/* ADMIN */
-
-#adminPage{
-  display:none;
+.nav{
+display:flex;
+overflow-x:auto;
+background:white;
+border-bottom:1px solid #ddd;
+position:sticky;
+top:0;
+z-index:20;
 }
 
-nav{
-  display:flex;
-  overflow-x:auto;
-  background:white;
-  border-bottom:1px solid #ddd;
-  position:sticky;
-  top:0;
-  z-index:20;
-}
-
-nav button{
-  flex:1;
-  min-width:120px;
-  padding:14px 8px;
-  border:0;
-  background:white;
-  font-weight:bold;
-}
-
-nav button:hover{
-  background:#eff6ff;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:15px;
+.nav button{
+min-width:130px;
+flex:1;
+padding:14px 6px;
+border:0;
+background:white;
+font-weight:bold;
 }
 
 .section{
-  display:none;
+display:none;
 }
 
 .section.active{
-  display:block;
+display:block;
 }
 
-.card{
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  margin-bottom:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
+.order,
+.user,
+.task{
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:15px;
+margin-top:12px;
 }
 
-.card h2{
-  margin-bottom:15px;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-bottom:15px;
-}
-
-.stat{
-  background:white;
-  padding:18px;
-  border-radius:12px;
-  box-shadow:0 3px 12px rgba(0,0,0,.07);
-}
-
-.stat strong{
-  display:block;
-  font-size:24px;
-  margin-top:6px;
-}
-
-.task-card{
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:15px;
-  margin-top:12px;
-}
-
-.task-card h3{
-  margin-bottom:10px;
-}
-
-.task-card p{
-  margin:7px 0;
-  line-height:1.5;
-}
-
-.small{
-  font-size:13px;
-  color:#6b7280;
-  line-height:1.5;
+.proof-image{
+display:block;
+width:100%;
+max-width:600px;
+max-height:500px;
+object-fit:contain;
+margin:12px auto;
+border-radius:10px;
+border:1px solid #ddd;
+background:#f9fafb;
 }
 
 .status{
-  display:inline-block;
-  padding:6px 11px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
+display:inline-block;
+padding:6px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
 }
 
 .pending{
-  background:#fef3c7;
-  color:#92400e;
+background:#fef3c7;
+color:#92400e;
 }
 
 .approved{
-  background:#dcfce7;
-  color:#166534;
+background:#dcfce7;
+color:#166534;
 }
 
 .rejected{
-  background:#fee2e2;
-  color:#991b1b;
+background:#fee2e2;
+color:#991b1b;
 }
 
-/* PAYMENT PROOF */
-
-.proofBox{
-  margin-top:15px;
-  padding:15px;
-  border-radius:12px;
-  background:#f9fafb;
-  border:1px solid #e5e7eb;
-}
-
-.proofBox h4{
-  margin-bottom:10px;
-}
-
-.paymentProof{
-  display:block;
-  width:100%;
-  max-width:650px;
-  max-height:600px;
-  object-fit:contain;
-  margin:12px auto;
-  border-radius:10px;
-  border:1px solid #d1d5db;
-  background:white;
-}
-
-.noProof{
-  padding:15px;
-  background:#fff7ed;
-  color:#9a3412;
-  border-radius:8px;
-  font-size:13px;
+.small{
+font-size:13px;
+color:#6b7280;
+line-height:1.5;
 }
 
 .message{
-  display:none;
-  padding:12px;
-  border-radius:8px;
-  margin-top:10px;
+display:none;
+padding:12px;
+border-radius:8px;
+margin-top:10px;
 }
 
-.successMessage{
-  background:#dcfce7;
-  color:#166534;
+.success{
+display:block;
+background:#dcfce7;
+color:#166534;
 }
 
-.errorMessage{
-  background:#fee2e2;
-  color:#991b1b;
+.error{
+display:block;
+background:#fee2e2;
+color:#991b1b;
 }
 
-.topAdmin{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:15px;
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+margin-bottom:15px;
 }
 
-.emailBadge{
-  background:rgba(255,255,255,.15);
-  padding:8px 12px;
-  border-radius:8px;
-  font-size:13px;
+.stat{
+background:white;
+padding:18px;
+border-radius:12px;
+box-shadow:0 3px 12px rgba(0,0,0,.07);
 }
 
-.orderInfo{
-  background:#f9fafb;
-  padding:12px;
-  border-radius:10px;
-  margin-top:10px;
-}
-
-.orderInfo p{
-  word-break:break-word;
-}
-
-.linkButton{
-  display:inline-block;
-  margin-top:8px;
-  padding:9px 12px;
-  background:#2563eb;
-  color:white;
-  border-radius:7px;
-  text-decoration:none;
-  font-size:13px;
+.stat strong{
+display:block;
+font-size:25px;
+margin-top:6px;
 }
 
 @media(max-width:700px){
 
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  header h1{
-    font-size:21px;
-  }
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
 
 }
 
@@ -360,396 +224,329 @@ nav button:hover{
 <body>
 
 
-<!-- =====================================================
-     LOGIN PAGE
-===================================================== -->
-
-<div id="loginPage">
-
-  <div class="loginBox">
-
-    <h2>🔐 Admin Login</h2>
-
-    <p>StoryVerseTV Promotion & Earning Hub</p>
-
-    <input
-      type="email"
-      id="adminEmail"
-      placeholder="Admin email"
-      autocomplete="email"
-    >
-
-    <input
-      type="password"
-      id="adminPassword"
-      placeholder="Admin password"
-      autocomplete="current-password"
-    >
-
-    <button
-      class="btn blue"
-      onclick="adminLogin()"
-    >
-      🔐 Login
-    </button>
-
-    <div
-      id="loginMessage"
-      class="message"
-    ></div>
-
-  </div>
-
-</div>
-
-
-<!-- =====================================================
-     ADMIN PAGE
-===================================================== -->
-
-<div id="adminPage">
-
 <header>
 
-  <h1>🚀 StoryVerseTV Admin Dashboard</h1>
+<h1>🚀 StoryVerse Admin Dashboard</h1>
 
-  <p>Promotion & Earning Hub Management</p>
-
-  <div class="topAdmin">
-
-    <div
-      class="emailBadge"
-      id="loggedAdminEmail"
-    >
-      Admin
-    </div>
-
-    <button
-      class="logout"
-      onclick="adminLogout()"
-    >
-      Logout
-    </button>
-
-  </div>
+<p>Promotion & Earning Hub Management</p>
 
 </header>
 
 
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
+<!-- =================================================
+ADMIN LOGIN
+================================================= -->
 
-<nav>
+<div
+id="loginArea"
+class="container">
 
-  <button onclick="showSection('dashboard')">
-    🏠 Dashboard
-  </button>
+<div class="card">
 
-  <button onclick="showSection('tasks')">
-    📋 Tasks
-  </button>
+<h2>🔐 Admin Login</h2>
 
-  <button onclick="showSection('proofs')">
-    🖼️ Proofs
-  </button>
+<p class="small">
+Login with your authorized Firebase administrator account.
+</p>
 
-  <button onclick="showSection('users')">
-    👥 Users
-  </button>
+<input
+id="adminEmail"
+type="email"
+placeholder="Admin email">
 
-  <button onclick="showSection('withdrawals')">
-    💸 Withdrawals
-  </button>
+<input
+id="adminPassword"
+type="password"
+placeholder="Admin password">
 
-  <button onclick="showSection('promotions')">
-    📢 Promotions
-  </button>
+<button
+class="btn"
+onclick="adminLogin()">
+Login
+</button>
 
-</nav>
+<div
+id="loginMessage"
+class="message">
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+ADMIN AREA
+================================================= -->
+
+<div
+id="adminArea"
+class="hidden">
+
+
+<div class="nav">
+
+<button onclick="showSection('dashboard')">
+🏠 Dashboard
+</button>
+
+<button onclick="showSection('tasks')">
+📋 Tasks
+</button>
+
+<button onclick="showSection('proofs')">
+🖼️ Task Proofs
+</button>
+
+<button onclick="showSection('promotions')">
+📢 Promotions
+</button>
+
+<button onclick="showSection('users')">
+👥 Users
+</button>
+
+<button onclick="showSection('withdrawals')">
+💸 Withdrawals
+</button>
+
+<button onclick="adminLogout()">
+🚪 Logout
+</button>
+
+</div>
 
 
 <div class="container">
 
 
-<!-- =====================================================
-     DASHBOARD
-===================================================== -->
+<!-- =================================================
+DASHBOARD
+================================================= -->
 
 <section
-  id="dashboard"
-  class="section active"
->
+id="dashboard"
+class="section active">
 
-  <div class="stats">
+<div class="stats">
 
-    <div class="stat">
-      👥 Users
-      <strong id="totalUsers">0</strong>
-    </div>
+<div class="stat">
+Users
+<strong id="totalUsers">0</strong>
+</div>
 
-    <div class="stat">
-      🖼️ Pending Proofs
-      <strong id="pendingProofs">0</strong>
-    </div>
+<div class="stat">
+Pending Proofs
+<strong id="pendingProofs">0</strong>
+</div>
 
-    <div class="stat">
-      💸 Withdrawals
-      <strong id="pendingWithdrawals">0</strong>
-    </div>
+<div class="stat">
+Promotions
+<strong id="pendingPromotions">0</strong>
+</div>
 
-    <div class="stat">
-      📢 Promotions
-      <strong id="pendingPromotions">0</strong>
-    </div>
+<div class="stat">
+Withdrawals
+<strong id="pendingWithdrawals">0</strong>
+</div>
 
-  </div>
+</div>
 
 
-  <div class="card">
+<div class="card">
 
-    <h2>⚡ Admin Dashboard</h2>
+<h2>⚡ Admin Dashboard</h2>
 
-    <p class="small">
-      Manage users, tasks, task proofs, promotion orders,
-      payment proofs and withdrawals from this page.
-    </p>
+<p class="small">
+Admin account:
+<strong>
+storyversetvearnhub@gmail.com
+</strong>
+</p>
 
-    <button
-      class="btn blue"
-      onclick="refreshEverything()"
-    >
-      🔄 Refresh Everything
-    </button>
+<button
+class="btn"
+onclick="refreshAll()">
+🔄 Refresh Everything
+</button>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     TASKS
-===================================================== -->
+<!-- =================================================
+TASKS
+================================================= -->
 
 <section
-  id="tasks"
-  class="section"
->
+id="tasks"
+class="section">
 
-  <div class="card">
+<div class="card">
 
-    <h2>➕ Add Daily Task</h2>
+<h2>➕ Add Daily Task</h2>
 
-    <input
-      type="text"
-      id="taskTitle"
-      placeholder="Task title"
-    >
+<input
+id="taskTitle"
+placeholder="Task title">
 
-    <textarea
-      id="taskDescription"
-      placeholder="Task description"
-    ></textarea>
+<textarea
+id="taskDescription"
+placeholder="Task description"></textarea>
 
-    <input
-      type="url"
-      id="taskLink"
-      placeholder="Task link"
-    >
+<input
+id="taskLink"
+type="url"
+placeholder="Task link">
 
-    <input
-      type="number"
-      id="taskReward"
-      placeholder="Reward e.g. 100"
-      min="0"
-    >
+<input
+id="taskReward"
+type="number"
+min="0"
+placeholder="Reward ₦">
 
-    <select id="taskActive">
+<button
+class="btn green"
+onclick="addTask()">
+➕ Add Task
+</button>
 
-      <option value="true">
-        Active
-      </option>
+<div
+id="taskMessage"
+class="message">
+</div>
 
-      <option value="false">
-        Inactive
-      </option>
-
-    </select>
-
-    <button
-      class="btn green"
-      onclick="addTask()"
-    >
-      ➕ Add Task
-    </button>
-
-    <div
-      id="taskMessage"
-      class="message"
-    ></div>
-
-  </div>
+</div>
 
 
-  <div class="card">
+<div class="card">
 
-    <h2>📋 Existing Tasks</h2>
+<h2>📋 Existing Tasks</h2>
 
-    <button
-      class="btn gray"
-      onclick="loadTasks()"
-    >
-      🔄 Refresh Tasks
-    </button>
+<button
+class="btn gray"
+onclick="loadTasks()">
+🔄 Refresh
+</button>
 
-    <div id="taskList">
-      <p class="small">
-        Loading...
-      </p>
-    </div>
+<div id="taskList">
+Loading...
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     TASK PROOFS
-===================================================== -->
+<!-- =================================================
+TASK PROOFS
+================================================= -->
 
 <section
-  id="proofs"
-  class="section"
->
+id="proofs"
+class="section">
 
-  <div class="card">
+<div class="card">
 
-    <h2>🖼️ Submitted Task Proofs</h2>
+<h2>🖼️ Task Proofs</h2>
 
-    <p class="small">
-      Review images submitted by users.
-    </p>
+<button
+class="btn gray"
+onclick="loadProofs()">
+🔄 Refresh Proofs
+</button>
 
-    <button
-      class="btn gray"
-      onclick="loadProofs()"
-    >
-      🔄 Refresh Proofs
-    </button>
+<div id="proofList">
+Loading...
+</div>
 
-    <div id="proofList">
-
-      <p class="small">
-        Loading...
-      </p>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     USERS
-===================================================== -->
+<!-- =================================================
+PROMOTIONS
+================================================= -->
 
 <section
-  id="users"
-  class="section"
->
+id="promotions"
+class="section">
 
-  <div class="card">
+<div class="card">
 
-    <h2>👥 Registered Users</h2>
+<h2>📢 Promotion Orders</h2>
 
-    <button
-      class="btn gray"
-      onclick="loadUsers()"
-    >
-      🔄 Refresh Users
-    </button>
+<p class="small">
+Payment proof images are displayed directly below each order.
+</p>
 
-    <div id="userList">
+<button
+class="btn gray"
+onclick="loadPromotions()">
+🔄 Refresh Orders
+</button>
 
-      <p class="small">
-        Loading...
-      </p>
+<div id="promotionList">
+Loading...
+</div>
 
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     WITHDRAWALS
-===================================================== -->
+<!-- =================================================
+USERS
+================================================= -->
 
 <section
-  id="withdrawals"
-  class="section"
->
+id="users"
+class="section">
 
-  <div class="card">
+<div class="card">
 
-    <h2>💸 Withdrawal Requests</h2>
+<h2>👥 Registered Users</h2>
 
-    <button
-      class="btn gray"
-      onclick="loadWithdrawals()"
-    >
-      🔄 Refresh Withdrawals
-    </button>
+<button
+class="btn gray"
+onclick="loadUsers()">
+🔄 Refresh Users
+</button>
 
-    <div id="withdrawalList">
+<div id="userList">
+Loading...
+</div>
 
-      <p class="small">
-        Loading...
-      </p>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     PROMOTIONS
-===================================================== -->
+<!-- =================================================
+WITHDRAWALS
+================================================= -->
 
 <section
-  id="promotions"
-  class="section"
->
+id="withdrawals"
+class="section">
 
-  <div class="card">
+<div class="card">
 
-    <h2>📢 Promotion Orders</h2>
+<h2>💸 Withdrawal Requests</h2>
 
-    <p class="small">
-      Payment proof images are displayed directly under
-      each promotion order.
-    </p>
+<button
+class="btn gray"
+onclick="loadWithdrawals()">
+🔄 Refresh
+</button>
 
-    <button
-      class="btn gray"
-      onclick="loadPromotions()"
-    >
-      🔄 Refresh Promotion Orders
-    </button>
+<div id="withdrawalList">
+Loading...
+</div>
 
-    <div id="promotionList">
-
-      <p class="small">
-        Loading...
-      </p>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
@@ -758,2057 +555,1359 @@ nav button:hover{
 
 </div>
 
-
-<!-- =====================================================
-     FIREBASE
-===================================================== -->
 
 <script type="module">
 
-import {
-  initializeApp
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
+/* =================================================
+FIREBASE
+================================================= */
 
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
+initializeApp
 }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  doc,
-  updateDoc,
-  query,
-  where,
-  serverTimestamp
+getAuth,
+signInWithEmailAndPassword,
+onAuthStateChanged,
+signOut
 }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
-
-const firebaseConfig = {
-
-  apiKey:
-  "AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
-
-  authDomain:
-  "story-verse-earnig.firebaseapp.com",
-
-  databaseURL:
-  "https://story-verse-earnig-default-rtdb.firebaseio.com",
-
-  projectId:
-  "story-verse-earnig",
-
-  storageBucket:
-  "story-verse-earnig.firebasestorage.app",
-
-  messagingSenderId:
-  "650131396615",
-
-  appId:
-  "1:650131396615:web:ad655e6412de909d8db2a2",
-
-  measurementId:
-  "G-ZLQ6G156LX"
-
-};
-
-
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
-
-const db = getFirestore(app);
-
-
-/* =====================================================
-   ADMIN EMAIL
-===================================================== */
-
-const ADMIN_EMAIL =
-  "storyversetvearnhub@gmail.com";
-
-
-/* =====================================================
-   LOGIN MESSAGE
-===================================================== */
-
-function showLoginMessage(text,type="error"){
-
-  const box =
-    document.getElementById("loginMessage");
-
-  box.style.display="block";
-
-  box.className =
-    type === "success"
-    ? "message successMessage"
-    : "message errorMessage";
-
-  box.textContent=text;
-
+import {
+getFirestore,
+collection,
+doc,
+addDoc,
+getDocs,
+getDoc,
+query,
+where,
+updateDoc,
+serverTimestamp
 }
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =====================================================
-   ADMIN LOGIN
-===================================================== */
+const firebaseConfig={
 
-window.adminLogin = async function(){
+apiKey:
+"AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
 
-  const email =
-    document
-    .getElementById("adminEmail")
-    .value
-    .trim()
-    .toLowerCase();
+authDomain:
+"story-verse-earnig.firebaseapp.com",
 
-  const password =
-    document
-    .getElementById("adminPassword")
-    .value;
+databaseURL:
+"https://story-verse-earnig-default-rtdb.firebaseio.com",
 
-  if(!email){
+projectId:
+"story-verse-earnig",
 
-    showLoginMessage(
-      "Please enter your admin email."
-    );
+storageBucket:
+"story-verse-earnig.firebasestorage.app",
 
-    return;
+messagingSenderId:
+"650131396615",
 
-  }
+appId:
+"1:650131396615:web:ad655e6412de909d8db2a2",
 
-  if(!password){
-
-    showLoginMessage(
-      "Please enter your admin password."
-    );
-
-    return;
-
-  }
-
-
-  if(email !== ADMIN_EMAIL){
-
-    showLoginMessage(
-      "This email is not authorized as the admin."
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    showLoginMessage(
-      "Login failed: " + error.message
-    );
-
-  }
+measurementId:
+"G-ZLQ6G156LX"
 
 };
 
 
-/* =====================================================
-   AUTH STATE
-===================================================== */
+const app=
+initializeApp(firebaseConfig);
 
-onAuthStateChanged(auth,(user)=>{
+const auth=
+getAuth(app);
 
-  if(user){
-
-    if(
-      user.email &&
-      user.email.toLowerCase() === ADMIN_EMAIL
-    ){
-
-      document
-      .getElementById("loginPage")
-      .style.display="none";
-
-      document
-      .getElementById("adminPage")
-      .style.display="block";
-
-      document
-      .getElementById("loggedAdminEmail")
-      .textContent=user.email;
-
-      refreshEverything();
-
-    }
-
-    else{
-
-      signOut(auth);
-
-      document
-      .getElementById("loginPage")
-      .style.display="flex";
-
-      document
-      .getElementById("adminPage")
-      .style.display="none";
-
-      showLoginMessage(
-        "This account is not the authorized admin account."
-      );
-
-    }
-
-  }
-
-  else{
-
-    document
-    .getElementById("loginPage")
-    .style.display="flex";
-
-    document
-    .getElementById("adminPage")
-    .style.display="none";
-
-  }
-
-});
+const db=
+getFirestore(app);
 
 
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-window.adminLogout = async function(){
-
-  await signOut(auth);
-
-};
+const ADMIN_EMAIL=
+"storyversetvearnhub@gmail.com";
 
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-window.showSection = function(name){
-
-  document
-  .querySelectorAll(".section")
-  .forEach(section=>{
-    section.classList.remove("active");
-  });
-
-
-  const section =
-    document.getElementById(name);
-
-  if(section){
-
-    section.classList.add("active");
-
-  }
-
-};
-
-
-/* =====================================================
-   MESSAGE
-===================================================== */
-
-function showMessage(
-  id,
-  text,
-  type="success"
-){
-
-  const box =
-    document.getElementById(id);
-
-  if(!box)return;
-
-  box.style.display="block";
-
-  box.className =
-    type === "error"
-    ? "message errorMessage"
-    : "message successMessage";
-
-  box.textContent=text;
-
-}
-
-
-/* =====================================================
-   SAFE TEXT
-===================================================== */
+/* =================================================
+HELPER
+================================================= */
 
 function safe(value){
 
-  return String(value ?? "")
-  .replaceAll("&","&amp;")
-  .replaceAll("<","&lt;")
-  .replaceAll(">","&gt;")
-  .replaceAll('"',"&quot;")
-  .replaceAll("'","&#039;");
+return String(value??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
-/* =====================================================
-   ADD TASK
-===================================================== */
+function message(id,text,type="success"){
 
-window.addTask = async function(){
+const box=
+document.getElementById(id);
 
-  const title =
-    document
-    .getElementById("taskTitle")
-    .value
-    .trim();
+box.textContent=text;
 
-  const description =
-    document
-    .getElementById("taskDescription")
-    .value
-    .trim();
+box.className=
+"message "+type;
 
-  const link =
-    document
-    .getElementById("taskLink")
-    .value
-    .trim();
-
-  const reward =
-    Number(
-      document
-      .getElementById("taskReward")
-      .value
-    );
-
-  const active =
-    document
-    .getElementById("taskActive")
-    .value === "true";
+}
 
 
-  if(!title){
+/* =================================================
+ADMIN LOGIN
+================================================= */
 
-    showMessage(
-      "taskMessage",
-      "Please enter a task title.",
-      "error"
-    );
+window.adminLogin=async function(){
 
-    return;
+const email=
+document.getElementById("adminEmail")
+.value.trim();
 
-  }
+const password=
+document.getElementById("adminPassword")
+.value;
 
+if(email.toLowerCase()!==ADMIN_EMAIL){
 
-  if(!description){
+message(
+"loginMessage",
+"This account is not authorized as admin.",
+"error"
+);
 
-    showMessage(
-      "taskMessage",
-      "Please enter a task description.",
-      "error"
-    );
+return;
+}
 
-    return;
+try{
 
-  }
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
 
+}
+catch(error){
 
-  if(isNaN(reward) || reward < 0){
+message(
+"loginMessage",
+"Login failed: "+error.message,
+"error"
+);
 
-    showMessage(
-      "taskMessage",
-      "Please enter a valid reward.",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    await addDoc(
-      collection(db,"tasks"),
-      {
-
-        title:title,
-
-        description:description,
-
-        link:link,
-
-        reward:reward,
-
-        active:active,
-
-        createdAt:serverTimestamp()
-
-      }
-    );
-
-
-    showMessage(
-      "taskMessage",
-      "✅ Task added successfully."
-    );
-
-
-    document
-    .getElementById("taskTitle")
-    .value="";
-
-    document
-    .getElementById("taskDescription")
-    .value="";
-
-    document
-    .getElementById("taskLink")
-    .value="";
-
-    document
-    .getElementById("taskReward")
-    .value="";
-
-
-    loadTasks();
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    showMessage(
-      "taskMessage",
-      "Could not add task: " + error.message,
-      "error"
-    );
-
-  }
+}
 
 };
 
 
-/* =====================================================
-   LOAD TASKS
-===================================================== */
+/* =================================================
+AUTH STATE
+================================================= */
 
-window.loadTasks = async function(){
+onAuthStateChanged(
+auth,
+async(user)=>{
 
-  const list =
-    document.getElementById("taskList");
+if(user &&
+user.email.toLowerCase()===ADMIN_EMAIL){
 
-  list.innerHTML=
-    "<p class='small'>Loading tasks...</p>";
+document
+.getElementById("loginArea")
+.classList.add("hidden");
 
+document
+.getElementById("adminArea")
+.classList.remove("hidden");
 
-  try{
+await refreshAll();
 
-    const snap =
-      await getDocs(
-        collection(db,"tasks")
-      );
+}
+else{
 
+if(user){
 
-    if(snap.empty){
+await signOut(auth);
 
-      list.innerHTML=
-        "<p class='small'>No tasks found.</p>";
+}
 
-      return;
+document
+.getElementById("loginArea")
+.classList.remove("hidden");
 
-    }
+document
+.getElementById("adminArea")
+.classList.add("hidden");
 
+}
 
-    list.innerHTML="";
-
-
-    snap.forEach(taskDoc=>{
-
-      const d=taskDoc.data();
-
-
-      const div =
-        document.createElement("div");
-
-      div.className="task-card";
-
-
-      div.innerHTML=`
-
-        <h3>
-          ${safe(d.title || "Task")}
-        </h3>
-
-        <p>
-          ${safe(d.description || "")}
-        </p>
-
-        <p>
-          Reward:
-          <strong>
-            ₦${Number(d.reward || 0).toLocaleString()}
-          </strong>
-        </p>
-
-        <p>
-          Status:
-          <strong>
-            ${d.active === true ? "Active" : "Inactive"}
-          </strong>
-        </p>
-
-      `;
+}
+);
 
 
-      const button =
-        document.createElement("button");
+/* =================================================
+LOGOUT
+================================================= */
 
-      button.className =
-        "btn " +
-        (d.active === true ? "red" : "green");
+window.adminLogout=async function(){
 
-      button.textContent =
-        d.active === true
-        ? "⛔ Disable Task"
-        : "✅ Activate Task";
-
-
-      button.onclick=()=>{
-
-        toggleTask(
-          taskDoc.id,
-          d.active === true
-        );
-
-      };
-
-
-      div.appendChild(button);
-
-      list.appendChild(div);
-
-    });
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    list.innerHTML=
-      "<p class='small'>Could not load tasks: "
-      + safe(error.message)
-      + "</p>";
-
-  }
+await signOut(auth);
 
 };
 
 
-/* =====================================================
-   TOGGLE TASK
-===================================================== */
+/* =================================================
+NAVIGATION
+================================================= */
 
-window.toggleTask =
-async function(taskId,currentStatus){
+window.showSection=function(name){
 
-  try{
+document
+.querySelectorAll(".section")
+.forEach(x=>
+x.classList.remove("active")
+);
 
-    await updateDoc(
-      doc(db,"tasks",taskId),
-      {
-        active:!currentStatus
-      }
-    );
-
-
-    loadTasks();
-
-  }
-
-  catch(error){
-
-    alert(
-      "Could not update task: "
-      + error.message
-    );
-
-  }
+document
+.getElementById(name)
+.classList.add("active");
 
 };
 
 
-/* =====================================================
-   LOAD TASK PROOFS
-===================================================== */
+/* =================================================
+ADD TASK
+================================================= */
 
-window.loadProofs = async function(){
+window.addTask=async function(){
 
-  const list =
-    document.getElementById("proofList");
+const title=
+document.getElementById("taskTitle")
+.value.trim();
 
-  list.innerHTML=
-    "<p class='small'>Loading proofs...</p>";
+const description=
+document.getElementById("taskDescription")
+.value.trim();
 
+const link=
+document.getElementById("taskLink")
+.value.trim();
 
-  try{
+const reward=
+Number(
+document.getElementById("taskReward")
+.value
+);
 
-    const snap =
-      await getDocs(
-        collection(db,"taskSubmissions")
-      );
+if(!title ||
+!description ||
+reward<0){
 
+message(
+"taskMessage",
+"Complete the task information.",
+"error"
+);
 
-    let pending=0;
+return;
+}
 
+try{
 
-    if(snap.empty){
+await addDoc(
+collection(db,"tasks"),
+{
 
-      list.innerHTML=
-        "<p class='small'>No task proofs submitted.</p>";
+title:title,
 
-      document
-      .getElementById("pendingProofs")
-      .textContent="0";
+description:description,
 
-      return;
+link:link,
 
-    }
+reward:reward,
 
+active:true,
 
-    list.innerHTML="";
+createdAt:serverTimestamp(),
 
+createdBy:auth.currentUser.uid
 
-    snap.forEach(submissionDoc=>{
+}
+);
 
-      const d=submissionDoc.data();
+message(
+"taskMessage",
+"✅ Task added successfully."
+);
 
+document.getElementById("taskTitle").value="";
 
-      if(
-        String(d.status || "Pending")
-        .toLowerCase() === "pending"
-      ){
+document.getElementById("taskDescription").value="";
 
-        pending++;
+document.getElementById("taskLink").value="";
 
-      }
+document.getElementById("taskReward").value="";
 
+loadTasks();
 
-      const div =
-        document.createElement("div");
+}
+catch(error){
 
-      div.className="task-card";
+message(
+"taskMessage",
+"Could not add task: "+error.message,
+"error"
+);
 
-
-      let statusClass="pending";
-
-
-      if(d.status==="Approved")
-        statusClass="approved";
-
-
-      if(d.status==="Rejected")
-        statusClass="rejected";
-
-
-      div.innerHTML=`
-
-        <h3>
-          📝 ${safe(d.taskTitle || "Task")}
-        </h3>
-
-        <p>
-          User:
-          ${safe(d.email || d.uid || "")}
-        </p>
-
-        <p>
-          Reward:
-          ₦${Number(d.reward || 0).toLocaleString()}
-        </p>
-
-        <p>
-          <span class="status ${statusClass}">
-            ${safe(d.status || "Pending")}
-          </span>
-        </p>
-
-      `;
-
-
-      const imageUrl =
-        d.proofImage ||
-        d.proofImageUrl ||
-        d.imageUrl ||
-        d.image ||
-        d.proof;
-
-
-      if(imageUrl){
-
-        const proofBox =
-          document.createElement("div");
-
-        proofBox.className="proofBox";
-
-
-        proofBox.innerHTML=
-          "<h4>🖼️ Task Proof Image</h4>";
-
-
-        const img =
-          document.createElement("img");
-
-        img.className="paymentProof";
-
-        img.src=imageUrl;
-
-        img.alt="Task proof";
-
-
-        proofBox.appendChild(img);
-
-        div.appendChild(proofBox);
-
-      }
-
-
-      if(d.proofText){
-
-        const p =
-          document.createElement("p");
-
-        p.className="small";
-
-        p.innerHTML=
-          "<strong>User explanation:</strong><br>"
-          + safe(d.proofText);
-
-        div.appendChild(p);
-
-      }
-
-
-      if(d.status==="Pending"){
-
-        const approve =
-          document.createElement("button");
-
-        approve.className="btn green";
-
-        approve.textContent=
-          "✅ Approve Proof";
-
-
-        approve.onclick=()=>{
-
-          approveProof(
-            submissionDoc.id,
-            d.uid,
-            Number(d.reward || 0)
-          );
-
-        };
-
-
-        div.appendChild(approve);
-
-
-        const reject =
-          document.createElement("button");
-
-        reject.className="btn red";
-
-        reject.textContent=
-          "❌ Reject Proof";
-
-
-        reject.onclick=()=>{
-
-          rejectProof(
-            submissionDoc.id
-          );
-
-        };
-
-
-        div.appendChild(reject);
-
-      }
-
-
-      list.appendChild(div);
-
-    });
-
-
-    document
-    .getElementById("pendingProofs")
-    .textContent=pending;
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    list.innerHTML=
-      "<p class='small'>Could not load proofs: "
-      + safe(error.message)
-      + "</p>";
-
-  }
+}
 
 };
 
 
-/* =====================================================
-   APPROVE PROOF
-===================================================== */
+/* =================================================
+LOAD TASKS
+================================================= */
 
-window.approveProof =
-async function(
-  submissionId,
-  uid,
-  reward
+window.loadTasks=async function(){
+
+const list=
+document.getElementById("taskList");
+
+list.innerHTML=
+"<p class='small'>Loading...</p>";
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"tasks")
+);
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>No tasks.</p>";
+
+return;
+}
+
+list.innerHTML="";
+
+snap.forEach(taskDoc=>{
+
+const d=taskDoc.data();
+
+const div=
+document.createElement("div");
+
+div.className="task";
+
+div.innerHTML=`
+
+<h3>${safe(d.title)}</h3>
+
+<p>${safe(d.description)}</p>
+
+<p>
+<strong>Reward:</strong>
+₦${Number(d.reward||0).toLocaleString()}
+</p>
+
+<p>
+<strong>Status:</strong>
+${d.active?"Active":"Inactive"}
+</p>
+
+`;
+
+const button=
+document.createElement("button");
+
+button.className=
+"d.active?'btn red':'btn green'";
+
+button.className=
+d.active?"btn red":"btn green";
+
+button.textContent=
+d.active?"Disable Task":"Activate Task";
+
+button.onclick=async()=>{
+
+await updateDoc(
+doc(db,"tasks",taskDoc.id),
+{
+active:!d.active
+}
+);
+
+loadTasks();
+
+};
+
+div.appendChild(button);
+
+list.appendChild(div);
+
+});
+
+}
+catch(error){
+
+list.innerHTML=
+"<p class='small'>Could not load tasks: "
++safe(error.message)
++"</p>";
+
+}
+
+};
+
+
+/* =================================================
+LOAD TASK PROOFS
+================================================= */
+
+window.loadProofs=async function(){
+
+const list=
+document.getElementById("proofList");
+
+list.innerHTML=
+"<p class='small'>Loading...</p>";
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"taskSubmissions")
+);
+
+let pending=0;
+
+list.innerHTML="";
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>No proofs.</p>";
+
+document.getElementById("pendingProofs")
+.textContent="0";
+
+return;
+}
+
+snap.forEach(proofDoc=>{
+
+const d=proofDoc.data();
+
+if(d.status==="Pending"){
+pending++;
+}
+
+const div=
+document.createElement("div");
+
+div.className="order";
+
+let cls="pending";
+
+if(d.status==="Approved"){
+cls="approved";
+}
+
+if(d.status==="Rejected"){
+cls="rejected";
+}
+
+div.innerHTML=`
+
+<h3>📝 ${safe(d.taskTitle||"Task")}</h3>
+
+<p>
+<strong>User:</strong>
+${safe(d.email||d.uid||"")}
+</p>
+
+<p>
+<strong>Reward:</strong>
+₦${Number(d.reward||0).toLocaleString()}
+</p>
+
+<p>
+<strong>Status:</strong>
+<span class="status ${cls}">
+${safe(d.status||"Pending")}
+</span>
+</p>
+
+`;
+
+if(d.proofImage){
+
+const img=
+document.createElement("img");
+
+img.src=d.proofImage;
+
+img.className="proof-image";
+
+img.alt="Task proof image";
+
+div.appendChild(img);
+
+}
+
+if(d.status==="Pending"){
+
+const approve=
+document.createElement("button");
+
+approve.className="btn green";
+
+approve.textContent=
+"✅ Approve Proof";
+
+approve.onclick=()=>{
+
+approveProof(
+proofDoc.id,
+d.uid,
+Number(d.reward||0)
+);
+
+};
+
+div.appendChild(approve);
+
+
+const reject=
+document.createElement("button");
+
+reject.className="btn red";
+
+reject.textContent=
+"❌ Reject Proof";
+
+reject.onclick=()=>{
+
+rejectProof(proofDoc.id);
+
+};
+
+div.appendChild(reject);
+
+}
+
+list.appendChild(div);
+
+});
+
+document.getElementById("pendingProofs")
+.textContent=pending;
+
+}
+catch(error){
+
+list.innerHTML=
+"<p class='small'>Could not load proofs: "
++safe(error.message)
++"</p>";
+
+}
+
+};
+
+
+/* =================================================
+APPROVE PROOF
+================================================= */
+
+window.approveProof=async function(
+submissionId,
+uid,
+reward
 ){
 
-  if(
-    !confirm(
-      "Approve this proof and add ₦"
-      + reward.toLocaleString()
-      + " to the user's balance?"
-    )
-  ){
+if(!confirm(
+"Approve this proof and add ₦"+
+reward.toLocaleString()+
+" to the user's balance?"
+))return;
 
-    return;
+try{
 
-  }
+const userRef=
+doc(db,"users",uid);
 
+const userSnap=
+await getDoc(userRef);
 
-  try{
+if(!userSnap.exists()){
 
-    const q =
-      query(
-        collection(db,"users"),
-        where("uid","==",uid)
-      );
+alert("User record not found.");
 
+return;
+}
 
-    const userSnap =
-      await getDocs(q);
+const currentBalance=
+Number(
+userSnap.data().balance||0
+);
 
+await updateDoc(
+userRef,
+{
+balance:currentBalance+reward
+}
+);
 
-    if(userSnap.empty){
+await updateDoc(
+doc(
+db,
+"taskSubmissions",
+submissionId
+),
+{
 
-      alert(
-        "User record was not found."
-      );
+status:"Approved",
 
-      return;
+approvedAt:serverTimestamp(),
 
-    }
+approvedBy:auth.currentUser.uid
 
+}
+);
 
-    const userDoc =
-      userSnap.docs[0];
+alert(
+"✅ Proof approved and balance updated."
+);
 
+loadProofs();
 
-    const currentBalance =
-      Number(
-        userDoc.data().balance || 0
-      );
+loadUsers();
 
+}
+catch(error){
 
-    await updateDoc(
-      doc(
-        db,
-        "users",
-        userDoc.id
-      ),
-      {
-        balance:
-          currentBalance + reward
-      }
-    );
+alert(
+"Could not approve proof: "+
+error.message
+);
 
-
-    await updateDoc(
-      doc(
-        db,
-        "taskSubmissions",
-        submissionId
-      ),
-      {
-        status:"Approved",
-        approvedAt:
-          serverTimestamp()
-      }
-    );
-
-
-    alert(
-      "Proof approved successfully."
-    );
-
-
-    loadProofs();
-
-    loadUsers();
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not approve proof: "
-      + error.message
-    );
-
-  }
+}
 
 };
 
 
-/* =====================================================
-   REJECT PROOF
-===================================================== */
-
-window.rejectProof =
-async function(submissionId){
-
-  const reason =
-    prompt(
-      "Enter rejection reason:"
-    );
-
-
-  if(reason===null){
-
-    return;
-
-  }
-
-
-  try{
-
-    await updateDoc(
-      doc(
-        db,
-        "taskSubmissions",
-        submissionId
-      ),
-      {
-
-        status:"Rejected",
-
-        rejectionReason:reason,
-
-        rejectedAt:
-          serverTimestamp()
-
-      }
-    );
-
-
-    alert(
-      "Proof rejected."
-    );
-
-
-    loadProofs();
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not reject proof: "
-      + error.message
-    );
-
-  }
-
-};
-
-
-/* =====================================================
-   LOAD USERS
-===================================================== */
-
-window.loadUsers = async function(){
-
-  const list =
-    document.getElementById("userList");
-
-  list.innerHTML=
-    "<p class='small'>Loading users...</p>";
-
-
-  try{
-
-    const snap =
-      await getDocs(
-        collection(db,"users")
-      );
-
-
-    document
-    .getElementById("totalUsers")
-    .textContent=snap.size;
-
-
-    if(snap.empty){
-
-      list.innerHTML=
-        "<p class='small'>No users found.</p>";
-
-      return;
-
-    }
-
-
-    list.innerHTML="";
-
-
-    snap.forEach(userDoc=>{
-
-      const d=userDoc.data();
-
-
-      const div =
-        document.createElement("div");
-
-      div.className="task-card";
-
-
-      div.innerHTML=`
-
-        <h3>
-          👤 ${safe(d.email || "User")}
-        </h3>
-
-        <p>
-          UID:
-          ${safe(d.uid || userDoc.id)}
-        </p>
-
-        <p>
-          Balance:
-          <strong>
-            ₦${Number(d.balance || 0).toLocaleString()}
-          </strong>
-        </p>
-
-        <p>
-          Role:
-          ${safe(d.role || "user")}
-        </p>
-
-        <input
-          type="number"
-          id="balance-${userDoc.id}"
-          placeholder="Enter new balance"
-          min="0"
-        >
-
-      `;
-
-
-      const button =
-        document.createElement("button");
-
-      button.className="btn blue";
-
-      button.textContent=
-        "💰 Update Balance";
-
-
-      button.onclick=()=>{
-
-        changeBalance(
-          userDoc.id
-        );
-
-      };
-
-
-      div.appendChild(button);
-
-      list.appendChild(div);
-
-    });
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    list.innerHTML=
-      "<p class='small'>Could not load users: "
-      + safe(error.message)
-      + "</p>";
-
-  }
-
-};
-
-
-/* =====================================================
-   CHANGE BALANCE
-===================================================== */
-
-window.changeBalance =
-async function(userDocId){
-
-  const input =
-    document.getElementById(
-      "balance-" + userDocId
-    );
-
-
-  const newBalance =
-    Number(input.value);
-
-
-  if(
-    isNaN(newBalance)
-    || newBalance < 0
-  ){
-
-    alert(
-      "Enter a valid balance."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    !confirm(
-      "Set this user's balance to ₦"
-      + newBalance.toLocaleString()
-      + "?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  try{
-
-    await updateDoc(
-      doc(
-        db,
-        "users",
-        userDocId
-      ),
-      {
-        balance:newBalance
-      }
-    );
-
-
-    alert(
-      "Balance updated successfully."
-    );
-
-
-    loadUsers();
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not update balance: "
-      + error.message
-    );
-
-  }
-
-};
-
-
-/* =====================================================
-   LOAD WITHDRAWALS
-===================================================== */
-
-window.loadWithdrawals =
-async function(){
-
-  const list =
-    document.getElementById(
-      "withdrawalList"
-    );
-
-
-  list.innerHTML=
-    "<p class='small'>Loading withdrawals...</p>";
-
-
-  try{
-
-    const snap =
-      await getDocs(
-        collection(
-          db,
-          "withdrawals"
-        )
-      );
-
-
-    let pending=0;
-
-
-    if(snap.empty){
-
-      list.innerHTML=
-        "<p class='small'>No withdrawal requests.</p>";
-
-      document
-      .getElementById(
-        "pendingWithdrawals"
-      )
-      .textContent="0";
-
-      return;
-
-    }
-
-
-    list.innerHTML="";
-
-
-    snap.forEach(withdrawalDoc=>{
-
-      const d=
-        withdrawalDoc.data();
-
-
-      if(
-        d.status==="Pending"
-      ){
-
-        pending++;
-
-      }
-
-
-      let statusClass="pending";
-
-
-      if(d.status==="Approved")
-        statusClass="approved";
-
-
-      if(d.status==="Rejected")
-        statusClass="rejected";
-
-
-      const div =
-        document.createElement(
-          "div"
-        );
-
-      div.className="task-card";
-
-
-      div.innerHTML=`
-
-        <h3>
-          💸 ₦${Number(
-            d.amount || 0
-          ).toLocaleString()}
-        </h3>
-
-        <p>
-          User:
-          ${safe(
-            d.email ||
-            d.uid ||
-            ""
-          )}
-        </p>
-
-        <p>
-          Bank:
-          ${safe(
-            d.bankName ||
-            d.bank ||
-            ""
-          )}
-        </p>
-
-        <p>
-          Account Number:
-          ${safe(
-            d.accountNumber ||
-            ""
-          )}
-        </p>
-
-        <p>
-          Account Name:
-          ${safe(
-            d.accountName ||
-            ""
-          )}
-        </p>
-
-        <p>
-          <span class="status ${statusClass}">
-            ${safe(
-              d.status ||
-              "Pending"
-            )}
-          </span>
-        </p>
-
-      `;
-
-
-      if(
-        d.status==="Pending"
-      ){
-
-        const approve =
-          document.createElement(
-            "button"
-          );
-
-        approve.className=
-          "btn green";
-
-        approve.textContent=
-          "✅ Mark Approved";
-
-
-        approve.onclick=()=>{
-
-          updateWithdrawalStatus(
-            withdrawalDoc.id,
-            "Approved"
-          );
-
-        };
-
-
-        div.appendChild(
-          approve
-        );
-
-
-        const reject =
-          document.createElement(
-            "button"
-          );
-
-        reject.className=
-          "btn red";
-
-        reject.textContent=
-          "❌ Reject";
-
-
-        reject.onclick=()=>{
-
-          updateWithdrawalStatus(
-            withdrawalDoc.id,
-            "Rejected"
-          );
-
-        };
-
-
-        div.appendChild(
-          reject
-        );
-
-      }
-
-
-      list.appendChild(div);
-
-    });
-
-
-    document
-    .getElementById(
-      "pendingWithdrawals"
-    )
-    .textContent=pending;
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    list.innerHTML=
-      "<p class='small'>Could not load withdrawals: "
-      + safe(error.message)
-      + "</p>";
-
-  }
-
-};
-
-
-/* =====================================================
-   UPDATE WITHDRAWAL
-===================================================== */
-
-window.updateWithdrawalStatus =
-async function(
-  withdrawalId,
-  status
+/* =================================================
+REJECT PROOF
+================================================= */
+
+window.rejectProof=async function(
+submissionId
 ){
 
-  if(
-    !confirm(
-      "Change withdrawal status to "
-      + status
-      + "?"
-    )
-  ){
+const reason=
+prompt("Enter rejection reason:");
 
-    return;
+if(reason===null)return;
 
-  }
+try{
 
+await updateDoc(
+doc(
+db,
+"taskSubmissions",
+submissionId
+),
+{
 
-  try{
+status:"Rejected",
 
-    await updateDoc(
-      doc(
-        db,
-        "withdrawals",
-        withdrawalId
-      ),
-      {
+rejectionReason:reason,
 
-        status:status,
+rejectedAt:serverTimestamp(),
 
-        processedAt:
-          serverTimestamp()
+rejectedBy:auth.currentUser.uid
 
-      }
-    );
+}
+);
 
+alert("Proof rejected.");
 
-    alert(
-      "Withdrawal updated."
-    );
+loadProofs();
 
+}
+catch(error){
 
-    loadWithdrawals();
+alert(
+"Could not reject proof: "+
+error.message
+);
 
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not update withdrawal: "
-      + error.message
-    );
-
-  }
+}
 
 };
 
 
-/* =====================================================
-   LOAD PROMOTIONS
-===================================================== */
+/* =================================================
+PROMOTION ORDERS
+================================================= */
 
-window.loadPromotions =
-async function(){
+window.loadPromotions=async function(){
 
-  const list =
-    document.getElementById(
-      "promotionList"
-    );
+const list=
+document.getElementById("promotionList");
 
+list.innerHTML=
+"<p class='small'>Loading...</p>";
 
-  list.innerHTML=
-    "<p class='small'>Loading promotion orders...</p>";
+try{
 
+const snap=
+await getDocs(
+collection(db,"promotionOrders")
+);
 
-  try{
+let pending=0;
 
-    const snap =
-      await getDocs(
-        collection(
-          db,
-          "promotionOrders"
-        )
-      );
+list.innerHTML="";
 
+if(snap.empty){
 
-    let pending=0;
+list.innerHTML=
+"<p class='small'>No promotion orders.</p>";
 
+document
+.getElementById("pendingPromotions")
+.textContent="0";
 
-    if(snap.empty){
+return;
+}
 
-      list.innerHTML=
-        "<p class='small'>No promotion orders found.</p>";
+snap.forEach(orderDoc=>{
 
-      document
-      .getElementById(
-        "pendingPromotions"
-      )
-      .textContent="0";
+const d=orderDoc.data();
 
-      return;
+if(d.promotionStatus==="Pending"){
+pending++;
+}
 
-    }
+const div=
+document.createElement("div");
 
+div.className="order";
 
-    list.innerHTML="";
+let statusClass="pending";
 
+if(d.promotionStatus==="Approved"){
+statusClass="approved";
+}
 
-    snap.forEach(
-      promotionDoc=>{
+if(d.promotionStatus==="Rejected"){
+statusClass="rejected";
+}
 
-        const d=
-          promotionDoc.data();
+div.innerHTML=`
 
+<h3>
+📢 ${safe(d.promotionType||"Promotion")}
+</h3>
 
-        const promotionStatus =
-          d.promotionStatus ||
-          d.status ||
-          "Pending";
+<p>
+<strong>User:</strong>
+${safe(d.email||"")}
+</p>
 
+<p>
+<strong>Amount:</strong>
+₦${Number(d.amount||0).toLocaleString()}
+</p>
 
-        if(
-          promotionStatus
-          .toLowerCase()
-          === "pending"
-        ){
+<p>
+<strong>Promotion Link:</strong><br>
 
-          pending++;
+<a
+href="${safe(d.promotionLink||"#")}"
+target="_blank">
 
-        }
+${safe(d.promotionLink||"")}
 
+</a>
 
-        let statusClass=
-          "pending";
+</p>
 
+<p>
+<strong>Payment Status:</strong>
+${safe(d.paymentStatus||"Pending")}
+</p>
 
-        if(
-          promotionStatus
-          .toLowerCase()
-          === "approved"
-        ){
+<p>
+<strong>Promotion Status:</strong>
 
-          statusClass=
-            "approved";
+<span class="status ${statusClass}">
+${safe(d.promotionStatus||"Pending")}
+</span>
 
-        }
+</p>
 
+`;
 
-        if(
-          promotionStatus
-          .toLowerCase()
-          === "rejected"
-        ){
 
-          statusClass=
-            "rejected";
+/* ================================================
+PAYMENT PROOF IMAGE DIRECTLY UNDER ORDER
+================================================ */
 
-        }
+if(d.proofImage){
 
+const label=
+document.createElement("p");
 
-        const div =
-          document.createElement(
-            "div"
-          );
-
-        div.className=
-          "task-card";
-
-
-        /* =========================================
-           ORDER INFORMATION
-        ========================================= */
-
-        div.innerHTML=`
+label.style.marginTop="15px";
 
-          <h3>
-            📢 ${safe(
-              d.promotionType ||
-              d.service ||
-              d.type ||
-              "Promotion Order"
-            )}
-          </h3>
+label.innerHTML=
+"<strong>🖼️ Payment Proof Image:</strong>";
 
-          <div class="orderInfo">
+div.appendChild(label);
 
-            <p>
-              <strong>User:</strong>
-              ${safe(
-                d.email ||
-                d.userEmail ||
-                d.uid ||
-                ""
-              )}
-            </p>
-
-            <p>
-              <strong>Promotion Link:</strong>
-              ${safe(
-                d.promotionLink ||
-                d.link ||
-                d.targetLink ||
-                ""
-              )}
-            </p>
 
-            <p>
-              <strong>Amount:</strong>
-              ₦${Number(
-                d.amount ||
-                d.price ||
-                0
-              ).toLocaleString()}
-            </p>
+const img=
+document.createElement("img");
 
-            <p>
-              <strong>Payment Status:</strong>
-              ${safe(
-                d.paymentStatus ||
-                "Pending"
-              )}
-            </p>
+img.src=d.proofImage;
 
-            <p>
-              <strong>Promotion Status:</strong>
-              <span class="status ${statusClass}">
-                ${safe(
-                  promotionStatus
-                )}
-              </span>
-            </p>
+img.className="proof-image";
 
-          </div>
+img.alt=
+"Customer payment proof";
 
-        `;
+div.appendChild(img);
 
+}
 
-        /* =========================================
-           PROMOTION LINK
-        ========================================= */
 
-        const promotionLink =
-          d.promotionLink ||
-          d.link ||
-          d.targetLink;
+/* ================================================
+APPROVE / REJECT
+================================================ */
 
+if(d.promotionStatus==="Pending"){
 
-        if(promotionLink){
+const approve=
+document.createElement("button");
 
-          const linkButton =
-            document.createElement(
-              "a"
-            );
+approve.className="btn green";
 
-          linkButton.className=
-            "linkButton";
+approve.textContent=
+"✅ Approve Promotion";
 
-          linkButton.href=
-            promotionLink;
+approve.onclick=()=>{
 
-          linkButton.target="_blank";
+updatePromotion(
+orderDoc.id,
+"Approved"
+);
 
-          linkButton.rel=
-            "noopener noreferrer";
+};
 
-          linkButton.textContent=
-            "🔗 Open User Promotion Link";
+div.appendChild(approve);
 
 
-          div.appendChild(
-            linkButton
-          );
+const reject=
+document.createElement("button");
 
-        }
+reject.className="btn red";
 
+reject.textContent=
+"❌ Reject Promotion";
 
-        /* =========================================
-           PAYMENT PROOF IMAGE
-        ========================================= */
+reject.onclick=()=>{
 
-        const paymentProof =
-          d.paymentProofImage ||
-          d.paymentProofUrl ||
-          d.paymentProof ||
-          d.proofImage ||
-          d.proofImageUrl ||
-          d.imageUrl ||
-          d.paymentImage ||
-          d.image;
+updatePromotion(
+orderDoc.id,
+"Rejected"
+);
 
+};
 
-        const proofBox =
-          document.createElement(
-            "div"
-          );
+div.appendChild(reject);
 
-        proofBox.className=
-          "proofBox";
+}
 
+list.appendChild(div);
 
-        const proofTitle =
-          document.createElement(
-            "h4"
-          );
+});
 
-        proofTitle.textContent=
-          "💳 Payment Proof";
+document
+.getElementById("pendingPromotions")
+.textContent=pending;
 
+}
+catch(error){
 
-        proofBox.appendChild(
-          proofTitle
-        );
+list.innerHTML=
+"<p class='small'>Could not load promotions: "
++safe(error.message)
++"</p>";
 
-
-        if(paymentProof){
-
-          const img =
-            document.createElement(
-              "img"
-            );
-
-          img.className=
-            "paymentProof";
-
-          img.src=
-            paymentProof;
-
-          img.alt=
-            "User payment proof";
-
-          img.loading=
-            "lazy";
-
-
-          img.onerror=function(){
-
-            this.style.display="none";
-
-
-            const errorText =
-              document.createElement(
-                "div"
-              );
-
-            errorText.className=
-              "noProof";
-
-            errorText.textContent=
-              "The payment proof image could not be displayed.";
-
-            proofBox.appendChild(
-              errorText
-            );
-
-          };
-
-
-          proofBox.appendChild(
-            img
-          );
-
-
-          const openProof =
-            document.createElement(
-              "a"
-            );
-
-          openProof.href=
-            paymentProof;
-
-          openProof.target="_blank";
-
-          openProof.rel=
-            "noopener noreferrer";
-
-          openProof.className=
-            "linkButton";
-
-          openProof.textContent=
-            "🔍 Open Full Payment Proof";
-
-
-          proofBox.appendChild(
-            openProof
-          );
-
-        }
-
-        else{
-
-          const noProof =
-            document.createElement(
-              "div"
-            );
-
-          noProof.className=
-            "noProof";
-
-          noProof.textContent=
-            "⚠️ No payment proof image was found for this order.";
-
-          proofBox.appendChild(
-            noProof
-          );
-
-        }
-
-
-        /* =========================================
-           VERY IMPORTANT:
-           PAYMENT PROOF DIRECTLY UNDER ORDER
-        ========================================= */
-
-        div.appendChild(
-          proofBox
-        );
-
-
-        /* =========================================
-           APPROVE / REJECT
-        ========================================= */
-
-        if(
-          promotionStatus
-          .toLowerCase()
-          === "pending"
-        ){
-
-          const approve =
-            document.createElement(
-              "button"
-            );
-
-          approve.className=
-            "btn green";
-
-          approve.textContent=
-            "✅ Approve Promotion";
-
-
-          approve.onclick=()=>{
-
-            updatePromotion(
-              promotionDoc.id,
-              "Approved"
-            );
-
-          };
-
-
-          div.appendChild(
-            approve
-          );
-
-
-          const reject =
-            document.createElement(
-              "button"
-            );
-
-          reject.className=
-            "btn red";
-
-          reject.textContent=
-            "❌ Reject Promotion";
-
-
-          reject.onclick=()=>{
-
-            updatePromotion(
-              promotionDoc.id,
-              "Rejected"
-            );
-
-          };
-
-
-          div.appendChild(
-            reject
-          );
-
-        }
-
-
-        list.appendChild(
-          div
-        );
-
-      }
-    );
-
-
-    document
-    .getElementById(
-      "pendingPromotions"
-    )
-    .textContent=
-      pending;
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    list.innerHTML=
-      "<p class='small'>Could not load promotion orders: "
-      + safe(error.message)
-      + "</p>";
-
-  }
+}
 
 };
 
 
-/* =====================================================
-   UPDATE PROMOTION
-===================================================== */
+/* =================================================
+UPDATE PROMOTION
+================================================= */
 
-window.updatePromotion =
-async function(
-  promotionId,
-  status
+window.updatePromotion=async function(
+orderId,
+status
 ){
 
-  if(
-    !confirm(
-      "Change promotion status to "
-      + status
-      + "?"
-    )
-  ){
+let reason="";
 
-    return;
+if(status==="Rejected"){
 
-  }
+reason=
+prompt("Enter rejection reason:");
 
+if(reason===null)return;
 
-  try{
+}
 
-    await updateDoc(
-      doc(
-        db,
-        "promotionOrders",
-        promotionId
-      ),
-      {
+try{
 
-        promotionStatus:
-          status,
+const updateData={
 
-        updatedAt:
-          serverTimestamp()
+promotionStatus:status,
 
-      }
-    );
+updatedAt:serverTimestamp(),
 
+updatedBy:auth.currentUser.uid
 
-    alert(
-      "Promotion order changed to "
-      + status
-      + "."
-    );
+};
 
+if(status==="Approved"){
 
-    loadPromotions();
+updateData.paymentStatus="Approved";
 
-  }
+}
 
-  catch(error){
+if(status==="Rejected"){
 
-    console.error(error);
+updateData.paymentStatus="Rejected";
 
-    alert(
-      "Could not update promotion: "
-      + error.message
-    );
+updateData.rejectionReason=reason;
 
-  }
+}
+
+await updateDoc(
+doc(
+db,
+"promotionOrders",
+orderId
+),
+updateData
+);
+
+alert(
+"Promotion status changed to "+status
+);
+
+loadPromotions();
+
+}
+catch(error){
+
+alert(
+"Could not update promotion: "+
+error.message
+);
+
+}
 
 };
 
 
-/* =====================================================
-   REFRESH EVERYTHING
-===================================================== */
+/* =================================================
+USERS
+================================================= */
 
-window.refreshEverything =
-async function(){
+window.loadUsers=async function(){
 
-  await loadUsers();
+const list=
+document.getElementById("userList");
 
-  await loadProofs();
+list.innerHTML=
+"<p class='small'>Loading...</p>";
 
-  await loadWithdrawals();
+try{
 
-  await loadPromotions();
+const snap=
+await getDocs(
+collection(db,"users")
+);
 
-  await loadTasks();
+document
+.getElementById("totalUsers")
+.textContent=snap.size;
+
+list.innerHTML="";
+
+snap.forEach(userDoc=>{
+
+const d=userDoc.data();
+
+const div=
+document.createElement("div");
+
+div.className="user";
+
+div.innerHTML=`
+
+<h3>👤 ${safe(d.email||"User")}</h3>
+
+<p>
+UID:
+${safe(d.uid||userDoc.id)}
+</p>
+
+<p>
+Balance:
+<strong>
+₦${Number(d.balance||0).toLocaleString()}
+</strong>
+</p>
+
+<input
+type="number"
+id="balance_${userDoc.id}"
+placeholder="New balance">
+
+<button
+class="btn"
+onclick="changeBalance('${userDoc.id}')">
+
+💰 Change Balance
+
+</button>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+catch(error){
+
+list.innerHTML=
+"<p class='small'>Could not load users: "
++safe(error.message)
++"</p>";
+
+}
 
 };
 
 
-/* =====================================================
-   START
-===================================================== */
+/* =================================================
+CHANGE BALANCE
+================================================= */
+
+window.changeBalance=async function(
+userId
+){
+
+const input=
+document.getElementById(
+"balance_"+userId
+);
+
+const amount=
+Number(input.value);
+
+if(isNaN(amount)||amount<0){
+
+alert("Enter a valid balance.");
+
+return;
+}
+
+if(!confirm(
+"Set this user's balance to ₦"+
+amount.toLocaleString()+"?"
+))return;
+
+try{
+
+await updateDoc(
+doc(db,"users",userId),
+{
+balance:amount,
+
+balanceUpdatedAt:
+serverTimestamp(),
+
+balanceUpdatedBy:
+auth.currentUser.uid
+}
+);
+
+alert("Balance updated.");
+
+loadUsers();
+
+}
+catch(error){
+
+alert(
+"Could not change balance: "+
+error.message
+);
+
+}
+
+};
+
+
+/* =================================================
+WITHDRAWALS
+================================================= */
+
+window.loadWithdrawals=async function(){
+
+const list=
+document.getElementById("withdrawalList");
+
+list.innerHTML=
+"<p class='small'>Loading...</p>";
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"withdrawals")
+);
+
+let pending=0;
+
+list.innerHTML="";
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>No withdrawal requests.</p>";
+
+document
+.getElementById("pendingWithdrawals")
+.textContent="0";
+
+return;
+}
+
+snap.forEach(withdrawalDoc=>{
+
+const d=
+withdrawalDoc.data();
+
+if(d.status==="Pending"){
+pending++;
+}
+
+let cls="pending";
+
+if(d.status==="Approved"){
+cls="approved";
+}
+
+if(d.status==="Rejected"){
+cls="rejected";
+}
+
+const div=
+document.createElement("div");
+
+div.className="order";
+
+div.innerHTML=`
+
+<h3>
+💸 ₦${Number(d.amount||0).toLocaleString()}
+</h3>
+
+<p>
+Email:
+${safe(d.email||"")}
+</p>
+
+<p>
+Bank:
+${safe(d.bankName||"")}
+</p>
+
+<p>
+Account Number:
+${safe(d.accountNumber||"")}
+</p>
+
+<p>
+Account Name:
+${safe(d.accountName||"")}
+</p>
+
+<p>
+Status:
+
+<span class="status ${cls}">
+${safe(d.status||"Pending")}
+</span>
+
+</p>
+
+`;
+
+if(d.status==="Pending"){
+
+const approve=
+document.createElement("button");
+
+approve.className="btn green";
+
+approve.textContent=
+"✅ Approve Withdrawal";
+
+approve.onclick=()=>{
+
+updateWithdrawal(
+withdrawalDoc.id,
+"Approved"
+);
+
+};
+
+div.appendChild(approve);
+
+
+const reject=
+document.createElement("button");
+
+reject.className="btn red";
+
+reject.textContent=
+"❌ Reject Withdrawal";
+
+reject.onclick=()=>{
+
+updateWithdrawal(
+withdrawalDoc.id,
+"Rejected"
+);
+
+};
+
+div.appendChild(reject);
+
+}
+
+list.appendChild(div);
+
+});
+
+document
+.getElementById("pendingWithdrawals")
+.textContent=pending;
+
+}
+catch(error){
+
+list.innerHTML=
+"<p class='small'>Could not load withdrawals: "
++safe(error.message)
++"</p>";
+
+}
+
+};
+
+
+/* =================================================
+UPDATE WITHDRAWAL
+================================================= */
+
+window.updateWithdrawal=async function(
+id,
+status
+){
+
+try{
+
+await updateDoc(
+doc(db,"withdrawals",id),
+{
+
+status:status,
+
+processedAt:
+serverTimestamp(),
+
+processedBy:
+auth.currentUser.uid
+
+}
+);
+
+alert(
+"Withdrawal marked "+status
+);
+
+loadWithdrawals();
+
+}
+catch(error){
+
+alert(
+"Could not update withdrawal: "+
+error.message
+);
+
+}
+
+};
+
+
+/* =================================================
+REFRESH
+================================================= */
+
+window.refreshAll=async function(){
+
+await loadUsers();
+
+await loadTasks();
+
+await loadProofs();
+
+await loadPromotions();
+
+await loadWithdrawals();
+
+};
 
 </script>
 
