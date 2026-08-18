@@ -4,7 +4,8 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
 
 <title>StoryVerse Promotion & Earning Hub</title>
 
@@ -22,7 +23,10 @@ background:#f4f6f9;
 color:#222;
 }
 
-button,input,textarea,select{
+button,
+input,
+textarea,
+select{
 font:inherit;
 }
 
@@ -56,7 +60,9 @@ color:#666;
 margin-bottom:20px;
 }
 
-input,textarea,select{
+input,
+textarea,
+select{
 width:100%;
 padding:13px;
 margin:7px 0 12px;
@@ -271,22 +277,6 @@ line-height:1.8;
 margin:15px 0;
 }
 
-.proofCard{
-background:white;
-border:1px solid #e5e7eb;
-padding:20px;
-border-radius:15px;
-margin-top:15px;
-}
-
-.proofHeader{
-background:#fff7ed;
-border:1px solid #fed7aa;
-padding:15px;
-border-radius:10px;
-margin-bottom:15px;
-}
-
 .preview{
 display:none;
 width:100%;
@@ -298,14 +288,27 @@ border:1px solid #ddd;
 background:#f9fafb;
 }
 
-.savedProof{
+.proofImage{
 width:100%;
 max-height:350px;
 object-fit:contain;
-margin-top:12px;
 border-radius:10px;
 border:1px solid #ddd;
+margin-top:12px;
 background:#f9fafb;
+}
+
+.proofBox{
+background:#f8fafc;
+padding:12px;
+border-radius:10px;
+margin-top:12px;
+}
+
+.orderLink{
+word-break:break-all;
+font-size:13px;
+color:#2563eb;
 }
 
 footer{
@@ -406,7 +409,7 @@ class="msg"
 
 
 <!-- =====================================================
-MAIN APP
+MAIN APPLICATION
 ===================================================== -->
 
 <div id="app">
@@ -551,10 +554,7 @@ id="promotion"
 class="section"
 >
 
-<div
-id="promotionMainCard"
-class="card"
->
+<div class="card">
 
 <h2>
 📢 Promote Your Platform
@@ -636,6 +636,10 @@ placeholder="Paste your promotion link"
 </select>
 
 
+<!-- =====================================================
+PAYMENT ACCOUNT
+===================================================== -->
+
 <div class="paymentBox">
 
 <strong>
@@ -666,109 +670,30 @@ ANSELEM CHUKWUEBUKA AGBOM
 </div>
 
 
-<div class="infoBox">
-
-<strong>
-📌 Payment Instructions
-</strong>
-
-<br>
-
-1. Select your promotion package.
-
-<br>
-
-2. Copy the payment account details above.
-
-<br>
-
-3. Make your payment.
-
-<br>
-
-4. Tap the button below to submit your promotion.
-
-<br>
-
-5. After submitting, you will be asked to upload your
-payment screenshot as proof.
-
-</div>
-
-
-<button
-class="btn"
-onclick="submitPromotion()"
->
-📢 Submit Promotion
-</button>
-
-
-<div
-id="promotionMessage"
-class="msg"
-></div>
-
-</div>
-
-
 <!-- =====================================================
-PAYMENT PROOF FORM
+PAYMENT PROOF IMAGE
 ===================================================== -->
 
-<div
-id="paymentProofCard"
-class="proofCard"
-style="display:none;"
->
+<div class="proofBox">
 
-<h2>
-📸 Payment Image Proof
-</h2>
-
-<br>
-
-<div class="proofHeader">
-
-<p>
-<strong>
-Promotion:
-</strong>
-
-<span id="proofPromotionType">
-</span>
-</p>
-
-<p>
-<strong>
-Amount:
-</strong>
-
-₦<span id="proofPromotionAmount">
-0
-</span>
-</p>
+<h3>
+📷 Payment Proof Image
+</h3>
 
 <br>
 
 <p class="small">
-
-Upload the screenshot showing that you made the
-payment for this promotion.
-
+After making payment, upload a screenshot or photo
+of your payment receipt.
 </p>
 
-</div>
-
+<br>
 
 <label>
-
 <strong>
-Select Payment Proof Image
+Select payment proof image
 </strong>
-
 </label>
-
 
 <input
 type="file"
@@ -786,29 +711,33 @@ alt="Payment proof preview"
 
 
 <textarea
-id="paymentProofText"
-placeholder="Optional explanation or payment reference"
+id="paymentProofNote"
+placeholder="Optional payment note"
 ></textarea>
 
+</div>
+
+
+<p class="small">
+
+Your promotion order will remain
+<strong>Pending</strong> until the administrator
+reviews your payment proof.
+
+</p>
+
 
 <button
-class="btn green"
-onclick="submitPaymentProof()"
+id="promotionSubmitButton"
+class="btn"
+onclick="submitPromotion()"
 >
-✅ Submit Payment Proof
-</button>
-
-
-<button
-class="btn gray"
-onclick="cancelPaymentProof()"
->
-← Cancel
+📢 Submit Promotion
 </button>
 
 
 <div
-id="paymentProofMessage"
+id="promotionMessage"
 class="msg"
 ></div>
 
@@ -816,7 +745,7 @@ class="msg"
 
 
 <!-- =====================================================
-PROMOTION ORDERS
+MY PROMOTION ORDERS
 ===================================================== -->
 
 <div class="card">
@@ -878,14 +807,12 @@ Tasks created by the administrator in Firebase
 will appear here.
 </p>
 
-
 <button
 class="btn"
 onclick="loadTasks()"
 >
 🔄 Refresh Tasks
 </button>
-
 
 <div id="taskList">
 
@@ -904,14 +831,12 @@ Loading tasks...
 📝 My Task Proofs
 </h2>
 
-
 <button
 class="btn gray"
 onclick="loadSubmissions()"
 >
 🔄 Refresh Proofs
 </button>
-
 
 <div id="submissionList">
 
@@ -937,7 +862,6 @@ Your referral ID:
 <strong id="referralId">
 Loading...
 </strong>
-
 
 <button
 class="btn"
@@ -966,7 +890,6 @@ class="section"
 💸 Withdrawal Request
 </h2>
 
-
 <div class="infoBox">
 
 Minimum withdrawal amount:
@@ -983,7 +906,6 @@ Your current balance:
 
 </div>
 
-
 <input
 type="number"
 id="withdrawAmount"
@@ -991,13 +913,11 @@ placeholder="Amount"
 min="100"
 >
 
-
 <input
 type="text"
 id="bankName"
 placeholder="Bank Name"
 >
-
 
 <input
 type="text"
@@ -1007,13 +927,11 @@ inputmode="numeric"
 placeholder="10-digit Account Number"
 >
 
-
 <input
 type="text"
 id="accountName"
 placeholder="Account Name"
 >
-
 
 <button
 class="btn"
@@ -1021,7 +939,6 @@ onclick="submitWithdrawal()"
 >
 💸 Submit Withdrawal
 </button>
-
 
 <div
 id="withdrawMessage"
@@ -1037,14 +954,12 @@ class="msg"
 📜 My Withdrawals
 </h2>
 
-
 <button
 class="btn gray"
 onclick="loadWithdrawals()"
 >
 🔄 Refresh
 </button>
-
 
 <div id="withdrawalList">
 
@@ -1074,39 +989,29 @@ class="section"
 👤 My Account
 </h2>
 
-
 <p>
 Email:
 </p>
 
-<strong id="userEmail">
-</strong>
-
+<strong id="userEmail"></strong>
 
 <br><br>
-
 
 <p>
 User ID:
 </p>
 
-<small id="userId">
-</small>
-
+<small id="userId"></small>
 
 <br><br>
-
 
 <p>
 Referral ID:
 </p>
 
-<strong id="accountReferral">
-</strong>
-
+<strong id="accountReferral"></strong>
 
 <br><br>
-
 
 <p>
 Account Status:
@@ -1116,9 +1021,7 @@ Account Status:
 ✅ Logged In
 </strong>
 
-
 <hr>
-
 
 <button
 class="btn"
@@ -1126,7 +1029,6 @@ onclick="loadAllData()"
 >
 🔄 Refresh Account
 </button>
-
 
 <button
 class="btn red"
@@ -1161,14 +1063,12 @@ Need help? Contact StoryVerse customer service.
 
 <br>
 
-
 <button
 class="btn whatsapp"
 onclick="contactSupport()"
 >
 💬 WhatsApp Customer Service 1
 </button>
-
 
 <button
 class="btn whatsapp"
@@ -1290,17 +1190,14 @@ const SUPPORT_2 =
 
 
 /* =====================================================
-TEMPORARY PAYMENT ORDER
-===================================================== */
-
-let currentPromotionOrder = null;
-
-
-/* =====================================================
 MESSAGE
 ===================================================== */
 
-function message(id,text,type="success"){
+function message(
+id,
+text,
+type="success"
+){
 
 const box =
 document.getElementById(id);
@@ -1329,11 +1226,14 @@ window.registerUser =
 async function(){
 
 const email =
-document.getElementById("authEmail")
-.value.trim();
+document
+.getElementById("authEmail")
+.value
+.trim();
 
 const password =
-document.getElementById("authPassword")
+document
+.getElementById("authPassword")
 .value;
 
 if(!email || !password){
@@ -1345,6 +1245,7 @@ message(
 );
 
 return;
+
 }
 
 if(password.length < 6){
@@ -1356,6 +1257,7 @@ message(
 );
 
 return;
+
 }
 
 try{
@@ -1394,7 +1296,7 @@ serverTimestamp()
 
 message(
 "authMessage",
-"Account created successfully. Entering website..."
+"Account created successfully."
 );
 
 }
@@ -1435,11 +1337,14 @@ window.loginUser =
 async function(){
 
 const email =
-document.getElementById("authEmail")
-.value.trim();
+document
+.getElementById("authEmail")
+.value
+.trim();
 
 const password =
-document.getElementById("authPassword")
+document
+.getElementById("authPassword")
 .value;
 
 if(!email || !password){
@@ -1451,6 +1356,7 @@ message(
 );
 
 return;
+
 }
 
 try{
@@ -1486,18 +1392,21 @@ window.forgotPassword =
 async function(){
 
 const email =
-document.getElementById("authEmail")
-.value.trim();
+document
+.getElementById("authEmail")
+.value
+.trim();
 
 if(!email){
 
 message(
 "authMessage",
-"Enter your email address first, then tap Forgot Password.",
+"Enter your email address first.",
 "error"
 );
 
 return;
+
 }
 
 try{
@@ -1509,7 +1418,7 @@ email
 
 message(
 "authMessage",
-"Password reset email sent. Check your email inbox and spam folder."
+"Password reset email sent. Check your inbox and spam folder."
 );
 
 }
@@ -1520,7 +1429,7 @@ console.error(error);
 
 message(
 "authMessage",
-"Could not send reset email. Please check that the email is registered.",
+"Could not send reset email. Check that the email is registered.",
 "error"
 );
 
@@ -1551,28 +1460,34 @@ async(user)=>{
 
 if(user){
 
-document.getElementById("authScreen")
+document
+.getElementById("authScreen")
 .style.display="none";
 
-document.getElementById("app")
+document
+.getElementById("app")
 .style.display="block";
 
-document.getElementById("userEmail")
+document
+.getElementById("userEmail")
 .textContent =
 user.email || "";
 
-document.getElementById("userId")
+document
+.getElementById("userId")
 .textContent =
 user.uid;
 
 const referral =
 user.uid.substring(0,8);
 
-document.getElementById("referralId")
+document
+.getElementById("referralId")
 .textContent =
 referral;
 
-document.getElementById("accountReferral")
+document
+.getElementById("accountReferral")
 .textContent =
 referral;
 
@@ -1582,10 +1497,12 @@ await loadAllData();
 
 else{
 
-document.getElementById("authScreen")
+document
+.getElementById("authScreen")
 .style.display="flex";
 
-document.getElementById("app")
+document
+.getElementById("app")
 .style.display="none";
 
 }
@@ -1628,13 +1545,9 @@ window.loadAllData =
 async function(){
 
 await loadBalance();
-
 await loadTasks();
-
 await loadSubmissions();
-
 await loadWithdrawals();
-
 await loadPromotionOrders();
 
 };
@@ -1676,15 +1589,18 @@ docSnap.data().balance || 0
 }
 );
 
-document.getElementById("balance")
+document
+.getElementById("balance")
 .textContent =
 balance.toLocaleString();
 
-document.getElementById("earningBalance")
+document
+.getElementById("earningBalance")
 .textContent =
 balance.toLocaleString();
 
-document.getElementById("withdrawBalance")
+document
+.getElementById("withdrawBalance")
 .textContent =
 balance.toLocaleString();
 
@@ -1737,6 +1653,7 @@ list.innerHTML =
 "<p class='small'>No tasks available right now.</p>";
 
 return;
+
 }
 
 list.innerHTML="";
@@ -1788,7 +1705,7 @@ ${description}
 
 <button
 class="btn"
-onclick="openTask('${encodeURIComponent(task.link || "#")}')
+onclick="openTask('${encodeURIComponent(task.link || "#")}' )"
 >
 🔗 Open Task
 </button>
@@ -1813,7 +1730,7 @@ catch(error){
 console.error(error);
 
 list.innerHTML =
-"<p class='small'>Could not load tasks. Check your Firebase Firestore rules.</p>";
+"<p class='small'>Could not load tasks. Check your Firebase rules.</p>";
 
 }
 
@@ -1830,16 +1747,14 @@ function(encodedLink){
 const link =
 decodeURIComponent(encodedLink);
 
-if(
-!link ||
-link === "#"
-){
+if(!link || link === "#"){
 
 alert(
 "This task does not have a link."
 );
 
 return;
+
 }
 
 window.open(
@@ -1863,7 +1778,11 @@ document.getElementById("taskList");
 try{
 
 const taskRef =
-doc(db,"tasks",taskId);
+doc(
+db,
+"tasks",
+taskId
+);
 
 const taskSnap =
 await getDoc(taskRef);
@@ -1875,6 +1794,7 @@ alert(
 );
 
 return;
+
 }
 
 const task =
@@ -1893,36 +1813,26 @@ task.reward || 0
 
 taskList.innerHTML = `
 
-<div class="proofCard">
+<div class="card">
 
 <h2>
 🖼️ Submit Image Proof
 </h2>
 
-<br>
-
 <p>
-<strong>
-Task:
-</strong>
-
+<strong>Task:</strong>
 ${title}
 </p>
 
 <p>
-<strong>
-Reward:
-</strong>
-
+<strong>Reward:</strong>
 ₦${reward.toLocaleString()}
 </p>
 
 <br>
 
 <label>
-<strong>
-Select proof image
-</strong>
+<strong>Select proof image</strong>
 </label>
 
 <input
@@ -1992,30 +1902,28 @@ const file =
 event.target.files[0];
 
 const preview =
-document.getElementById(
-"proofPreview"
-);
+document.getElementById("proofPreview");
 
 if(!file){
 
 preview.style.display="none";
 
 return;
+
 }
 
 if(
 !file.type.startsWith("image/")
 ){
 
-message(
-"proofMessage",
-"Please select an image file.",
-"error"
+alert(
+"Please select an image file."
 );
 
 event.target.value="";
 
 return;
+
 }
 
 const reader =
@@ -2038,7 +1946,7 @@ reader.readAsDataURL(file);
 
 
 /* =====================================================
-COMPRESS IMAGE
+IMAGE COMPRESSION
 ===================================================== */
 
 function compressImage(file){
@@ -2177,7 +2085,8 @@ document.getElementById("proofImage");
 
 const proofText =
 document.getElementById("proofText")
-.value.trim();
+.value
+.trim();
 
 if(
 !fileInput ||
@@ -2191,23 +2100,11 @@ message(
 );
 
 return;
+
 }
 
 const file =
 fileInput.files[0];
-
-if(
-!file.type.startsWith("image/")
-){
-
-message(
-"proofMessage",
-"Only image files are allowed.",
-"error"
-);
-
-return;
-}
 
 try{
 
@@ -2217,7 +2114,11 @@ message(
 );
 
 const taskRef =
-doc(db,"tasks",taskId);
+doc(
+db,
+"tasks",
+taskId
+);
 
 const taskSnap =
 await getDoc(taskRef);
@@ -2231,65 +2132,25 @@ message(
 );
 
 return;
+
 }
 
 const task =
 taskSnap.data();
-
-if(task.active !== true){
-
-message(
-"proofMessage",
-"This task is no longer active.",
-"error"
-);
-
-return;
-}
 
 const reward =
 Number(
 task.reward || 0
 );
 
-const taskTitle =
-task.title ||
-"Task";
-
-message(
-"proofMessage",
-"Compressing image..."
-);
-
 const imageData =
 await compressImage(file);
 
-const sizeInBytes =
-Math.ceil(
-(imageData.length * 3) / 4
-);
-
-if(
-sizeInBytes >
-700000
-){
-
-message(
-"proofMessage",
-"Image is still too large. Please choose a smaller image.",
-"error"
-);
-
-return;
-}
-
-message(
-"proofMessage",
-"Submitting proof..."
-);
-
 await addDoc(
-collection(db,"taskSubmissions"),
+collection(
+db,
+"taskSubmissions"
+),
 {
 
 uid:
@@ -2302,7 +2163,7 @@ taskId:
 taskId,
 
 taskTitle:
-taskTitle,
+task.title || "Task",
 
 reward:
 reward,
@@ -2331,7 +2192,6 @@ setTimeout(
 function(){
 
 loadTasks();
-
 loadSubmissions();
 
 },
@@ -2357,7 +2217,7 @@ error.message,
 
 
 /* =====================================================
-TASK SUBMISSIONS
+LOAD TASK SUBMISSIONS
 ===================================================== */
 
 window.loadSubmissions =
@@ -2380,15 +2240,8 @@ try{
 
 const q =
 query(
-collection(
-db,
-"taskSubmissions"
-),
-where(
-"uid",
-"==",
-user.uid
-)
+collection(db,"taskSubmissions"),
+where("uid","==",user.uid)
 );
 
 const snap =
@@ -2400,6 +2253,7 @@ list.innerHTML =
 "<p class='small'>No task submissions yet.</p>";
 
 return;
+
 }
 
 list.innerHTML="";
@@ -2410,31 +2264,13 @@ docSnap=>{
 const data =
 docSnap.data();
 
-let cls =
-"pending";
-
-if(
-data.status ===
-"Approved"
-){
-
-cls =
-"approved";
-}
-
-if(
-data.status ===
-"Rejected"
-){
-
-cls =
-"rejected";
-}
+const status =
+getStatusClass(
+data.status
+);
 
 const div =
-document.createElement(
-"div"
-);
+document.createElement("div");
 
 div.className="task";
 
@@ -2456,7 +2292,7 @@ data.reward || 0
 
 <br>
 
-<span class="status ${cls}">
+<span class="status ${status}">
 ${safe(
 data.status ||
 "Pending"
@@ -2464,30 +2300,6 @@ data.status ||
 </span>
 
 `;
-
-if(
-data.status ===
-"Rejected" &&
-data.rejectionReason
-){
-
-div.innerHTML += `
-
-<p class="small">
-
-<strong>
-Reason:
-</strong>
-
-${safe(
-data.rejectionReason
-)}
-
-</p>
-
-`;
-
-}
 
 list.appendChild(div);
 
@@ -2508,155 +2320,7 @@ list.innerHTML =
 
 
 /* =====================================================
-PROMOTION
-===================================================== */
-
-window.submitPromotion =
-async function(){
-
-const user =
-auth.currentUser;
-
-if(!user)return;
-
-const type =
-document.getElementById(
-"promotionType"
-).value;
-
-const link =
-document.getElementById(
-"promotionLink"
-).value.trim();
-
-const amount =
-Number(
-document.getElementById(
-"promotionPackage"
-).value
-);
-
-if(!link){
-
-message(
-"promotionMessage",
-"Please enter your promotion link.",
-"error"
-);
-
-return;
-}
-
-
-/*
-SAVE PROMOTION ORDER FIRST.
-*/
-
-try{
-
-message(
-"promotionMessage",
-"Creating your promotion request..."
-);
-
-const orderRef =
-await addDoc(
-collection(db,"promotionOrders"),
-{
-
-uid:
-user.uid,
-
-email:
-user.email,
-
-promotionType:
-type,
-
-promotionLink:
-link,
-
-amount:
-amount,
-
-paymentStatus:
-"Pending",
-
-promotionStatus:
-"Pending",
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-
-/*
-STORE TEMPORARY ORDER ID
-*/
-
-currentPromotionOrder = {
-
-id:
-orderRef.id,
-
-type:
-type,
-
-amount:
-amount
-
-};
-
-
-/*
-SHOW PAYMENT PROOF FORM
-*/
-
-document.getElementById(
-"proofPromotionType"
-).textContent =
-type;
-
-document.getElementById(
-"proofPromotionAmount"
-).textContent =
-amount.toLocaleString();
-
-document.getElementById(
-"promotionMainCard"
-).style.display="none";
-
-document.getElementById(
-"paymentProofCard"
-).style.display="block";
-
-message(
-"promotionMessage",
-"Promotion created. Now upload your payment proof."
-);
-
-}
-
-catch(error){
-
-console.error(error);
-
-message(
-"promotionMessage",
-"Could not create promotion: " +
-error.message,
-"error"
-);
-
-}
-
-};
-
-
-/* =====================================================
-PAYMENT PROOF IMAGE PREVIEW
+PAYMENT PROOF PREVIEW
 ===================================================== */
 
 window.previewPaymentProof =
@@ -2675,6 +2339,7 @@ if(!file){
 preview.style.display="none";
 
 return;
+
 }
 
 if(
@@ -2682,14 +2347,15 @@ if(
 ){
 
 message(
-"paymentProofMessage",
-"Please select an image file.",
+"promotionMessage",
+"Please select a valid image.",
 "error"
 );
 
 event.target.value="";
 
 return;
+
 }
 
 const reader =
@@ -2712,110 +2378,187 @@ reader.readAsDataURL(file);
 
 
 /* =====================================================
-SUBMIT PAYMENT PROOF
+SUBMIT PROMOTION
 ===================================================== */
 
-window.submitPaymentProof =
+window.submitPromotion =
 async function(){
 
 const user =
 auth.currentUser;
 
-if(!user)return;
-
-if(!currentPromotionOrder){
+if(!user){
 
 message(
-"paymentProofMessage",
-"No promotion order is currently open.",
+"promotionMessage",
+"Please login first.",
 "error"
 );
 
 return;
+
 }
 
-const fileInput =
+const type =
+document
+.getElementById(
+"promotionType"
+)
+.value;
+
+const link =
+document
+.getElementById(
+"promotionLink"
+)
+.value
+.trim();
+
+const amount =
+Number(
+document
+.getElementById(
+"promotionPackage"
+)
+.value
+);
+
+const proofInput =
 document.getElementById(
 "paymentProofImage"
 );
 
-const proofText =
-document.getElementById(
-"paymentProofText"
-).value.trim();
+const proofNote =
+document
+.getElementById(
+"paymentProofNote"
+)
+.value
+.trim();
 
-if(
-!fileInput ||
-!fileInput.files[0]
-){
+const button =
+document.getElementById(
+"promotionSubmitButton"
+);
+
+
+/* =====================================================
+VALIDATION
+===================================================== */
+
+if(!link){
 
 message(
-"paymentProofMessage",
-"Please select your payment screenshot.",
+"promotionMessage",
+"Please enter your promotion link.",
 "error"
 );
 
 return;
+
+}
+
+if(
+!proofInput ||
+!proofInput.files[0]
+){
+
+message(
+"promotionMessage",
+"Please upload your payment proof image.",
+"error"
+);
+
+return;
+
 }
 
 const file =
-fileInput.files[0];
+proofInput.files[0];
 
 if(
 !file.type.startsWith("image/")
 ){
 
 message(
-"paymentProofMessage",
-"Only image files are allowed.",
+"promotionMessage",
+"Payment proof must be an image.",
 "error"
 );
 
 return;
+
 }
+
+
+/* =====================================================
+START SUBMISSION
+===================================================== */
 
 try{
 
+button.disabled=true;
+
+button.textContent =
+"⏳ Creating promotion request...";
+
 message(
-"paymentProofMessage",
-"Compressing payment screenshot..."
+"promotionMessage",
+"Processing payment proof..."
 );
+
+
+/* Compress payment proof */
 
 const imageData =
 await compressImage(file);
+
+
+/* Approximate size */
 
 const sizeInBytes =
 Math.ceil(
 (imageData.length * 3) / 4
 );
 
+
+/*
+Firestore document fields are limited in size.
+We keep the compressed image below
+approximately 700 KB.
+*/
+
 if(
-sizeInBytes >
-700000
+sizeInBytes > 700000
 ){
 
 message(
-"paymentProofMessage",
-"Image is still too large. Please choose a smaller screenshot.",
+"promotionMessage",
+"Payment proof image is still too large. Please choose a smaller screenshot.",
 "error"
 );
 
+button.disabled=false;
+
+button.textContent =
+"📢 Submit Promotion";
+
 return;
+
 }
 
+
+/* =====================================================
+SAVE PROMOTION ORDER
+===================================================== */
+
 message(
-"paymentProofMessage",
-"Submitting payment proof..."
+"promotionMessage",
+"Saving promotion request..."
 );
 
-
-/*
-CREATE SEPARATE PAYMENT PROOF RECORD
-LIKE TASK PROOF.
-*/
-
 await addDoc(
-collection(db,"paymentProofs"),
+collection(db,"promotionOrders"),
 {
 
 uid:
@@ -2824,108 +2567,107 @@ user.uid,
 email:
 user.email,
 
-promotionOrderId:
-currentPromotionOrder.id,
-
 promotionType:
-currentPromotionOrder.type,
+type,
+
+promotionLink:
+link,
 
 amount:
-currentPromotionOrder.amount,
-
-proofImage:
-imageData,
-
-proofText:
-proofText,
-
-status:
-"Pending",
-
-submittedAt:
-serverTimestamp()
-
-}
-);
-
+amount,
 
 /*
-UPDATE THE PROMOTION ORDER
+This is the payment proof image.
+It is saved directly in Firestore
+as compressed Base64 image data.
 */
 
-await addDoc(
-collection(db,"promotionPaymentUpdates"),
-{
+paymentProof:
+imageData,
 
-promotionOrderId:
-currentPromotionOrder.id,
-
-uid:
-user.uid,
+paymentProofNote:
+proofNote,
 
 paymentStatus:
 "Pending",
 
-updatedAt:
+promotionStatus:
+"Pending",
+
+createdAt:
 serverTimestamp()
 
 }
 );
 
 
+/* =====================================================
+SUCCESS
+===================================================== */
+
 message(
-"paymentProofMessage",
-"✅ Payment proof submitted successfully. Waiting for admin approval."
+"promotionMessage",
+"✅ Promotion request submitted successfully. Payment proof has been sent for admin review."
 );
 
 
-/*
-RESET
-*/
+/* Clear form */
 
-setTimeout(
-function(){
+document
+.getElementById(
+"promotionLink"
+)
+.value="";
 
-currentPromotionOrder = null;
-
-document.getElementById(
-"paymentProofCard"
-).style.display="none";
-
-document.getElementById(
-"promotionMainCard"
-).style.display="block";
-
-document.getElementById(
+document
+.getElementById(
 "paymentProofImage"
-).value="";
+)
+.value="";
 
-document.getElementById(
-"paymentProofText"
-).value="";
+document
+.getElementById(
+"paymentProofNote"
+)
+.value="";
 
-document.getElementById(
+document
+.getElementById(
 "paymentProofPreview"
-).style.display="none";
+)
+.style.display="none";
 
-loadPromotionOrders();
 
-},
-1500
-);
+/* Reload orders */
+
+await loadPromotionOrders();
+
+
+button.disabled=false;
+
+button.textContent =
+"📢 Submit Promotion";
 
 }
 
 catch(error){
 
-console.error(error);
+console.error(
+"Promotion error:",
+error
+);
 
 message(
-"paymentProofMessage",
-"Could not submit payment proof: " +
+"promotionMessage",
+"Could not create promotion request: " +
 error.message,
 "error"
 );
+
+button.disabled=false;
+
+button.textContent =
+"📢 Submit Promotion";
 
 }
 
@@ -2933,39 +2675,7 @@ error.message,
 
 
 /* =====================================================
-CANCEL PAYMENT PROOF
-===================================================== */
-
-window.cancelPaymentProof =
-function(){
-
-currentPromotionOrder = null;
-
-document.getElementById(
-"paymentProofCard"
-).style.display="none";
-
-document.getElementById(
-"promotionMainCard"
-).style.display="block";
-
-document.getElementById(
-"paymentProofImage"
-).value="";
-
-document.getElementById(
-"paymentProofText"
-).value="";
-
-document.getElementById(
-"paymentProofPreview"
-).style.display="none";
-
-};
-
-
-/* =====================================================
-PROMOTION ORDERS
+LOAD PROMOTION ORDERS
 ===================================================== */
 
 window.loadPromotionOrders =
@@ -2982,21 +2692,14 @@ document.getElementById(
 );
 
 list.innerHTML =
-"<p class='small'>Loading...</p>";
+"<p class='small'>Loading promotion orders...</p>";
 
 try{
 
 const q =
 query(
-collection(
-db,
-"promotionOrders"
-),
-where(
-"uid",
-"==",
-user.uid
-)
+collection(db,"promotionOrders"),
+where("uid","==",user.uid)
 );
 
 const snap =
@@ -3008,268 +2711,163 @@ list.innerHTML =
 "<p class='small'>No promotion orders yet.</p>";
 
 return;
+
 }
 
 list.innerHTML="";
 
-for(
-const orderDoc of snap.docs
-){
 
-const d =
-orderDoc.data();
+snap.forEach(
+docSnap=>{
 
-let paymentClass =
-"pending";
+const data =
+docSnap.data();
 
-if(
-d.paymentStatus ===
-"Approved"
-){
+const paymentStatus =
+data.paymentStatus ||
+"Pending";
 
-paymentClass =
-"approved";
-}
+const promotionStatus =
+data.promotionStatus ||
+"Pending";
 
-if(
-d.paymentStatus ===
-"Rejected"
-){
-
-paymentClass =
-"rejected";
-}
-
-let promotionClass =
-"pending";
-
-if(
-d.promotionStatus ===
-"Approved"
-){
-
-promotionClass =
-"approved";
-}
-
-if(
-d.promotionStatus ===
-"Rejected"
-){
-
-promotionClass =
-"rejected";
-}
-
-const div =
-document.createElement(
-"div"
+const paymentClass =
+getStatusClass(
+paymentStatus
 );
 
+const promotionClass =
+getStatusClass(
+promotionStatus
+);
+
+
+const div =
+document.createElement("div");
+
 div.className="task";
+
 
 div.innerHTML = `
 
 <h3>
-${safe(
-d.promotionType ||
+📢 ${safe(
+data.promotionType ||
 "Promotion"
 )}
 </h3>
 
 <p>
+<strong>
 Amount:
+</strong>
+
 ₦${Number(
-d.amount || 0
+data.amount || 0
 ).toLocaleString()}
 </p>
 
 <p>
-Payment:
-<span class="status ${paymentClass}">
-${safe(
-d.paymentStatus ||
-"Pending"
-)}
-</span>
-</p>
-
-<p>
-Promotion:
-<span class="status ${promotionClass}">
-${safe(
-d.promotionStatus ||
-"Pending"
-)}
-</span>
-</p>
-
-<p class="small">
+<strong>
 Promotion Link:
+</strong>
+</p>
+
+<p class="orderLink">
 ${safe(
-d.promotionLink ||
+data.promotionLink ||
 ""
 )}
 </p>
 
-`;
-
-list.appendChild(div);
-
-}
-
-
-/*
-LOAD PAYMENT PROOFS FOR THIS USER
-*/
-
-try{
-
-const proofQuery =
-query(
-collection(
-db,
-"paymentProofs"
-),
-where(
-"uid",
-"==",
-user.uid
-)
-);
-
-const proofSnap =
-await getDocs(proofQuery);
-
-proofSnap.forEach(
-proofDoc=>{
-
-const proof =
-proofDoc.data();
-
-const div =
-document.createElement(
-"div"
-);
-
-div.className="task";
-
-let cls =
-"pending";
-
-if(
-proof.status ===
-"Approved"
-){
-
-cls =
-"approved";
-}
-
-if(
-proof.status ===
-"Rejected"
-){
-
-cls =
-"rejected";
-}
-
-div.innerHTML = `
-
-<h3>
-📸 Payment Proof
-</h3>
-
-<p>
-Promotion:
-${safe(
-proof.promotionType ||
-"Promotion"
-)}
-</p>
-
-<p>
-Amount:
-₦${Number(
-proof.amount || 0
-).toLocaleString()}
-</p>
-
 <br>
 
-<span class="status ${cls}">
-${safe(
-proof.status ||
-"Pending"
-)}
+<p>
+<strong>
+Payment Status:
+</strong>
+</p>
+
+<span class="status ${paymentClass}">
+${safe(paymentStatus)}
+</span>
+
+<br><br>
+
+<p>
+<strong>
+Promotion Status:
+</strong>
+</p>
+
+<span class="status ${promotionClass}">
+${safe(promotionStatus)}
 </span>
 
 `;
 
+
+
+/* =====================================================
+PAYMENT PROOF IMAGE
+===================================================== */
+
 if(
-proof.proofImage
+data.paymentProof
 ){
 
-div.innerHTML += `
+const proofBox =
+document.createElement("div");
+
+proofBox.className =
+"proofBox";
+
+proofBox.innerHTML = `
 
 <br>
 
+<strong>
+📷 Payment Proof
+</strong>
+
 <img
-src="${proof.proofImage}"
-class="savedProof"
+class="proofImage"
+src="${data.paymentProof}"
 alt="Payment proof"
 >
 
 `;
 
+div.appendChild(
+proofBox
+);
+
 }
+
+
+/* Payment note */
 
 if(
-proof.proofText
+data.paymentProofNote
 ){
 
-div.innerHTML += `
+const note =
+document.createElement("p");
 
-<p class="small">
+note.className =
+"small";
 
-<strong>
-Note:
-</strong>
+note.style.marginTop =
+"10px";
 
-${safe(
-proof.proofText
-)}
+note.innerHTML =
+"<strong>Payment Note:</strong> " +
+safe(data.paymentProofNote);
 
-</p>
-
-`;
+div.appendChild(note);
 
 }
 
-if(
-proof.status ===
-"Rejected" &&
-proof.rejectionReason
-){
-
-div.innerHTML += `
-
-<p class="small">
-
-<strong>
-Reason:
-</strong>
-
-${safe(
-proof.rejectionReason
-)}
-
-</p>
-
-`;
-
-}
 
 list.appendChild(div);
 
@@ -3277,23 +2875,15 @@ list.appendChild(div);
 
 }
 
-catch(proofError){
-
-console.error(
-"Payment proof loading error:",
-proofError
-);
-
-}
-
-}
-
 catch(error){
 
-console.error(error);
+console.error(
+"Promotion orders error:",
+error
+);
 
 list.innerHTML =
-"<p class='small'>Could not load promotion orders.</p>";
+"<p class='small'>Could not load promotion orders. Check your Firebase Firestore rules.</p>";
 
 }
 
@@ -3314,25 +2904,36 @@ if(!user)return;
 
 const amount =
 Number(
-document.getElementById(
+document
+.getElementById(
 "withdrawAmount"
-).value
+)
+.value
 );
 
 const bank =
-document.getElementById(
+document
+.getElementById(
 "bankName"
-).value.trim();
+)
+.value
+.trim();
 
 const account =
-document.getElementById(
+document
+.getElementById(
 "accountNumber"
-).value.trim();
+)
+.value
+.trim();
 
 const name =
-document.getElementById(
+document
+.getElementById(
 "accountName"
-).value.trim();
+)
+.value
+.trim();
 
 if(
 !amount ||
@@ -3348,6 +2949,7 @@ message(
 );
 
 return;
+
 }
 
 if(amount < 100){
@@ -3359,6 +2961,7 @@ message(
 );
 
 return;
+
 }
 
 if(
@@ -3372,6 +2975,7 @@ message(
 );
 
 return;
+
 }
 
 try{
@@ -3395,6 +2999,7 @@ message(
 );
 
 return;
+
 }
 
 const userDoc =
@@ -3414,6 +3019,7 @@ message(
 );
 
 return;
+
 }
 
 await addDoc(
@@ -3452,21 +3058,29 @@ message(
 "Withdrawal request submitted. Status: Pending."
 );
 
-document.getElementById(
+document
+.getElementById(
 "withdrawAmount"
-).value="";
+)
+.value="";
 
-document.getElementById(
+document
+.getElementById(
 "bankName"
-).value="";
+)
+.value="";
 
-document.getElementById(
+document
+.getElementById(
 "accountNumber"
-).value="";
+)
+.value="";
 
-document.getElementById(
+document
+.getElementById(
 "accountName"
-).value="";
+)
+.value="";
 
 await loadWithdrawals();
 
@@ -3505,22 +3119,12 @@ document.getElementById(
 "withdrawalList"
 );
 
-list.innerHTML =
-"<p class='small'>Loading...</p>";
-
 try{
 
 const q =
 query(
-collection(
-db,
-"withdrawals"
-),
-where(
-"uid",
-"==",
-user.uid
-)
+collection(db,"withdrawals"),
+where("uid","==",user.uid)
 );
 
 const snap =
@@ -3532,6 +3136,7 @@ list.innerHTML =
 "<p class='small'>No withdrawals yet.</p>";
 
 return;
+
 }
 
 list.innerHTML="";
@@ -3542,31 +3147,13 @@ docSnap=>{
 const d =
 docSnap.data();
 
-let cls =
-"pending";
-
-if(
-d.status ===
-"Approved"
-){
-
-cls =
-"approved";
-}
-
-if(
-d.status ===
-"Rejected"
-){
-
-cls =
-"rejected";
-}
+const cls =
+getStatusClass(
+d.status
+);
 
 const div =
-document.createElement(
-"div"
-);
+document.createElement("div");
 
 div.className="task";
 
@@ -3601,9 +3188,7 @@ d.accountName || ""
 
 <br>
 
-<span
-class="status ${cls}"
->
+<span class="status ${cls}">
 ${safe(
 d.status ||
 "Pending"
@@ -3640,7 +3225,10 @@ auth.currentUser;
 if(!user)return;
 
 const id =
-user.uid.substring(0,8);
+user.uid.substring(
+0,
+8
+);
 
 const link =
 window.location.origin +
@@ -3673,7 +3261,7 @@ link
 
 
 /* =====================================================
-SUPPORT
+CUSTOMER SERVICE
 ===================================================== */
 
 window.contactSupport =
@@ -3708,6 +3296,7 @@ alert(
 );
 
 return;
+
 }
 
 const text =
@@ -3724,6 +3313,39 @@ text,
 );
 
 };
+
+
+/* =====================================================
+STATUS CLASS
+===================================================== */
+
+function getStatusClass(status){
+
+if(
+String(status)
+.toLowerCase()
+===
+"approved"
+){
+
+return "approved";
+
+}
+
+if(
+String(status)
+.toLowerCase()
+===
+"rejected"
+){
+
+return "rejected";
+
+}
+
+return "pending";
+
+}
 
 
 /* =====================================================
