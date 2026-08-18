@@ -1,0 +1,3425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>StoryVerse Promotion & Earning Hub</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f6f9;
+color:#222;
+}
+
+button,
+input,
+textarea,
+select{
+font:inherit;
+}
+
+#authScreen{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:linear-gradient(135deg,#111827,#2563eb);
+}
+
+.authBox{
+width:100%;
+max-width:430px;
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 35px rgba(0,0,0,.25);
+}
+
+.authBox h1{
+text-align:center;
+color:#2563eb;
+margin-bottom:8px;
+}
+
+.authBox p{
+text-align:center;
+color:#666;
+margin-bottom:20px;
+}
+
+input,
+textarea,
+select{
+width:100%;
+padding:13px;
+margin:7px 0 12px;
+border:1px solid #d1d5db;
+border-radius:9px;
+}
+
+textarea{
+min-height:100px;
+resize:vertical;
+}
+
+.btn{
+width:100%;
+padding:13px;
+border:0;
+border-radius:9px;
+color:white;
+background:#2563eb;
+font-weight:bold;
+margin-top:7px;
+cursor:pointer;
+}
+
+.btn:disabled{
+opacity:.6;
+cursor:not-allowed;
+}
+
+.green{
+background:#16a34a;
+}
+
+.red{
+background:#dc2626;
+}
+
+.gray{
+background:#4b5563;
+}
+
+.whatsapp{
+background:#25D366;
+}
+
+.orange{
+background:#ea580c;
+}
+
+.msg{
+display:none;
+padding:11px;
+margin-top:10px;
+border-radius:8px;
+font-size:14px;
+line-height:1.5;
+}
+
+.success{
+background:#dcfce7;
+color:#166534;
+}
+
+.error{
+background:#fee2e2;
+color:#991b1b;
+}
+
+#app{
+display:none;
+}
+
+header{
+background:linear-gradient(135deg,#111827,#2563eb);
+color:white;
+padding:25px 15px;
+text-align:center;
+}
+
+header h1{
+font-size:24px;
+}
+
+header p{
+margin-top:7px;
+}
+
+nav{
+display:flex;
+overflow-x:auto;
+background:white;
+position:sticky;
+top:0;
+z-index:10;
+border-bottom:1px solid #ddd;
+}
+
+nav button{
+min-width:100px;
+flex:1;
+padding:14px 7px;
+border:0;
+background:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.container{
+max-width:950px;
+margin:auto;
+padding:15px;
+}
+
+.section{
+display:none;
+}
+
+.section.active{
+display:block;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.card h2{
+margin-bottom:12px;
+}
+
+.balanceBox{
+background:linear-gradient(135deg,#111827,#2563eb);
+color:white;
+padding:22px;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.balance{
+font-size:30px;
+font-weight:bold;
+margin-top:8px;
+}
+
+.task{
+border:1px solid #e5e7eb;
+padding:15px;
+border-radius:12px;
+margin-top:12px;
+}
+
+.task h3{
+margin-bottom:8px;
+}
+
+.reward{
+display:inline-block;
+background:#dcfce7;
+color:#166534;
+padding:6px 10px;
+border-radius:20px;
+margin:8px 0;
+font-weight:bold;
+}
+
+.status{
+display:inline-block;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+}
+
+.pending{
+background:#fef3c7;
+color:#92400e;
+}
+
+.approved{
+background:#dcfce7;
+color:#166534;
+}
+
+.rejected{
+background:#fee2e2;
+color:#991b1b;
+}
+
+.small{
+font-size:13px;
+color:#6b7280;
+line-height:1.5;
+}
+
+.infoBox{
+background:#eff6ff;
+padding:15px;
+border-radius:10px;
+margin:10px 0;
+line-height:1.7;
+}
+
+.paymentBox{
+background:#f8fafc;
+border:1px solid #e5e7eb;
+padding:15px;
+border-radius:10px;
+line-height:1.8;
+margin:15px 0;
+}
+
+.preview{
+display:none;
+width:100%;
+max-height:350px;
+object-fit:contain;
+margin-top:10px;
+border-radius:10px;
+border:1px solid #ddd;
+background:#f9fafb;
+}
+
+footer{
+text-align:center;
+padding:25px;
+color:#777;
+}
+
+hr{
+border:0;
+border-top:1px solid #e5e7eb;
+margin:20px 0;
+}
+
+@media(max-width:600px){
+
+header h1{
+font-size:20px;
+}
+
+.card{
+padding:16px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================================
+AUTHENTICATION SCREEN
+===================================================== -->
+
+<div id="authScreen">
+
+<div class="authBox">
+
+<h1>🚀 StoryVerse</h1>
+
+<p>
+Promotion & Earning Hub
+</p>
+
+
+<input
+type="email"
+id="authEmail"
+placeholder="Email address"
+autocomplete="email"
+>
+
+
+<input
+type="password"
+id="authPassword"
+placeholder="Password"
+autocomplete="current-password"
+>
+
+
+<button
+class="btn"
+onclick="registerUser()"
+>
+📝 Create Account
+</button>
+
+
+<button
+class="btn green"
+onclick="loginUser()"
+>
+🔐 Login
+</button>
+
+
+<button
+class="btn gray"
+onclick="forgotPassword()"
+>
+🔑 Forgot Password
+</button>
+
+
+<button
+class="btn whatsapp"
+onclick="contactSupport()"
+>
+💬 Customer Service
+</button>
+
+
+<div
+id="authMessage"
+class="msg"
+></div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+MAIN APPLICATION
+===================================================== -->
+
+<div id="app">
+
+
+<header>
+
+<h1>
+🚀 StoryVerse Promotion & Earning Hub
+</h1>
+
+<p>
+Promote • Earn • Grow
+</p>
+
+</header>
+
+
+<nav>
+
+<button onclick="showSection('home')">
+🏠 Home
+</button>
+
+<button onclick="showSection('promotion')">
+📢 Promote
+</button>
+
+<button onclick="showSection('earning')">
+💰 Earn
+</button>
+
+<button onclick="showSection('withdraw')">
+💸 Withdraw
+</button>
+
+<button onclick="showSection('account')">
+👤 Account
+</button>
+
+<button onclick="showSection('support')">
+📞 Support
+</button>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- =====================================================
+HOME
+===================================================== -->
+
+<section
+id="home"
+class="section active"
+>
+
+<div class="card">
+
+<h2>
+👋 Welcome to StoryVerse
+</h2>
+
+<p>
+Welcome to StoryVerse Promotion & Earning Hub.
+</p>
+
+<br>
+
+<p>
+Promote your platforms, complete available tasks,
+submit proof and earn approved rewards.
+</p>
+
+</div>
+
+
+<div class="balanceBox">
+
+<p>
+💰 Your Balance
+</p>
+
+<div class="balance">
+₦<span id="balance">0</span>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+📢 Promotion Hub
+</h2>
+
+<p>
+Promote WhatsApp, TikTok, YouTube, Telegram,
+Facebook, websites, referral links and apps.
+</p>
+
+<button
+class="btn"
+onclick="showSection('promotion')"
+>
+📢 Promote Now
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+💰 Earning Hub
+</h2>
+
+<p>
+Complete daily tasks and submit image proof
+for admin review.
+</p>
+
+<button
+class="btn green"
+onclick="showSection('earning')"
+>
+📋 View Tasks
+</button>
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================================
+PROMOTION
+===================================================== -->
+
+<section
+id="promotion"
+class="section"
+>
+
+<div class="card">
+
+<h2>
+📢 Promote Your Platform
+</h2>
+
+
+<select id="promotionType">
+
+<option>
+WhatsApp Channel
+</option>
+
+<option>
+WhatsApp Group
+</option>
+
+<option>
+TikTok
+</option>
+
+<option>
+YouTube
+</option>
+
+<option>
+Telegram
+</option>
+
+<option>
+Facebook
+</option>
+
+<option>
+Website
+</option>
+
+<option>
+Referral Link
+</option>
+
+<option>
+Mobile App
+</option>
+
+</select>
+
+
+<input
+type="url"
+id="promotionLink"
+placeholder="Paste your promotion link"
+>
+
+
+<select id="promotionPackage">
+
+<option value="500">
+₦500 = 30 Followers
+</option>
+
+<option value="1000">
+₦1,000 = 80 Followers
+</option>
+
+<option value="1500">
+₦1,500 = 120 Followers
+</option>
+
+<option value="2000">
+₦2,000 = 180 Followers
+</option>
+
+<option value="2500">
+₦2,500 = 250 Followers
+</option>
+
+<option value="3000">
+₦3,000 = 320 Followers
+</option>
+
+<option value="4000">
+₦4,000 = 450 Followers
+</option>
+
+<option value="5000">
+₦5,000 = 600 Followers
+</option>
+
+<option value="7500">
+₦7,500 = 900 Followers
+</option>
+
+<option value="10000">
+₦10,000 = 1,300 Followers
+</option>
+
+<option value="15000">
+₦15,000 = 2,000 Followers
+</option>
+
+<option value="20000">
+₦20,000 = 3,000 Followers
+</option>
+
+</select>
+
+
+<div class="paymentBox">
+
+<strong>
+💳 Payment Account
+</strong>
+
+<br>
+
+Account Number:
+<strong>
+6587578800
+</strong>
+
+<br>
+
+Bank:
+<strong>
+OPay
+</strong>
+
+<br>
+
+Account Name:
+<strong>
+ANSELEM CHUKWUEBUKA AGBOM
+</strong>
+
+</div>
+
+
+<p class="small">
+After making payment, submit your promotion request below.
+Your order will remain pending until reviewed.
+</p>
+
+
+<button
+class="btn"
+onclick="submitPromotion()"
+>
+📢 Submit Promotion
+</button>
+
+
+<div
+id="promotionMessage"
+class="msg"
+></div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+📋 My Promotion Orders
+</h2>
+
+<div id="promotionOrders">
+
+<p class="small">
+Loading...
+</p>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================================
+EARNING
+===================================================== -->
+
+<section
+id="earning"
+class="section"
+>
+
+
+<div class="balanceBox">
+
+<p>
+💰 Available Balance
+</p>
+
+<div class="balance">
+₦<span id="earningBalance">0</span>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+📋 Daily Tasks
+</h2>
+
+<p class="small">
+Tasks created by the administrator in Firebase
+will appear here.
+</p>
+
+
+<button
+class="btn"
+onclick="loadTasks()"
+>
+🔄 Refresh Tasks
+</button>
+
+
+<div id="taskList">
+
+<p class="small">
+Loading tasks...
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+📝 My Task Proofs
+</h2>
+
+
+<button
+class="btn gray"
+onclick="loadSubmissions()"
+>
+🔄 Refresh Proofs
+</button>
+
+
+<div id="submissionList">
+
+<p class="small">
+Loading...
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+👥 Referral
+</h2>
+
+<p>
+Your referral ID:
+</p>
+
+<strong id="referralId">
+Loading...
+</strong>
+
+
+<button
+class="btn"
+onclick="copyReferral()"
+>
+📋 Copy Referral Link
+</button>
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================================
+WITHDRAW
+===================================================== -->
+
+<section
+id="withdraw"
+class="section"
+>
+
+<div class="card">
+
+<h2>
+💸 Withdrawal Request
+</h2>
+
+
+<div class="infoBox">
+
+Minimum withdrawal amount:
+<strong>
+₦100
+</strong>
+
+<br>
+
+Your current balance:
+<strong>
+₦<span id="withdrawBalance">0</span>
+</strong>
+
+</div>
+
+
+<input
+type="number"
+id="withdrawAmount"
+placeholder="Amount"
+min="100"
+>
+
+
+<input
+type="text"
+id="bankName"
+placeholder="Bank Name"
+>
+
+
+<input
+type="text"
+id="accountNumber"
+maxlength="10"
+inputmode="numeric"
+placeholder="10-digit Account Number"
+>
+
+
+<input
+type="text"
+id="accountName"
+placeholder="Account Name"
+>
+
+
+<button
+class="btn"
+onclick="submitWithdrawal()"
+>
+💸 Submit Withdrawal
+</button>
+
+
+<div
+id="withdrawMessage"
+class="msg"
+></div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+📜 My Withdrawals
+</h2>
+
+
+<button
+class="btn gray"
+onclick="loadWithdrawals()"
+>
+🔄 Refresh
+</button>
+
+
+<div id="withdrawalList">
+
+<p class="small">
+Loading...
+</p>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================================
+ACCOUNT
+===================================================== -->
+
+<section
+id="account"
+class="section"
+>
+
+<div class="card">
+
+<h2>
+👤 My Account
+</h2>
+
+
+<p>
+Email:
+</p>
+
+<strong id="userEmail">
+</strong>
+
+
+<br><br>
+
+
+<p>
+User ID:
+</p>
+
+<small id="userId">
+</small>
+
+
+<br><br>
+
+
+<p>
+Referral ID:
+</p>
+
+<strong id="accountReferral">
+</strong>
+
+
+<br><br>
+
+
+<p>
+Account Status:
+</p>
+
+<strong>
+✅ Logged In
+</strong>
+
+
+<hr>
+
+
+<button
+class="btn"
+onclick="loadAllData()"
+>
+🔄 Refresh Account
+</button>
+
+
+<button
+class="btn red"
+onclick="logoutUser()"
+>
+🚪 Logout
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SUPPORT
+===================================================== -->
+
+<section
+id="support"
+class="section"
+>
+
+<div class="card">
+
+<h2>
+📞 Customer Service
+</h2>
+
+<p>
+Need help? Contact StoryVerse customer service.
+</p>
+
+
+<br>
+
+
+<button
+class="btn whatsapp"
+onclick="contactSupport()"
+>
+💬 WhatsApp Customer Service 1
+</button>
+
+
+<button
+class="btn whatsapp"
+onclick="contactSupport2()"
+>
+💬 WhatsApp Customer Service 2
+</button>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<footer>
+
+© 2026 StoryVerse Promotion & Earning Hub
+
+</footer>
+
+</div>
+
+
+<!-- =====================================================
+FIREBASE
+===================================================== -->
+
+<script type="module">
+
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+sendPasswordResetEmail,
+signOut,
+onAuthStateChanged
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+getDoc,
+doc,
+query,
+where,
+limit,
+serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+apiKey:
+"AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
+
+authDomain:
+"story-verse-earnig.firebaseapp.com",
+
+databaseURL:
+"https://story-verse-earnig-default-rtdb.firebaseio.com",
+
+projectId:
+"story-verse-earnig",
+
+storageBucket:
+"story-verse-earnig.firebasestorage.app",
+
+messagingSenderId:
+"650131396615",
+
+appId:
+"1:650131396615:web:ad655e6412de909d8db2a2",
+
+measurementId:
+"G-ZLQ6G156LX"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+
+const auth =
+getAuth(app);
+
+
+const db =
+getFirestore(app);
+
+
+/* =====================================================
+WHATSAPP
+===================================================== */
+
+const SUPPORT_1 =
+"2347035349951";
+
+
+/*
+Change this later.
+*/
+
+const SUPPORT_2 =
+"CHANGE_NUMBER_LATER";
+
+
+/* =====================================================
+MESSAGE
+===================================================== */
+
+function message(
+id,
+text,
+type="success"
+){
+
+const box =
+document.getElementById(id);
+
+
+box.style.display="block";
+
+
+box.className =
+type === "error"
+?
+"msg error"
+:
+"msg success";
+
+
+box.textContent=text;
+
+}
+
+
+/* =====================================================
+REGISTER
+===================================================== */
+
+window.registerUser =
+async function(){
+
+const email =
+document
+.getElementById("authEmail")
+.value
+.trim();
+
+
+const password =
+document
+.getElementById("authPassword")
+.value;
+
+
+if(!email || !password){
+
+message(
+"authMessage",
+"Please enter your email and password.",
+"error"
+);
+
+return;
+
+}
+
+
+if(password.length < 6){
+
+message(
+"authMessage",
+"Password must be at least 6 characters.",
+"error"
+);
+
+return;
+
+}
+
+
+try{
+
+const result =
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+
+/*
+Create user record.
+*/
+
+await addDoc(
+collection(db,"users"),
+{
+
+uid:
+result.user.uid,
+
+email:
+email,
+
+balance:
+0,
+
+role:
+"user",
+
+referralId:
+result.user.uid.substring(0,8),
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+
+message(
+"authMessage",
+"Account created successfully. Entering website..."
+);
+
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+let text =
+error.message;
+
+
+if(
+error.code ===
+"auth/email-already-in-use"
+){
+
+text =
+"This email is already registered. Please login.";
+
+}
+
+
+message(
+"authMessage",
+text,
+"error"
+);
+
+}
+
+};
+
+
+/* =====================================================
+LOGIN
+===================================================== */
+
+window.loginUser =
+async function(){
+
+const email =
+document
+.getElementById("authEmail")
+.value
+.trim();
+
+
+const password =
+document
+.getElementById("authPassword")
+.value;
+
+
+if(!email || !password){
+
+message(
+"authMessage",
+"Please enter your email and password.",
+"error"
+);
+
+return;
+
+}
+
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+message(
+"authMessage",
+"Login failed. Please check your email and password.",
+"error"
+);
+
+}
+
+};
+
+
+/* =====================================================
+FORGOT PASSWORD
+===================================================== */
+
+window.forgotPassword =
+async function(){
+
+const email =
+document
+.getElementById("authEmail")
+.value
+.trim();
+
+
+if(!email){
+
+message(
+"authMessage",
+"Enter your email address first, then tap Forgot Password.",
+"error"
+);
+
+return;
+
+}
+
+
+try{
+
+await sendPasswordResetEmail(
+auth,
+email
+);
+
+
+message(
+"authMessage",
+"Password reset email sent. Check your email inbox and spam folder."
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+message(
+"authMessage",
+"Could not send reset email. Please check that the email is registered.",
+"error"
+);
+
+}
+
+};
+
+
+/* =====================================================
+LOGOUT
+===================================================== */
+
+window.logoutUser =
+async function(){
+
+await signOut(auth);
+
+};
+
+
+/* =====================================================
+AUTH STATE
+===================================================== */
+
+onAuthStateChanged(
+auth,
+async(user)=>{
+
+if(user){
+
+document
+.getElementById("authScreen")
+.style.display="none";
+
+
+document
+.getElementById("app")
+.style.display="block";
+
+
+document
+.getElementById("userEmail")
+.textContent =
+user.email || "";
+
+
+document
+.getElementById("userId")
+.textContent =
+user.uid;
+
+
+const referral =
+user.uid.substring(0,8);
+
+
+document
+.getElementById("referralId")
+.textContent =
+referral;
+
+
+document
+.getElementById("accountReferral")
+.textContent =
+referral;
+
+
+await loadAllData();
+
+}
+
+else{
+
+document
+.getElementById("authScreen")
+.style.display="flex";
+
+
+document
+.getElementById("app")
+.style.display="none";
+
+}
+
+}
+);
+
+
+/* =====================================================
+NAVIGATION
+===================================================== */
+
+window.showSection =
+function(name){
+
+document
+.querySelectorAll(".section")
+.forEach(
+x =>
+x.classList.remove("active")
+);
+
+
+const section =
+document.getElementById(name);
+
+
+if(section){
+
+section.classList.add("active");
+
+}
+
+};
+
+
+/* =====================================================
+LOAD ALL DATA
+===================================================== */
+
+window.loadAllData =
+async function(){
+
+await loadBalance();
+
+await loadTasks();
+
+await loadSubmissions();
+
+await loadWithdrawals();
+
+await loadPromotionOrders();
+
+};
+
+
+/* =====================================================
+LOAD BALANCE
+===================================================== */
+
+async function loadBalance(){
+
+const user =
+auth.currentUser;
+
+
+if(!user)return;
+
+
+try{
+
+const q =
+query(
+collection(db,"users"),
+where("uid","==",user.uid),
+limit(1)
+);
+
+
+const snap =
+await getDocs(q);
+
+
+let balance=0;
+
+
+snap.forEach(
+docSnap=>{
+
+balance =
+Number(
+docSnap.data().balance || 0
+);
+
+}
+);
+
+
+document
+.getElementById("balance")
+.textContent =
+balance.toLocaleString();
+
+
+document
+.getElementById("earningBalance")
+.textContent =
+balance.toLocaleString();
+
+
+document
+.getElementById("withdrawBalance")
+.textContent =
+balance.toLocaleString();
+
+
+}
+
+catch(error){
+
+console.error(
+"Balance error:",
+error
+);
+
+}
+
+}
+
+
+/* =====================================================
+LOAD TASKS
+===================================================== */
+
+window.loadTasks =
+async function(){
+
+const user =
+auth.currentUser;
+
+
+if(!user)return;
+
+
+const list =
+document.getElementById("taskList");
+
+
+list.innerHTML =
+"<p class='small'>Loading tasks...</p>";
+
+
+try{
+
+const q =
+query(
+collection(db,"tasks"),
+where("active","==",true)
+);
+
+
+const snap =
+await getDocs(q);
+
+
+if(snap.empty){
+
+list.innerHTML =
+"<p class='small'>No tasks available right now.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+for(
+const taskDoc of snap.docs
+){
+
+const task =
+taskDoc.data();
+
+
+const div =
+document.createElement("div");
+
+
+div.className="task";
+
+
+const title =
+safe(
+task.title ||
+"Daily Task"
+);
+
+
+const description =
+safe(
+task.description ||
+"Complete this task."
+);
+
+
+const reward =
+Number(
+task.reward || 0
+);
+
+
+const link =
+safeAttribute(
+task.link ||
+"#"
+);
+
+
+div.innerHTML = `
+
+<h3>
+${title}
+</h3>
+
+<p>
+${description}
+</p>
+
+<div class="reward">
+💰 ₦${reward.toLocaleString()}
+</div>
+
+<br>
+
+<button
+class="btn"
+onclick="openTask('${encodeURIComponent(task.link || "#")}')"
+>
+🔗 Open Task
+</button>
+
+<button
+class="btn green"
+onclick="showProofForm(
+'${encodeURIComponent(taskDoc.id)}'
+)"
+>
+🖼️ Submit Image Proof
+</button>
+
+`;
+
+
+list.appendChild(div);
+
+}
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+list.innerHTML =
+"<p class='small'>Could not load tasks. Check your Firebase Firestore rules.</p>";
+
+}
+
+};
+
+
+/* =====================================================
+OPEN TASK
+===================================================== */
+
+window.openTask =
+function(encodedLink){
+
+const link =
+decodeURIComponent(
+encodedLink
+);
+
+
+if(
+!link ||
+link === "#"
+){
+
+alert(
+"This task does not have a link."
+);
+
+return;
+
+}
+
+
+window.open(
+link,
+"_blank"
+);
+
+};
+
+
+/* =====================================================
+SHOW PROOF FORM
+===================================================== */
+
+window.showProofForm =
+async function(taskId){
+
+const taskList =
+document.getElementById(
+"taskList"
+);
+
+
+try{
+
+const taskRef =
+doc(
+db,
+"tasks",
+taskId
+);
+
+
+const taskSnap =
+await getDoc(taskRef);
+
+
+if(!taskSnap.exists()){
+
+alert(
+"Task no longer exists."
+);
+
+return;
+
+}
+
+
+const task =
+taskSnap.data();
+
+
+const title =
+safe(
+task.title ||
+"Task"
+);
+
+
+const reward =
+Number(
+task.reward || 0
+);
+
+
+taskList.innerHTML = `
+
+<div class="card">
+
+<h2>
+🖼️ Submit Image Proof
+</h2>
+
+<p>
+<strong>Task:</strong>
+${title}
+</p>
+
+<p>
+<strong>Reward:</strong>
+₦${reward.toLocaleString()}
+</p>
+
+<br>
+
+<label>
+<strong>
+Select proof image
+</strong>
+</label>
+
+<input
+type="file"
+id="proofImage"
+accept="image/jpeg,image/png,image/webp"
+onchange="previewProofImage(event)"
+>
+
+
+<img
+id="proofPreview"
+class="preview"
+alt="Proof preview"
+>
+
+
+<textarea
+id="proofText"
+placeholder="Optional explanation about your proof"
+></textarea>
+
+
+<button
+class="btn green"
+onclick="submitProof('${taskId}')"
+>
+✅ Submit Proof
+</button>
+
+
+<button
+class="btn gray"
+onclick="loadTasks()"
+>
+← Cancel
+</button>
+
+
+<div
+id="proofMessage"
+class="msg"
+></div>
+
+</div>
+
+`;
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Could not open proof form."
+);
+
+}
+
+};
+
+
+/* =====================================================
+IMAGE PREVIEW
+===================================================== */
+
+window.previewProofImage =
+function(event){
+
+const file =
+event.target.files[0];
+
+
+const preview =
+document.getElementById(
+"proofPreview"
+);
+
+
+if(!file){
+
+preview.style.display="none";
+
+return;
+
+}
+
+
+if(
+!file.type.startsWith("image/")
+){
+
+message(
+"proofMessage",
+"Please select an image file.",
+"error"
+);
+
+event.target.value="";
+
+return;
+
+}
+
+
+const reader =
+new FileReader();
+
+
+reader.onload =
+function(e){
+
+preview.src =
+e.target.result;
+
+preview.style.display =
+"block";
+
+};
+
+
+reader.readAsDataURL(file);
+
+};
+
+
+/* =====================================================
+COMPRESS IMAGE
+===================================================== */
+
+function compressImage(file){
+
+return new Promise(
+(resolve,reject)=>{
+
+const reader =
+new FileReader();
+
+
+reader.onload =
+function(event){
+
+const img =
+new Image();
+
+
+img.onload =
+function(){
+
+const maxSize =
+1200;
+
+
+let width =
+img.width;
+
+
+let height =
+img.height;
+
+
+if(width > maxSize){
+
+height =
+Math.round(
+height *
+maxSize /
+width
+);
+
+width =
+maxSize;
+
+}
+
+
+if(height > maxSize){
+
+width =
+Math.round(
+width *
+maxSize /
+height
+);
+
+height =
+maxSize;
+
+}
+
+
+const canvas =
+document.createElement(
+"canvas"
+);
+
+
+canvas.width =
+width;
+
+
+canvas.height =
+height;
+
+
+const ctx =
+canvas.getContext(
+"2d"
+);
+
+
+ctx.drawImage(
+img,
+0,
+0,
+width,
+height
+);
+
+
+const dataUrl =
+canvas.toDataURL(
+"image/jpeg",
+0.65
+);
+
+
+resolve(dataUrl);
+
+};
+
+
+img.onerror =
+function(){
+
+reject(
+new Error(
+"Could not process image."
+)
+);
+
+};
+
+
+img.src =
+event.target.result;
+
+};
+
+
+reader.onerror =
+function(){
+
+reject(
+new Error(
+"Could not read image."
+)
+);
+
+};
+
+
+reader.readAsDataURL(file);
+
+}
+);
+
+}
+
+
+/* =====================================================
+SUBMIT PROOF
+===================================================== */
+
+window.submitProof =
+async function(taskId){
+
+const user =
+auth.currentUser;
+
+
+if(!user)return;
+
+
+const fileInput =
+document.getElementById(
+"proofImage"
+);
+
+
+const proofText =
+document.getElementById(
+"proofText"
+).value.trim();
+
+
+if(
+!fileInput ||
+!fileInput.files[0]
+){
+
+message(
+"proofMessage",
+"Please select a proof image.",
+"error"
+);
+
+return;
+
+}
+
+
+const file =
+fileInput.files[0];
+
+
+if(
+!file.type.startsWith("image/")
+){
+
+message(
+"proofMessage",
+"Only image files are allowed.",
+"error"
+);
+
+return;
+
+}
+
+
+try{
+
+message(
+"proofMessage",
+"Processing image..."
+);
+
+
+const taskRef =
+doc(
+db,
+"tasks",
+taskId
+);
+
+
+const taskSnap =
+await getDoc(taskRef);
+
+
+if(!taskSnap.exists()){
+
+message(
+"proofMessage",
+"Task no longer exists.",
+"error"
+);
+
+return;
+
+}
+
+
+const task =
+taskSnap.data();
+
+
+if(task.active !== true){
+
+message(
+"proofMessage",
+"This task is no longer active.",
+"error"
+);
+
+return;
+
+}
+
+
+/*
+The reward is taken from Firebase,
+not from the user's browser input.
+*/
+
+const reward =
+Number(
+task.reward || 0
+);
+
+
+const taskTitle =
+task.title ||
+"Task";
+
+
+message(
+"proofMessage",
+"Compressing image..."
+);
+
+
+const imageData =
+await compressImage(file);
+
+
+/*
+Check approximate size before
+saving to Firestore.
+*/
+
+const sizeInBytes =
+Math.ceil(
+(imageData.length * 3) / 4
+);
+
+
+if(
+sizeInBytes >
+700000
+){
+
+message(
+"proofMessage",
+"Image is still too large. Please choose a smaller image.",
+"error"
+);
+
+return;
+
+}
+
+
+message(
+"proofMessage",
+"Submitting proof..."
+);
+
+
+await addDoc(
+collection(
+db,
+"taskSubmissions"
+),
+{
+
+uid:
+user.uid,
+
+email:
+user.email,
+
+taskId:
+taskId,
+
+taskTitle:
+taskTitle,
+
+reward:
+reward,
+
+proofImage:
+imageData,
+
+proofText:
+proofText,
+
+status:
+"Pending",
+
+submittedAt:
+serverTimestamp()
+
+}
+);
+
+
+message(
+"proofMessage",
+"✅ Proof submitted successfully. Waiting for admin approval."
+);
+
+
+setTimeout(
+function(){
+
+loadTasks();
+
+loadSubmissions();
+
+},
+1200
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+message(
+"proofMessage",
+"Could not submit proof: " +
+error.message,
+"error"
+);
+
+}
+
+};
+
+
+/* =====================================================
+LOAD SUBMISSIONS
+===================================================== */
+
+window.loadSubmissions =
+async function(){
+
+const user =
+auth.currentUser;
+
+
+if(!user)return;
+
+
+const list =
+document.getElementById(
+"submissionList"
+);
+
+
+list.innerHTML =
+"<p class='small'>Loading...</p>";
+
+
+try{
+
+const q =
+query(
+collection(
+db,
+"taskSubmissions"
+),
+where(
+"uid",
+"==",
+user.uid
+)
+);
+
+
+const snap =
+await getDocs(q);
+
+
+if(snap.empty){
+
+list.innerHTML =
+"<p class='small'>No task submissions yet.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+snap.forEach(
+docSnap=>{
+
+const data =
+docSnap.data();
+
+
+let cls =
+"pending";
+
+
+if(
+data.status ===
+"Approved"
+){
+
+cls =
+"approved";
+
+}
+
+
+if(
+data.status ===
+"Rejected"
+){
+
+cls =
+"rejected";
+
+}
+
+
+const div =
+document.createElement(
+"div"
+);
+
+
+div.className="task";
+
+
+div.innerHTML = `
+
+<h3>
+${safe(
+data.taskTitle ||
+"Task"
+)}
+</h3>
+
+<p>
+Reward:
+₦${Number(
+data.reward || 0
+).toLocaleString()}
+</p>
+
+<br>
+
+<span
+class="status ${cls}"
+>
+${safe(
+data.status ||
+"Pending"
+)}
+</span>
+
+`;
+
+
+if(
+data.status ===
+"Rejected" &&
+data.rejectionReason
+){
+
+div.innerHTML += `
+
+<p class="small">
+<strong>
+Reason:
+</strong>
+
+${safe(
+data.rejectionReason
+)}
+
+</p>
+
+`;
+
+}
+
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+list.innerHTML =
+"<p class='small'>Could not load submissions.</p>";
+
+}
+
+};
+
+
+/* =====================================================
+PROMOTION
+===================================================== */
+
+window.submitPromotion =
+async function(){
+
+const user =
+auth.currentUser;
+
+
+if(!user)return;
+
+
+const type =
+document
+.getElementById(
+"promotionType"
+)
+.value;
+
+
+const link =
+document
+.getElementById(
+"promotionLink"
+)
+.value
+.trim();
+
+
+const amount =
+Number(
+document
+.getElementById(
+"promotionPackage"
+)
+.value
+);
+
+
+if(!link){
+
+message(
+"promotionMessage",
+"Please enter your promotion link.",
+"error"
+);
+
+return;
+
+}
+
+
+try{
+
+await addDoc(
+collection(
+db,
+"promotionOrders"
+),
+{
+
+uid:
+user.uid,
+
+email:
+user.email,
+
+promotionType:
+type,
+
+promotionLink:
+link,
+
+amount:
+amount,
+
+paymentStatus:
+"Pending",
+
+promotionStatus:
+"Pending",
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+
+message(
+"promotionMessage",
+"Promotion request submitted successfully."
+);
+
+
+document
+.getElementById(
+"promotionLink"
+)
+.value="";
+
+
+await loadPromotionOrders();
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+message(
+"promotionMessage",
+error.message,
+"error"
+);
+
+}
+
+};
+
+
+/* =====================================================
+PROMOTION ORDERS
+===================================================== */
+
+async function loadPromotionOrders(){
+
+const user =
+auth.currentUser;
+
+
+if(!user)return;
+
+
+const list =
+document.getElementById(
+"promotionOrders"
+);
+
+
+try{
+
+const q =
+query(
+collection(
+db,
+"promotionOrders"
+),
+where(
+"uid",
+"==",
+user.uid
+)
+);
+
+
+const snap =
+await getDocs(q);
+
+
+if(snap.empty){
+
+list.innerHTML =
+"<p class='small'>No promotion orders yet.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+snap.forEach(
+docSnap=>{
+
+const d =
+docSnap.data();
+
+
+const div =
+document.createElement(
+"div"
+);
+
+
+div.className="task";
+
+
+div.innerHTML = `
+
+<h3>
+${safe(
+d.promotionType ||
+"Promotion"
+)}
+</h3>
+
+<p>
+Amount:
+₦${Number(
+d.amount || 0
+).toLocaleString()}
+</p>
+
+<p>
+Payment:
+${safe(
+d.paymentStatus ||
+"Pending"
+)}
+</p>
+
+<p>
+Promotion:
+${safe(
+d.promotionStatus ||
+"Pending"
+)}
+</p>
+
+`;
+
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+}
+
+}
+
+
+/* =====================================================
+WITHDRAWAL
+===================================================== */
+
+window.submitWithdrawal =
+async function(){
+
+const user =
+auth.currentUser;
+
+
+if(!user)return;
+
+
+const amount =
+Number(
+document
+.getElementById(
+"withdrawAmount"
+)
+.value
+);
+
+
+const bank =
+document
+.getElementById(
+"bankName"
+)
+.value
+.trim();
+
+
+const account =
+document
+.getElementById(
+"accountNumber"
+)
+.value
+.trim();
+
+
+const name =
+document
+.getElementById(
+"accountName"
+)
+.value
+.trim();
+
+
+if(
+!amount ||
+!bank ||
+!account ||
+!name
+){
+
+message(
+"withdrawMessage",
+"Please complete all fields.",
+"error"
+);
+
+return;
+
+}
+
+
+if(amount < 100){
+
+message(
+"withdrawMessage",
+"Minimum withdrawal amount is ₦100.",
+"error"
+);
+
+return;
+
+}
+
+
+if(
+!/^[0-9]{10}$/.test(account)
+){
+
+message(
+"withdrawMessage",
+"Account number must contain exactly 10 digits.",
+"error"
+);
+
+return;
+
+}
+
+
+/*
+Check current balance.
+*/
+
+try{
+
+const q =
+query(
+collection(db,"users"),
+where("uid","==",user.uid),
+limit(1)
+);
+
+
+const snap =
+await getDocs(q);
+
+
+if(snap.empty){
+
+message(
+"withdrawMessage",
+"User account record was not found.",
+"error"
+);
+
+return;
+
+}
+
+
+const userDoc =
+snap.docs[0];
+
+
+const currentBalance =
+Number(
+userDoc.data().balance || 0
+);
+
+
+if(amount > currentBalance){
+
+message(
+"withdrawMessage",
+"Insufficient balance.",
+"error"
+);
+
+return;
+
+}
+
+
+/*
+Create withdrawal request.
+
+The balance is NOT automatically
+deducted here. Admin can review
+the request first.
+*/
+
+await addDoc(
+collection(db,"withdrawals"),
+{
+
+uid:
+user.uid,
+
+email:
+user.email,
+
+amount:
+amount,
+
+bankName:
+bank,
+
+accountNumber:
+account,
+
+accountName:
+name,
+
+status:
+"Pending",
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+
+message(
+"withdrawMessage",
+"Withdrawal request submitted. Status: Pending."
+);
+
+
+document
+.getElementById(
+"withdrawAmount"
+)
+.value="";
+
+
+document
+.getElementById(
+"bankName"
+)
+.value="";
+
+
+document
+.getElementById(
+"accountNumber"
+)
+.value="";
+
+
+document
+.getElementById(
+"accountName"
+)
+.value="";
+
+
+await loadWithdrawals();
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+message(
+"withdrawMessage",
+"Could not submit withdrawal: " +
+error.message,
+"error"
+);
+
+}
+
+};
+
+
+/* =====================================================
+WITHDRAWALS
+===================================================== */
+
+window.loadWithdrawals =
+async function(){
+
+const user =
+auth.currentUser;
+
+
+if(!user)return;
+
+
+const list =
+document.getElementById(
+"withdrawalList"
+);
+
+
+try{
+
+const q =
+query(
+collection(
+db,
+"withdrawals"
+),
+where(
+"uid",
+"==",
+user.uid
+)
+);
+
+
+const snap =
+await getDocs(q);
+
+
+if(snap.empty){
+
+list.innerHTML =
+"<p class='small'>No withdrawals yet.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+snap.forEach(
+docSnap=>{
+
+const d =
+docSnap.data();
+
+
+let cls =
+"pending";
+
+
+if(
+d.status ===
+"Approved"
+){
+
+cls =
+"approved";
+
+}
+
+
+if(
+d.status ===
+"Rejected"
+){
+
+cls =
+"rejected";
+
+}
+
+
+const div =
+document.createElement(
+"div"
+);
+
+
+div.className="task";
+
+
+div.innerHTML = `
+
+<h3>
+₦${Number(
+d.amount || 0
+).toLocaleString()}
+</h3>
+
+<p>
+Bank:
+${safe(
+d.bankName || ""
+)}
+</p>
+
+<p>
+Account:
+${safe(
+d.accountNumber || ""
+)}
+</p>
+
+<p>
+Name:
+${safe(
+d.accountName || ""
+)}
+</p>
+
+<br>
+
+<span
+class="status ${cls}"
+>
+${safe(
+d.status ||
+"Pending"
+)}
+</span>
+
+`;
+
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+}
+
+};
+
+
+/* =====================================================
+REFERRAL
+===================================================== */
+
+window.copyReferral =
+async function(){
+
+const user =
+auth.currentUser;
+
+
+if(!user)return;
+
+
+const id =
+user.uid.substring(
+0,
+8
+);
+
+
+const link =
+window.location.origin +
+window.location.pathname +
+"?ref=" +
+id;
+
+
+try{
+
+await navigator.clipboard.writeText(
+link
+);
+
+
+alert(
+"Referral link copied!"
+);
+
+}
+
+catch(error){
+
+alert(
+"Your referral link is:\n" +
+link
+);
+
+}
+
+};
+
+
+/* =====================================================
+CUSTOMER SERVICE
+===================================================== */
+
+window.contactSupport =
+function(){
+
+const text =
+encodeURIComponent(
+"Hello StoryVerse Customer Service, I need assistance."
+);
+
+
+window.open(
+"https://wa.me/" +
+SUPPORT_1 +
+"?text=" +
+text,
+"_blank"
+);
+
+};
+
+
+window.contactSupport2 =
+function(){
+
+if(
+SUPPORT_2 ===
+"CHANGE_NUMBER_LATER"
+){
+
+alert(
+"Customer Service 2 number has not been added yet."
+);
+
+return;
+
+}
+
+
+const text =
+encodeURIComponent(
+"Hello StoryVerse Customer Service, I need assistance."
+);
+
+
+window.open(
+"https://wa.me/" +
+SUPPORT_2 +
+"?text=" +
+text,
+"_blank"
+);
+
+};
+
+
+/* =====================================================
+SAFE TEXT
+===================================================== */
+
+function safe(value){
+
+return String(value)
+
+.replaceAll(
+"&",
+"&amp;"
+)
+
+.replaceAll(
+"<",
+"&lt;"
+)
+
+.replaceAll(
+">",
+"&gt;"
+)
+
+.replaceAll(
+'"',
+"&quot;"
+)
+
+.replaceAll(
+"'",
+"&#039;"
+);
+
+}
+
+
+/*
+Used for attributes such as links.
+*/
+
+function safeAttribute(value){
+
+return String(value)
+
+.replaceAll(
+"&",
+"&amp;"
+)
+
+.replaceAll(
+'"',
+"&quot;"
+)
+
+.replaceAll(
+"'",
+"&#039;"
+)
+
+.replaceAll(
+"<",
+"&lt;"
+)
+
+.replaceAll(
+">",
+"&gt;"
+);
+
+}
+
+</script>
+
+</body>
+  </html>
