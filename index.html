@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StoryVerse Promotion & Earning Hub</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f4f6f9;
+  color:#222;
+}
+
+header{
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
+  padding:25px 15px;
+  text-align:center;
+}
+
+header h1{
+  font-size:25px;
+}
+
+header p{
+  margin-top:8px;
+  opacity:.9;
+}
+
+nav{
+  display:flex;
+  overflow-x:auto;
+  background:white;
+  border-bottom:1px solid #ddd;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+nav button{
+  flex:1;
+  min-width:100px;
+  border:0;
+  background:white;
+  padding:14px 8px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:13px;
+}
+
+nav button:hover{
+  background:#eef2ff;
+}
+
+.container{
+  max-width:950px;
+  margin:auto;
+  padding:15px;
+}
+
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.card h2{
+  margin-bottom:12px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:13px;
+  margin:7px 0 12px;
+  border:1px solid #d1d5db;
+  border-radius:9px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+button.primary{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:9px;
+  background:#2563eb;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:6px;
+}
+
+button.green{
+  background:#16a34a;
+}
+
+button.red{
+  background:#dc2626;
+}
+
+button.orange{
+  background:#ea580c;
+}
+
+button.gray{
+  background:#4b5563;
+}
+
+button.whatsapp{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:9px;
+  background:#25D366;
+  color:white;
+  font-weight:bold;
+  margin-top:8px;
+  cursor:pointer;
+}
+
+.balanceBox{
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
+  border-radius:15px;
+  padding:22px;
+  margin-bottom:15px;
+}
+
+.balance{
+  font-size:32px;
+  font-weight:bold;
+  margin-top:8px;
+}
+
+.task{
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:15px;
+  margin-top:12px;
+}
+
+.task h3{
+  margin-bottom:8px;
+}
+
+.reward{
+  display:inline-block;
+  background:#dcfce7;
+  color:#166534;
+  padding:6px 10px;
+  border-radius:20px;
+  font-weight:bold;
+  font-size:13px;
+  margin:8px 0;
+}
+
+.status{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.pending{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.approved{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.rejected{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.package{
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:15px;
+  margin:10px 0;
+}
+
+.message{
+  display:none;
+  padding:11px;
+  border-radius:8px;
+  margin-top:10px;
+}
+
+.successMessage{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.errorMessage{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.infoMessage{
+  background:#dbeafe;
+  color:#1e40af;
+}
+
+.small{
+  color:#6b7280;
+  font-size:13px;
+}
+
+hr{
+  border:0;
+  border-top:1px solid #eee;
+  margin:15px 0;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#777;
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🚀 StoryVerse Promotion & Earning Hub</h1>
+  <p>Promote • Earn • Grow</p>
+</header>
+
+
+<nav>
+  <button onclick="showSection('home')">🏠 Home</button>
+  <button onclick="showSection('promotion')">📢 Promote</button>
+  <button onclick="showSection('earning')">💰 Earn</button>
+  <button onclick="showSection('withdraw')">💸 Withdraw</button>
+  <button onclick="showSection('account')">👤 Account</button>
+  <button onclick="showSection('support')">📞 Support</button>
+</nav>
+
+
+<div class="container">
+
+
+<!-- =========================
+HOME
+========================= -->
+
+<section id="home" class="section active">
+
+  <div class="card">
+    <h2>👋 Welcome</h2>
+
+    <p>
+      Welcome to StoryVerse Promotion & Earning Hub.
+      Promote your platforms or complete approved tasks
+      and earn rewards.
+    </p>
+  </div>
+
+
+  <div class="card">
+
+    <h2>📢 Promotion Hub</h2>
+
+    <p>
+      Promote your WhatsApp Channel, TikTok, YouTube,
+      Telegram, Facebook, website, referral link or app.
+    </p>
+
+    <button
+      class="primary"
+      onclick="showSection('promotion')">
+      📢 Promote Now
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>💰 Earning Hub</h2>
+
+    <p>
+      Complete available tasks and submit proof
+      for admin review.
+    </p>
+
+    <button
+      class="primary green"
+      onclick="showSection('earning')">
+      💰 View Tasks
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+PROMOTION
+========================= -->
+
+<section id="promotion" class="section">
+
+  <div class="card">
+
+    <h2>📢 Promote Your Platform</h2>
+
+    <p class="small">
+      Select a service, enter your link and submit
+      your promotion request.
+    </p>
+
+    <label>Promotion Type</label>
+
+    <select id="promotionType">
+
+      <option>WhatsApp Channel</option>
+      <option>WhatsApp Group</option>
+      <option>TikTok</option>
+      <option>YouTube</option>
+      <option>Telegram</option>
+      <option>Facebook</option>
+      <option>Website</option>
+      <option>Referral Link</option>
+      <option>Mobile App</option>
+
+    </select>
+
+
+    <label>Your Promotion Link</label>
+
+    <input
+      type="url"
+      id="promotionLink"
+      placeholder="https://..."
+    >
+
+
+    <label>Choose Package</label>
+
+    <select id="promotionPackage">
+
+      <option value="500">
+        ₦500 = 30 Followers
+      </option>
+
+      <option value="1000">
+        ₦1,000 = 80 Followers
+      </option>
+
+      <option value="1500">
+        ₦1,500 = 120 Followers
+      </option>
+
+      <option value="2000">
+        ₦2,000 = 180 Followers
+      </option>
+
+      <option value="2500">
+        ₦2,500 = 250 Followers
+      </option>
+
+      <option value="3000">
+        ₦3,000 = 320 Followers
+      </option>
+
+      <option value="4000">
+        ₦4,000 = 450 Followers
+      </option>
+
+      <option value="5000">
+        ₦5,000 = 600 Followers
+      </option>
+
+      <option value="7500">
+        ₦7,500 = 900 Followers
+      </option>
+
+      <option value="10000">
+        ₦10,000 = 1,300 Followers
+      </option>
+
+      <option value="15000">
+        ₦15,000 = 2,000 Followers
+      </option>
+
+      <option value="20000">
+        ₦20,000 = 3,000 Followers
+      </option>
+
+    </select>
+
+
+    <button
+      class="primary"
+      onclick="submitPromotion()">
+      📢 Submit Promotion
+    </button>
+
+    <div
+      id="promotionMessage"
+      class="message">
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>📋 My Promotion Orders</h2>
+
+    <div id="myPromotionOrders">
+      <p class="small">
+        Login to view your orders.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+EARNING
+========================= -->
+
+<section id="earning" class="section">
+
+
+  <div class="balanceBox">
+
+    <p>💰 Available Balance</p>
+
+    <div class="balance">
+      ₦<span id="balance">0</span>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>📋 Daily Tasks</h2>
+
+    <p class="small">
+      Tasks are added from your Firebase Firestore
+      database. Only active tasks are shown.
+    </p>
+
+    <button
+      class="primary"
+      onclick="loadTasks()">
+      🔄 Refresh Tasks
+    </button>
+
+    <div id="taskList">
+      <p class="small">
+        Please login to view tasks.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>📝 My Task Submissions</h2>
+
+    <button
+      class="primary gray"
+      onclick="loadMySubmissions()">
+      🔄 Check My Submissions
+    </button>
+
+    <div id="submissionList">
+      <p class="small">
+        Login to view your submissions.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>👥 Referral</h2>
+
+    <p>
+      Your referral ID:
+    </p>
+
+    <strong id="referralId">
+      Login to see your referral ID.
+    </strong>
+
+    <button
+      class="primary"
+      onclick="copyReferral()">
+      📋 Copy Referral Link
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+WITHDRAW
+========================= -->
+
+<section id="withdraw" class="section">
+
+  <div class="card">
+
+    <h2>💸 Request Withdrawal</h2>
+
+    <p class="small">
+      Your withdrawal request will be reviewed by admin.
+    </p>
+
+    <input
+      type="number"
+      id="withdrawAmount"
+      placeholder="Amount"
+      min="1"
+    >
+
+    <input
+      type="text"
+      id="bankName"
+      placeholder="Bank Name"
+    >
+
+    <input
+      type="text"
+      id="accountNumber"
+      placeholder="10-digit Account Number"
+      maxlength="10"
+    >
+
+    <input
+      type="text"
+      id="accountName"
+      placeholder="Account Name"
+    >
+
+    <button
+      class="primary"
+      onclick="submitWithdrawal()">
+      💸 Submit Withdrawal
+    </button>
+
+    <div
+      id="withdrawMessage"
+      class="message">
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>📜 My Withdrawals</h2>
+
+    <button
+      class="primary gray"
+      onclick="loadWithdrawals()">
+      🔄 Check Withdrawal Status
+    </button>
+
+    <div id="withdrawalList">
+      <p class="small">
+        Login to view withdrawals.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+ACCOUNT
+========================= -->
+
+<section id="account" class="section">
+
+  <div class="card">
+
+    <h2>👤 Account</h2>
+
+
+    <label>Email</label>
+
+    <input
+      type="email"
+      id="email"
+      placeholder="Enter your email"
+    >
+
+
+    <label>Password</label>
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Enter password"
+    >
+
+
+    <button
+      class="primary"
+      onclick="registerUser()">
+      📝 Register
+    </button>
+
+
+    <button
+      class="primary green"
+      onclick="loginUser()">
+      🔐 Login
+    </button>
+
+
+    <button
+      class="primary red"
+      onclick="logoutUser()">
+      🚪 Logout
+    </button>
+
+
+    <div
+      id="authMessage"
+      class="message">
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>👤 My Account</h2>
+
+    <p>Email</p>
+
+    <strong id="userEmail">
+      Not logged in
+    </strong>
+
+    <hr>
+
+    <p>User ID</p>
+
+    <small id="userId">
+      Not logged in
+    </small>
+
+    <hr>
+
+    <p>Account Status</p>
+
+    <strong id="accountStatus">
+      Not logged in
+    </strong>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+SUPPORT
+========================= -->
+
+<section id="support" class="section">
+
+  <div class="card">
+
+    <h2>📞 Customer Service</h2>
+
+    <p>
+      Need help? Contact StoryVerse customer service
+      through WhatsApp.
+    </p>
+
+
+    <button
+      class="whatsapp"
+      onclick="contactWhatsApp1()">
+      💬 WhatsApp Customer Service 1
+    </button>
+
+
+    <button
+      class="whatsapp"
+      onclick="contactWhatsApp2()">
+      💬 WhatsApp Customer Service 2
+    </button>
+
+  </div>
+
+</section>
+
+</div>
+
+
+<footer>
+  © 2026 StoryVerse Promotion & Earning Hub
+</footer>
+
+
+
+<!-- =====================================================
+FIREBASE
+===================================================== -->
+
+<script type="module">
+
+import {
+  initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  limit,
+  serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
+
+  authDomain:
+  "story-verse-earnig.firebaseapp.com",
+
+  databaseURL:
+  "https://story-verse-earnig-default-rtdb.firebaseio.com",
+
+  projectId:
+  "story-verse-earnig",
+
+  storageBucket:
+  "story-verse-earnig.firebasestorage.app",
+
+  messagingSenderId:
+  "650131396615",
+
+  appId:
+  "1:650131396615:web:ad655e6412de909d8db2a2",
+
+  measurementId:
+  "G-ZLQ6G156LX"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+
+const auth =
+getAuth(app);
+
+
+const db =
+getFirestore(app);
+
+
+
+/* =====================================================
+CUSTOMER SERVICE NUMBERS
+CHANGE NUMBER 2 LATER
+===================================================== */
+
+const CUSTOMER_SERVICE_1 =
+"2347035349951";
+
+
+const CUSTOMER_SERVICE_2 =
+"CHANGE_THIS_NUMBER_LATER";
+
+
+
+/* =====================================================
+NAVIGATION
+===================================================== */
+
+window.showSection =
+function(sectionName){
+
+  document
+  .querySelectorAll(".section")
+  .forEach(section => {
+
+    section.classList.remove("active");
+
+  });
+
+
+  const section =
+  document.getElementById(sectionName);
+
+
+  if(section){
+
+    section.classList.add("active");
+
+  }
+
+};
+
+
+
+/* =====================================================
+MESSAGE
+===================================================== */
+
+function showMessage(
+  id,
+  text,
+  type="success"
+){
+
+  const box =
+  document.getElementById(id);
+
+
+  box.style.display =
+  "block";
+
+
+  if(type === "error"){
+
+    box.className =
+    "message errorMessage";
+
+  }
+
+  else if(type === "info"){
+
+    box.className =
+    "message infoMessage";
+
+  }
+
+  else{
+
+    box.className =
+    "message successMessage";
+
+  }
+
+
+  box.textContent =
+  text;
+
+}
+
+
+
+/* =====================================================
+REGISTER
+===================================================== */
+
+window.registerUser =
+async function(){
+
+  const email =
+  document
+  .getElementById("email")
+  .value
+  .trim();
+
+
+  const password =
+  document
+  .getElementById("password")
+  .value;
+
+
+  if(!email || !password){
+
+    showMessage(
+      "authMessage",
+      "Please enter your email and password.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(password.length < 6){
+
+    showMessage(
+      "authMessage",
+      "Password must contain at least 6 characters.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const result =
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+
+    await addDoc(
+      collection(db,"users"),
+      {
+
+        uid:
+        result.user.uid,
+
+        email:
+        email,
+
+        balance:
+        0,
+
+        role:
+        "user",
+
+        referralId:
+        result.user.uid.substring(0,8),
+
+        createdAt:
+        serverTimestamp()
+
+      }
+    );
+
+
+    showMessage(
+      "authMessage",
+      "Account created successfully."
+    );
+
+
+  }
+
+  catch(error){
+
+    showMessage(
+      "authMessage",
+      error.message,
+      "error"
+    );
+
+  }
+
+};
+
+
+
+/* =====================================================
+LOGIN
+===================================================== */
+
+window.loginUser =
+async function(){
+
+  const email =
+  document
+  .getElementById("email")
+  .value
+  .trim();
+
+
+  const password =
+  document
+  .getElementById("password")
+  .value;
+
+
+  if(!email || !password){
+
+    showMessage(
+      "authMessage",
+      "Enter your email and password.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+
+    showMessage(
+      "authMessage",
+      "Login successful."
+    );
+
+  }
+
+  catch(error){
+
+    showMessage(
+      "authMessage",
+      error.message,
+      "error"
+    );
+
+  }
+
+};
+
+
+
+/* =====================================================
+LOGOUT
+===================================================== */
+
+window.logoutUser =
+async function(){
+
+  await signOut(auth);
+
+
+  showMessage(
+    "authMessage",
+    "You have been logged out."
+  );
+
+};
+
+
+
+/* =====================================================
+AUTH STATE
+===================================================== */
+
+onAuthStateChanged(
+auth,
+async user => {
+
+  if(user){
+
+    document
+    .getElementById("userEmail")
+    .textContent =
+    user.email;
+
+
+    document
+    .getElementById("userId")
+    .textContent =
+    user.uid;
+
+
+    document
+    .getElementById("accountStatus")
+    .textContent =
+    "Logged in";
+
+
+    document
+    .getElementById("referralId")
+    .textContent =
+    user.uid.substring(0,8);
+
+
+    await loadBalance();
+
+    await loadTasks();
+
+    await loadMySubmissions();
+
+    await loadWithdrawals();
+
+    await loadMyPromotionOrders();
+
+  }
+
+  else{
+
+    document
+    .getElementById("userEmail")
+    .textContent =
+    "Not logged in";
+
+
+    document
+    .getElementById("userId")
+    .textContent =
+    "Not logged in";
+
+
+    document
+    .getElementById("accountStatus")
+    .textContent =
+    "Not logged in";
+
+  }
+
+});
+
+
+
+/* =====================================================
+LOAD BALANCE
+===================================================== */
+
+async function loadBalance(){
+
+  const user =
+  auth.currentUser;
+
+
+  if(!user)
+  return;
+
+
+  try{
+
+    const q =
+    query(
+      collection(db,"users"),
+      where("uid","==",user.uid),
+      limit(1)
+    );
+
+
+    const snapshot =
+    await getDocs(q);
+
+
+    if(snapshot.empty){
+
+      document
+      .getElementById("balance")
+      .textContent =
+      "0";
+
+      return;
+
+    }
+
+
+    snapshot.forEach(doc => {
+
+      const data =
+      doc.data();
+
+
+      document
+      .getElementById("balance")
+      .textContent =
+      Number(data.balance || 0)
+      .toLocaleString();
+
+    });
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+
+/* =====================================================
+LOAD FIREBASE TASKS
+===================================================== */
+
+window.loadTasks =
+async function(){
+
+  const user =
+  auth.currentUser;
+
+
+  const list =
+  document.getElementById("taskList");
+
+
+  if(!user){
+
+    list.innerHTML =
+    "<p class='small'>Please login first.</p>";
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+  "<p class='small'>Loading tasks...</p>";
+
+
+  try{
+
+    const q =
+    query(
+      collection(db,"tasks"),
+      where("active","==",true)
+    );
+
+
+    const snapshot =
+    await getDocs(q);
+
+
+    if(snapshot.empty){
+
+      list.innerHTML =
+      "<p class='small'>No tasks available right now.</p>";
+
+      return;
+
+    }
+
+
+    list.innerHTML =
+    "";
+
+
+    snapshot.forEach(doc => {
+
+      const task =
+      doc.data();
+
+
+      const taskId =
+      doc.id;
+
+
+      const div =
+      document.createElement("div");
+
+
+      div.className =
+      "task";
+
+
+      div.innerHTML = `
+
+        <h3>
+          ${escapeHTML(task.title || "Task")}
+        </h3>
+
+        <p>
+          ${escapeHTML(task.description || "")}
+        </p>
+
+        <div class="reward">
+          💰 Reward:
+          ₦${Number(task.reward || 0).toLocaleString()}
+        </div>
+
+        <br>
+
+        <button
+          class="primary"
+          onclick="openTask('${encodeURIComponent(task.link || "#")}')">
+          🔗 Open Task
+        </button>
+
+        <button
+          class="primary green"
+          onclick="openProof('${encodeURIComponent(taskId)}','${encodeURIComponent(task.title || "")}',${Number(task.reward || 0)})">
+          📝 Submit Proof
+        >
+
+      `;
+
+
+      list.appendChild(div);
+
+    });
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+
+    list.innerHTML =
+    "<p class='small'>Unable to load tasks.</p>";
+
+  }
+
+};
+
+
+
+/* =====================================================
+OPEN TASK
+===================================================== */
+
+window.openTask =
+function(encodedLink){
+
+  const link =
+  decodeURIComponent(encodedLink);
+
+
+  if(link && link !== "#"){
+
+    window.open(
+      link,
+      "_blank"
+    );
+
+  }
+
+  else{
+
+    alert(
+      "This task does not have a link yet."
+    );
+
+  }
+
+};
+
+
+
+/* =====================================================
+PROOF FORM
+===================================================== */
+
+window.openProof =
+function(
+  encodedTaskId,
+  encodedTaskTitle,
+  reward
+){
+
+  const taskId =
+  decodeURIComponent(encodedTaskId);
+
+
+  const taskTitle =
+  decodeURIComponent(encodedTaskTitle);
+
+
+  const list =
+  document.getElementById("taskList");
+
+
+  list.innerHTML = `
+
+    <div class="card">
+
+      <h2>📝 Submit Task Proof</h2>
+
+      <p>
+        <strong>Task:</strong>
+        ${escapeHTML(taskTitle)}
+      </p>
+
+      <p>
+        <strong>Reward:</strong>
+        ₦${Number(reward).toLocaleString()}
+      </p>
+
+      <br>
+
+      <label>
+        Proof link or username
+      </label>
+
+      <input
+        type="text"
+        id="proofLink"
+        placeholder="Paste proof link or username"
+      >
+
+      <label>
+        Explain how you completed the task
+      </label>
+
+      <textarea
+        id="proofText"
+        placeholder="Enter your proof details here..."
+      ></textarea>
+
+      <button
+        class="primary green"
+        onclick="submitProof(
+          '${encodeURIComponent(taskId)}',
+          '${encodeURIComponent(taskTitle)}',
+          ${Number(reward)}
+        )">
+        ✅ Submit Proof
+      </button>
+
+      <button
+        class="primary gray"
+        onclick="loadTasks()">
+        ← Cancel
+      </button>
+
+      <div
+        id="proofMessage"
+        class="message">
+      </div>
+
+    </div>
+
+  `;
+
+};
+
+
+
+/* =====================================================
+SUBMIT PROOF
+===================================================== */
+
+window.submitProof =
+async function(
+  encodedTaskId,
+  encodedTaskTitle,
+  reward
+){
+
+  const user =
+  auth.currentUser;
+
+
+  if(!user){
+
+    alert("Please login first.");
+
+    return;
+
+  }
+
+
+  const taskId =
+  decodeURIComponent(encodedTaskId);
+
+
+  const taskTitle =
+  decodeURIComponent(encodedTaskTitle);
+
+
+  const proofLink =
+  document
+  .getElementById("proofLink")
+  .value
+  .trim();
+
+
+  const proofText =
+  document
+  .getElementById("proofText")
+  .value
+  .trim();
+
+
+  if(!proofLink && !proofText){
+
+    showMessage(
+      "proofMessage",
+      "Please provide proof.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    await addDoc(
+      collection(db,"taskSubmissions"),
+      {
+
+        uid:
+        user.uid,
+
+        email:
+        user.email,
+
+        taskId:
+        taskId,
+
+        taskTitle:
+        taskTitle,
+
+        reward:
+        Number(reward),
+
+        proofLink:
+        proofLink,
+
+        proofText:
+        proofText,
+
+        status:
+        "Pending",
+
+        submittedAt:
+        serverTimestamp()
+
+      }
+    );
+
+
+    showMessage(
+      "proofMessage",
+      "Proof submitted successfully. Status: Pending."
+    );
+
+
+    setTimeout(
+      () => loadTasks(),
+      1200
+    );
+
+  }
+
+  catch(error){
+
+    showMessage(
+      "proofMessage",
+      error.message,
+      "error"
+    );
+
+  }
+
+};
+
+
+
+/* =====================================================
+LOAD MY SUBMISSIONS
+===================================================== */
+
+window.loadMySubmissions =
+async function(){
+
+  const user =
+  auth.currentUser;
+
+
+  const list =
+  document.getElementById("submissionList");
+
+
+  if(!user){
+
+    list.innerHTML =
+    "<p class='small'>Please login first.</p>";
+
+    return;
+
+  }
+
+
+  try{
+
+    const q =
+    query(
+      collection(db,"taskSubmissions"),
+      where("uid","==",user.uid)
+    );
+
+
+    const snapshot =
+    await getDocs(q);
+
+
+    if(snapshot.empty){
+
+      list.innerHTML =
+      "<p class='small'>No submissions yet.</p>";
+
+      return;
+
+    }
+
+
+    list.innerHTML =
+    "";
+
+
+    snapshot.forEach(doc => {
+
+      const data =
+      doc.data();
+
+
+      let statusClass =
+      "pending";
+
+
+      if(data.status === "Approved")
+      statusClass =
+      "approved";
+
+
+      if(data.status === "Rejected")
+      statusClass =
+      "rejected";
+
+
+      const div =
+      document.createElement("div");
+
+
+      div.className =
+      "task";
+
+
+      div.innerHTML = `
+
+        <h3>
+          ${escapeHTML(data.taskTitle || "Task")}
+        </h3>
+
+        <p>
+          Reward:
+          ₦${Number(data.reward || 0).toLocaleString()}
+        </p>
+
+        <br>
+
+        <span class="status ${statusClass}">
+          ${escapeHTML(data.status || "Pending")}
+        </span>
+
+      `;
+
+
+      list.appendChild(div);
+
+    });
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+  }
+
+};
+
+
+
+/* =====================================================
+SUBMIT PROMOTION
+===================================================== */
+
+window.submitPromotion =
+async function(){
+
+  const user =
+  auth.currentUser;
+
+
+  if(!user){
+
+    showMessage(
+      "promotionMessage",
+      "Please login before submitting a promotion.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const type =
+  document
+  .getElementById("promotionType")
+  .value;
+
+
+  const link =
+  document
+  .getElementById("promotionLink")
+  .value
+  .trim();
+
+
+  const amount =
+  Number(
+    document
+    .getElementById("promotionPackage")
+    .value
+  );
+
+
+  if(!link){
+
+    showMessage(
+      "promotionMessage",
+      "Please enter your promotion link.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    await addDoc(
+      collection(db,"promotionOrders"),
+      {
+
+        uid:
+        user.uid,
+
+        email:
+        user.email,
+
+        promotionType:
+        type,
+
+        promotionLink:
+        link,
+
+        amount:
+        amount,
+
+        paymentStatus:
+        "Pending",
+
+        promotionStatus:
+        "Pending",
+
+        createdAt:
+        serverTimestamp()
+
+      }
+    );
+
+
+    showMessage(
+      "promotionMessage",
+      "Promotion request submitted successfully."
+    );
+
+
+    document
+    .getElementById("promotionLink")
+    .value = "";
+
+
+    loadMyPromotionOrders();
+
+  }
+
+  catch(error){
+
+    showMessage(
+      "promotionMessage",
+      error.message,
+      "error"
+    );
+
+  }
+
+};
+
+
+
+/* =====================================================
+MY PROMOTION ORDERS
+===================================================== */
+
+window.loadMyPromotionOrders =
+async function(){
+
+  const user =
+  auth.currentUser;
+
+
+  const list =
+  document.getElementById(
+    "myPromotionOrders"
+  );
+
+
+  if(!user){
+
+    list.innerHTML =
+    "<p class='small'>Please login first.</p>";
+
+    return;
+
+  }
+
+
+  try{
+
+    const q =
+    query(
+      collection(db,"promotionOrders"),
+      where("uid","==",user.uid)
+    );
+
+
+    const snapshot =
+    await getDocs(q);
+
+
+    if(snapshot.empty){
+
+      list.innerHTML =
+      "<p class='small'>No promotion orders yet.</p>";
+
+      return;
+
+    }
+
+
+    list.innerHTML =
+    "";
+
+
+    snapshot.forEach(doc => {
+
+      const data =
+      doc.data();
+
+
+      const div =
+      document.createElement("div");
+
+
+      div.className =
+      "task";
+
+
+      div.innerHTML = `
+
+        <h3>
+          ${escapeHTML(data.promotionType || "")}
+        </h3>
+
+        <p>
+          Amount:
+          ₦${Number(data.amount || 0).toLocaleString()}
+        </p>
+
+        <p>
+          Payment:
+          ${escapeHTML(data.paymentStatus || "Pending")}
+        </p>
+
+        <p>
+          Promotion:
+          ${escapeHTML(data.promotionStatus || "Pending")}
+        </p>
+
+      `;
+
+
+      list.appendChild(div);
+
+    });
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+  }
+
+};
+
+
+
+/* =====================================================
+WITHDRAWAL
+===================================================== */
+
+window.submitWithdrawal =
+async function(){
+
+  const user =
+  auth.currentUser;
+
+
+  if(!user){
+
+    showMessage(
+      "withdrawMessage",
+      "Please login first.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const amount =
+  Number(
+    document
+    .getElementById("withdrawAmount")
+    .value
+  );
+
+
+  const bankName =
+  document
+  .getElementById("bankName")
+  .value
+  .trim();
+
+
+  const accountNumber =
+  document
+  .getElementById("accountNumber")
+  .value
+  .trim();
+
+
+  const accountName =
+  document
+  .getElementById("accountName")
+  .value
+  .trim();
+
+
+  if(
+    !amount ||
+    !bankName ||
+    !accountNumber ||
+    !accountName
+  ){
+
+    showMessage(
+      "withdrawMessage",
+      "Please complete all fields.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(!/^[0-9]{10}$/.test(accountNumber)){
+
+    showMessage(
+      "withdrawMessage",
+      "Account number must contain exactly 10 digits.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    await addDoc(
+      collection(db,"withdrawals"),
+      {
+
+        uid:
+        user.uid,
+
+        email:
+        user.email,
+
+        amount:
+        amount,
+
+        bankName:
+        bankName,
+
+        accountNumber:
+        accountNumber,
+
+        accountName:
+        accountName,
+
+        status:
+        "Pending",
+
+        createdAt:
+        serverTimestamp()
+
+      }
+    );
+
+
+    showMessage(
+      "withdrawMessage",
+      "Withdrawal submitted successfully. Status: Pending."
+    );
+
+
+  }
+
+  catch(error){
+
+    showMessage(
+      "withdrawMessage",
+      error.message,
+      "error"
+    );
+
+  }
+
+};
+
+
+
+/* =====================================================
+LOAD WITHDRAWALS
+===================================================== */
+
+window.loadWithdrawals =
+async function(){
+
+  const user =
+  auth.currentUser;
+
+
+  const list =
+  document.getElementById(
+    "withdrawalList"
+  );
+
+
+  if(!user){
+
+    list.innerHTML =
+    "<p class='small'>Please login first.</p>";
+
+    return;
+
+  }
+
+
+  try{
+
+    const q =
+    query(
+      collection(db,"withdrawals"),
+      where("uid","==",user.uid)
+    );
+
+
+    const snapshot =
+    await getDocs(q);
+
+
+    if(snapshot.empty){
+
+      list.innerHTML =
+      "<p class='small'>No withdrawal requests yet.</p>";
+
+      return;
+
+    }
+
+
+    list.innerHTML =
+    "";
+
+
+    snapshot.forEach(doc => {
+
+      const data =
+      doc.data();
+
+
+      const div =
+      document.createElement("div");
+
+
+      div.className =
+      "task";
+
+
+      div.innerHTML = `
+
+        <h3>
+          ₦${Number(data.amount || 0).toLocaleString()}
+        </h3>
+
+        <p>
+          Bank:
+          ${escapeHTML(data.bankName || "")}
+        </p>
+
+        <p>
+          Account:
+          ${escapeHTML(data.accountNumber || "")}
+        </p>
+
+        <br>
+
+        <span class="status pending">
+          ${escapeHTML(data.status || "Pending")}
+        </span>
+
+      `;
+
+
+      list.appendChild(div);
+
+    });
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+  }
+
+};
+
+
+
+/* =====================================================
+REFERRAL
+===================================================== */
+
+window.copyReferral =
+function(){
+
+  const user =
+  auth.currentUser;
+
+
+  if(!user){
+
+    alert(
+      "Please login first."
+    );
+
+    return;
+
+  }
+
+
+  const referralId =
+  user.uid.substring(0,8);
+
+
+  const referralLink =
+  window.location.origin +
+  window.location.pathname +
+  "?ref=" +
+  referralId;
+
+
+  navigator.clipboard
+  .writeText(referralLink)
+  .then(() => {
+
+    alert(
+      "Referral link copied!"
+    );
+
+  });
+
+};
+
+
+
+/* =====================================================
+WHATSAPP
+===================================================== */
+
+window.contactWhatsApp1 =
+function(){
+
+  const message =
+  encodeURIComponent(
+    "Hello StoryVerse Customer Service, I need assistance."
+  );
+
+
+  window.open(
+    "https://wa.me/" +
+    CUSTOMER_SERVICE_1 +
+    "?text=" +
+    message,
+    "_blank"
+  );
+
+};
+
+
+
+window.contactWhatsApp2 =
+function(){
+
+  if(
+    CUSTOMER_SERVICE_2 ===
+    "CHANGE_THIS_NUMBER_LATER"
+  ){
+
+    alert(
+      "Customer Service 2 number has not been added yet."
+    );
+
+    return;
+
+  }
+
+
+  const message =
+  encodeURIComponent(
+    "Hello StoryVerse Customer Service, I need assistance."
+  );
+
+
+  window.open(
+    "https://wa.me/" +
+    CUSTOMER_SERVICE_2 +
+    "?text=" +
+    message,
+    "_blank"
+  );
+
+};
+
+
+
+/* =====================================================
+SECURITY HELPERS
+===================================================== */
+
+function escapeHTML(value){
+
+  return String(value)
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
+
+}
+
+</script>
+
+</body>
+</html>
