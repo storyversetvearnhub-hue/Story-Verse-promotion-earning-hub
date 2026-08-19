@@ -75,6 +75,10 @@ font-weight:bold;
 box-shadow:0 3px 10px rgba(0,0,0,.20);
 }
 
+.downloadApp:hover{
+background:#15803d;
+}
+
 input,
 textarea,
 select{
@@ -984,6 +988,10 @@ onclick="contactSupport2()"
 </div>
 
 
+<!-- =====================================================
+FIREBASE
+===================================================== -->
+
 <script type="module">
 
 import {
@@ -1015,6 +1023,7 @@ doc,
 setDoc,
 query,
 where,
+limit,
 serverTimestamp,
 runTransaction
 }
@@ -1109,10 +1118,14 @@ window.registerUser =
 async function(){
 
 const email =
-document.getElementById("authEmail").value.trim();
+document.getElementById("authEmail")
+.value
+.trim();
 
 const password =
-document.getElementById("authPassword").value;
+document.getElementById("authPassword")
+.value;
+
 
 if(!email || !password){
 
@@ -1126,6 +1139,7 @@ return;
 
 }
 
+
 if(password.length < 6){
 
 message(
@@ -1138,6 +1152,7 @@ return;
 
 }
 
+
 try{
 
 const result =
@@ -1147,17 +1162,22 @@ email,
 password
 );
 
+
 await setDoc(
 doc(db,"users",result.user.uid),
 {
 
-uid:result.user.uid,
+uid:
+result.user.uid,
 
-email:email,
+email:
+email,
 
-balance:0,
+balance:
+0,
 
-role:"user",
+role:
+"user",
 
 referralId:
 result.user.uid.substring(0,8),
@@ -1167,6 +1187,7 @@ serverTimestamp()
 
 }
 );
+
 
 message(
 "authMessage",
@@ -1183,7 +1204,8 @@ let text =
 "Could not create account.";
 
 if(
-error.code === "auth/email-already-in-use"
+error.code ===
+"auth/email-already-in-use"
 ){
 
 text =
@@ -1192,7 +1214,8 @@ text =
 }
 
 else if(
-error.code === "auth/invalid-email"
+error.code ===
+"auth/invalid-email"
 ){
 
 text =
@@ -1219,10 +1242,14 @@ window.loginUser =
 async function(){
 
 const email =
-document.getElementById("authEmail").value.trim();
+document.getElementById("authEmail")
+.value
+.trim();
 
 const password =
-document.getElementById("authPassword").value;
+document.getElementById("authPassword")
+.value;
+
 
 if(!email || !password){
 
@@ -1235,6 +1262,7 @@ message(
 return;
 
 }
+
 
 try{
 
@@ -1269,7 +1297,10 @@ window.forgotPassword =
 async function(){
 
 const email =
-document.getElementById("authEmail").value.trim();
+document.getElementById("authEmail")
+.value
+.trim();
+
 
 if(!email){
 
@@ -1282,6 +1313,7 @@ message(
 return;
 
 }
+
 
 try{
 
@@ -1334,23 +1366,29 @@ async(user)=>{
 
 if(user){
 
-document.getElementById("authScreen").style.display="none";
+document.getElementById("authScreen")
+.style.display="none";
 
-document.getElementById("app").style.display="block";
+document.getElementById("app")
+.style.display="block";
 
-document.getElementById("userEmail").textContent =
+document.getElementById("userEmail")
+.textContent =
 user.email || "";
 
-document.getElementById("userId").textContent =
+document.getElementById("userId")
+.textContent =
 user.uid;
 
 const referral =
 user.uid.substring(0,8);
 
-document.getElementById("referralId").textContent =
+document.getElementById("referralId")
+.textContent =
 referral;
 
-document.getElementById("accountReferral").textContent =
+document.getElementById("accountReferral")
+.textContent =
 referral;
 
 await loadAllData();
@@ -1359,9 +1397,11 @@ await loadAllData();
 
 else{
 
-document.getElementById("authScreen").style.display="flex";
+document.getElementById("authScreen")
+.style.display="flex";
 
-document.getElementById("app").style.display="none";
+document.getElementById("app")
+.style.display="none";
 
 }
 
@@ -1379,7 +1419,8 @@ function(name){
 document
 .querySelectorAll(".section")
 .forEach(
-x => x.classList.remove("active")
+x =>
+x.classList.remove("active")
 );
 
 const section =
@@ -1421,6 +1462,7 @@ auth.currentUser;
 
 if(!user)return;
 
+
 try{
 
 const userRef =
@@ -1431,6 +1473,7 @@ await getDoc(userRef);
 
 let balance=0;
 
+
 if(snap.exists()){
 
 balance =
@@ -1440,20 +1483,27 @@ snap.data().balance || 0
 
 }
 
-document.getElementById("balance").textContent =
+
+document.getElementById("balance")
+.textContent =
 balance.toLocaleString();
 
-document.getElementById("earningBalance").textContent =
+document.getElementById("earningBalance")
+.textContent =
 balance.toLocaleString();
 
-document.getElementById("withdrawBalance").textContent =
+document.getElementById("withdrawBalance")
+.textContent =
 balance.toLocaleString();
 
 }
 
 catch(error){
 
-console.error("Balance error:",error);
+console.error(
+"Balance error:",
+error
+);
 
 }
 
@@ -1462,6 +1512,8 @@ console.error("Balance error:",error);
 
 /* =====================================================
 TASKS
+IMPORTANT:
+ONE TASK = ONE USER ONLY
 ===================================================== */
 
 window.loadTasks =
@@ -1472,13 +1524,19 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const list =
 document.getElementById("taskList");
 
 list.innerHTML =
 "<p class='small'>Loading tasks...</p>";
 
+
 try{
+
+/*
+Get all active tasks
+*/
 
 const taskQuery =
 query(
@@ -1489,6 +1547,11 @@ where("active","==",true)
 const taskSnap =
 await getDocs(taskQuery);
 
+
+/*
+Get all submissions made by this user
+*/
+
 const submissionQuery =
 query(
 collection(db,"taskSubmissions"),
@@ -1498,8 +1561,14 @@ where("uid","==",user.uid)
 const submissionSnap =
 await getDocs(submissionQuery);
 
+
+/*
+Create a set of completed/submitted task IDs
+*/
+
 const submittedTasks =
 new Set();
+
 
 submissionSnap.forEach(
 submissionDoc=>{
@@ -1527,9 +1596,12 @@ return;
 
 }
 
+
 list.innerHTML="";
 
+
 let availableCount=0;
+
 
 for(
 const taskDoc of taskSnap.docs
@@ -1543,12 +1615,14 @@ taskDoc.id;
 
 const title =
 safe(
-task.title || "Daily Task"
+task.title ||
+"Daily Task"
 );
 
 const description =
 safe(
-task.description || "Complete this task."
+task.description ||
+"Complete this task."
 );
 
 const reward =
@@ -1556,22 +1630,38 @@ Number(
 task.reward || 0
 );
 
+
+/*
+CHECK IF THIS USER HAS ALREADY
+SUBMITTED THIS TASK
+*/
+
 const alreadySubmitted =
 submittedTasks.has(taskId);
+
 
 const div =
 document.createElement("div");
 
+
 if(alreadySubmitted){
+
+/*
+TASK ALREADY DONE BY THIS USER
+*/
 
 div.className =
 "task completedTask";
 
 div.innerHTML = `
 
-<h3>${title}</h3>
+<h3>
+${title}
+</h3>
 
-<p>${description}</p>
+<p>
+${description}
+</p>
 
 <div class="reward">
 💰 ₦${reward.toLocaleString()}
@@ -1593,8 +1683,11 @@ You cannot submit the same task again.
 `;
 
 }
-
 else{
+
+/*
+TASK STILL AVAILABLE
+*/
 
 availableCount++;
 
@@ -1602,9 +1695,13 @@ div.className="task";
 
 div.innerHTML = `
 
-<h3>${title}</h3>
+<h3>
+${title}
+</h3>
 
-<p>${description}</p>
+<p>
+${description}
+</p>
 
 <div class="reward">
 💰 ₦${reward.toLocaleString()}
@@ -1630,9 +1727,15 @@ onclick="showProofForm('${taskId}')"
 
 }
 
+
 list.appendChild(div);
 
 }
+
+
+/*
+SHOW MESSAGE IF ALL TASKS ARE COMPLETED
+*/
 
 if(availableCount === 0){
 
@@ -1652,7 +1755,10 @@ list.prepend(notice);
 
 catch(error){
 
-console.error("Task loading error:",error);
+console.error(
+"Task loading error:",
+error
+);
 
 list.innerHTML =
 "<p class='small'>Could not load tasks. Check your Firebase rules.</p>";
@@ -1664,54 +1770,36 @@ list.innerHTML =
 
 /* =====================================================
 OPEN TASK
-FIXED FOR WEBVIEW
 ===================================================== */
 
 window.openTask =
 function(encodedLink){
 
 const link =
-decodeURIComponent(encodedLink || "").trim();
+decodeURIComponent(encodedLink);
+
 
 if(!link || link === "#"){
 
-alert("This task does not have a link.");
+alert(
+"This task does not have a link."
+);
 
 return;
 
 }
 
 
-/*
-IMPORTANT:
-
-Do NOT use window.open(link,"_blank")
-because many Android WebViews do not handle
-new browser windows correctly.
-
-Use the current page navigation instead.
-Kodular can then intercept the URL.
-*/
-
-try{
-
-window.location.href = link;
-
-}
-
-catch(error){
-
-console.error("Open task error:",error);
-
-window.location.assign(link);
-
-}
+window.open(
+link,
+"_blank"
+);
 
 };
 
 
 /* =====================================================
-PROOF FORM
+TASK PROOF FORM
 ===================================================== */
 
 window.showProofForm =
@@ -1722,13 +1810,20 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const taskList =
 document.getElementById("taskList");
 
+
 try{
+
+/*
+FIRST CHECK IF USER ALREADY SUBMITTED IT
+*/
 
 const submissionId =
 user.uid + "_" + taskId;
+
 
 const existingRef =
 doc(
@@ -1737,8 +1832,10 @@ db,
 submissionId
 );
 
+
 const existingSnap =
 await getDoc(existingRef);
+
 
 if(existingSnap.exists()){
 
@@ -1752,34 +1849,53 @@ return;
 
 }
 
+
 const taskRef =
-doc(db,"tasks",taskId);
+doc(
+db,
+"tasks",
+taskId
+);
+
 
 const taskSnap =
 await getDoc(taskRef);
 
+
 if(!taskSnap.exists()){
 
-alert("Task no longer exists.");
+alert(
+"Task no longer exists."
+);
 
 return;
 
 }
 
+
 const task =
 taskSnap.data();
 
+
 const title =
-safe(task.title || "Task");
+safe(
+task.title ||
+"Task"
+);
 
 const reward =
-Number(task.reward || 0);
+Number(
+task.reward || 0
+);
+
 
 taskList.innerHTML = `
 
 <div class="card">
 
-<h2>🖼️ Submit Image Proof</h2>
+<h2>
+🖼️ Submit Image Proof
+</h2>
 
 <p>
 <strong>Task:</strong>
@@ -1844,7 +1960,9 @@ catch(error){
 
 console.error(error);
 
-alert("Could not open proof form.");
+alert(
+"Could not open proof form."
+);
 
 }
 
@@ -1864,6 +1982,7 @@ event.target.files[0];
 const preview =
 document.getElementById("proofPreview");
 
+
 if(!file){
 
 preview.style.display="none";
@@ -1872,11 +1991,14 @@ return;
 
 }
 
+
 if(
 !file.type.startsWith("image/")
 ){
 
-alert("Please select an image file.");
+alert(
+"Please select an image file."
+);
 
 event.target.value="";
 
@@ -1884,8 +2006,10 @@ return;
 
 }
 
+
 const reader =
 new FileReader();
+
 
 reader.onload =
 function(e){
@@ -1893,9 +2017,11 @@ function(e){
 preview.src =
 e.target.result;
 
-preview.style.display="block";
+preview.style.display =
+"block";
 
 };
+
 
 reader.readAsDataURL(file);
 
@@ -1914,11 +2040,13 @@ return new Promise(
 const reader =
 new FileReader();
 
+
 reader.onload =
 function(event){
 
 const img =
 new Image();
+
 
 img.onload =
 function(){
@@ -1932,6 +2060,7 @@ img.width;
 let height =
 img.height;
 
+
 if(width > maxSize){
 
 height =
@@ -1943,6 +2072,7 @@ width =
 maxSize;
 
 }
+
 
 if(height > maxSize){
 
@@ -1956,6 +2086,7 @@ maxSize;
 
 }
 
+
 const canvas =
 document.createElement("canvas");
 
@@ -1965,8 +2096,10 @@ width;
 canvas.height =
 height;
 
+
 const ctx =
 canvas.getContext("2d");
+
 
 ctx.drawImage(
 img,
@@ -1976,38 +2109,48 @@ width,
 height
 );
 
+
 const dataUrl =
 canvas.toDataURL(
 "image/jpeg",
 0.65
 );
 
+
 resolve(dataUrl);
 
 };
+
 
 img.onerror =
 function(){
 
 reject(
-new Error("Could not process image.")
+new Error(
+"Could not process image."
+)
 );
 
 };
+
 
 img.src =
 event.target.result;
 
 };
 
+
 reader.onerror =
 function(){
 
 reject(
-new Error("Could not read image.")
+new Error(
+"Could not read image."
+)
 );
 
 };
+
 
 reader.readAsDataURL(file);
 
@@ -2018,7 +2161,8 @@ reader.readAsDataURL(file);
 
 
 /* =====================================================
-SUBMIT PROOF
+SUBMIT TASK PROOF
+ONE TASK PER USER
 ===================================================== */
 
 window.submitProof =
@@ -2029,12 +2173,15 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const fileInput =
 document.getElementById("proofImage");
 
 const proofText =
 document.getElementById("proofText")
-.value.trim();
+.value
+.trim();
+
 
 if(
 !fileInput ||
@@ -2051,6 +2198,7 @@ return;
 
 }
 
+
 try{
 
 message(
@@ -2058,8 +2206,21 @@ message(
 "Checking task..."
 );
 
+
+/*
+DETERMINISTIC DOCUMENT ID
+
+This is the important part.
+
+One user + one task = one document.
+
+Example:
+USER123_TASK456
+*/
+
 const submissionId =
 user.uid + "_" + taskId;
+
 
 const submissionRef =
 doc(
@@ -2067,6 +2228,11 @@ db,
 "taskSubmissions",
 submissionId
 );
+
+
+/*
+Get task
+*/
 
 const taskRef =
 doc(
@@ -2077,6 +2243,7 @@ taskId
 
 const taskSnap =
 await getDoc(taskRef);
+
 
 if(!taskSnap.exists()){
 
@@ -2090,20 +2257,30 @@ return;
 
 }
 
+
 const task =
 taskSnap.data();
 
+
 const reward =
-Number(task.reward || 0);
+Number(
+task.reward || 0
+);
+
+
+/*
+CHECK DUPLICATE AGAIN
+*/
 
 const existingSubmission =
 await getDoc(submissionRef);
+
 
 if(existingSubmission.exists()){
 
 message(
 "proofMessage",
-"❌ You have already submitted this task.",
+"❌ You have already submitted this task. You cannot submit it again.",
 "error"
 );
 
@@ -2113,18 +2290,31 @@ return;
 
 }
 
+
+/*
+PROCESS IMAGE
+*/
+
 const file =
 fileInput.files[0];
 
 const imageData =
 await compressImage(file);
 
+
+/*
+CHECK IMAGE SIZE
+*/
+
 const sizeInBytes =
 Math.ceil(
 (imageData.length * 3) / 4
 );
 
-if(sizeInBytes > 700000){
+
+if(
+sizeInBytes > 700000
+){
 
 message(
 "proofMessage",
@@ -2136,6 +2326,14 @@ return;
 
 }
 
+
+/*
+USE FIRESTORE TRANSACTION
+
+This protects against duplicate submissions
+if the user taps the button multiple times.
+*/
+
 await runTransaction(
 db,
 async(transaction)=>{
@@ -2145,6 +2343,7 @@ await transaction.get(
 submissionRef
 );
 
+
 if(check.exists()){
 
 throw new Error(
@@ -2153,28 +2352,37 @@ throw new Error(
 
 }
 
+
 transaction.set(
 submissionRef,
 {
 
-uid:user.uid,
+uid:
+user.uid,
 
-email:user.email || "",
+email:
+user.email || "",
 
-taskId:taskId,
+taskId:
+taskId,
 
 taskTitle:
 task.title || "Task",
 
-reward:reward,
+reward:
+reward,
 
-proofImage:imageData,
+proofImage:
+imageData,
 
-proofText:proofText,
+proofText:
+proofText,
 
-status:"Pending",
+status:
+"Pending",
 
-rewardPaid:false,
+rewardPaid:
+false,
 
 submittedAt:
 serverTimestamp()
@@ -2185,10 +2393,12 @@ serverTimestamp()
 }
 );
 
+
 message(
 "proofMessage",
-"✅ Proof submitted successfully! Waiting for admin approval."
+"✅ Proof submitted successfully! This task is now locked for your account and is waiting for admin approval."
 );
+
 
 setTimeout(
 async function(){
@@ -2209,13 +2419,15 @@ console.error(
 error
 );
 
+
 if(
-error.message === "ALREADY_SUBMITTED"
+error.message ===
+"ALREADY_SUBMITTED"
 ){
 
 message(
 "proofMessage",
-"❌ You have already submitted this task.",
+"❌ You have already submitted this task. You cannot submit it again.",
 "error"
 );
 
@@ -2224,6 +2436,7 @@ await loadTasks();
 return;
 
 }
+
 
 message(
 "proofMessage",
@@ -2249,11 +2462,16 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const list =
-document.getElementById("submissionList");
+document.getElementById(
+"submissionList"
+);
+
 
 list.innerHTML =
 "<p class='small'>Loading...</p>";
+
 
 try{
 
@@ -2263,8 +2481,10 @@ collection(db,"taskSubmissions"),
 where("uid","==",user.uid)
 );
 
+
 const snap =
 await getDocs(q);
+
 
 if(snap.empty){
 
@@ -2275,7 +2495,9 @@ return;
 
 }
 
+
 list.innerHTML="";
+
 
 snap.forEach(
 docSnap=>{
@@ -2284,25 +2506,33 @@ const data =
 docSnap.data();
 
 const status =
-data.status || "Pending";
+data.status ||
+"Pending";
 
 const statusClass =
 getStatusClass(status);
+
 
 const div =
 document.createElement("div");
 
 div.className="task";
 
+
 div.innerHTML = `
 
 <h3>
-${safe(data.taskTitle || "Task")}
+${safe(
+data.taskTitle ||
+"Task"
+)}
 </h3>
 
 <p>
 Reward:
-₦${Number(data.reward || 0).toLocaleString()}
+₦${Number(
+data.reward || 0
+).toLocaleString()}
 </p>
 
 <br>
@@ -2318,6 +2548,7 @@ This task has already been submitted from this account.
 </p>
 
 `;
+
 
 list.appendChild(div);
 
@@ -2352,6 +2583,7 @@ document.getElementById(
 "paymentProofPreview"
 );
 
+
 if(!file){
 
 preview.style.display="none";
@@ -2359,6 +2591,7 @@ preview.style.display="none";
 return;
 
 }
+
 
 if(
 !file.type.startsWith("image/")
@@ -2376,8 +2609,10 @@ return;
 
 }
 
+
 const reader =
 new FileReader();
+
 
 reader.onload =
 function(e){
@@ -2385,9 +2620,11 @@ function(e){
 preview.src =
 e.target.result;
 
-preview.style.display="block";
+preview.style.display =
+"block";
 
 };
+
 
 reader.readAsDataURL(file);
 
@@ -2416,15 +2653,19 @@ return;
 
 }
 
+
 const type =
 document.getElementById(
 "promotionType"
 ).value;
 
+
 const link =
 document.getElementById(
 "promotionLink"
-).value.trim();
+).value
+.trim();
+
 
 const amount =
 Number(
@@ -2433,20 +2674,25 @@ document.getElementById(
 ).value
 );
 
+
 const proofInput =
 document.getElementById(
 "paymentProofImage"
 );
 
+
 const proofNote =
 document.getElementById(
 "paymentProofNote"
-).value.trim();
+).value
+.trim();
+
 
 const button =
 document.getElementById(
 "promotionSubmitButton"
 );
+
 
 if(!link){
 
@@ -2459,6 +2705,7 @@ message(
 return;
 
 }
+
 
 if(
 !proofInput ||
@@ -2475,6 +2722,7 @@ return;
 
 }
 
+
 try{
 
 button.disabled=true;
@@ -2482,21 +2730,26 @@ button.disabled=true;
 button.textContent =
 "⏳ Processing...";
 
+
 const imageData =
 await compressImage(
 proofInput.files[0]
 );
+
 
 const sizeInBytes =
 Math.ceil(
 (imageData.length * 3) / 4
 );
 
-if(sizeInBytes > 700000){
+
+if(
+sizeInBytes > 700000
+){
 
 message(
 "promotionMessage",
-"Payment proof image is too large.",
+"Payment proof image is too large. Please choose a smaller image.",
 "error"
 );
 
@@ -2509,37 +2762,50 @@ return;
 
 }
 
+
 await addDoc(
 collection(db,"promotionOrders"),
 {
 
-uid:user.uid,
+uid:
+user.uid,
 
-email:user.email || "",
+email:
+user.email || "",
 
-promotionType:type,
+promotionType:
+type,
 
-promotionLink:link,
+promotionLink:
+link,
 
-amount:amount,
+amount:
+amount,
 
-paymentProof:imageData,
+paymentProof:
+imageData,
 
-paymentProofNote:proofNote,
+paymentProofNote:
+proofNote,
 
-paymentStatus:"Pending",
+paymentStatus:
+"Pending",
 
-promotionStatus:"Pending",
+promotionStatus:
+"Pending",
 
-createdAt:serverTimestamp()
+createdAt:
+serverTimestamp()
 
 }
 );
+
 
 message(
 "promotionMessage",
 "✅ Promotion request submitted successfully. Waiting for admin review."
 );
+
 
 document.getElementById(
 "promotionLink"
@@ -2557,7 +2823,9 @@ document.getElementById(
 "paymentProofPreview"
 ).style.display="none";
 
+
 await loadPromotionOrders();
+
 
 button.disabled=false;
 
@@ -2599,13 +2867,16 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const list =
 document.getElementById(
 "promotionOrders"
 );
 
+
 list.innerHTML =
 "<p class='small'>Loading promotion orders...</p>";
+
 
 try{
 
@@ -2615,8 +2886,10 @@ collection(db,"promotionOrders"),
 where("uid","==",user.uid)
 );
 
+
 const snap =
 await getDocs(q);
+
 
 if(snap.empty){
 
@@ -2627,7 +2900,9 @@ return;
 
 }
 
+
 list.innerHTML="";
+
 
 snap.forEach(
 docSnap=>{
@@ -2636,25 +2911,34 @@ const data =
 docSnap.data();
 
 const paymentStatus =
-data.paymentStatus || "Pending";
+data.paymentStatus ||
+"Pending";
 
 const promotionStatus =
-data.promotionStatus || "Pending";
+data.promotionStatus ||
+"Pending";
+
 
 const div =
 document.createElement("div");
 
 div.className="task";
 
+
 div.innerHTML = `
 
 <h3>
-📢 ${safe(data.promotionType || "Promotion")}
+📢 ${safe(
+data.promotionType ||
+"Promotion"
+)}
 </h3>
 
 <p>
 <strong>Amount:</strong>
-₦${Number(data.amount || 0).toLocaleString()}
+₦${Number(
+data.amount || 0
+).toLocaleString()}
 </p>
 
 <p>
@@ -2662,7 +2946,9 @@ div.innerHTML = `
 </p>
 
 <p class="orderLink">
-${safe(data.promotionLink || "")}
+${safe(
+data.promotionLink || ""
+)}
 </p>
 
 <br>
@@ -2687,6 +2973,7 @@ ${safe(promotionStatus)}
 
 `;
 
+
 if(data.paymentProof){
 
 const proofBox =
@@ -2709,9 +2996,12 @@ alt="Payment proof"
 
 `;
 
-div.appendChild(proofBox);
+div.appendChild(
+proofBox
+);
 
 }
+
 
 if(data.paymentProofNote){
 
@@ -2729,6 +3019,7 @@ safe(data.paymentProofNote);
 div.appendChild(note);
 
 }
+
 
 list.appendChild(div);
 
@@ -2760,6 +3051,7 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const amount =
 Number(
 document.getElementById(
@@ -2770,17 +3062,21 @@ document.getElementById(
 const bank =
 document.getElementById(
 "bankName"
-).value.trim();
+).value
+.trim();
 
 const account =
 document.getElementById(
 "accountNumber"
-).value.trim();
+).value
+.trim();
 
 const name =
 document.getElementById(
 "accountName"
-).value.trim();
+).value
+.trim();
+
 
 if(
 !amount ||
@@ -2799,6 +3095,7 @@ return;
 
 }
 
+
 if(amount < 100){
 
 message(
@@ -2810,6 +3107,7 @@ message(
 return;
 
 }
+
 
 if(
 !/^[0-9]{10}$/.test(account)
@@ -2825,13 +3123,20 @@ return;
 
 }
 
+
 try{
 
 const userRef =
-doc(db,"users",user.uid);
+doc(
+db,
+"users",
+user.uid
+);
+
 
 const userSnap =
 await getDoc(userRef);
+
 
 if(!userSnap.exists()){
 
@@ -2845,10 +3150,12 @@ return;
 
 }
 
+
 const currentBalance =
 Number(
 userSnap.data().balance || 0
 );
+
 
 if(amount > currentBalance){
 
@@ -2862,33 +3169,44 @@ return;
 
 }
 
+
 await addDoc(
 collection(db,"withdrawals"),
 {
 
-uid:user.uid,
+uid:
+user.uid,
 
-email:user.email || "",
+email:
+user.email || "",
 
-amount:amount,
+amount:
+amount,
 
-bankName:bank,
+bankName:
+bank,
 
-accountNumber:account,
+accountNumber:
+account,
 
-accountName:name,
+accountName:
+name,
 
-status:"Pending",
+status:
+"Pending",
 
-createdAt:serverTimestamp()
+createdAt:
+serverTimestamp()
 
 }
 );
+
 
 message(
 "withdrawMessage",
 "Withdrawal request submitted. Status: Pending."
 );
+
 
 document.getElementById(
 "withdrawAmount"
@@ -2905,6 +3223,7 @@ document.getElementById(
 document.getElementById(
 "accountName"
 ).value="";
+
 
 await loadWithdrawals();
 
@@ -2938,10 +3257,12 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const list =
 document.getElementById(
 "withdrawalList"
 );
+
 
 try{
 
@@ -2951,8 +3272,10 @@ collection(db,"withdrawals"),
 where("uid","==",user.uid)
 );
 
+
 const snap =
 await getDocs(q);
+
 
 if(snap.empty){
 
@@ -2963,7 +3286,9 @@ return;
 
 }
 
+
 list.innerHTML="";
+
 
 snap.forEach(
 docSnap=>{
@@ -2971,15 +3296,19 @@ docSnap=>{
 const d =
 docSnap.data();
 
+
 const div =
 document.createElement("div");
 
 div.className="task";
 
+
 div.innerHTML = `
 
 <h3>
-₦${Number(d.amount || 0).toLocaleString()}
+₦${Number(
+d.amount || 0
+).toLocaleString()}
 </h3>
 
 <p>
@@ -3032,8 +3361,10 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const id =
 user.uid.substring(0,8);
+
 
 const link =
 window.location.origin +
@@ -3041,11 +3372,14 @@ window.location.pathname +
 "?ref=" +
 id;
 
+
 try{
 
 await navigator.clipboard.writeText(link);
 
-alert("Referral link copied!");
+alert(
+"Referral link copied!"
+);
 
 }
 
@@ -3063,7 +3397,6 @@ link
 
 /* =====================================================
 CUSTOMER SERVICE
-FIXED FOR WEBVIEW
 ===================================================== */
 
 window.contactSupport =
@@ -3074,13 +3407,14 @@ encodeURIComponent(
 "Hello StoryVerse Customer Service, I need assistance."
 );
 
-const link =
+
+window.open(
 "https://wa.me/" +
 SUPPORT_1 +
 "?text=" +
-text;
-
-window.location.href = link;
+text,
+"_blank"
+);
 
 };
 
@@ -3101,18 +3435,20 @@ return;
 
 }
 
+
 const text =
 encodeURIComponent(
 "Hello StoryVerse Customer Service, I need assistance."
 );
 
-const link =
+
+window.open(
 "https://wa.me/" +
 SUPPORT_2 +
 "?text=" +
-text;
-
-window.location.href = link;
+text,
+"_blank"
+);
 
 };
 
@@ -3124,7 +3460,9 @@ STATUS
 function getStatusClass(status){
 
 const value =
-String(status).toLowerCase();
+String(status)
+.toLowerCase();
+
 
 if(value === "approved"){
 
@@ -3132,17 +3470,20 @@ return "approved";
 
 }
 
+
 if(value === "rejected"){
 
 return "rejected";
 
 }
 
+
 if(value === "completed"){
 
 return "completed";
 
 }
+
 
 return "pending";
 
@@ -3172,4 +3513,4 @@ return String(value)
 </script>
 
 </body>
-  </html>
+</html>
