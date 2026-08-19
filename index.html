@@ -59,11 +59,6 @@ color:#666;
 margin-bottom:20px;
 }
 
-
-/* =====================================================
-STICKY DOWNLOAD APP BUTTON
-===================================================== */
-
 .downloadApp{
 position:sticky;
 top:0;
@@ -84,11 +79,6 @@ box-shadow:0 3px 10px rgba(0,0,0,.20);
 background:#15803d;
 }
 
-
-/* =====================================================
-INPUTS
-===================================================== */
-
 input,
 textarea,
 select{
@@ -103,11 +93,6 @@ textarea{
 min-height:100px;
 resize:vertical;
 }
-
-
-/* =====================================================
-BUTTONS
-===================================================== */
 
 .btn{
 width:100%;
@@ -146,11 +131,6 @@ background:#25D366;
 background:#ea580c;
 }
 
-
-/* =====================================================
-MESSAGES
-===================================================== */
-
 .msg{
 display:none;
 padding:11px;
@@ -169,11 +149,6 @@ color:#166534;
 background:#fee2e2;
 color:#991b1b;
 }
-
-
-/* =====================================================
-MAIN APP
-===================================================== */
 
 #app{
 display:none;
@@ -195,11 +170,6 @@ margin-top:7px;
 color:white;
 }
 
-
-/* =====================================================
-NAVIGATION
-===================================================== */
-
 nav{
 display:flex;
 overflow-x:auto;
@@ -220,11 +190,6 @@ font-weight:bold;
 cursor:pointer;
 }
 
-
-/* =====================================================
-CONTAINER
-===================================================== */
-
 .container{
 max-width:950px;
 margin:auto;
@@ -239,11 +204,6 @@ display:none;
 display:block;
 }
 
-
-/* =====================================================
-CARDS
-===================================================== */
-
 .card{
 background:white;
 padding:20px;
@@ -255,11 +215,6 @@ box-shadow:0 3px 12px rgba(0,0,0,.08);
 .card h2{
 margin-bottom:12px;
 }
-
-
-/* =====================================================
-BALANCE
-===================================================== */
 
 .balanceBox{
 background:linear-gradient(135deg,#111827,#2563eb);
@@ -275,16 +230,12 @@ font-weight:bold;
 margin-top:8px;
 }
 
-
-/* =====================================================
-TASKS
-===================================================== */
-
 .task{
 border:1px solid #e5e7eb;
 padding:15px;
 border-radius:12px;
 margin-top:12px;
+background:white;
 }
 
 .task h3{
@@ -300,11 +251,6 @@ border-radius:20px;
 margin:8px 0;
 font-weight:bold;
 }
-
-
-/* =====================================================
-STATUS
-===================================================== */
 
 .status{
 display:inline-block;
@@ -329,10 +275,10 @@ background:#fee2e2;
 color:#991b1b;
 }
 
-
-/* =====================================================
-INFO
-===================================================== */
+.completed{
+background:#dbeafe;
+color:#1e40af;
+}
 
 .small{
 font-size:13px;
@@ -356,11 +302,6 @@ border-radius:10px;
 line-height:1.8;
 margin:15px 0;
 }
-
-
-/* =====================================================
-IMAGES
-===================================================== */
 
 .preview{
 display:none;
@@ -390,21 +331,16 @@ border-radius:10px;
 margin-top:12px;
 }
 
-
-/* =====================================================
-LINKS
-===================================================== */
-
 .orderLink{
 word-break:break-all;
 font-size:13px;
 color:#2563eb;
 }
 
-
-/* =====================================================
-FOOTER
-===================================================== */
+.completedTask{
+background:#f0fdf4;
+border:2px solid #86efac;
+}
 
 footer{
 text-align:center;
@@ -417,11 +353,6 @@ border:0;
 border-top:1px solid #e5e7eb;
 margin:20px 0;
 }
-
-
-/* =====================================================
-MOBILE
-===================================================== */
 
 @media(max-width:600px){
 
@@ -452,15 +383,12 @@ margin:-20px -20px 20px -20px;
 
 
 <!-- =====================================================
-AUTHENTICATION
+AUTH
 ===================================================== -->
 
 <div id="authScreen">
 
 <div class="authBox">
-
-
-<!-- DOWNLOAD BUTTON AT TOP -->
 
 <a
 href="https://github.com/storyversetvearnhub-hue/Story-Verse-promotion-earning-hub/releases/download/v1.0.0/Storyver56.2.apk"
@@ -469,15 +397,9 @@ class="downloadApp"
 📲 Download StoryVerse App
 </a>
 
+<h1>🚀 StoryVerse</h1>
 
-<h1>
-🚀 StoryVerse
-</h1>
-
-<p>
-Promotion & Earning Hub
-</p>
-
+<p>Promotion & Earning Hub</p>
 
 <input
 type="email"
@@ -493,14 +415,12 @@ placeholder="Password"
 autocomplete="current-password"
 >
 
-
 <button
 class="btn"
 onclick="registerUser()"
 >
 📝 Create Account
 </button>
-
 
 <button
 class="btn green"
@@ -509,14 +429,12 @@ onclick="loginUser()"
 🔐 Login
 </button>
 
-
 <button
 class="btn gray"
 onclick="forgotPassword()"
 >
 🔑 Forgot Password
 </button>
-
 
 <button
 class="btn whatsapp"
@@ -525,12 +443,7 @@ onclick="contactSupport()"
 💬 Customer Service
 </button>
 
-
-<div
-id="authMessage"
-class="msg"
-></div>
-
+<div id="authMessage" class="msg"></div>
 
 </div>
 
@@ -538,11 +451,10 @@ class="msg"
 
 
 <!-- =====================================================
-MAIN APPLICATION
+APP
 ===================================================== -->
 
 <div id="app">
-
 
 <header>
 
@@ -593,16 +505,11 @@ Promote • Earn • Grow
 HOME
 ===================================================== -->
 
-<section
-id="home"
-class="section active"
->
+<section id="home" class="section active">
 
 <div class="card">
 
-<h2>
-👋 Welcome to StoryVerse
-</h2>
+<h2>👋 Welcome to StoryVerse</h2>
 
 <p>
 Welcome to StoryVerse Promotion & Earning Hub.
@@ -620,9 +527,7 @@ submit proof and earn approved rewards.
 
 <div class="balanceBox">
 
-<p>
-💰 Your Balance
-</p>
+<p>💰 Your Balance</p>
 
 <div class="balance">
 ₦<span id="balance">0</span>
@@ -633,9 +538,7 @@ submit proof and earn approved rewards.
 
 <div class="card">
 
-<h2>
-📢 Promotion Hub
-</h2>
+<h2>📢 Promotion Hub</h2>
 
 <p>
 Promote WhatsApp, TikTok, YouTube, Telegram,
@@ -654,13 +557,11 @@ onclick="showSection('promotion')"
 
 <div class="card">
 
-<h2>
-💰 Earning Hub
-</h2>
+<h2>💰 Earning Hub</h2>
 
 <p>
-Complete daily tasks and submit image proof
-for admin review.
+Complete available tasks and submit image proof.
+Each task can only be submitted once per user.
 </p>
 
 <button
@@ -679,17 +580,11 @@ onclick="showSection('earning')"
 PROMOTION
 ===================================================== -->
 
-<section
-id="promotion"
-class="section"
->
+<section id="promotion" class="section">
 
 <div class="card">
 
-<h2>
-📢 Promote Your Platform
-</h2>
-
+<h2>📢 Promote Your Platform</h2>
 
 <select id="promotionType">
 
@@ -705,102 +600,55 @@ class="section"
 
 </select>
 
-
 <input
 type="url"
 id="promotionLink"
 placeholder="Paste your promotion link"
 >
 
-
 <select id="promotionPackage">
 
-<option value="500">
-₦500 = 30 Followers
-</option>
-
-<option value="1000">
-₦1,000 = 80 Followers
-</option>
-
-<option value="1500">
-₦1,500 = 120 Followers
-</option>
-
-<option value="2000">
-₦2,000 = 180 Followers
-</option>
-
-<option value="2500">
-₦2,500 = 250 Followers
-</option>
-
-<option value="3000">
-₦3,000 = 320 Followers
-</option>
-
-<option value="4000">
-₦4,000 = 450 Followers
-</option>
-
-<option value="5000">
-₦5,000 = 600 Followers
-</option>
-
-<option value="7500">
-₦7,500 = 900 Followers
-</option>
-
-<option value="10000">
-₦10,000 = 1,300 Followers
-</option>
-
-<option value="15000">
-₦15,000 = 2,000 Followers
-</option>
-
-<option value="20000">
-₦20,000 = 3,000 Followers
-</option>
+<option value="500">₦500 = 30 Followers</option>
+<option value="1000">₦1,000 = 80 Followers</option>
+<option value="1500">₦1,500 = 120 Followers</option>
+<option value="2000">₦2,000 = 180 Followers</option>
+<option value="2500">₦2,500 = 250 Followers</option>
+<option value="3000">₦3,000 = 320 Followers</option>
+<option value="4000">₦4,000 = 450 Followers</option>
+<option value="5000">₦5,000 = 600 Followers</option>
+<option value="7500">₦7,500 = 900 Followers</option>
+<option value="10000">₦10,000 = 1,300 Followers</option>
+<option value="15000">₦15,000 = 2,000 Followers</option>
+<option value="20000">₦20,000 = 3,000 Followers</option>
 
 </select>
 
 
 <div class="paymentBox">
 
-<strong>
-💳 Payment Account
-</strong>
+<strong>💳 Payment Account</strong>
 
 <br>
 
 Account Number:
-<strong>
-6587578800
-</strong>
+<strong>6587578800</strong>
 
 <br>
 
 Bank:
-<strong>
-OPay
-</strong>
+<strong>OPay</strong>
 
 <br>
 
 Account Name:
-<strong>
-ANSELEM CHUKWUEBUKA AGBOM
-</strong>
+<strong>ANSELEM CHUKWUEBUKA AGBOM</strong>
 
 </div>
 
 
 <div class="proofBox">
 
-<h3>
-📷 Payment Proof Image
-</h3>
+<h3>📷 Payment Proof Image</h3>
 
 <br>
 
@@ -809,14 +657,6 @@ After making payment, upload a screenshot or photo
 of your payment receipt.
 </p>
 
-<br>
-
-<label>
-<strong>
-Select payment proof image
-</strong>
-</label>
-
 <input
 type="file"
 id="paymentProofImage"
@@ -824,13 +664,11 @@ accept="image/jpeg,image/png,image/webp"
 onchange="previewPaymentProof(event)"
 >
 
-
 <img
 id="paymentProofPreview"
 class="preview"
 alt="Payment proof preview"
 >
-
 
 <textarea
 id="paymentProofNote"
@@ -841,11 +679,9 @@ placeholder="Optional payment note"
 
 
 <p class="small">
-
 Your promotion order will remain
 <strong>Pending</strong> until the administrator
 reviews your payment proof.
-
 </p>
 
 
@@ -857,20 +693,14 @@ onclick="submitPromotion()"
 📢 Submit Promotion
 </button>
 
-
-<div
-id="promotionMessage"
-class="msg"
-></div>
+<div id="promotionMessage" class="msg"></div>
 
 </div>
 
 
 <div class="card">
 
-<h2>
-📋 My Promotion Orders
-</h2>
+<h2>📋 My Promotion Orders</h2>
 
 <button
 class="btn gray"
@@ -880,11 +710,7 @@ onclick="loadPromotionOrders()"
 </button>
 
 <div id="promotionOrders">
-
-<p class="small">
-Loading...
-</p>
-
+<p class="small">Loading...</p>
 </div>
 
 </div>
@@ -896,16 +722,11 @@ Loading...
 EARNING
 ===================================================== -->
 
-<section
-id="earning"
-class="section"
->
+<section id="earning" class="section">
 
 <div class="balanceBox">
 
-<p>
-💰 Available Balance
-</p>
+<p>💰 Available Balance</p>
 
 <div class="balance">
 ₦<span id="earningBalance">0</span>
@@ -916,13 +737,11 @@ class="section"
 
 <div class="card">
 
-<h2>
-📋 Daily Tasks
-</h2>
+<h2>📋 Daily Tasks</h2>
 
 <p class="small">
-Tasks created by the administrator in Firebase
-will appear here.
+Each task can be completed only once by each user.
+After you submit proof, the task is locked for your account.
 </p>
 
 <button
@@ -945,9 +764,7 @@ Loading tasks...
 
 <div class="card">
 
-<h2>
-📝 My Task Proofs
-</h2>
+<h2>📝 My Task Proofs</h2>
 
 <button
 class="btn gray"
@@ -969,13 +786,9 @@ Loading...
 
 <div class="card">
 
-<h2>
-👥 Referral
-</h2>
+<h2>👥 Referral</h2>
 
-<p>
-Your referral ID:
-</p>
+<p>Your referral ID:</p>
 
 <strong id="referralId">
 Loading...
@@ -997,33 +810,25 @@ onclick="copyReferral()"
 WITHDRAW
 ===================================================== -->
 
-<section
-id="withdraw"
-class="section"
->
+<section id="withdraw" class="section">
 
 <div class="card">
 
-<h2>
-💸 Withdrawal Request
-</h2>
+<h2>💸 Withdrawal Request</h2>
 
 <div class="infoBox">
 
-Minimum withdrawal amount:
-<strong>
-₦100
-</strong>
+Minimum withdrawal:
+<strong>₦100</strong>
 
 <br>
 
-Your current balance:
+Current balance:
 <strong>
 ₦<span id="withdrawBalance">0</span>
 </strong>
 
 </div>
-
 
 <input
 type="number"
@@ -1052,7 +857,6 @@ id="accountName"
 placeholder="Account Name"
 >
 
-
 <button
 class="btn"
 onclick="submitWithdrawal()"
@@ -1060,20 +864,14 @@ onclick="submitWithdrawal()"
 💸 Submit Withdrawal
 </button>
 
-
-<div
-id="withdrawMessage"
-class="msg"
-></div>
+<div id="withdrawMessage" class="msg"></div>
 
 </div>
 
 
 <div class="card">
 
-<h2>
-📜 My Withdrawals
-</h2>
+<h2>📜 My Withdrawals</h2>
 
 <button
 class="btn gray"
@@ -1083,11 +881,7 @@ onclick="loadWithdrawals()"
 </button>
 
 <div id="withdrawalList">
-
-<p class="small">
-Loading...
-</p>
-
+<p class="small">Loading...</p>
 </div>
 
 </div>
@@ -1099,51 +893,35 @@ Loading...
 ACCOUNT
 ===================================================== -->
 
-<section
-id="account"
-class="section"
->
+<section id="account" class="section">
 
 <div class="card">
 
-<h2>
-👤 My Account
-</h2>
+<h2>👤 My Account</h2>
 
-<p>
-Email:
-</p>
+<p>Email:</p>
 
 <strong id="userEmail"></strong>
 
 <br><br>
 
-<p>
-User ID:
-</p>
+<p>User ID:</p>
 
 <small id="userId"></small>
 
 <br><br>
 
-<p>
-Referral ID:
-</p>
+<p>Referral ID:</p>
 
 <strong id="accountReferral"></strong>
 
 <br><br>
 
-<p>
-Account Status:
-</p>
+<p>Account Status:</p>
 
-<strong>
-✅ Logged In
-</strong>
+<strong>✅ Logged In</strong>
 
 <hr>
-
 
 <button
 class="btn"
@@ -1151,7 +929,6 @@ onclick="loadAllData()"
 >
 🔄 Refresh Account
 </button>
-
 
 <button
 class="btn red"
@@ -1169,16 +946,11 @@ onclick="logoutUser()"
 SUPPORT
 ===================================================== -->
 
-<section
-id="support"
-class="section"
->
+<section id="support" class="section">
 
 <div class="card">
 
-<h2>
-📞 Customer Service
-</h2>
+<h2>📞 Customer Service</h2>
 
 <p>
 Need help? Contact StoryVerse customer service.
@@ -1186,14 +958,12 @@ Need help? Contact StoryVerse customer service.
 
 <br>
 
-
 <button
 class="btn whatsapp"
 onclick="contactSupport()"
 >
 💬 WhatsApp Customer Service 1
 </button>
-
 
 <button
 class="btn whatsapp"
@@ -1205,7 +975,6 @@ onclick="contactSupport2()"
 </div>
 
 </section>
-
 
 </div>
 
@@ -1251,10 +1020,12 @@ addDoc,
 getDocs,
 getDoc,
 doc,
+setDoc,
 query,
 where,
 limit,
-serverTimestamp
+serverTimestamp,
+runTransaction
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
@@ -1318,11 +1089,7 @@ const SUPPORT_2 =
 MESSAGE
 ===================================================== */
 
-function message(
-id,
-text,
-type="success"
-){
+function message(id,text,type="success"){
 
 const box =
 document.getElementById(id);
@@ -1351,14 +1118,12 @@ window.registerUser =
 async function(){
 
 const email =
-document
-.getElementById("authEmail")
+document.getElementById("authEmail")
 .value
 .trim();
 
 const password =
-document
-.getElementById("authPassword")
+document.getElementById("authPassword")
 .value;
 
 
@@ -1398,8 +1163,8 @@ password
 );
 
 
-await addDoc(
-collection(db,"users"),
+await setDoc(
+doc(db,"users",result.user.uid),
 {
 
 uid:
@@ -1436,8 +1201,7 @@ catch(error){
 console.error(error);
 
 let text =
-error.message;
-
+"Could not create account.";
 
 if(
 error.code ===
@@ -1449,6 +1213,15 @@ text =
 
 }
 
+else if(
+error.code ===
+"auth/invalid-email"
+){
+
+text =
+"Please enter a valid email address.";
+
+}
 
 message(
 "authMessage",
@@ -1469,14 +1242,12 @@ window.loginUser =
 async function(){
 
 const email =
-document
-.getElementById("authEmail")
+document.getElementById("authEmail")
 .value
 .trim();
 
 const password =
-document
-.getElementById("authPassword")
+document.getElementById("authPassword")
 .value;
 
 
@@ -1526,8 +1297,7 @@ window.forgotPassword =
 async function(){
 
 const email =
-document
-.getElementById("authEmail")
+document.getElementById("authEmail")
 .value
 .trim();
 
@@ -1551,7 +1321,6 @@ await sendPasswordResetEmail(
 auth,
 email
 );
-
 
 message(
 "authMessage",
@@ -1597,42 +1366,30 @@ async(user)=>{
 
 if(user){
 
-document
-.getElementById("authScreen")
+document.getElementById("authScreen")
 .style.display="none";
 
-document
-.getElementById("app")
+document.getElementById("app")
 .style.display="block";
 
-
-document
-.getElementById("userEmail")
+document.getElementById("userEmail")
 .textContent =
 user.email || "";
 
-
-document
-.getElementById("userId")
+document.getElementById("userId")
 .textContent =
 user.uid;
-
 
 const referral =
 user.uid.substring(0,8);
 
-
-document
-.getElementById("referralId")
+document.getElementById("referralId")
 .textContent =
 referral;
 
-
-document
-.getElementById("accountReferral")
+document.getElementById("accountReferral")
 .textContent =
 referral;
-
 
 await loadAllData();
 
@@ -1640,12 +1397,10 @@ await loadAllData();
 
 else{
 
-document
-.getElementById("authScreen")
+document.getElementById("authScreen")
 .style.display="flex";
 
-document
-.getElementById("app")
+document.getElementById("app")
 .style.display="none";
 
 }
@@ -1668,10 +1423,8 @@ x =>
 x.classList.remove("active")
 );
 
-
 const section =
 document.getElementById(name);
-
 
 if(section){
 
@@ -1712,46 +1465,34 @@ if(!user)return;
 
 try{
 
-const q =
-query(
-collection(db,"users"),
-where("uid","==",user.uid),
-limit(1)
-);
-
+const userRef =
+doc(db,"users",user.uid);
 
 const snap =
-await getDocs(q);
+await getDoc(userRef);
 
 let balance=0;
 
 
-snap.forEach(
-docSnap=>{
+if(snap.exists()){
 
 balance =
 Number(
-docSnap.data().balance || 0
+snap.data().balance || 0
 );
 
 }
-);
 
 
-document
-.getElementById("balance")
+document.getElementById("balance")
 .textContent =
 balance.toLocaleString();
 
-
-document
-.getElementById("earningBalance")
+document.getElementById("earningBalance")
 .textContent =
 balance.toLocaleString();
 
-
-document
-.getElementById("withdrawBalance")
+document.getElementById("withdrawBalance")
 .textContent =
 balance.toLocaleString();
 
@@ -1771,6 +1512,8 @@ error
 
 /* =====================================================
 TASKS
+IMPORTANT:
+ONE TASK = ONE USER ONLY
 ===================================================== */
 
 window.loadTasks =
@@ -1785,25 +1528,66 @@ if(!user)return;
 const list =
 document.getElementById("taskList");
 
-
 list.innerHTML =
 "<p class='small'>Loading tasks...</p>";
 
 
 try{
 
-const q =
+/*
+Get all active tasks
+*/
+
+const taskQuery =
 query(
 collection(db,"tasks"),
 where("active","==",true)
 );
 
+const taskSnap =
+await getDocs(taskQuery);
 
-const snap =
-await getDocs(q);
+
+/*
+Get all submissions made by this user
+*/
+
+const submissionQuery =
+query(
+collection(db,"taskSubmissions"),
+where("uid","==",user.uid)
+);
+
+const submissionSnap =
+await getDocs(submissionQuery);
 
 
-if(snap.empty){
+/*
+Create a set of completed/submitted task IDs
+*/
+
+const submittedTasks =
+new Set();
+
+
+submissionSnap.forEach(
+submissionDoc=>{
+
+const data =
+submissionDoc.data();
+
+if(data.taskId){
+
+submittedTasks.add(
+String(data.taskId)
+);
+
+}
+
+});
+
+
+if(taskSnap.empty){
 
 list.innerHTML =
 "<p class='small'>No tasks available right now.</p>";
@@ -1816,19 +1600,18 @@ return;
 list.innerHTML="";
 
 
+let availableCount=0;
+
+
 for(
-const taskDoc of snap.docs
+const taskDoc of taskSnap.docs
 ){
 
 const task =
 taskDoc.data();
 
-
-const div =
-document.createElement("div");
-
-div.className="task";
-
+const taskId =
+taskDoc.id;
 
 const title =
 safe(
@@ -1836,19 +1619,79 @@ task.title ||
 "Daily Task"
 );
 
-
 const description =
 safe(
 task.description ||
 "Complete this task."
 );
 
-
 const reward =
 Number(
 task.reward || 0
 );
 
+
+/*
+CHECK IF THIS USER HAS ALREADY
+SUBMITTED THIS TASK
+*/
+
+const alreadySubmitted =
+submittedTasks.has(taskId);
+
+
+const div =
+document.createElement("div");
+
+
+if(alreadySubmitted){
+
+/*
+TASK ALREADY DONE BY THIS USER
+*/
+
+div.className =
+"task completedTask";
+
+div.innerHTML = `
+
+<h3>
+${title}
+</h3>
+
+<p>
+${description}
+</p>
+
+<div class="reward">
+💰 ₦${reward.toLocaleString()}
+</div>
+
+<br>
+
+<span class="status completed">
+✅ ALREADY SUBMITTED
+</span>
+
+<br><br>
+
+<p class="small">
+You have already submitted this task.
+You cannot submit the same task again.
+</p>
+
+`;
+
+}
+else{
+
+/*
+TASK STILL AVAILABLE
+*/
+
+availableCount++;
+
+div.className="task";
 
 div.innerHTML = `
 
@@ -1868,22 +1711,43 @@ ${description}
 
 <button
 class="btn"
-onclick="openTask('${encodeURIComponent(task.link || "#")}' )"
+onclick="openTask('${encodeURIComponent(task.link || "#")}')"
 >
 🔗 Open Task
 </button>
 
 <button
 class="btn green"
-onclick="showProofForm('${taskDoc.id}')"
+onclick="showProofForm('${taskId}')"
 >
 🖼️ Submit Image Proof
 </button>
 
 `;
 
+}
+
 
 list.appendChild(div);
+
+}
+
+
+/*
+SHOW MESSAGE IF ALL TASKS ARE COMPLETED
+*/
+
+if(availableCount === 0){
+
+const notice =
+document.createElement("div");
+
+notice.className="infoBox";
+
+notice.innerHTML =
+"🎉 You have submitted all currently available tasks.";
+
+list.prepend(notice);
 
 }
 
@@ -1891,7 +1755,10 @@ list.appendChild(div);
 
 catch(error){
 
-console.error(error);
+console.error(
+"Task loading error:",
+error
+);
 
 list.innerHTML =
 "<p class='small'>Could not load tasks. Check your Firebase rules.</p>";
@@ -1938,11 +1805,50 @@ TASK PROOF FORM
 window.showProofForm =
 async function(taskId){
 
+const user =
+auth.currentUser;
+
+if(!user)return;
+
+
 const taskList =
 document.getElementById("taskList");
 
 
 try{
+
+/*
+FIRST CHECK IF USER ALREADY SUBMITTED IT
+*/
+
+const submissionId =
+user.uid + "_" + taskId;
+
+
+const existingRef =
+doc(
+db,
+"taskSubmissions",
+submissionId
+);
+
+
+const existingSnap =
+await getDoc(existingRef);
+
+
+if(existingSnap.exists()){
+
+alert(
+"You have already submitted this task. You cannot submit it again."
+);
+
+await loadTasks();
+
+return;
+
+}
+
 
 const taskRef =
 doc(
@@ -1976,7 +1882,6 @@ safe(
 task.title ||
 "Task"
 );
-
 
 const reward =
 Number(
@@ -2065,7 +1970,7 @@ alert(
 
 
 /* =====================================================
-TASK IMAGE PREVIEW
+PROOF IMAGE PREVIEW
 ===================================================== */
 
 window.previewProofImage =
@@ -2073,7 +1978,6 @@ function(event){
 
 const file =
 event.target.files[0];
-
 
 const preview =
 document.getElementById("proofPreview");
@@ -2161,9 +2065,7 @@ if(width > maxSize){
 
 height =
 Math.round(
-height *
-maxSize /
-width
+height * maxSize / width
 );
 
 width =
@@ -2176,9 +2078,7 @@ if(height > maxSize){
 
 width =
 Math.round(
-width *
-maxSize /
-height
+width * maxSize / height
 );
 
 height =
@@ -2189,7 +2089,6 @@ maxSize;
 
 const canvas =
 document.createElement("canvas");
-
 
 canvas.width =
 width;
@@ -2263,6 +2162,7 @@ reader.readAsDataURL(file);
 
 /* =====================================================
 SUBMIT TASK PROOF
+ONE TASK PER USER
 ===================================================== */
 
 window.submitProof =
@@ -2276,7 +2176,6 @@ if(!user)return;
 
 const fileInput =
 document.getElementById("proofImage");
-
 
 const proofText =
 document.getElementById("proofText")
@@ -2300,17 +2199,40 @@ return;
 }
 
 
-const file =
-fileInput.files[0];
-
-
 try{
 
 message(
 "proofMessage",
-"Processing image..."
+"Checking task..."
 );
 
+
+/*
+DETERMINISTIC DOCUMENT ID
+
+This is the important part.
+
+One user + one task = one document.
+
+Example:
+USER123_TASK456
+*/
+
+const submissionId =
+user.uid + "_" + taskId;
+
+
+const submissionRef =
+doc(
+db,
+"taskSubmissions",
+submissionId
+);
+
+
+/*
+Get task
+*/
 
 const taskRef =
 doc(
@@ -2318,7 +2240,6 @@ db,
 "tasks",
 taskId
 );
-
 
 const taskSnap =
 await getDoc(taskRef);
@@ -2347,22 +2268,100 @@ task.reward || 0
 );
 
 
+/*
+CHECK DUPLICATE AGAIN
+*/
+
+const existingSubmission =
+await getDoc(submissionRef);
+
+
+if(existingSubmission.exists()){
+
+message(
+"proofMessage",
+"❌ You have already submitted this task. You cannot submit it again.",
+"error"
+);
+
+await loadTasks();
+
+return;
+
+}
+
+
+/*
+PROCESS IMAGE
+*/
+
+const file =
+fileInput.files[0];
+
 const imageData =
 await compressImage(file);
 
 
-await addDoc(
-collection(
+/*
+CHECK IMAGE SIZE
+*/
+
+const sizeInBytes =
+Math.ceil(
+(imageData.length * 3) / 4
+);
+
+
+if(
+sizeInBytes > 700000
+){
+
+message(
+"proofMessage",
+"Image is too large. Please choose a smaller screenshot.",
+"error"
+);
+
+return;
+
+}
+
+
+/*
+USE FIRESTORE TRANSACTION
+
+This protects against duplicate submissions
+if the user taps the button multiple times.
+*/
+
+await runTransaction(
 db,
-"taskSubmissions"
-),
+async(transaction)=>{
+
+const check =
+await transaction.get(
+submissionRef
+);
+
+
+if(check.exists()){
+
+throw new Error(
+"ALREADY_SUBMITTED"
+);
+
+}
+
+
+transaction.set(
+submissionRef,
 {
 
 uid:
 user.uid,
 
 email:
-user.email,
+user.email || "",
 
 taskId:
 taskId,
@@ -2382,8 +2381,14 @@ proofText,
 status:
 "Pending",
 
+rewardPaid:
+false,
+
 submittedAt:
 serverTimestamp()
+
+}
+);
 
 }
 );
@@ -2391,15 +2396,15 @@ serverTimestamp()
 
 message(
 "proofMessage",
-"✅ Proof submitted successfully. Waiting for admin approval."
+"✅ Proof submitted successfully! This task is now locked for your account and is waiting for admin approval."
 );
 
 
 setTimeout(
-function(){
+async function(){
 
-loadTasks();
-loadSubmissions();
+await loadTasks();
+await loadSubmissions();
 
 },
 1200
@@ -2409,7 +2414,28 @@ loadSubmissions();
 
 catch(error){
 
-console.error(error);
+console.error(
+"Submit proof error:",
+error
+);
+
+
+if(
+error.message ===
+"ALREADY_SUBMITTED"
+){
+
+message(
+"proofMessage",
+"❌ You have already submitted this task. You cannot submit it again.",
+"error"
+);
+
+await loadTasks();
+
+return;
+
+}
 
 
 message(
@@ -2425,7 +2451,7 @@ error.message,
 
 
 /* =====================================================
-LOAD TASK SUBMISSIONS
+LOAD SUBMISSIONS
 ===================================================== */
 
 window.loadSubmissions =
@@ -2479,16 +2505,16 @@ docSnap=>{
 const data =
 docSnap.data();
 
-
 const status =
-getStatusClass(
-data.status
-);
+data.status ||
+"Pending";
+
+const statusClass =
+getStatusClass(status);
 
 
 const div =
 document.createElement("div");
-
 
 div.className="task";
 
@@ -2511,12 +2537,15 @@ data.reward || 0
 
 <br>
 
-<span class="status ${status}">
-${safe(
-data.status ||
-"Pending"
-)}
+<span class="status ${statusClass}">
+${safe(status)}
 </span>
+
+<br><br>
+
+<p class="small">
+This task has already been submitted from this account.
+</p>
 
 `;
 
@@ -2530,7 +2559,6 @@ list.appendChild(div);
 catch(error){
 
 console.error(error);
-
 
 list.innerHTML =
 "<p class='small'>Could not load submissions.</p>";
@@ -2549,7 +2577,6 @@ function(event){
 
 const file =
 event.target.files[0];
-
 
 const preview =
 document.getElementById(
@@ -2605,7 +2632,7 @@ reader.readAsDataURL(file);
 
 
 /* =====================================================
-SUBMIT PROMOTION
+PROMOTION
 ===================================================== */
 
 window.submitPromotion =
@@ -2613,7 +2640,6 @@ async function(){
 
 const user =
 auth.currentUser;
-
 
 if(!user){
 
@@ -2629,29 +2655,23 @@ return;
 
 
 const type =
-document
-.getElementById(
+document.getElementById(
 "promotionType"
-)
-.value;
+).value;
 
 
 const link =
-document
-.getElementById(
+document.getElementById(
 "promotionLink"
-)
-.value
+).value
 .trim();
 
 
 const amount =
 Number(
-document
-.getElementById(
+document.getElementById(
 "promotionPackage"
-)
-.value
+).value
 );
 
 
@@ -2662,11 +2682,9 @@ document.getElementById(
 
 
 const proofNote =
-document
-.getElementById(
+document.getElementById(
 "paymentProofNote"
-)
-.value
+).value
 .trim();
 
 
@@ -2705,41 +2723,18 @@ return;
 }
 
 
-const file =
-proofInput.files[0];
-
-
-if(
-!file.type.startsWith("image/")
-){
-
-message(
-"promotionMessage",
-"Payment proof must be an image.",
-"error"
-);
-
-return;
-
-}
-
-
 try{
 
 button.disabled=true;
 
 button.textContent =
-"⏳ Creating promotion request...";
-
-
-message(
-"promotionMessage",
-"Processing payment proof..."
-);
+"⏳ Processing...";
 
 
 const imageData =
-await compressImage(file);
+await compressImage(
+proofInput.files[0]
+);
 
 
 const sizeInBytes =
@@ -2754,10 +2749,9 @@ sizeInBytes > 700000
 
 message(
 "promotionMessage",
-"Payment proof image is still too large. Please choose a smaller screenshot.",
+"Payment proof image is too large. Please choose a smaller image.",
 "error"
 );
-
 
 button.disabled=false;
 
@@ -2769,12 +2763,6 @@ return;
 }
 
 
-message(
-"promotionMessage",
-"Saving promotion request..."
-);
-
-
 await addDoc(
 collection(db,"promotionOrders"),
 {
@@ -2783,7 +2771,7 @@ uid:
 user.uid,
 
 email:
-user.email,
+user.email || "",
 
 promotionType:
 type,
@@ -2815,36 +2803,25 @@ serverTimestamp()
 
 message(
 "promotionMessage",
-"✅ Promotion request submitted successfully. Payment proof has been sent for admin review."
+"✅ Promotion request submitted successfully. Waiting for admin review."
 );
 
 
-document
-.getElementById(
+document.getElementById(
 "promotionLink"
-)
-.value="";
+).value="";
 
-
-document
-.getElementById(
+document.getElementById(
 "paymentProofImage"
-)
-.value="";
+).value="";
 
-
-document
-.getElementById(
+document.getElementById(
 "paymentProofNote"
-)
-.value="";
+).value="";
 
-
-document
-.getElementById(
+document.getElementById(
 "paymentProofPreview"
-)
-.style.display="none";
+).style.display="none";
 
 
 await loadPromotionOrders();
@@ -2859,19 +2836,14 @@ button.textContent =
 
 catch(error){
 
-console.error(
-"Promotion error:",
-error
-);
-
+console.error(error);
 
 message(
 "promotionMessage",
-"Could not create promotion request: " +
+"Could not submit promotion: " +
 error.message,
 "error"
 );
-
 
 button.disabled=false;
 
@@ -2884,7 +2856,7 @@ button.textContent =
 
 
 /* =====================================================
-LOAD PROMOTION ORDERS
+PROMOTION ORDERS
 ===================================================== */
 
 window.loadPromotionOrders =
@@ -2938,32 +2910,17 @@ docSnap=>{
 const data =
 docSnap.data();
 
-
 const paymentStatus =
 data.paymentStatus ||
 "Pending";
-
 
 const promotionStatus =
 data.promotionStatus ||
 "Pending";
 
 
-const paymentClass =
-getStatusClass(
-paymentStatus
-);
-
-
-const promotionClass =
-getStatusClass(
-promotionStatus
-);
-
-
 const div =
 document.createElement("div");
-
 
 div.className="task";
 
@@ -2978,74 +2935,58 @@ data.promotionType ||
 </h3>
 
 <p>
-<strong>
-Amount:
-</strong>
-
+<strong>Amount:</strong>
 ₦${Number(
 data.amount || 0
 ).toLocaleString()}
 </p>
 
 <p>
-<strong>
-Promotion Link:
-</strong>
+<strong>Promotion Link:</strong>
 </p>
 
 <p class="orderLink">
 ${safe(
-data.promotionLink ||
-""
+data.promotionLink || ""
 )}
 </p>
 
 <br>
 
 <p>
-<strong>
-Payment Status:
-</strong>
+<strong>Payment Status:</strong>
 </p>
 
-<span class="status ${paymentClass}">
+<span class="status ${getStatusClass(paymentStatus)}">
 ${safe(paymentStatus)}
 </span>
 
 <br><br>
 
 <p>
-<strong>
-Promotion Status:
-</strong>
+<strong>Promotion Status:</strong>
 </p>
 
-<span class="status ${promotionClass}">
+<span class="status ${getStatusClass(promotionStatus)}">
 ${safe(promotionStatus)}
 </span>
 
 `;
 
 
-if(
-data.paymentProof
-){
+if(data.paymentProof){
 
 const proofBox =
 document.createElement("div");
 
-
 proofBox.className =
 "proofBox";
-
 
 proofBox.innerHTML = `
 
 <br>
 
-<strong>
-📷 Payment Proof
-</strong>
+<strong>📷 Payment Proof</strong>
 
 <img
 class="proofImage"
@@ -3055,7 +2996,6 @@ alt="Payment proof"
 
 `;
 
-
 div.appendChild(
 proofBox
 );
@@ -3063,26 +3003,18 @@ proofBox
 }
 
 
-if(
-data.paymentProofNote
-){
+if(data.paymentProofNote){
 
 const note =
 document.createElement("p");
 
+note.className="small";
 
-note.className =
-"small";
-
-
-note.style.marginTop =
-"10px";
-
+note.style.marginTop="10px";
 
 note.innerHTML =
 "<strong>Payment Note:</strong> " +
 safe(data.paymentProofNote);
-
 
 div.appendChild(note);
 
@@ -3097,14 +3029,10 @@ list.appendChild(div);
 
 catch(error){
 
-console.error(
-"Promotion orders error:",
-error
-);
-
+console.error(error);
 
 list.innerHTML =
-"<p class='small'>Could not load promotion orders. Check your Firebase Firestore rules.</p>";
+"<p class='small'>Could not load promotion orders.</p>";
 
 }
 
@@ -3126,38 +3054,27 @@ if(!user)return;
 
 const amount =
 Number(
-document
-.getElementById(
+document.getElementById(
 "withdrawAmount"
-)
-.value
+).value
 );
 
-
 const bank =
-document
-.getElementById(
+document.getElementById(
 "bankName"
-)
-.value
+).value
 .trim();
-
 
 const account =
-document
-.getElementById(
+document.getElementById(
 "accountNumber"
-)
-.value
+).value
 .trim();
 
-
 const name =
-document
-.getElementById(
+document.getElementById(
 "accountName"
-)
-.value
+).value
 .trim();
 
 
@@ -3209,19 +3126,19 @@ return;
 
 try{
 
-const q =
-query(
-collection(db,"users"),
-where("uid","==",user.uid),
-limit(1)
+const userRef =
+doc(
+db,
+"users",
+user.uid
 );
 
 
-const snap =
-await getDocs(q);
+const userSnap =
+await getDoc(userRef);
 
 
-if(snap.empty){
+if(!userSnap.exists()){
 
 message(
 "withdrawMessage",
@@ -3234,13 +3151,9 @@ return;
 }
 
 
-const userDoc =
-snap.docs[0];
-
-
 const currentBalance =
 Number(
-userDoc.data().balance || 0
+userSnap.data().balance || 0
 );
 
 
@@ -3265,7 +3178,7 @@ uid:
 user.uid,
 
 email:
-user.email,
+user.email || "",
 
 amount:
 amount,
@@ -3295,32 +3208,21 @@ message(
 );
 
 
-document
-.getElementById(
+document.getElementById(
 "withdrawAmount"
-)
-.value="";
+).value="";
 
-
-document
-.getElementById(
+document.getElementById(
 "bankName"
-)
-.value="";
+).value="";
 
-
-document
-.getElementById(
+document.getElementById(
 "accountNumber"
-)
-.value="";
+).value="";
 
-
-document
-.getElementById(
+document.getElementById(
 "accountName"
-)
-.value="";
+).value="";
 
 
 await loadWithdrawals();
@@ -3330,7 +3232,6 @@ await loadWithdrawals();
 catch(error){
 
 console.error(error);
-
 
 message(
 "withdrawMessage",
@@ -3396,15 +3297,8 @@ const d =
 docSnap.data();
 
 
-const cls =
-getStatusClass(
-d.status
-);
-
-
 const div =
 document.createElement("div");
-
 
 div.className="task";
 
@@ -3419,36 +3313,26 @@ d.amount || 0
 
 <p>
 Bank:
-${safe(
-d.bankName || ""
-)}
+${safe(d.bankName || "")}
 </p>
 
 <p>
 Account:
-${safe(
-d.accountNumber || ""
-)}
+${safe(d.accountNumber || "")}
 </p>
 
 <p>
 Name:
-${safe(
-d.accountName || ""
-)}
+${safe(d.accountName || "")}
 </p>
 
 <br>
 
-<span class="status ${cls}">
-${safe(
-d.status ||
-"Pending"
-)}
+<span class="status ${getStatusClass(d.status)}">
+${safe(d.status || "Pending")}
 </span>
 
 `;
-
 
 list.appendChild(div);
 
@@ -3479,10 +3363,7 @@ if(!user)return;
 
 
 const id =
-user.uid.substring(
-0,
-8
-);
+user.uid.substring(0,8);
 
 
 const link =
@@ -3494,10 +3375,7 @@ id;
 
 try{
 
-await navigator.clipboard.writeText(
-link
-);
-
+await navigator.clipboard.writeText(link);
 
 alert(
 "Referral link copied!"
@@ -3576,29 +3454,33 @@ text,
 
 
 /* =====================================================
-STATUS CLASS
+STATUS
 ===================================================== */
 
 function getStatusClass(status){
 
-if(
+const value =
 String(status)
-.toLowerCase() ===
-"approved"
-){
+.toLowerCase();
+
+
+if(value === "approved"){
 
 return "approved";
 
 }
 
 
-if(
-String(status)
-.toLowerCase() ===
-"rejected"
-){
+if(value === "rejected"){
 
 return "rejected";
+
+}
+
+
+if(value === "completed"){
+
+return "completed";
 
 }
 
@@ -3616,34 +3498,19 @@ function safe(value){
 
 return String(value)
 
-.replaceAll(
-"&",
-"&amp;"
-)
+.replaceAll("&","&amp;")
 
-.replaceAll(
-"<",
-"&lt;"
-)
+.replaceAll("<","&lt;")
 
-.replaceAll(
-">",
-"&gt;"
-)
+.replaceAll(">","&gt;")
 
-.replaceAll(
-'"',
-"&quot;"
-)
+.replaceAll('"',"&quot;")
 
-.replaceAll(
-"'",
-"&#039;"
-);
+.replaceAll("'","&#039;");
 
 }
 
 </script>
 
 </body>
-  </html>
+</html>
