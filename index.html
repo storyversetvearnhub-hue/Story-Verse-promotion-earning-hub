@@ -3,9 +3,7 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>StoryVerse Promotion & Earning Hub</title>
 
@@ -46,6 +44,7 @@ background:white;
 padding:25px;
 border-radius:18px;
 box-shadow:0 10px 35px rgba(0,0,0,.25);
+overflow:hidden;
 }
 
 .authBox h1{
@@ -59,6 +58,36 @@ text-align:center;
 color:#666;
 margin-bottom:20px;
 }
+
+
+/* =====================================================
+STICKY DOWNLOAD APP BUTTON
+===================================================== */
+
+.downloadApp{
+position:sticky;
+top:0;
+z-index:9999;
+display:block;
+width:calc(100% + 50px);
+margin:-25px -25px 20px -25px;
+padding:15px;
+background:#16a34a;
+color:white;
+text-align:center;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 3px 10px rgba(0,0,0,.20);
+}
+
+.downloadApp:hover{
+background:#15803d;
+}
+
+
+/* =====================================================
+INPUTS
+===================================================== */
 
 input,
 textarea,
@@ -74,6 +103,11 @@ textarea{
 min-height:100px;
 resize:vertical;
 }
+
+
+/* =====================================================
+BUTTONS
+===================================================== */
 
 .btn{
 width:100%;
@@ -112,6 +146,11 @@ background:#25D366;
 background:#ea580c;
 }
 
+
+/* =====================================================
+MESSAGES
+===================================================== */
+
 .msg{
 display:none;
 padding:11px;
@@ -131,6 +170,11 @@ background:#fee2e2;
 color:#991b1b;
 }
 
+
+/* =====================================================
+MAIN APP
+===================================================== */
+
 #app{
 display:none;
 }
@@ -148,7 +192,13 @@ font-size:24px;
 
 header p{
 margin-top:7px;
+color:white;
 }
+
+
+/* =====================================================
+NAVIGATION
+===================================================== */
 
 nav{
 display:flex;
@@ -170,6 +220,11 @@ font-weight:bold;
 cursor:pointer;
 }
 
+
+/* =====================================================
+CONTAINER
+===================================================== */
+
 .container{
 max-width:950px;
 margin:auto;
@@ -184,6 +239,11 @@ display:none;
 display:block;
 }
 
+
+/* =====================================================
+CARDS
+===================================================== */
+
 .card{
 background:white;
 padding:20px;
@@ -195,6 +255,11 @@ box-shadow:0 3px 12px rgba(0,0,0,.08);
 .card h2{
 margin-bottom:12px;
 }
+
+
+/* =====================================================
+BALANCE
+===================================================== */
 
 .balanceBox{
 background:linear-gradient(135deg,#111827,#2563eb);
@@ -209,6 +274,11 @@ font-size:30px;
 font-weight:bold;
 margin-top:8px;
 }
+
+
+/* =====================================================
+TASKS
+===================================================== */
 
 .task{
 border:1px solid #e5e7eb;
@@ -230,6 +300,11 @@ border-radius:20px;
 margin:8px 0;
 font-weight:bold;
 }
+
+
+/* =====================================================
+STATUS
+===================================================== */
 
 .status{
 display:inline-block;
@@ -254,6 +329,11 @@ background:#fee2e2;
 color:#991b1b;
 }
 
+
+/* =====================================================
+INFO
+===================================================== */
+
 .small{
 font-size:13px;
 color:#6b7280;
@@ -276,6 +356,11 @@ border-radius:10px;
 line-height:1.8;
 margin:15px 0;
 }
+
+
+/* =====================================================
+IMAGES
+===================================================== */
 
 .preview{
 display:none;
@@ -305,11 +390,21 @@ border-radius:10px;
 margin-top:12px;
 }
 
+
+/* =====================================================
+LINKS
+===================================================== */
+
 .orderLink{
 word-break:break-all;
 font-size:13px;
 color:#2563eb;
 }
+
+
+/* =====================================================
+FOOTER
+===================================================== */
 
 footer{
 text-align:center;
@@ -323,6 +418,11 @@ border-top:1px solid #e5e7eb;
 margin:20px 0;
 }
 
+
+/* =====================================================
+MOBILE
+===================================================== */
+
 @media(max-width:600px){
 
 header h1{
@@ -331,6 +431,15 @@ font-size:20px;
 
 .card{
 padding:16px;
+}
+
+.authBox{
+padding:20px;
+}
+
+.downloadApp{
+width:calc(100% + 40px);
+margin:-20px -20px 20px -20px;
 }
 
 }
@@ -350,11 +459,25 @@ AUTHENTICATION
 
 <div class="authBox">
 
-<h1>🚀 StoryVerse</h1>
+
+<!-- DOWNLOAD BUTTON AT TOP -->
+
+<a
+href="https://github.com/storyversetvearnhub-hue/Story-Verse-promotion-earning-hub/releases/download/v1.0.0/Storyver56.2.apk"
+class="downloadApp"
+>
+📲 Download StoryVerse App
+</a>
+
+
+<h1>
+🚀 StoryVerse
+</h1>
 
 <p>
 Promotion & Earning Hub
 </p>
+
 
 <input
 type="email"
@@ -370,12 +493,14 @@ placeholder="Password"
 autocomplete="current-password"
 >
 
+
 <button
 class="btn"
 onclick="registerUser()"
 >
 📝 Create Account
 </button>
+
 
 <button
 class="btn green"
@@ -384,12 +509,14 @@ onclick="loginUser()"
 🔐 Login
 </button>
 
+
 <button
 class="btn gray"
 onclick="forgotPassword()"
 >
 🔑 Forgot Password
 </button>
+
 
 <button
 class="btn whatsapp"
@@ -398,10 +525,12 @@ onclick="contactSupport()"
 💬 Customer Service
 </button>
 
+
 <div
 id="authMessage"
 class="msg"
 ></div>
+
 
 </div>
 
@@ -413,6 +542,7 @@ MAIN APPLICATION
 ===================================================== -->
 
 <div id="app">
+
 
 <header>
 
@@ -636,10 +766,6 @@ placeholder="Paste your promotion link"
 </select>
 
 
-<!-- =====================================================
-PAYMENT ACCOUNT
-===================================================== -->
-
 <div class="paymentBox">
 
 <strong>
@@ -669,10 +795,6 @@ ANSELEM CHUKWUEBUKA AGBOM
 
 </div>
 
-
-<!-- =====================================================
-PAYMENT PROOF IMAGE
-===================================================== -->
 
 <div class="proofBox">
 
@@ -743,10 +865,6 @@ class="msg"
 
 </div>
 
-
-<!-- =====================================================
-MY PROMOTION ORDERS
-===================================================== -->
 
 <div class="card">
 
@@ -906,6 +1024,7 @@ Your current balance:
 
 </div>
 
+
 <input
 type="number"
 id="withdrawAmount"
@@ -933,12 +1052,14 @@ id="accountName"
 placeholder="Account Name"
 >
 
+
 <button
 class="btn"
 onclick="submitWithdrawal()"
 >
 💸 Submit Withdrawal
 </button>
+
 
 <div
 id="withdrawMessage"
@@ -1023,12 +1144,14 @@ Account Status:
 
 <hr>
 
+
 <button
 class="btn"
 onclick="loadAllData()"
 >
 🔄 Refresh Account
 </button>
+
 
 <button
 class="btn red"
@@ -1063,12 +1186,14 @@ Need help? Contact StoryVerse customer service.
 
 <br>
 
+
 <button
 class="btn whatsapp"
 onclick="contactSupport()"
 >
 💬 WhatsApp Customer Service 1
 </button>
+
 
 <button
 class="btn whatsapp"
@@ -1236,6 +1361,7 @@ document
 .getElementById("authPassword")
 .value;
 
+
 if(!email || !password){
 
 message(
@@ -1247,6 +1373,7 @@ message(
 return;
 
 }
+
 
 if(password.length < 6){
 
@@ -1260,6 +1387,7 @@ return;
 
 }
 
+
 try{
 
 const result =
@@ -1268,6 +1396,7 @@ auth,
 email,
 password
 );
+
 
 await addDoc(
 collection(db,"users"),
@@ -1294,6 +1423,7 @@ serverTimestamp()
 }
 );
 
+
 message(
 "authMessage",
 "Account created successfully."
@@ -1308,6 +1438,7 @@ console.error(error);
 let text =
 error.message;
 
+
 if(
 error.code ===
 "auth/email-already-in-use"
@@ -1317,6 +1448,7 @@ text =
 "This email is already registered. Please login.";
 
 }
+
 
 message(
 "authMessage",
@@ -1347,6 +1479,7 @@ document
 .getElementById("authPassword")
 .value;
 
+
 if(!email || !password){
 
 message(
@@ -1358,6 +1491,7 @@ message(
 return;
 
 }
+
 
 try{
 
@@ -1397,6 +1531,7 @@ document
 .value
 .trim();
 
+
 if(!email){
 
 message(
@@ -1409,12 +1544,14 @@ return;
 
 }
 
+
 try{
 
 await sendPasswordResetEmail(
 auth,
 email
 );
+
 
 message(
 "authMessage",
@@ -1468,28 +1605,34 @@ document
 .getElementById("app")
 .style.display="block";
 
+
 document
 .getElementById("userEmail")
 .textContent =
 user.email || "";
+
 
 document
 .getElementById("userId")
 .textContent =
 user.uid;
 
+
 const referral =
 user.uid.substring(0,8);
+
 
 document
 .getElementById("referralId")
 .textContent =
 referral;
 
+
 document
 .getElementById("accountReferral")
 .textContent =
 referral;
+
 
 await loadAllData();
 
@@ -1525,8 +1668,10 @@ x =>
 x.classList.remove("active")
 );
 
+
 const section =
 document.getElementById(name);
+
 
 if(section){
 
@@ -1564,6 +1709,7 @@ auth.currentUser;
 
 if(!user)return;
 
+
 try{
 
 const q =
@@ -1573,10 +1719,12 @@ where("uid","==",user.uid),
 limit(1)
 );
 
+
 const snap =
 await getDocs(q);
 
 let balance=0;
+
 
 snap.forEach(
 docSnap=>{
@@ -1589,15 +1737,18 @@ docSnap.data().balance || 0
 }
 );
 
+
 document
 .getElementById("balance")
 .textContent =
 balance.toLocaleString();
 
+
 document
 .getElementById("earningBalance")
 .textContent =
 balance.toLocaleString();
+
 
 document
 .getElementById("withdrawBalance")
@@ -1630,11 +1781,14 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const list =
 document.getElementById("taskList");
 
+
 list.innerHTML =
 "<p class='small'>Loading tasks...</p>";
+
 
 try{
 
@@ -1644,8 +1798,10 @@ collection(db,"tasks"),
 where("active","==",true)
 );
 
+
 const snap =
 await getDocs(q);
+
 
 if(snap.empty){
 
@@ -1656,7 +1812,9 @@ return;
 
 }
 
+
 list.innerHTML="";
+
 
 for(
 const taskDoc of snap.docs
@@ -1665,10 +1823,12 @@ const taskDoc of snap.docs
 const task =
 taskDoc.data();
 
+
 const div =
 document.createElement("div");
 
 div.className="task";
+
 
 const title =
 safe(
@@ -1676,16 +1836,19 @@ task.title ||
 "Daily Task"
 );
 
+
 const description =
 safe(
 task.description ||
 "Complete this task."
 );
 
+
 const reward =
 Number(
 task.reward || 0
 );
+
 
 div.innerHTML = `
 
@@ -1719,6 +1882,7 @@ onclick="showProofForm('${taskDoc.id}')"
 
 `;
 
+
 list.appendChild(div);
 
 }
@@ -1747,6 +1911,7 @@ function(encodedLink){
 const link =
 decodeURIComponent(encodedLink);
 
+
 if(!link || link === "#"){
 
 alert(
@@ -1756,6 +1921,7 @@ alert(
 return;
 
 }
+
 
 window.open(
 link,
@@ -1775,6 +1941,7 @@ async function(taskId){
 const taskList =
 document.getElementById("taskList");
 
+
 try{
 
 const taskRef =
@@ -1784,8 +1951,10 @@ db,
 taskId
 );
 
+
 const taskSnap =
 await getDoc(taskRef);
+
 
 if(!taskSnap.exists()){
 
@@ -1797,8 +1966,10 @@ return;
 
 }
 
+
 const task =
 taskSnap.data();
+
 
 const title =
 safe(
@@ -1806,10 +1977,12 @@ task.title ||
 "Task"
 );
 
+
 const reward =
 Number(
 task.reward || 0
 );
+
 
 taskList.innerHTML = `
 
@@ -1901,8 +2074,10 @@ function(event){
 const file =
 event.target.files[0];
 
+
 const preview =
 document.getElementById("proofPreview");
+
 
 if(!file){
 
@@ -1911,6 +2086,7 @@ preview.style.display="none";
 return;
 
 }
+
 
 if(
 !file.type.startsWith("image/")
@@ -1926,8 +2102,10 @@ return;
 
 }
 
+
 const reader =
 new FileReader();
+
 
 reader.onload =
 function(e){
@@ -1939,6 +2117,7 @@ preview.style.display =
 "block";
 
 };
+
 
 reader.readAsDataURL(file);
 
@@ -1957,11 +2136,13 @@ return new Promise(
 const reader =
 new FileReader();
 
+
 reader.onload =
 function(event){
 
 const img =
 new Image();
+
 
 img.onload =
 function(){
@@ -1974,6 +2155,7 @@ img.width;
 
 let height =
 img.height;
+
 
 if(width > maxSize){
 
@@ -1989,6 +2171,7 @@ maxSize;
 
 }
 
+
 if(height > maxSize){
 
 width =
@@ -2003,8 +2186,10 @@ maxSize;
 
 }
 
+
 const canvas =
 document.createElement("canvas");
+
 
 canvas.width =
 width;
@@ -2012,8 +2197,10 @@ width;
 canvas.height =
 height;
 
+
 const ctx =
 canvas.getContext("2d");
+
 
 ctx.drawImage(
 img,
@@ -2023,15 +2210,18 @@ width,
 height
 );
 
+
 const dataUrl =
 canvas.toDataURL(
 "image/jpeg",
 0.65
 );
 
+
 resolve(dataUrl);
 
 };
+
 
 img.onerror =
 function(){
@@ -2044,10 +2234,12 @@ new Error(
 
 };
 
+
 img.src =
 event.target.result;
 
 };
+
 
 reader.onerror =
 function(){
@@ -2059,6 +2251,7 @@ new Error(
 );
 
 };
+
 
 reader.readAsDataURL(file);
 
@@ -2080,13 +2273,16 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const fileInput =
 document.getElementById("proofImage");
+
 
 const proofText =
 document.getElementById("proofText")
 .value
 .trim();
+
 
 if(
 !fileInput ||
@@ -2103,8 +2299,10 @@ return;
 
 }
 
+
 const file =
 fileInput.files[0];
+
 
 try{
 
@@ -2113,6 +2311,7 @@ message(
 "Processing image..."
 );
 
+
 const taskRef =
 doc(
 db,
@@ -2120,8 +2319,10 @@ db,
 taskId
 );
 
+
 const taskSnap =
 await getDoc(taskRef);
+
 
 if(!taskSnap.exists()){
 
@@ -2135,16 +2336,20 @@ return;
 
 }
 
+
 const task =
 taskSnap.data();
+
 
 const reward =
 Number(
 task.reward || 0
 );
 
+
 const imageData =
 await compressImage(file);
+
 
 await addDoc(
 collection(
@@ -2183,10 +2388,12 @@ serverTimestamp()
 }
 );
 
+
 message(
 "proofMessage",
 "✅ Proof submitted successfully. Waiting for admin approval."
 );
+
 
 setTimeout(
 function(){
@@ -2203,6 +2410,7 @@ loadSubmissions();
 catch(error){
 
 console.error(error);
+
 
 message(
 "proofMessage",
@@ -2228,13 +2436,16 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const list =
 document.getElementById(
 "submissionList"
 );
 
+
 list.innerHTML =
 "<p class='small'>Loading...</p>";
+
 
 try{
 
@@ -2244,8 +2455,10 @@ collection(db,"taskSubmissions"),
 where("uid","==",user.uid)
 );
 
+
 const snap =
 await getDocs(q);
+
 
 if(snap.empty){
 
@@ -2256,7 +2469,9 @@ return;
 
 }
 
+
 list.innerHTML="";
+
 
 snap.forEach(
 docSnap=>{
@@ -2264,15 +2479,19 @@ docSnap=>{
 const data =
 docSnap.data();
 
+
 const status =
 getStatusClass(
 data.status
 );
 
+
 const div =
 document.createElement("div");
 
+
 div.className="task";
+
 
 div.innerHTML = `
 
@@ -2301,6 +2520,7 @@ data.status ||
 
 `;
 
+
 list.appendChild(div);
 
 });
@@ -2310,6 +2530,7 @@ list.appendChild(div);
 catch(error){
 
 console.error(error);
+
 
 list.innerHTML =
 "<p class='small'>Could not load submissions.</p>";
@@ -2329,10 +2550,12 @@ function(event){
 const file =
 event.target.files[0];
 
+
 const preview =
 document.getElementById(
 "paymentProofPreview"
 );
+
 
 if(!file){
 
@@ -2341,6 +2564,7 @@ preview.style.display="none";
 return;
 
 }
+
 
 if(
 !file.type.startsWith("image/")
@@ -2358,8 +2582,10 @@ return;
 
 }
 
+
 const reader =
 new FileReader();
+
 
 reader.onload =
 function(e){
@@ -2371,6 +2597,7 @@ preview.style.display =
 "block";
 
 };
+
 
 reader.readAsDataURL(file);
 
@@ -2387,6 +2614,7 @@ async function(){
 const user =
 auth.currentUser;
 
+
 if(!user){
 
 message(
@@ -2399,12 +2627,14 @@ return;
 
 }
 
+
 const type =
 document
 .getElementById(
 "promotionType"
 )
 .value;
+
 
 const link =
 document
@@ -2413,6 +2643,7 @@ document
 )
 .value
 .trim();
+
 
 const amount =
 Number(
@@ -2423,10 +2654,12 @@ document
 .value
 );
 
+
 const proofInput =
 document.getElementById(
 "paymentProofImage"
 );
+
 
 const proofNote =
 document
@@ -2436,15 +2669,12 @@ document
 .value
 .trim();
 
+
 const button =
 document.getElementById(
 "promotionSubmitButton"
 );
 
-
-/* =====================================================
-VALIDATION
-===================================================== */
 
 if(!link){
 
@@ -2457,6 +2687,7 @@ message(
 return;
 
 }
+
 
 if(
 !proofInput ||
@@ -2473,8 +2704,10 @@ return;
 
 }
 
+
 const file =
 proofInput.files[0];
+
 
 if(
 !file.type.startsWith("image/")
@@ -2491,10 +2724,6 @@ return;
 }
 
 
-/* =====================================================
-START SUBMISSION
-===================================================== */
-
 try{
 
 button.disabled=true;
@@ -2502,31 +2731,22 @@ button.disabled=true;
 button.textContent =
 "⏳ Creating promotion request...";
 
+
 message(
 "promotionMessage",
 "Processing payment proof..."
 );
 
 
-/* Compress payment proof */
-
 const imageData =
 await compressImage(file);
 
-
-/* Approximate size */
 
 const sizeInBytes =
 Math.ceil(
 (imageData.length * 3) / 4
 );
 
-
-/*
-Firestore document fields are limited in size.
-We keep the compressed image below
-approximately 700 KB.
-*/
 
 if(
 sizeInBytes > 700000
@@ -2538,6 +2758,7 @@ message(
 "error"
 );
 
+
 button.disabled=false;
 
 button.textContent =
@@ -2548,14 +2769,11 @@ return;
 }
 
 
-/* =====================================================
-SAVE PROMOTION ORDER
-===================================================== */
-
 message(
 "promotionMessage",
 "Saving promotion request..."
 );
+
 
 await addDoc(
 collection(db,"promotionOrders"),
@@ -2576,12 +2794,6 @@ link,
 amount:
 amount,
 
-/*
-This is the payment proof image.
-It is saved directly in Firestore
-as compressed Base64 image data.
-*/
-
 paymentProof:
 imageData,
 
@@ -2601,17 +2813,11 @@ serverTimestamp()
 );
 
 
-/* =====================================================
-SUCCESS
-===================================================== */
-
 message(
 "promotionMessage",
 "✅ Promotion request submitted successfully. Payment proof has been sent for admin review."
 );
 
-
-/* Clear form */
 
 document
 .getElementById(
@@ -2619,11 +2825,13 @@ document
 )
 .value="";
 
+
 document
 .getElementById(
 "paymentProofImage"
 )
 .value="";
+
 
 document
 .getElementById(
@@ -2631,14 +2839,13 @@ document
 )
 .value="";
 
+
 document
 .getElementById(
 "paymentProofPreview"
 )
 .style.display="none";
 
-
-/* Reload orders */
 
 await loadPromotionOrders();
 
@@ -2657,12 +2864,14 @@ console.error(
 error
 );
 
+
 message(
 "promotionMessage",
 "Could not create promotion request: " +
 error.message,
 "error"
 );
+
 
 button.disabled=false;
 
@@ -2686,13 +2895,16 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const list =
 document.getElementById(
 "promotionOrders"
 );
 
+
 list.innerHTML =
 "<p class='small'>Loading promotion orders...</p>";
+
 
 try{
 
@@ -2702,8 +2914,10 @@ collection(db,"promotionOrders"),
 where("uid","==",user.uid)
 );
 
+
 const snap =
 await getDocs(q);
+
 
 if(snap.empty){
 
@@ -2714,6 +2928,7 @@ return;
 
 }
 
+
 list.innerHTML="";
 
 
@@ -2723,18 +2938,22 @@ docSnap=>{
 const data =
 docSnap.data();
 
+
 const paymentStatus =
 data.paymentStatus ||
 "Pending";
+
 
 const promotionStatus =
 data.promotionStatus ||
 "Pending";
 
+
 const paymentClass =
 getStatusClass(
 paymentStatus
 );
+
 
 const promotionClass =
 getStatusClass(
@@ -2744,6 +2963,7 @@ promotionStatus
 
 const div =
 document.createElement("div");
+
 
 div.className="task";
 
@@ -2807,11 +3027,6 @@ ${safe(promotionStatus)}
 `;
 
 
-
-/* =====================================================
-PAYMENT PROOF IMAGE
-===================================================== */
-
 if(
 data.paymentProof
 ){
@@ -2819,8 +3034,10 @@ data.paymentProof
 const proofBox =
 document.createElement("div");
 
+
 proofBox.className =
 "proofBox";
+
 
 proofBox.innerHTML = `
 
@@ -2838,14 +3055,13 @@ alt="Payment proof"
 
 `;
 
+
 div.appendChild(
 proofBox
 );
 
 }
 
-
-/* Payment note */
 
 if(
 data.paymentProofNote
@@ -2854,15 +3070,19 @@ data.paymentProofNote
 const note =
 document.createElement("p");
 
+
 note.className =
 "small";
+
 
 note.style.marginTop =
 "10px";
 
+
 note.innerHTML =
 "<strong>Payment Note:</strong> " +
 safe(data.paymentProofNote);
+
 
 div.appendChild(note);
 
@@ -2881,6 +3101,7 @@ console.error(
 "Promotion orders error:",
 error
 );
+
 
 list.innerHTML =
 "<p class='small'>Could not load promotion orders. Check your Firebase Firestore rules.</p>";
@@ -2902,6 +3123,7 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const amount =
 Number(
 document
@@ -2911,6 +3133,7 @@ document
 .value
 );
 
+
 const bank =
 document
 .getElementById(
@@ -2918,6 +3141,7 @@ document
 )
 .value
 .trim();
+
 
 const account =
 document
@@ -2927,6 +3151,7 @@ document
 .value
 .trim();
 
+
 const name =
 document
 .getElementById(
@@ -2934,6 +3159,7 @@ document
 )
 .value
 .trim();
+
 
 if(
 !amount ||
@@ -2952,6 +3178,7 @@ return;
 
 }
 
+
 if(amount < 100){
 
 message(
@@ -2963,6 +3190,7 @@ message(
 return;
 
 }
+
 
 if(
 !/^[0-9]{10}$/.test(account)
@@ -2978,6 +3206,7 @@ return;
 
 }
 
+
 try{
 
 const q =
@@ -2987,8 +3216,10 @@ where("uid","==",user.uid),
 limit(1)
 );
 
+
 const snap =
 await getDocs(q);
+
 
 if(snap.empty){
 
@@ -3002,13 +3233,16 @@ return;
 
 }
 
+
 const userDoc =
 snap.docs[0];
+
 
 const currentBalance =
 Number(
 userDoc.data().balance || 0
 );
+
 
 if(amount > currentBalance){
 
@@ -3021,6 +3255,7 @@ message(
 return;
 
 }
+
 
 await addDoc(
 collection(db,"withdrawals"),
@@ -3053,10 +3288,12 @@ serverTimestamp()
 }
 );
 
+
 message(
 "withdrawMessage",
 "Withdrawal request submitted. Status: Pending."
 );
+
 
 document
 .getElementById(
@@ -3064,11 +3301,13 @@ document
 )
 .value="";
 
+
 document
 .getElementById(
 "bankName"
 )
 .value="";
+
 
 document
 .getElementById(
@@ -3076,11 +3315,13 @@ document
 )
 .value="";
 
+
 document
 .getElementById(
 "accountName"
 )
 .value="";
+
 
 await loadWithdrawals();
 
@@ -3089,6 +3330,7 @@ await loadWithdrawals();
 catch(error){
 
 console.error(error);
+
 
 message(
 "withdrawMessage",
@@ -3114,10 +3356,12 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const list =
 document.getElementById(
 "withdrawalList"
 );
+
 
 try{
 
@@ -3127,8 +3371,10 @@ collection(db,"withdrawals"),
 where("uid","==",user.uid)
 );
 
+
 const snap =
 await getDocs(q);
+
 
 if(snap.empty){
 
@@ -3139,7 +3385,9 @@ return;
 
 }
 
+
 list.innerHTML="";
+
 
 snap.forEach(
 docSnap=>{
@@ -3147,15 +3395,19 @@ docSnap=>{
 const d =
 docSnap.data();
 
+
 const cls =
 getStatusClass(
 d.status
 );
 
+
 const div =
 document.createElement("div");
 
+
 div.className="task";
+
 
 div.innerHTML = `
 
@@ -3197,6 +3449,7 @@ d.status ||
 
 `;
 
+
 list.appendChild(div);
 
 });
@@ -3224,11 +3477,13 @@ auth.currentUser;
 
 if(!user)return;
 
+
 const id =
 user.uid.substring(
 0,
 8
 );
+
 
 const link =
 window.location.origin +
@@ -3236,11 +3491,13 @@ window.location.pathname +
 "?ref=" +
 id;
 
+
 try{
 
 await navigator.clipboard.writeText(
 link
 );
+
 
 alert(
 "Referral link copied!"
@@ -3272,6 +3529,7 @@ encodeURIComponent(
 "Hello StoryVerse Customer Service, I need assistance."
 );
 
+
 window.open(
 "https://wa.me/" +
 SUPPORT_1 +
@@ -3299,10 +3557,12 @@ return;
 
 }
 
+
 const text =
 encodeURIComponent(
 "Hello StoryVerse Customer Service, I need assistance."
 );
+
 
 window.open(
 "https://wa.me/" +
@@ -3323,8 +3583,7 @@ function getStatusClass(status){
 
 if(
 String(status)
-.toLowerCase()
-===
+.toLowerCase() ===
 "approved"
 ){
 
@@ -3332,16 +3591,17 @@ return "approved";
 
 }
 
+
 if(
 String(status)
-.toLowerCase()
-===
+.toLowerCase() ===
 "rejected"
 ){
 
 return "rejected";
 
 }
+
 
 return "pending";
 
