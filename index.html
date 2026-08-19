@@ -28,6 +28,10 @@ select{
 font:inherit;
 }
 
+button{
+cursor:pointer;
+}
+
 #authScreen{
 min-height:100vh;
 display:flex;
@@ -59,10 +63,9 @@ color:#666;
 margin-bottom:20px;
 }
 
+/* DOWNLOAD */
+
 .downloadApp{
-position:sticky;
-top:0;
-z-index:9999;
 display:block;
 width:calc(100% + 50px);
 margin:-25px -25px 20px -25px;
@@ -72,12 +75,14 @@ color:white;
 text-align:center;
 text-decoration:none;
 font-weight:bold;
-box-shadow:0 3px 10px rgba(0,0,0,.20);
+box-shadow:0 3px 10px rgba(0,0,0,.2);
 }
 
 .downloadApp:hover{
 background:#15803d;
 }
+
+/* INPUTS */
 
 input,
 textarea,
@@ -87,12 +92,15 @@ padding:13px;
 margin:7px 0 12px;
 border:1px solid #d1d5db;
 border-radius:9px;
+background:white;
 }
 
 textarea{
 min-height:100px;
 resize:vertical;
 }
+
+/* BUTTONS */
 
 .btn{
 width:100%;
@@ -103,7 +111,6 @@ color:white;
 background:#2563eb;
 font-weight:bold;
 margin-top:7px;
-cursor:pointer;
 }
 
 .btn:disabled{
@@ -131,6 +138,8 @@ background:#25D366;
 background:#ea580c;
 }
 
+/* MESSAGE */
+
 .msg{
 display:none;
 padding:11px;
@@ -150,6 +159,8 @@ background:#fee2e2;
 color:#991b1b;
 }
 
+/* APP */
+
 #app{
 display:none;
 }
@@ -167,8 +178,9 @@ font-size:24px;
 
 header p{
 margin-top:7px;
-color:white;
 }
+
+/* NAV */
 
 nav{
 display:flex;
@@ -176,7 +188,7 @@ overflow-x:auto;
 background:white;
 position:sticky;
 top:0;
-z-index:10;
+z-index:100;
 border-bottom:1px solid #ddd;
 }
 
@@ -187,8 +199,9 @@ padding:14px 7px;
 border:0;
 background:white;
 font-weight:bold;
-cursor:pointer;
 }
+
+/* CONTAINER */
 
 .container{
 max-width:950px;
@@ -204,6 +217,8 @@ display:none;
 display:block;
 }
 
+/* CARDS */
+
 .card{
 background:white;
 padding:20px;
@@ -215,6 +230,8 @@ box-shadow:0 3px 12px rgba(0,0,0,.08);
 .card h2{
 margin-bottom:12px;
 }
+
+/* BALANCE */
 
 .balanceBox{
 background:linear-gradient(135deg,#111827,#2563eb);
@@ -229,6 +246,8 @@ font-size:30px;
 font-weight:bold;
 margin-top:8px;
 }
+
+/* TASK */
 
 .task{
 border:1px solid #e5e7eb;
@@ -251,6 +270,8 @@ border-radius:20px;
 margin:8px 0;
 font-weight:bold;
 }
+
+/* STATUS */
 
 .status{
 display:inline-block;
@@ -275,10 +296,7 @@ background:#fee2e2;
 color:#991b1b;
 }
 
-.completed{
-background:#dbeafe;
-color:#1e40af;
-}
+/* INFO */
 
 .small{
 font-size:13px;
@@ -302,6 +320,37 @@ border-radius:10px;
 line-height:1.8;
 margin:15px 0;
 }
+
+/* REFERRAL */
+
+.referralBox{
+background:linear-gradient(135deg,#ecfdf5,#dbeafe);
+padding:18px;
+border-radius:12px;
+border:1px solid #bbf7d0;
+margin-top:12px;
+}
+
+.referralCode{
+font-size:24px;
+font-weight:bold;
+color:#166534;
+letter-spacing:2px;
+margin:10px 0;
+word-break:break-all;
+}
+
+.referralLink{
+word-break:break-all;
+font-size:13px;
+color:#2563eb;
+background:white;
+padding:10px;
+border-radius:8px;
+margin-top:10px;
+}
+
+/* IMAGE */
 
 .preview{
 display:none;
@@ -331,16 +380,7 @@ border-radius:10px;
 margin-top:12px;
 }
 
-.orderLink{
-word-break:break-all;
-font-size:13px;
-color:#2563eb;
-}
-
-.completedTask{
-background:#f0fdf4;
-border:2px solid #86efac;
-}
+/* FOOTER */
 
 footer{
 text-align:center;
@@ -415,6 +455,20 @@ placeholder="Password"
 autocomplete="current-password"
 >
 
+<label>
+<strong>Referral Code</strong>
+</label>
+
+<input
+type="text"
+id="referralCodeInput"
+placeholder="Enter referral code (optional)"
+>
+
+<p class="small">
+If someone referred you, enter their referral code above.
+</p>
+
 <button
 class="btn"
 onclick="registerUser()"
@@ -443,7 +497,10 @@ onclick="contactSupport()"
 💬 Customer Service
 </button>
 
-<div id="authMessage" class="msg"></div>
+<div
+id="authMessage"
+class="msg"
+></div>
 
 </div>
 
@@ -451,7 +508,7 @@ onclick="contactSupport()"
 
 
 <!-- =====================================================
-APP
+MAIN APP
 ===================================================== -->
 
 <div id="app">
@@ -561,7 +618,7 @@ onclick="showSection('promotion')"
 
 <p>
 Complete available tasks and submit image proof.
-Each task can only be submitted once per user.
+Each task can only be submitted once per account.
 </p>
 
 <button
@@ -570,6 +627,38 @@ onclick="showSection('earning')"
 >
 📋 View Tasks
 </button>
+
+</div>
+
+
+<div class="card">
+
+<h2>👥 Referral Bonus</h2>
+
+<p>
+Refer a new member and earn
+<strong>₦200</strong> when the referral is credited.
+</p>
+
+<div class="referralBox">
+
+<p>Your Referral Code:</p>
+
+<div
+id="homeReferralCode"
+class="referralCode"
+>
+Loading...
+</div>
+
+<button
+class="btn green"
+onclick="copyReferral()"
+>
+📋 Copy Referral Link
+</button>
+
+</div>
 
 </div>
 
@@ -600,11 +689,13 @@ PROMOTION
 
 </select>
 
+
 <input
 type="url"
 id="promotionLink"
 placeholder="Paste your promotion link"
 >
+
 
 <select id="promotionPackage">
 
@@ -648,13 +739,10 @@ Account Name:
 
 <div class="proofBox">
 
-<h3>📷 Payment Proof Image</h3>
-
-<br>
+<h3>📷 Payment Proof</h3>
 
 <p class="small">
-After making payment, upload a screenshot or photo
-of your payment receipt.
+After payment, upload your receipt screenshot.
 </p>
 
 <input
@@ -667,7 +755,7 @@ onchange="previewPaymentProof(event)"
 <img
 id="paymentProofPreview"
 class="preview"
-alt="Payment proof preview"
+alt="Payment proof"
 >
 
 <textarea
@@ -678,13 +766,6 @@ placeholder="Optional payment note"
 </div>
 
 
-<p class="small">
-Your promotion order will remain
-<strong>Pending</strong> until the administrator
-reviews your payment proof.
-</p>
-
-
 <button
 id="promotionSubmitButton"
 class="btn"
@@ -693,7 +774,10 @@ onclick="submitPromotion()"
 📢 Submit Promotion
 </button>
 
-<div id="promotionMessage" class="msg"></div>
+<div
+id="promotionMessage"
+class="msg"
+></div>
 
 </div>
 
@@ -740,8 +824,8 @@ EARNING
 <h2>📋 Daily Tasks</h2>
 
 <p class="small">
-Each task can be completed only once by each user.
-After you submit proof, the task is locked for your account.
+Tasks created by the administrator will appear here.
+Each task can only be completed once by each user.
 </p>
 
 <button
@@ -752,11 +836,7 @@ onclick="loadTasks()"
 </button>
 
 <div id="taskList">
-
-<p class="small">
-Loading tasks...
-</p>
-
+<p class="small">Loading tasks...</p>
 </div>
 
 </div>
@@ -774,32 +854,76 @@ onclick="loadSubmissions()"
 </button>
 
 <div id="submissionList">
-
-<p class="small">
-Loading...
-</p>
-
+<p class="small">Loading...</p>
 </div>
 
 </div>
 
+
+<!-- REFERRAL -->
 
 <div class="card">
 
-<h2>👥 Referral</h2>
+<h2>👥 My Referrals</h2>
 
-<p>Your referral ID:</p>
+<div class="referralBox">
 
-<strong id="referralId">
+<p>Your Referral Code:</p>
+
+<div
+id="referralId"
+class="referralCode"
+>
 Loading...
-</strong>
+</div>
+
+<p class="small">
+Share your referral link with new users.
+Referral bonus: <strong>₦200</strong>.
+</p>
+
+<div
+id="referralLinkDisplay"
+class="referralLink"
+>
+Loading...
+</div>
 
 <button
-class="btn"
+class="btn green"
 onclick="copyReferral()"
 >
 📋 Copy Referral Link
 </button>
+
+</div>
+
+
+<hr>
+
+<h3>Who Referred Me?</h3>
+
+<div
+id="myReferrer"
+class="task"
+>
+<p class="small">
+Checking referral information...
+</p>
+</div>
+
+
+<hr>
+
+<h3>My Referral History</h3>
+
+<div
+id="myReferralsList"
+>
+<p class="small">
+Loading referrals...
+</p>
+</div>
 
 </div>
 
@@ -830,6 +954,7 @@ Current balance:
 
 </div>
 
+
 <input
 type="number"
 id="withdrawAmount"
@@ -857,6 +982,7 @@ id="accountName"
 placeholder="Account Name"
 >
 
+
 <button
 class="btn"
 onclick="submitWithdrawal()"
@@ -864,7 +990,11 @@ onclick="submitWithdrawal()"
 💸 Submit Withdrawal
 </button>
 
-<div id="withdrawMessage" class="msg"></div>
+
+<div
+id="withdrawMessage"
+class="msg"
+></div>
 
 </div>
 
@@ -900,25 +1030,35 @@ ACCOUNT
 <h2>👤 My Account</h2>
 
 <p>Email:</p>
-
 <strong id="userEmail"></strong>
 
 <br><br>
 
 <p>User ID:</p>
-
 <small id="userId"></small>
 
 <br><br>
 
-<p>Referral ID:</p>
-
+<p>My Referral Code:</p>
 <strong id="accountReferral"></strong>
 
 <br><br>
 
-<p>Account Status:</p>
+<p>Referred By:</p>
+<strong id="accountReferredBy">
+None
+</strong>
 
+<br><br>
+
+<p>Referral Bonus:</p>
+<strong>
+₦200 per credited referral
+</strong>
+
+<br><br>
+
+<p>Account Status:</p>
 <strong>✅ Logged In</strong>
 
 <hr>
@@ -962,19 +1102,13 @@ Need help? Contact StoryVerse customer service.
 class="btn whatsapp"
 onclick="contactSupport()"
 >
-💬 WhatsApp Customer Service 1
-</button>
-
-<button
-class="btn whatsapp"
-onclick="contactSupport2()"
->
-💬 WhatsApp Customer Service 2
+💬 WhatsApp Customer Service
 </button>
 
 </div>
 
 </section>
+
 
 </div>
 
@@ -1020,12 +1154,10 @@ addDoc,
 getDocs,
 getDoc,
 doc,
-setDoc,
 query,
 where,
 limit,
-serverTimestamp,
-runTransaction
+serverTimestamp
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
@@ -1075,14 +1207,13 @@ getFirestore(app);
 
 
 /* =====================================================
-WHATSAPP
+SETTINGS
 ===================================================== */
+
+const REFERRAL_BONUS = 200;
 
 const SUPPORT_1 =
 "2347035349951";
-
-const SUPPORT_2 =
-"CHANGE_NUMBER_LATER";
 
 
 /* =====================================================
@@ -1111,6 +1242,51 @@ box.textContent=text;
 
 
 /* =====================================================
+CREATE REFERRAL CODE
+===================================================== */
+
+function makeReferralCode(uid){
+
+return "SV" +
+uid.substring(0,8).toUpperCase();
+
+}
+
+
+/* =====================================================
+GET REFERRAL FROM URL
+===================================================== */
+
+function getUrlReferral(){
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+return (
+params.get("ref") || ""
+)
+.trim()
+.toUpperCase();
+
+}
+
+
+const urlReferral =
+getUrlReferral();
+
+if(urlReferral){
+
+document
+.getElementById("referralCodeInput")
+.value =
+urlReferral;
+
+}
+
+
+/* =====================================================
 REGISTER
 ===================================================== */
 
@@ -1118,13 +1294,22 @@ window.registerUser =
 async function(){
 
 const email =
-document.getElementById("authEmail")
+document
+.getElementById("authEmail")
 .value
 .trim();
 
 const password =
-document.getElementById("authPassword")
+document
+.getElementById("authPassword")
 .value;
+
+const enteredReferral =
+document
+.getElementById("referralCodeInput")
+.value
+.trim()
+.toUpperCase();
 
 
 if(!email || !password){
@@ -1155,6 +1340,14 @@ return;
 
 try{
 
+message(
+"authMessage",
+"Creating your account..."
+);
+
+
+/* CREATE AUTH ACCOUNT */
+
 const result =
 await createUserWithEmailAndPassword(
 auth,
@@ -1163,24 +1356,87 @@ password
 );
 
 
-await setDoc(
-doc(db,"users",result.user.uid),
+const uid =
+result.user.uid;
+
+
+const myReferralCode =
+makeReferralCode(uid);
+
+
+/* FIND REFERRER */
+
+let referrerUid = null;
+let referrerEmail = null;
+let referrerCode = null;
+
+
+if(enteredReferral){
+
+const refQuery =
+query(
+collection(db,"users"),
+where(
+"referralCode",
+"==",
+enteredReferral
+),
+limit(1)
+);
+
+
+const refSnap =
+await getDocs(refQuery);
+
+
+if(!refSnap.empty){
+
+const refDoc =
+refSnap.docs[0];
+
+const refData =
+refDoc.data();
+
+referrerUid =
+refData.uid;
+
+referrerEmail =
+refData.email || "";
+
+referrerCode =
+refData.referralCode ||
+enteredReferral;
+
+}
+
+}
+
+
+/* CREATE USER */
+
+await addDoc(
+collection(db,"users"),
 {
 
-uid:
-result.user.uid,
+uid:uid,
 
-email:
-email,
+email:email,
 
-balance:
-0,
+balance:0,
 
-role:
-"user",
+role:"user",
 
-referralId:
-result.user.uid.substring(0,8),
+referralCode:
+myReferralCode,
+
+referredByUid:
+referrerUid || "",
+
+referredByEmail:
+referrerEmail || "",
+
+referredByCode:
+referrerCode || "",
 
 createdAt:
 serverTimestamp()
@@ -1189,9 +1445,53 @@ serverTimestamp()
 );
 
 
+/* CREATE REFERRAL RECORD */
+
+if(referrerUid){
+
+await addDoc(
+collection(db,"referrals"),
+{
+
+referrerUid:
+referrerUid,
+
+referrerEmail:
+referrerEmail,
+
+referrerCode:
+referrerCode,
+
+referredUid:
+uid,
+
+referredEmail:
+email,
+
+bonus:
+REFERRAL_BONUS,
+
+status:
+"Pending",
+
+credited:false,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+}
+
+
 message(
 "authMessage",
-"Account created successfully."
+referrerUid
+?
+"✅ Account created. Your referral has been recorded and the ₦200 referral bonus is pending admin credit."
+:
+"✅ Account created successfully."
 );
 
 }
@@ -1213,7 +1513,7 @@ text =
 
 }
 
-else if(
+if(
 error.code ===
 "auth/invalid-email"
 ){
@@ -1242,12 +1542,14 @@ window.loginUser =
 async function(){
 
 const email =
-document.getElementById("authEmail")
+document
+.getElementById("authEmail")
 .value
 .trim();
 
 const password =
-document.getElementById("authPassword")
+document
+.getElementById("authPassword")
 .value;
 
 
@@ -1255,7 +1557,7 @@ if(!email || !password){
 
 message(
 "authMessage",
-"Please enter your email and password.",
+"Enter your email and password.",
 "error"
 );
 
@@ -1280,7 +1582,7 @@ console.error(error);
 
 message(
 "authMessage",
-"Login failed. Please check your email and password.",
+"Login failed. Check your email and password.",
 "error"
 );
 
@@ -1297,7 +1599,8 @@ window.forgotPassword =
 async function(){
 
 const email =
-document.getElementById("authEmail")
+document
+.getElementById("authEmail")
 .value
 .trim();
 
@@ -1335,7 +1638,7 @@ console.error(error);
 
 message(
 "authMessage",
-"Could not send reset email. Check that the email is registered.",
+"Could not send reset email.",
 "error"
 );
 
@@ -1366,30 +1669,25 @@ async(user)=>{
 
 if(user){
 
-document.getElementById("authScreen")
+document
+.getElementById("authScreen")
 .style.display="none";
 
-document.getElementById("app")
+document
+.getElementById("app")
 .style.display="block";
 
-document.getElementById("userEmail")
+
+document
+.getElementById("userEmail")
 .textContent =
 user.email || "";
 
-document.getElementById("userId")
+document
+.getElementById("userId")
 .textContent =
 user.uid;
 
-const referral =
-user.uid.substring(0,8);
-
-document.getElementById("referralId")
-.textContent =
-referral;
-
-document.getElementById("accountReferral")
-.textContent =
-referral;
 
 await loadAllData();
 
@@ -1397,10 +1695,12 @@ await loadAllData();
 
 else{
 
-document.getElementById("authScreen")
+document
+.getElementById("authScreen")
 .style.display="flex";
 
-document.getElementById("app")
+document
+.getElementById("app")
 .style.display="none";
 
 }
@@ -1423,6 +1723,7 @@ x =>
 x.classList.remove("active")
 );
 
+
 const section =
 document.getElementById(name);
 
@@ -1436,19 +1737,113 @@ section.classList.add("active");
 
 
 /* =====================================================
-LOAD ALL
+LOAD EVERYTHING
 ===================================================== */
 
 window.loadAllData =
 async function(){
 
+await loadUserData();
+
 await loadBalance();
+
 await loadTasks();
+
 await loadSubmissions();
+
 await loadWithdrawals();
+
 await loadPromotionOrders();
 
+await loadReferralData();
+
 };
+
+
+/* =====================================================
+LOAD USER
+===================================================== */
+
+async function loadUserData(){
+
+const user =
+auth.currentUser;
+
+if(!user)return;
+
+
+try{
+
+const q =
+query(
+collection(db,"users"),
+where("uid","==",user.uid),
+limit(1)
+);
+
+
+const snap =
+await getDocs(q);
+
+
+if(snap.empty)return;
+
+
+const data =
+snap.docs[0].data();
+
+
+const referralCode =
+data.referralCode ||
+makeReferralCode(user.uid);
+
+
+document
+.getElementById("referralId")
+.textContent =
+referralCode;
+
+document
+.getElementById("homeReferralCode")
+.textContent =
+referralCode;
+
+document
+.getElementById("accountReferral")
+textContent =
+referralCode;
+
+const referralLink =
+window.location.origin +
+window.location.pathname +
+"?ref=" +
+encodeURIComponent(referralCode);
+
+
+document
+.getElementById("referralLinkDisplay")
+.textContent =
+referralLink;
+
+
+document
+.getElementById("accountReferredBy")
+.textContent =
+data.referredByCode ||
+"None";
+
+}
+
+catch(error){
+
+console.error(
+"User data error:",
+error
+);
+
+}
+
+}
 
 
 /* =====================================================
@@ -1465,34 +1860,42 @@ if(!user)return;
 
 try{
 
-const userRef =
-doc(db,"users",user.uid);
+const q =
+query(
+collection(db,"users"),
+where("uid","==",user.uid),
+limit(1)
+);
+
 
 const snap =
-await getDoc(userRef);
+await getDocs(q);
 
 let balance=0;
 
 
-if(snap.exists()){
+if(!snap.empty){
 
 balance =
 Number(
-snap.data().balance || 0
+snap.docs[0].data().balance || 0
 );
 
 }
 
 
-document.getElementById("balance")
+document
+.getElementById("balance")
 .textContent =
 balance.toLocaleString();
 
-document.getElementById("earningBalance")
+document
+.getElementById("earningBalance")
 .textContent =
 balance.toLocaleString();
 
-document.getElementById("withdrawBalance")
+document
+.getElementById("withdrawBalance")
 .textContent =
 balance.toLocaleString();
 
@@ -1512,8 +1915,6 @@ error
 
 /* =====================================================
 TASKS
-IMPORTANT:
-ONE TASK = ONE USER ONLY
 ===================================================== */
 
 window.loadTasks =
@@ -1528,15 +1929,12 @@ if(!user)return;
 const list =
 document.getElementById("taskList");
 
+
 list.innerHTML =
 "<p class='small'>Loading tasks...</p>";
 
 
 try{
-
-/*
-Get all active tasks
-*/
 
 const taskQuery =
 query(
@@ -1544,47 +1942,9 @@ collection(db,"tasks"),
 where("active","==",true)
 );
 
+
 const taskSnap =
 await getDocs(taskQuery);
-
-
-/*
-Get all submissions made by this user
-*/
-
-const submissionQuery =
-query(
-collection(db,"taskSubmissions"),
-where("uid","==",user.uid)
-);
-
-const submissionSnap =
-await getDocs(submissionQuery);
-
-
-/*
-Create a set of completed/submitted task IDs
-*/
-
-const submittedTasks =
-new Set();
-
-
-submissionSnap.forEach(
-submissionDoc=>{
-
-const data =
-submissionDoc.data();
-
-if(data.taskId){
-
-submittedTasks.add(
-String(data.taskId)
-);
-
-}
-
-});
 
 
 if(taskSnap.empty){
@@ -1597,21 +1957,58 @@ return;
 }
 
 
+const submissionQuery =
+query(
+collection(db,"taskSubmissions"),
+where("uid","==",user.uid)
+);
+
+
+const submissionSnap =
+await getDocs(submissionQuery);
+
+
+const completedTasks =
+new Set();
+
+
+submissionSnap.forEach(
+docSnap=>{
+
+const d =
+docSnap.data();
+
+if(d.taskId){
+
+completedTasks.add(
+d.taskId
+);
+
+}
+
+});
+
+
 list.innerHTML="";
 
 
-let availableCount=0;
-
-
-for(
-const taskDoc of taskSnap.docs
-){
+taskSnap.forEach(
+taskDoc=>{
 
 const task =
 taskDoc.data();
 
-const taskId =
-taskDoc.id;
+const alreadyDone =
+completedTasks.has(
+taskDoc.id
+);
+
+
+const div =
+document.createElement("div");
+
+div.className="task";
+
 
 const title =
 safe(
@@ -1631,37 +2028,13 @@ task.reward || 0
 );
 
 
-/*
-CHECK IF THIS USER HAS ALREADY
-SUBMITTED THIS TASK
-*/
-
-const alreadySubmitted =
-submittedTasks.has(taskId);
-
-
-const div =
-document.createElement("div");
-
-
-if(alreadySubmitted){
-
-/*
-TASK ALREADY DONE BY THIS USER
-*/
-
-div.className =
-"task completedTask";
+if(alreadyDone){
 
 div.innerHTML = `
 
-<h3>
-${title}
-</h3>
+<h3>${title}</h3>
 
-<p>
-${description}
-</p>
+<p>${description}</p>
 
 <div class="reward">
 💰 ₦${reward.toLocaleString()}
@@ -1669,39 +2042,23 @@ ${description}
 
 <br>
 
-<span class="status completed">
-✅ ALREADY SUBMITTED
-</span>
-
-<br><br>
-
-<p class="small">
-You have already submitted this task.
-You cannot submit the same task again.
-</p>
+<div class="infoBox">
+<strong>✅ Task already submitted</strong>
+<br>
+You cannot submit this task again.
+</div>
 
 `;
 
 }
+
 else{
-
-/*
-TASK STILL AVAILABLE
-*/
-
-availableCount++;
-
-div.className="task";
 
 div.innerHTML = `
 
-<h3>
-${title}
-</h3>
+<h3>${title}</h3>
 
-<p>
-${description}
-</p>
+<p>${description}</p>
 
 <div class="reward">
 💰 ₦${reward.toLocaleString()}
@@ -1718,10 +2075,15 @@ onclick="openTask('${encodeURIComponent(task.link || "#")}')"
 
 <button
 class="btn green"
-onclick="showProofForm('${taskId}')"
+onclick="showProofForm('${taskDoc.id}')"
 >
 🖼️ Submit Image Proof
 </button>
+
+<div
+id="proofArea_${taskDoc.id}"
+>
+</div>
 
 `;
 
@@ -1730,26 +2092,7 @@ onclick="showProofForm('${taskId}')"
 
 list.appendChild(div);
 
-}
-
-
-/*
-SHOW MESSAGE IF ALL TASKS ARE COMPLETED
-*/
-
-if(availableCount === 0){
-
-const notice =
-document.createElement("div");
-
-notice.className="infoBox";
-
-notice.innerHTML =
-"🎉 You have submitted all currently available tasks.";
-
-list.prepend(notice);
-
-}
+});
 
 }
 
@@ -1761,7 +2104,7 @@ error
 );
 
 list.innerHTML =
-"<p class='small'>Could not load tasks. Check your Firebase rules.</p>";
+"<p class='small'>Could not load tasks. Please check Firebase Firestore rules.</p>";
 
 }
 
@@ -1782,7 +2125,7 @@ decodeURIComponent(encodedLink);
 if(!link || link === "#"){
 
 alert(
-"This task does not have a link."
+"This task does not have a valid link."
 );
 
 return;
@@ -1799,7 +2142,7 @@ link,
 
 
 /* =====================================================
-TASK PROOF FORM
+SHOW PROOF FORM
 ===================================================== */
 
 window.showProofForm =
@@ -1808,47 +2151,37 @@ async function(taskId){
 const user =
 auth.currentUser;
 
-if(!user)return;
-
-
-const taskList =
-document.getElementById("taskList");
-
-
-try{
-
-/*
-FIRST CHECK IF USER ALREADY SUBMITTED IT
-*/
-
-const submissionId =
-user.uid + "_" + taskId;
-
-
-const existingRef =
-doc(
-db,
-"taskSubmissions",
-submissionId
-);
-
-
-const existingSnap =
-await getDoc(existingRef);
-
-
-if(existingSnap.exists()){
+if(!user){
 
 alert(
-"You have already submitted this task. You cannot submit it again."
+"Please login first."
 );
-
-await loadTasks();
 
 return;
 
 }
 
+
+const area =
+document.getElementById(
+"proofArea_" + taskId
+);
+
+
+if(!area){
+
+alert(
+"Proof area could not be found. Please refresh the task list."
+);
+
+return;
+
+}
+
+
+try{
+
+/* CHECK TASK */
 
 const taskRef =
 doc(
@@ -1864,9 +2197,8 @@ await getDoc(taskRef);
 
 if(!taskSnap.exists()){
 
-alert(
-"Task no longer exists."
-);
+area.innerHTML =
+"<div class='msg error' style='display:block'>This task no longer exists.</div>";
 
 return;
 
@@ -1876,6 +2208,64 @@ return;
 const task =
 taskSnap.data();
 
+
+/* CHECK IF ALREADY SUBMITTED */
+
+const submissionQuery =
+query(
+collection(db,"taskSubmissions"),
+where("uid","==",user.uid)
+);
+
+
+const submissionSnap =
+await getDocs(submissionQuery);
+
+
+let alreadySubmitted=false;
+
+
+submissionSnap.forEach(
+docSnap=>{
+
+const d =
+docSnap.data();
+
+if(
+d.taskId === taskId
+){
+
+alreadySubmitted=true;
+
+}
+
+});
+
+
+if(alreadySubmitted){
+
+area.innerHTML = `
+
+<div class="infoBox">
+
+<strong>
+✅ You already submitted this task.
+</strong>
+
+<br>
+
+You cannot submit the same task again.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+/* SHOW FORM */
 
 const title =
 safe(
@@ -1889,13 +2279,15 @@ task.reward || 0
 );
 
 
-taskList.innerHTML = `
+area.innerHTML = `
 
-<div class="card">
+<div class="proofBox">
 
-<h2>
-🖼️ Submit Image Proof
-</h2>
+<h3>
+🖼️ Submit Proof
+</h3>
+
+<br>
 
 <p>
 <strong>Task:</strong>
@@ -1915,20 +2307,20 @@ ${title}
 
 <input
 type="file"
-id="proofImage"
+id="proofImage_${taskId}"
 accept="image/jpeg,image/png,image/webp"
-onchange="previewProofImage(event)"
+onchange="previewProofImage(event,'${taskId}')"
 >
 
 <img
-id="proofPreview"
+id="proofPreview_${taskId}"
 class="preview"
 alt="Proof preview"
 >
 
 <textarea
-id="proofText"
-placeholder="Optional explanation about your proof"
+id="proofText_${taskId}"
+placeholder="Optional explanation"
 ></textarea>
 
 <button
@@ -1946,7 +2338,7 @@ onclick="loadTasks()"
 </button>
 
 <div
-id="proofMessage"
+id="proofMessage_${taskId}"
 class="msg"
 ></div>
 
@@ -1958,11 +2350,23 @@ class="msg"
 
 catch(error){
 
-console.error(error);
-
-alert(
-"Could not open proof form."
+console.error(
+"Proof form error:",
+error
 );
+
+
+area.innerHTML = `
+
+<div class="msg error" style="display:block">
+
+Could not open proof form.
+
+Please refresh the task list and try again.
+
+</div>
+
+`;
 
 }
 
@@ -1970,17 +2374,19 @@ alert(
 
 
 /* =====================================================
-PROOF IMAGE PREVIEW
+PROOF PREVIEW
 ===================================================== */
 
 window.previewProofImage =
-function(event){
+function(event,taskId){
 
 const file =
 event.target.files[0];
 
 const preview =
-document.getElementById("proofPreview");
+document.getElementById(
+"proofPreview_" + taskId
+);
 
 
 if(!file){
@@ -1997,7 +2403,7 @@ if(
 ){
 
 alert(
-"Please select an image file."
+"Please select an image."
 );
 
 event.target.value="";
@@ -2029,7 +2435,7 @@ reader.readAsDataURL(file);
 
 
 /* =====================================================
-IMAGE COMPRESSION
+COMPRESS IMAGE
 ===================================================== */
 
 function compressImage(file){
@@ -2065,7 +2471,9 @@ if(width > maxSize){
 
 height =
 Math.round(
-height * maxSize / width
+height *
+maxSize /
+width
 );
 
 width =
@@ -2078,7 +2486,9 @@ if(height > maxSize){
 
 width =
 Math.round(
-width * maxSize / height
+width *
+maxSize /
+height
 );
 
 height =
@@ -2089,6 +2499,7 @@ maxSize;
 
 const canvas =
 document.createElement("canvas");
+
 
 canvas.width =
 width;
@@ -2155,14 +2566,14 @@ new Error(
 reader.readAsDataURL(file);
 
 }
+
 );
 
 }
 
 
 /* =====================================================
-SUBMIT TASK PROOF
-ONE TASK PER USER
+SUBMIT PROOF
 ===================================================== */
 
 window.submitProof =
@@ -2175,12 +2586,19 @@ if(!user)return;
 
 
 const fileInput =
-document.getElementById("proofImage");
+document.getElementById(
+"proofImage_" + taskId
+);
 
-const proofText =
-document.getElementById("proofText")
-.value
-.trim();
+
+const textInput =
+document.getElementById(
+"proofText_" + taskId
+);
+
+
+const msgId =
+"proofMessage_" + taskId;
 
 
 if(
@@ -2189,7 +2607,7 @@ if(
 ){
 
 message(
-"proofMessage",
+msgId,
 "Please select a proof image.",
 "error"
 );
@@ -2202,53 +2620,69 @@ return;
 try{
 
 message(
-"proofMessage",
+msgId,
 "Checking task..."
 );
 
 
-/*
-DETERMINISTIC DOCUMENT ID
+/* CHECK DUPLICATE AGAIN */
 
-This is the important part.
-
-One user + one task = one document.
-
-Example:
-USER123_TASK456
-*/
-
-const submissionId =
-user.uid + "_" + taskId;
-
-
-const submissionRef =
-doc(
-db,
-"taskSubmissions",
-submissionId
+const submissionQuery =
+query(
+collection(db,"taskSubmissions"),
+where("uid","==",user.uid)
 );
 
 
-/*
-Get task
-*/
+const submissionSnap =
+await getDocs(submissionQuery);
 
-const taskRef =
-doc(
-db,
-"tasks",
+
+let alreadySubmitted=false;
+
+
+submissionSnap.forEach(
+docSnap=>{
+
+if(
+docSnap.data().taskId ===
 taskId
+){
+
+alreadySubmitted=true;
+
+}
+
+});
+
+
+if(alreadySubmitted){
+
+message(
+msgId,
+"You have already submitted this task.",
+"error"
 );
+
+await loadTasks();
+
+return;
+
+}
+
+
+/* GET TASK */
 
 const taskSnap =
-await getDoc(taskRef);
+await getDoc(
+doc(db,"tasks",taskId)
+);
 
 
 if(!taskSnap.exists()){
 
 message(
-"proofMessage",
+msgId,
 "Task no longer exists.",
 "error"
 );
@@ -2268,47 +2702,21 @@ task.reward || 0
 );
 
 
-/*
-CHECK DUPLICATE AGAIN
-*/
-
-const existingSubmission =
-await getDoc(submissionRef);
-
-
-if(existingSubmission.exists()){
-
 message(
-"proofMessage",
-"❌ You have already submitted this task. You cannot submit it again.",
-"error"
+msgId,
+"Processing image..."
 );
 
-await loadTasks();
-
-return;
-
-}
-
-
-/*
-PROCESS IMAGE
-*/
-
-const file =
-fileInput.files[0];
 
 const imageData =
-await compressImage(file);
+await compressImage(
+fileInput.files[0]
+);
 
-
-/*
-CHECK IMAGE SIZE
-*/
 
 const sizeInBytes =
 Math.ceil(
-(imageData.length * 3) / 4
+imageData.length * 3 / 4
 );
 
 
@@ -2317,8 +2725,8 @@ sizeInBytes > 700000
 ){
 
 message(
-"proofMessage",
-"Image is too large. Please choose a smaller screenshot.",
+msgId,
+"Image is too large. Please choose a smaller image.",
 "error"
 );
 
@@ -2327,34 +2735,10 @@ return;
 }
 
 
-/*
-USE FIRESTORE TRANSACTION
+/* SAVE SUBMISSION */
 
-This protects against duplicate submissions
-if the user taps the button multiple times.
-*/
-
-await runTransaction(
-db,
-async(transaction)=>{
-
-const check =
-await transaction.get(
-submissionRef
-);
-
-
-if(check.exists()){
-
-throw new Error(
-"ALREADY_SUBMITTED"
-);
-
-}
-
-
-transaction.set(
-submissionRef,
+await addDoc(
+collection(db,"taskSubmissions"),
 {
 
 uid:
@@ -2376,13 +2760,14 @@ proofImage:
 imageData,
 
 proofText:
-proofText,
+textInput
+?
+textInput.value.trim()
+:
+"",
 
 status:
 "Pending",
-
-rewardPaid:
-false,
 
 submittedAt:
 serverTimestamp()
@@ -2390,24 +2775,22 @@ serverTimestamp()
 }
 );
 
-}
-);
-
 
 message(
-"proofMessage",
-"✅ Proof submitted successfully! This task is now locked for your account and is waiting for admin approval."
+msgId,
+"✅ Proof submitted successfully. Waiting for admin approval."
 );
 
 
 setTimeout(
-async function(){
+function(){
 
-await loadTasks();
-await loadSubmissions();
+loadTasks();
+
+loadSubmissions();
 
 },
-1200
+1000
 );
 
 }
@@ -2420,26 +2803,8 @@ error
 );
 
 
-if(
-error.message ===
-"ALREADY_SUBMITTED"
-){
-
 message(
-"proofMessage",
-"❌ You have already submitted this task. You cannot submit it again.",
-"error"
-);
-
-await loadTasks();
-
-return;
-
-}
-
-
-message(
-"proofMessage",
+msgId,
 "Could not submit proof: " +
 error.message,
 "error"
@@ -2502,15 +2867,14 @@ list.innerHTML="";
 snap.forEach(
 docSnap=>{
 
-const data =
+const d =
 docSnap.data();
 
-const status =
-data.status ||
-"Pending";
 
-const statusClass =
-getStatusClass(status);
+const cls =
+getStatusClass(
+d.status
+);
 
 
 const div =
@@ -2523,7 +2887,7 @@ div.innerHTML = `
 
 <h3>
 ${safe(
-data.taskTitle ||
+d.taskTitle ||
 "Task"
 )}
 </h3>
@@ -2531,24 +2895,20 @@ data.taskTitle ||
 <p>
 Reward:
 ₦${Number(
-data.reward || 0
+d.reward || 0
 ).toLocaleString()}
 </p>
 
 <br>
 
-<span class="status ${statusClass}">
-${safe(status)}
+<span class="status ${cls}">
+${safe(
+d.status ||
+"Pending"
+)}
 </span>
 
-<br><br>
-
-<p class="small">
-This task has already been submitted from this account.
-</p>
-
 `;
-
 
 list.appendChild(div);
 
@@ -2569,7 +2929,7 @@ list.innerHTML =
 
 
 /* =====================================================
-PAYMENT PROOF PREVIEW
+PAYMENT PREVIEW
 ===================================================== */
 
 window.previewPaymentProof =
@@ -2577,6 +2937,7 @@ function(event){
 
 const file =
 event.target.files[0];
+
 
 const preview =
 document.getElementById(
@@ -2597,10 +2958,8 @@ if(
 !file.type.startsWith("image/")
 ){
 
-message(
-"promotionMessage",
-"Please select a valid image.",
-"error"
+alert(
+"Please select a valid image."
 );
 
 event.target.value="";
@@ -2655,41 +3014,41 @@ return;
 
 
 const type =
-document.getElementById(
-"promotionType"
-).value;
+document
+.getElementById("promotionType")
+.value;
 
 
 const link =
-document.getElementById(
-"promotionLink"
-).value
+document
+.getElementById("promotionLink")
+.value
 .trim();
 
 
 const amount =
 Number(
-document.getElementById(
-"promotionPackage"
-).value
+document
+.getElementById("promotionPackage")
+.value
 );
 
 
 const proofInput =
-document.getElementById(
-"paymentProofImage"
-);
+document
+.getElementById("paymentProofImage");
 
 
 const proofNote =
-document.getElementById(
-"paymentProofNote"
-).value
+document
+.getElementById("paymentProofNote")
+.value
 .trim();
 
 
 const button =
-document.getElementById(
+document
+.getElementById(
 "promotionSubmitButton"
 );
 
@@ -2708,13 +3067,12 @@ return;
 
 
 if(
-!proofInput ||
 !proofInput.files[0]
 ){
 
 message(
 "promotionMessage",
-"Please upload your payment proof image.",
+"Please upload payment proof.",
 "error"
 );
 
@@ -2735,32 +3093,6 @@ const imageData =
 await compressImage(
 proofInput.files[0]
 );
-
-
-const sizeInBytes =
-Math.ceil(
-(imageData.length * 3) / 4
-);
-
-
-if(
-sizeInBytes > 700000
-){
-
-message(
-"promotionMessage",
-"Payment proof image is too large. Please choose a smaller image.",
-"error"
-);
-
-button.disabled=false;
-
-button.textContent =
-"📢 Submit Promotion";
-
-return;
-
-}
 
 
 await addDoc(
@@ -2803,25 +3135,25 @@ serverTimestamp()
 
 message(
 "promotionMessage",
-"✅ Promotion request submitted successfully. Waiting for admin review."
+"✅ Promotion submitted. Waiting for admin review."
 );
 
 
-document.getElementById(
-"promotionLink"
-).value="";
+document
+.getElementById("promotionLink")
+.value="";
 
-document.getElementById(
-"paymentProofImage"
-).value="";
+document
+.getElementById("paymentProofImage")
+.value="";
 
-document.getElementById(
-"paymentProofNote"
-).value="";
+document
+.getElementById("paymentProofNote")
+.value="";
 
-document.getElementById(
-"paymentProofPreview"
-).style.display="none";
+document
+.getElementById("paymentProofPreview")
+.style.display="none";
 
 
 await loadPromotionOrders();
@@ -2874,10 +3206,6 @@ document.getElementById(
 );
 
 
-list.innerHTML =
-"<p class='small'>Loading promotion orders...</p>";
-
-
 try{
 
 const q =
@@ -2907,20 +3235,23 @@ list.innerHTML="";
 snap.forEach(
 docSnap=>{
 
-const data =
+const d =
 docSnap.data();
 
+
 const paymentStatus =
-data.paymentStatus ||
+d.paymentStatus ||
 "Pending";
 
+
 const promotionStatus =
-data.promotionStatus ||
+d.promotionStatus ||
 "Pending";
 
 
 const div =
 document.createElement("div");
+
 
 div.className="task";
 
@@ -2929,32 +3260,32 @@ div.innerHTML = `
 
 <h3>
 📢 ${safe(
-data.promotionType ||
+d.promotionType ||
 "Promotion"
 )}
 </h3>
 
 <p>
-<strong>Amount:</strong>
+Amount:
 ₦${Number(
-data.amount || 0
+d.amount || 0
 ).toLocaleString()}
 </p>
 
 <p>
-<strong>Promotion Link:</strong>
+Promotion Link:
 </p>
 
-<p class="orderLink">
+<p style="word-break:break-all;color:#2563eb">
 ${safe(
-data.promotionLink || ""
+d.promotionLink || ""
 )}
 </p>
 
 <br>
 
 <p>
-<strong>Payment Status:</strong>
+Payment:
 </p>
 
 <span class="status ${getStatusClass(paymentStatus)}">
@@ -2964,7 +3295,7 @@ ${safe(paymentStatus)}
 <br><br>
 
 <p>
-<strong>Promotion Status:</strong>
+Promotion:
 </p>
 
 <span class="status ${getStatusClass(promotionStatus)}">
@@ -2972,53 +3303,6 @@ ${safe(promotionStatus)}
 </span>
 
 `;
-
-
-if(data.paymentProof){
-
-const proofBox =
-document.createElement("div");
-
-proofBox.className =
-"proofBox";
-
-proofBox.innerHTML = `
-
-<br>
-
-<strong>📷 Payment Proof</strong>
-
-<img
-class="proofImage"
-src="${data.paymentProof}"
-alt="Payment proof"
->
-
-`;
-
-div.appendChild(
-proofBox
-);
-
-}
-
-
-if(data.paymentProofNote){
-
-const note =
-document.createElement("p");
-
-note.className="small";
-
-note.style.marginTop="10px";
-
-note.innerHTML =
-"<strong>Payment Note:</strong> " +
-safe(data.paymentProofNote);
-
-div.appendChild(note);
-
-}
 
 
 list.appendChild(div);
@@ -3040,7 +3324,7 @@ list.innerHTML =
 
 
 /* =====================================================
-WITHDRAWAL
+WITHDRAW
 ===================================================== */
 
 window.submitWithdrawal =
@@ -3054,27 +3338,30 @@ if(!user)return;
 
 const amount =
 Number(
-document.getElementById(
-"withdrawAmount"
-).value
+document
+.getElementById("withdrawAmount")
+.value
 );
 
+
 const bank =
-document.getElementById(
-"bankName"
-).value
+document
+.getElementById("bankName")
+.value
 .trim();
+
 
 const account =
-document.getElementById(
-"accountNumber"
-).value
+document
+.getElementById("accountNumber")
+.value
 .trim();
 
+
 const name =
-document.getElementById(
-"accountName"
-).value
+document
+.getElementById("accountName")
+.value
 .trim();
 
 
@@ -3100,7 +3387,7 @@ if(amount < 100){
 
 message(
 "withdrawMessage",
-"Minimum withdrawal amount is ₦100.",
+"Minimum withdrawal is ₦100.",
 "error"
 );
 
@@ -3115,7 +3402,7 @@ if(
 
 message(
 "withdrawMessage",
-"Account number must contain exactly 10 digits.",
+"Account number must contain 10 digits.",
 "error"
 );
 
@@ -3126,23 +3413,23 @@ return;
 
 try{
 
-const userRef =
-doc(
-db,
-"users",
-user.uid
+const q =
+query(
+collection(db,"users"),
+where("uid","==",user.uid),
+limit(1)
 );
 
 
-const userSnap =
-await getDoc(userRef);
+const snap =
+await getDocs(q);
 
 
-if(!userSnap.exists()){
+if(snap.empty){
 
 message(
 "withdrawMessage",
-"User account record was not found.",
+"User account was not found.",
 "error"
 );
 
@@ -3151,13 +3438,13 @@ return;
 }
 
 
-const currentBalance =
+const balance =
 Number(
-userSnap.data().balance || 0
+snap.docs[0].data().balance || 0
 );
 
 
-if(amount > currentBalance){
+if(amount > balance){
 
 message(
 "withdrawMessage",
@@ -3204,25 +3491,25 @@ serverTimestamp()
 
 message(
 "withdrawMessage",
-"Withdrawal request submitted. Status: Pending."
+"✅ Withdrawal submitted. Status: Pending."
 );
 
 
-document.getElementById(
-"withdrawAmount"
-).value="";
+document
+.getElementById("withdrawAmount")
+.value="";
 
-document.getElementById(
-"bankName"
-).value="";
+document
+.getElementById("bankName")
+.value="";
 
-document.getElementById(
-"accountNumber"
-).value="";
+document
+.getElementById("accountNumber")
+.value="";
 
-document.getElementById(
-"accountName"
-).value="";
+document
+.getElementById("accountName")
+.value="";
 
 
 await loadWithdrawals();
@@ -3334,6 +3621,7 @@ ${safe(d.status || "Pending")}
 
 `;
 
+
 list.appendChild(div);
 
 });
@@ -3350,7 +3638,212 @@ console.error(error);
 
 
 /* =====================================================
-REFERRAL
+REFERRAL DATA
+===================================================== */
+
+window.loadReferralData =
+async function(){
+
+const user =
+auth.currentUser;
+
+if(!user)return;
+
+
+try{
+
+/* GET USER */
+
+const userQuery =
+query(
+collection(db,"users"),
+where("uid","==",user.uid),
+limit(1)
+);
+
+
+const userSnap =
+await getDocs(userQuery);
+
+
+if(!userSnap.empty){
+
+const userData =
+userSnap.docs[0].data();
+
+
+document
+.getElementById("accountReferredBy")
+.textContent =
+userData.referredByCode ||
+"None";
+
+
+const referrerBox =
+document.getElementById(
+"myReferrer"
+);
+
+
+if(userData.referredByUid){
+
+referrerBox.innerHTML = `
+
+<p>
+<strong>
+You were referred by:
+</strong>
+</p>
+
+<p>
+Referral Code:
+<strong>
+${safe(
+userData.referredByCode || ""
+)}
+</strong>
+</p>
+
+<p class="small">
+Your referral has been recorded in the system.
+</p>
+
+`;
+
+}
+else{
+
+referrerBox.innerHTML = `
+
+<p class="small">
+You did not register with a referral code.
+</p>
+
+`;
+
+}
+
+}
+
+
+/* GET MY REFERRALS */
+
+const referralQuery =
+query(
+collection(db,"referrals"),
+where(
+"referrerUid",
+"==",
+user.uid
+)
+);
+
+
+const referralSnap =
+await getDocs(referralQuery);
+
+
+const list =
+document.getElementById(
+"myReferralsList"
+);
+
+
+if(referralSnap.empty){
+
+list.innerHTML =
+"<p class='small'>You have no referrals yet.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+referralSnap.forEach(
+docSnap=>{
+
+const d =
+docSnap.data();
+
+
+const status =
+d.status ||
+"Pending";
+
+
+const div =
+document.createElement("div");
+
+div.className="task";
+
+
+div.innerHTML = `
+
+<h3>
+👤 ${safe(
+d.referredEmail || "New User"
+)}
+</h3>
+
+<p>
+Referral Bonus:
+<strong>
+₦${Number(
+d.bonus || REFERRAL_BONUS
+).toLocaleString()}
+</strong>
+</p>
+
+<p>
+Referral Code Used:
+<strong>
+${safe(
+d.referrerCode || ""
+)}
+</strong>
+</p>
+
+<br>
+
+<span class="status ${getStatusClass(status)}">
+${status === "Credited"
+?
+"✅ ₦200 Credited"
+:
+"⏳ ₦200 Pending"
+}
+</span>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(
+"Referral error:",
+error
+);
+
+document
+.getElementById("myReferralsList")
+.innerHTML =
+"<p class='small'>Could not load referral information.</p>";
+
+}
+
+};
+
+
+/* =====================================================
+COPY REFERRAL
 ===================================================== */
 
 window.copyReferral =
@@ -3362,32 +3855,62 @@ auth.currentUser;
 if(!user)return;
 
 
-const id =
-user.uid.substring(0,8);
+try{
+
+const q =
+query(
+collection(db,"users"),
+where("uid","==",user.uid),
+limit(1)
+);
+
+
+const snap =
+await getDocs(q);
+
+
+let code =
+makeReferralCode(user.uid);
+
+
+if(!snap.empty){
+
+code =
+snap.docs[0].data().referralCode ||
+code;
+
+}
 
 
 const link =
 window.location.origin +
 window.location.pathname +
 "?ref=" +
-id;
+encodeURIComponent(code);
 
 
-try{
+await navigator.clipboard.writeText(
+link
+);
 
-await navigator.clipboard.writeText(link);
 
 alert(
-"Referral link copied!"
+"✅ Referral link copied!\n\n" +
+link
 );
 
 }
 
 catch(error){
 
+console.error(error);
+
 alert(
 "Your referral link is:\n" +
-link
+window.location.origin +
+window.location.pathname +
+"?ref=" +
+makeReferralCode(user.uid)
 );
 
 }
@@ -3396,7 +3919,7 @@ link
 
 
 /* =====================================================
-CUSTOMER SERVICE
+WHATSAPP
 ===================================================== */
 
 window.contactSupport =
@@ -3419,40 +3942,6 @@ text,
 };
 
 
-window.contactSupport2 =
-function(){
-
-if(
-SUPPORT_2 ===
-"CHANGE_NUMBER_LATER"
-){
-
-alert(
-"Customer Service 2 number has not been added yet."
-);
-
-return;
-
-}
-
-
-const text =
-encodeURIComponent(
-"Hello StoryVerse Customer Service, I need assistance."
-);
-
-
-window.open(
-"https://wa.me/" +
-SUPPORT_2 +
-"?text=" +
-text,
-"_blank"
-);
-
-};
-
-
 /* =====================================================
 STATUS
 ===================================================== */
@@ -3460,28 +3949,17 @@ STATUS
 function getStatusClass(status){
 
 const value =
-String(status)
+String(status || "")
 .toLowerCase();
 
 
-if(value === "approved"){
-
+if(value === "approved" || value === "credited"){
 return "approved";
-
 }
 
 
 if(value === "rejected"){
-
 return "rejected";
-
-}
-
-
-if(value === "completed"){
-
-return "completed";
-
 }
 
 
@@ -3491,7 +3969,7 @@ return "pending";
 
 
 /* =====================================================
-SAFE TEXT
+SAFE
 ===================================================== */
 
 function safe(value){
@@ -3513,4 +3991,4 @@ return String(value)
 </script>
 
 </body>
-</html>
+  </html>
