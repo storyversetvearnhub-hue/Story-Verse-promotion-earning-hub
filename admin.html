@@ -71,7 +71,7 @@ button{
 
 button:disabled{
   cursor:not-allowed;
-  opacity:.65;
+  opacity:.6;
 }
 
 .btn{
@@ -146,7 +146,7 @@ button:disabled{
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:12px;
   margin-bottom:15px;
 }
@@ -231,35 +231,24 @@ button:disabled{
   color:#92400e;
 }
 
+.disabled-status{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.enabled-status{
+  background:#dcfce7;
+  color:#166534;
+}
+
 .small{
   font-size:13px;
   color:#6b7280;
   line-height:1.5;
 }
 
-.transaction{
-  padding:12px;
-  border-radius:9px;
-  margin-top:8px;
-  background:#f9fafb;
-  border:1px solid #e5e7eb;
-}
-
-.transaction.credit{
-  border-left:5px solid #16a34a;
-}
-
-.transaction.debit{
-  border-left:5px solid #dc2626;
-}
-
-.tx-credit{
+.money{
   color:#15803d;
-  font-weight:bold;
-}
-
-.tx-debit{
-  color:#dc2626;
   font-weight:bold;
 }
 
@@ -310,11 +299,6 @@ button:disabled{
   font-weight:bold;
   color:#1d4ed8;
   margin:8px 0;
-}
-
-.money{
-  color:#15803d;
-  font-weight:bold;
 }
 
 .warning-box{
@@ -374,10 +358,53 @@ button:disabled{
   color:#6b7280;
 }
 
-.delete-zone{
+.account-control{
   margin-top:20px;
   padding-top:15px;
-  border-top:1px solid #fed7aa;
+  border-top:1px solid #ddd;
+}
+
+.account-status{
+  padding:12px;
+  border-radius:9px;
+  margin:10px 0;
+  font-weight:bold;
+}
+
+.account-enabled{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.account-disabled{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.transaction{
+  padding:12px;
+  border-radius:9px;
+  margin-top:8px;
+  background:#f9fafb;
+  border:1px solid #e5e7eb;
+}
+
+.transaction.credit{
+  border-left:5px solid #16a34a;
+}
+
+.transaction.debit{
+  border-left:5px solid #dc2626;
+}
+
+.tx-credit{
+  color:#15803d;
+  font-weight:bold;
+}
+
+.tx-debit{
+  color:#dc2626;
+  font-weight:bold;
 }
 
 @media(max-width:700px){
@@ -398,10 +425,9 @@ button:disabled{
 
 <body>
 
-
-<!-- =====================================================
+<!-- ==============================
 ADMIN LOGIN
-===================================================== -->
+============================== -->
 
 <div id="loginPage">
 
@@ -451,9 +477,9 @@ ADMIN LOGIN
 </div>
 
 
-<!-- =====================================================
+<!-- ==============================
 ADMIN PAGE
-===================================================== -->
+============================== -->
 
 <div id="adminPage">
 
@@ -461,9 +487,7 @@ ADMIN PAGE
 
   <h1>🚀 StoryVerse Admin Dashboard</h1>
 
-  <p>
-    Promotion & Earning Hub Management
-  </p>
+  <p>Promotion & Earning Hub Management</p>
 
   <button
     class="btn red"
@@ -476,9 +500,9 @@ ADMIN PAGE
 </header>
 
 
-<!-- =====================================================
+<!-- ==============================
 NAVIGATION
-===================================================== -->
+============================== -->
 
 <div class="nav">
 
@@ -516,14 +540,11 @@ NAVIGATION
 <div class="container">
 
 
-<!-- =====================================================
+<!-- ==============================
 DASHBOARD
-===================================================== -->
+============================== -->
 
-<section
-  id="dashboard"
-  class="section active"
->
+<section id="dashboard" class="section active">
 
   <div class="stats">
 
@@ -553,7 +574,7 @@ DASHBOARD
     </div>
 
     <div class="stat">
-      💰 Referral Bonuses
+      💰 Credited Referrals
       <strong id="creditedReferrals">0</strong>
     </div>
 
@@ -564,35 +585,22 @@ DASHBOARD
 
     <h2>⚡ Admin Dashboard</h2>
 
-    <p class="small">
-      Manage users, balances, tasks, payment proofs,
-      referrals, promotions and withdrawals.
+    <p class="small" style="margin-top:8px;">
+      Manage users, balances, tasks, referrals,
+      promotions, proofs and withdrawals.
     </p>
 
     <div class="info-box">
 
-      🎁 <strong>Referral Bonus:</strong>
-      ₦200 per successful referral.
+      🔐 <strong>Account Control:</strong>
+
+      You can enable or disable a user's Firebase
+      Authentication account.
 
       <br><br>
 
-      The referral bonus is credited manually by the
-      administrator after confirming the referral.
-
-    </div>
-
-    <div class="warning-box">
-
-      🚫 <strong>Account disabling:</strong>
-
-      The Disable User button calls the secure
-      <strong>disableUserAccount</strong> Cloud Function.
-
-      <br><br>
-
-      Disabling a user does <strong>not</strong> delete
-      their Firestore data, balance, referrals,
-      transactions, withdrawals, promotions or proofs.
+      Disabling an account keeps the user's platform
+      information and balance available for administration.
 
     </div>
 
@@ -608,14 +616,11 @@ DASHBOARD
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
 TASKS
-===================================================== -->
+============================== -->
 
-<section
-  id="tasks"
-  class="section"
->
+<section id="tasks" class="section">
 
   <div class="card">
 
@@ -647,13 +652,9 @@ TASKS
 
     <select id="taskActive">
 
-      <option value="true">
-        Active
-      </option>
+      <option value="true">Active</option>
 
-      <option value="false">
-        Inactive
-      </option>
+      <option value="false">Inactive</option>
 
     </select>
 
@@ -692,14 +693,11 @@ TASKS
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
 PROOFS
-===================================================== -->
+============================== -->
 
-<section
-  id="proofs"
-  class="section"
->
+<section id="proofs" class="section">
 
   <div class="card">
 
@@ -725,21 +723,18 @@ PROOFS
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
 USERS
-===================================================== -->
+============================== -->
 
-<section
-  id="users"
-  class="section"
->
+<section id="users" class="section">
 
   <div class="card">
 
     <h2>👥 Registered Users</h2>
 
     <p class="small">
-      Manage user balances, referrals and accounts.
+      Manage balances, referrals and account access.
     </p>
 
     <button
@@ -758,32 +753,24 @@ USERS
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
 REFERRALS
-===================================================== -->
+============================== -->
 
-<section
-  id="referrals"
-  class="section"
->
+<section id="referrals" class="section">
 
   <div class="card">
 
     <h2>🎁 Referral Management</h2>
 
     <p class="small">
-      View users who registered through another user's
-      referral code and manually credit the ₦200 referral
-      bonus.
+      View referral registrations and credit bonuses.
     </p>
 
     <div class="info-box">
 
-      💰 <strong>Referral Bonus:</strong> ₦200
-
-      <br>
-
-      Each successful referral should only be credited once.
+      💰 Referral Bonus:
+      <strong>₦200</strong>
 
     </div>
 
@@ -803,23 +790,15 @@ REFERRALS
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
 PROMOTIONS
-===================================================== -->
+============================== -->
 
-<section
-  id="promotions"
-  class="section"
->
+<section id="promotions" class="section">
 
   <div class="card">
 
     <h2>📢 Promotion Orders</h2>
-
-    <p class="small">
-      Review promotion orders and copy customer promotion
-      links directly.
-    </p>
 
     <button
       class="btn gray"
@@ -837,14 +816,11 @@ PROMOTIONS
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
 WITHDRAWALS
-===================================================== -->
+============================== -->
 
-<section
-  id="withdrawals"
-  class="section"
->
+<section id="withdrawals" class="section">
 
   <div class="card">
 
@@ -865,23 +841,20 @@ WITHDRAWALS
 
 </section>
 
-
 </div>
 </div>
 
 
-<!-- =====================================================
+<!-- ==============================
 FIREBASE
-===================================================== -->
+============================== -->
 
 <script type="module">
 
 import {
   initializeApp
-}
-from
+} from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
 
 import {
   getAuth,
@@ -889,10 +862,8 @@ import {
   sendPasswordResetEmail,
   onAuthStateChanged,
   signOut
-}
-from
+} from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
 
 import {
   getFirestore,
@@ -906,22 +877,19 @@ import {
   limit,
   serverTimestamp,
   runTransaction
-}
-from
+} from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
 
 import {
   getFunctions,
   httpsCallable
-}
-from
+} from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-functions.js";
 
 
-/* =====================================================
+/* ==============================
 FIREBASE CONFIG
-===================================================== */
+============================== */
 
 const firebaseConfig = {
 
@@ -953,48 +921,33 @@ const firebaseConfig = {
 
 
 const app =
-  initializeApp(firebaseConfig);
-
+initializeApp(firebaseConfig);
 
 const auth =
-  getAuth(app);
-
+getAuth(app);
 
 const db =
-  getFirestore(app);
-
-
-/*
-  Firebase Functions.
-
-  The Cloud Function must be deployed in the same
-  Firebase project and must be named:
-
-  disableUserAccount
-*/
+getFirestore(app);
 
 const functions =
-  getFunctions(app);
+getFunctions(app);
 
 
-/* =====================================================
+/* ==============================
 ADMIN EMAIL
-===================================================== */
+============================== */
 
 const ADMIN_EMAIL =
-  "storyversetvearnhub@gmail.com";
+"storyversetvearnhub@gmail.com";
 
 
-/* =====================================================
-REFERRAL BONUS
-===================================================== */
-
-const REFERRAL_BONUS = 200;
+const REFERRAL_BONUS =
+200;
 
 
-/* =====================================================
+/* ==============================
 MESSAGE
-===================================================== */
+============================== */
 
 function showMessage(
   id,
@@ -1003,40 +956,39 @@ function showMessage(
 ){
 
   const box =
-    document.getElementById(id);
+  document.getElementById(id);
 
   if(!box) return;
 
   box.style.display="block";
 
   box.className =
-    type === "error"
-    ? "message error"
-    : "message success";
+  type==="error"
+  ? "message error"
+  : "message success";
 
   box.textContent=text;
 
 }
 
 
-/* =====================================================
-LOGIN
-===================================================== */
+/* ==============================
+ADMIN LOGIN
+============================== */
 
 window.loginAdmin =
 async function(){
 
   const email =
-    document
-    .getElementById("loginEmail")
-    .value
-    .trim();
+  document
+  .getElementById("loginEmail")
+  .value
+  .trim();
 
   const password =
-    document
-    .getElementById("loginPassword")
-    .value;
-
+  document
+  .getElementById("loginPassword")
+  .value;
 
   if(!email || !password){
 
@@ -1047,25 +999,21 @@ async function(){
     );
 
     return;
-
   }
 
-
   if(
-    email.toLowerCase()
-    !== ADMIN_EMAIL.toLowerCase()
+    email.toLowerCase() !==
+    ADMIN_EMAIL.toLowerCase()
   ){
 
     showMessage(
       "loginMessage",
-      "This account is not the admin account.",
+      "This is not the admin account.",
       "error"
     );
 
     return;
-
   }
-
 
   try{
 
@@ -1081,8 +1029,7 @@ async function(){
 
     showMessage(
       "loginMessage",
-      "Login failed: " +
-      error.message,
+      "Login failed: "+error.message,
       "error"
     );
 
@@ -1091,35 +1038,32 @@ async function(){
 };
 
 
-/* =====================================================
+/* ==============================
 FORGOT PASSWORD
-===================================================== */
+============================== */
 
 window.forgotPassword =
 async function(){
 
   const email =
-    document
-    .getElementById("loginEmail")
-    .value
-    .trim();
-
+  document
+  .getElementById("loginEmail")
+  .value
+  .trim();
 
   if(
-    email.toLowerCase()
-    !== ADMIN_EMAIL.toLowerCase()
+    email.toLowerCase() !==
+    ADMIN_EMAIL.toLowerCase()
   ){
 
     showMessage(
       "loginMessage",
-      "Enter your admin email first.",
+      "Enter the admin email first.",
       "error"
     );
 
     return;
-
   }
-
 
   try{
 
@@ -1128,18 +1072,15 @@ async function(){
       email
     );
 
-
     showMessage(
       "loginMessage",
-      "Password reset email sent. Check your Gmail."
+      "Password reset email sent."
     );
-
 
   }catch(error){
 
     showMessage(
       "loginMessage",
-      "Could not send reset email: " +
       error.message,
       "error"
     );
@@ -1149,9 +1090,9 @@ async function(){
 };
 
 
-/* =====================================================
+/* ==============================
 AUTH STATE
-===================================================== */
+============================== */
 
 onAuthStateChanged(
   auth,
@@ -1160,19 +1101,17 @@ onAuthStateChanged(
     if(
       user &&
       user.email &&
-      user.email.toLowerCase()
-      === ADMIN_EMAIL.toLowerCase()
+      user.email.toLowerCase() ===
+      ADMIN_EMAIL.toLowerCase()
     ){
 
       document
       .getElementById("loginPage")
       .style.display="none";
 
-
       document
       .getElementById("adminPage")
       .style.display="block";
-
 
       refreshEverything();
 
@@ -1181,7 +1120,6 @@ onAuthStateChanged(
       document
       .getElementById("loginPage")
       .style.display="flex";
-
 
       document
       .getElementById("adminPage")
@@ -1193,9 +1131,9 @@ onAuthStateChanged(
 );
 
 
-/* =====================================================
+/* ==============================
 LOGOUT
-===================================================== */
+============================== */
 
 window.logoutAdmin =
 async function(){
@@ -1205,9 +1143,9 @@ async function(){
 };
 
 
-/* =====================================================
+/* ==============================
 NAVIGATION
-===================================================== */
+============================== */
 
 window.showSection =
 function(name){
@@ -1219,10 +1157,8 @@ function(name){
     section.classList.remove("active")
   );
 
-
   const section =
-    document.getElementById(name);
-
+  document.getElementById(name);
 
   if(section){
 
@@ -1233,44 +1169,33 @@ function(name){
 };
 
 
-/* =====================================================
+/* ==============================
 ADD TASK
-===================================================== */
+============================== */
 
 window.addTask =
 async function(){
 
   const title =
-    document
-    .getElementById("taskTitle")
-    .value.trim();
-
+  document.getElementById("taskTitle")
+  .value.trim();
 
   const description =
-    document
-    .getElementById("taskDescription")
-    .value.trim();
-
+  document.getElementById("taskDescription")
+  .value.trim();
 
   const link =
-    document
-    .getElementById("taskLink")
-    .value.trim();
-
+  document.getElementById("taskLink")
+  .value.trim();
 
   const reward =
-    Number(
-      document
-      .getElementById("taskReward")
-      .value
-    );
-
+  Number(
+    document.getElementById("taskReward").value
+  );
 
   const active =
-    document
-    .getElementById("taskActive")
-    .value === "true";
-
+  document.getElementById("taskActive").value
+  === "true";
 
   if(!title){
 
@@ -1281,9 +1206,7 @@ async function(){
     );
 
     return;
-
   }
-
 
   if(!description){
 
@@ -1294,11 +1217,9 @@ async function(){
     );
 
     return;
-
   }
 
-
-  if(isNaN(reward) || reward < 0){
+  if(isNaN(reward) || reward<0){
 
     showMessage(
       "taskMessage",
@@ -1307,9 +1228,7 @@ async function(){
     );
 
     return;
-
   }
-
 
   try{
 
@@ -1317,62 +1236,41 @@ async function(){
       collection(db,"tasks"),
       {
 
-        title,
+        title:title,
 
-        description,
+        description:description,
 
-        link,
+        link:link,
 
-        reward,
+        reward:reward,
 
-        active,
+        active:active,
 
         createdBy:
-          auth.currentUser.uid,
+        auth.currentUser.uid,
 
         createdAt:
-          serverTimestamp()
+        serverTimestamp()
 
       }
     );
 
-
     showMessage(
       "taskMessage",
-      "✅ Task added successfully."
+      "Task added successfully."
     );
 
-
-    document
-    .getElementById("taskTitle")
-    .value="";
-
-
-    document
-    .getElementById("taskDescription")
-    .value="";
-
-
-    document
-    .getElementById("taskLink")
-    .value="";
-
-
-    document
-    .getElementById("taskReward")
-    .value="";
-
+    document.getElementById("taskTitle").value="";
+    document.getElementById("taskDescription").value="";
+    document.getElementById("taskLink").value="";
+    document.getElementById("taskReward").value="";
 
     loadTasks();
 
-
   }catch(error){
-
-    console.error(error);
 
     showMessage(
       "taskMessage",
-      "Could not add task: " +
       error.message,
       "error"
     );
@@ -1382,60 +1280,48 @@ async function(){
 };
 
 
-/* =====================================================
+/* ==============================
 LOAD TASKS
-===================================================== */
+============================== */
 
 window.loadTasks =
 async function(){
 
   const list =
-    document.getElementById("taskList");
-
+  document.getElementById("taskList");
 
   list.innerHTML =
-    "<p class='loading'>Loading tasks...</p>";
-
+  "<p class='loading'>Loading tasks...</p>";
 
   try{
 
     const snap =
-      await getDocs(
-        collection(db,"tasks")
-      );
-
+    await getDocs(
+      collection(db,"tasks")
+    );
 
     if(snap.empty){
 
       list.innerHTML =
-        "<p class='small'>No tasks.</p>";
+      "<p class='small'>No tasks found.</p>";
 
       return;
-
     }
-
 
     list.innerHTML="";
 
-
     snap.forEach(taskDoc => {
 
-      const d =
-        taskDoc.data();
-
+      const d=taskDoc.data();
 
       const div =
-        document.createElement("div");
-
+      document.createElement("div");
 
       div.className="task-card";
 
-
       div.innerHTML=`
 
-        <h3>
-          ${safe(d.title || "Task")}
-        </h3>
+        <h3>${safe(d.title || "Task")}</h3>
 
         <p style="margin-top:8px;">
           ${safe(d.description || "")}
@@ -1444,9 +1330,7 @@ async function(){
         <p style="margin-top:8px;">
           Reward:
           <strong>
-            ₦${Number(
-              d.reward || 0
-            ).toLocaleString()}
+          ₦${Number(d.reward||0).toLocaleString()}
           </strong>
         </p>
 
@@ -1457,98 +1341,67 @@ async function(){
 
       `;
 
-
       if(d.link){
 
-        const linkBox =
-          document.createElement("div");
-
-        linkBox.className="link-box";
-
-        linkBox.innerHTML=`
-          <strong>Task Link:</strong>
-        `;
-
         const row =
-          document.createElement("div");
+        document.createElement("div");
 
         row.className="copy-row";
 
         const input =
-          document.createElement("input");
+        document.createElement("input");
 
         input.value=d.link;
-
         input.readOnly=true;
 
         const button =
-          document.createElement("button");
+        document.createElement("button");
 
         button.className="btn purple";
-
         button.textContent="📋 Copy";
 
-        button.onclick =
-          () => copyText(
-            d.link,
-            button
-          );
+        button.onclick=() =>
+        copyText(d.link,button);
 
         row.appendChild(input);
         row.appendChild(button);
 
-        linkBox.appendChild(row);
-
-        div.appendChild(linkBox);
+        div.appendChild(row);
 
       }
 
-
       const button =
-        document.createElement("button");
-
+      document.createElement("button");
 
       button.className =
-        d.active
-        ? "btn red"
-        : "btn green";
-
+      d.active ? "btn red" : "btn green";
 
       button.textContent =
-        d.active
-        ? "Disable Task"
-        : "Activate Task";
-
+      d.active
+      ? "Disable Task"
+      : "Activate Task";
 
       button.onclick =
-        async function(){
+      async function(){
 
-          try{
+        try{
 
-            await updateDoc(
-              doc(
-                db,
-                "tasks",
-                taskDoc.id
-              ),
-              {
-                active:!d.active
-              }
-            );
+          await updateDoc(
+            doc(db,"tasks",taskDoc.id),
+            {
+              active:!d.active
+            }
+          );
 
-            loadTasks();
+          loadTasks();
 
-          }catch(error){
+        }catch(error){
 
-            alert(
-              "Could not update task: " +
-              error.message
-            );
+          alert(error.message);
 
-          }
+        }
 
-        };
-
+      };
 
       div.appendChild(button);
 
@@ -1556,98 +1409,86 @@ async function(){
 
     });
 
-
   }catch(error){
 
-    console.error(error);
-
     list.innerHTML =
-      "<p class='small'>Could not load tasks: "
-      + safe(error.message)
-      + "</p>";
+    "<p class='small'>"+
+    safe(error.message)+
+    "</p>";
 
   }
 
 };
 
 
-/* =====================================================
+/* ==============================
 LOAD USERS
-===================================================== */
+============================== */
 
 window.loadUsers =
 async function(){
 
   const list =
-    document.getElementById("userList");
-
+  document.getElementById("userList");
 
   list.innerHTML =
-    "<p class='loading'>Loading users...</p>";
-
+  "<p class='loading'>Loading users...</p>";
 
   try{
 
     const snap =
-      await getDocs(
-        collection(db,"users")
-      );
-
+    await getDocs(
+      collection(db,"users")
+    );
 
     document
     .getElementById("totalUsers")
     .textContent=snap.size;
 
-
     if(snap.empty){
 
       list.innerHTML =
-        "<p class='small'>No users found.</p>";
+      "<p class='small'>No users found.</p>";
 
       return;
-
     }
-
 
     list.innerHTML="";
 
-
     snap.forEach(userDoc => {
 
-      const d =
-        userDoc.data();
-
+      const d=userDoc.data();
 
       const uid =
-        d.uid || userDoc.id;
-
+      d.uid || userDoc.id;
 
       const balance =
-        Number(d.balance || 0);
-
+      Number(d.balance||0);
 
       const referralCode =
-        d.referralCode ||
-        "Not generated";
-
+      d.referralCode ||
+      "Not generated";
 
       const referredBy =
-        d.referredByCode ||
-        d.referralCodeUsed ||
-        d.referredBy ||
-        "None";
-
+      d.referredByCode ||
+      d.referralCodeUsed ||
+      d.referredBy ||
+      "None";
 
       const referralCredited =
-        d.referralBonusCredited === true;
+      d.referralBonusCredited===true;
 
+      /*
+       * This value is stored in Firestore by the
+       * registration/application side.
+       */
+      const locallyDisabled =
+      d.accountDisabled===true;
 
       const div =
-        document.createElement("div");
-
+      document.createElement("div");
 
       div.className="user-card";
-
 
       div.innerHTML=`
 
@@ -1660,44 +1501,36 @@ async function(){
         </h3>
 
         <p style="margin-top:8px;">
-          Email:
+          📧 Email:
           ${safe(d.email || "No email")}
         </p>
 
         <p style="margin-top:8px;">
-          UID:
+          🆔 UID:
           ${safe(uid)}
         </p>
 
         <p style="margin-top:8px;">
-          Current Balance:
+          💰 Balance:
           <strong class="money">
-            ₦${balance.toLocaleString()}
+          ₦${balance.toLocaleString()}
           </strong>
         </p>
 
         <div class="referral-code">
-
           🎁 Referral Code:
           ${safe(referralCode)}
-
         </div>
 
         <p>
-
           👥 Referred By:
-          <strong>
-            ${safe(referredBy)}
-          </strong>
-
+          <strong>${safe(referredBy)}</strong>
         </p>
 
         <p>
-
           Referral Bonus:
-
           ${
-            referredBy !== "None"
+            referredBy!=="None"
             ? (
               referralCredited
               ? '<span class="status credited">✅ Credited</span>'
@@ -1705,8 +1538,54 @@ async function(){
             )
             : '<span class="small">No referral</span>'
           }
-
         </p>
+
+        <div class="account-control">
+
+          <h3>🔐 Account Access</h3>
+
+          <div
+            class="account-status ${
+              locallyDisabled
+              ? "account-disabled"
+              : "account-enabled"
+            }"
+          >
+            ${
+              locallyDisabled
+              ? "🚫 Account marked disabled"
+              : "✅ Account marked active"
+            }
+          </div>
+
+          <p class="small">
+            Use the buttons below to control Firebase
+            Authentication access for this account.
+          </p>
+
+          <button
+            class="btn orange"
+            onclick="disableUserAccount(
+              '${safeAttribute(userDoc.id)}',
+              '${safeAttribute(uid)}',
+              '${safeAttribute(d.email || "")}'
+            )"
+          >
+            🚫 Disable User
+          </button>
+
+          <button
+            class="btn green"
+            onclick="enableUserAccount(
+              '${safeAttribute(userDoc.id)}',
+              '${safeAttribute(uid)}',
+              '${safeAttribute(d.email || "")}'
+            )"
+          >
+            ✅ Enable User
+          </button>
+
+        </div>
 
         <hr style="
           margin:15px 0;
@@ -1718,24 +1597,25 @@ async function(){
 
         <input
           type="number"
-          id="credit-${userDoc.id}"
+          id="credit-${safeAttribute(userDoc.id)}"
           placeholder="Amount to add"
           min="1"
         >
 
         <input
           type="text"
-          id="creditReason-${userDoc.id}"
-          placeholder="Reason e.g. Bonus"
+          id="creditReason-${safeAttribute(userDoc.id)}"
+          placeholder="Reason"
         >
 
         <button
           class="btn green"
-          onclick="creditUser('${userDoc.id}')"
+          onclick="creditUser(
+            '${safeAttribute(userDoc.id)}'
+          )"
         >
           ➕ Add Balance
         </button>
-
 
         <h3 style="margin-top:20px;">
           ➖ Deduct Money
@@ -1743,129 +1623,78 @@ async function(){
 
         <input
           type="number"
-          id="debit-${userDoc.id}"
+          id="debit-${safeAttribute(userDoc.id)}"
           placeholder="Amount to deduct"
           min="1"
         >
 
         <input
           type="text"
-          id="debitReason-${userDoc.id}"
-          placeholder="Reason e.g. Promotion payment"
+          id="debitReason-${safeAttribute(userDoc.id)}"
+          placeholder="Reason"
         >
 
         <button
           class="btn red"
-          onclick="debitUser('${userDoc.id}')"
+          onclick="debitUser(
+            '${safeAttribute(userDoc.id)}'
+          )"
         >
           ➖ Deduct Balance
         </button>
 
-
         ${
-          referredBy !== "None" && !referralCredited
+          referredBy!=="None" && !referralCredited
           ? `
           <button
             class="btn gold"
-            onclick="creditReferralBonus('${userDoc.id}')"
+            onclick="creditReferralBonus(
+              '${safeAttribute(userDoc.id)}'
+            )"
           >
             🎁 Credit ₦200 Referral Bonus
-          </button>
-          `
-          : referredBy !== "None"
-          ? `
-          <button
-            class="btn gray"
-            disabled
-          >
-            ✅ Referral Bonus Already Credited
           </button>
           `
           : ""
         }
 
-
         <button
           class="btn purple"
-          onclick="loadUserTransactions('${userDoc.id}')"
+          onclick="loadUserTransactions(
+            '${safeAttribute(userDoc.id)}'
+          )"
         >
           📜 View Transaction History
         </button>
 
-
         <div
-          id="transactions-${userDoc.id}"
+          id="transactions-${safeAttribute(userDoc.id)}"
           style="display:none;margin-top:15px;"
-        >
-        </div>
-
-
-        <!-- =================================================
-        DISABLE USER
-        ================================================= -->
-
-        <div class="delete-zone">
-
-          <h3>
-            🚫 Disable User Account
-          </h3>
-
-          <p class="small">
-            This sends the user's UID to the secure
-            <strong>disableUserAccount</strong>
-            Cloud Function.
-          </p>
-
-          <div class="warning-box">
-
-            ⚠️ <strong>Account disabling.</strong>
-
-            The user's Firebase Authentication account
-            will be disabled and the user will no longer
-            be able to sign in.
-
-            <br><br>
-
-            The user's Firestore data, balance, referrals,
-            transactions, withdrawals, promotions and
-            task proofs will NOT be deleted.
-
-          </div>
-
-          <button
-            class="btn orange"
-            onclick="disableUserAccount('${userDoc.id}','${safeAttribute(uid)}','${safeAttribute(d.email || "")}')"
-          >
-            🚫 Disable User
-          </button>
-
-        </div>
+        ></div>
 
       `;
-
 
       list.appendChild(div);
 
     });
-
 
   }catch(error){
 
     console.error(error);
 
     list.innerHTML =
-      "<p class='small'>Could not load users: "
-      + safe(error.message)
-      + "</p>";
+    "<p class='small'>Could not load users: "+
+    safe(error.message)+
+    "</p>";
 
   }
 
 };
 
 
-/* =====================================================
-DISABLE USER ACCOUNT
-===================================================== */
+/* ==============================
+DISABLE USER
+============================== */
 
 window.disableUserAccount =
 async function(
@@ -1874,488 +1703,856 @@ async function(
   email
 ){
 
-  const firstConfirm =
-    confirm(
-      "⚠️ DISABLE USER ACCOUNT?\n\n" +
-      "Email: " +
-      (email || "Unknown") +
-      "\n\n" +
-      "The user's Firebase Authentication account " +
-      "will be disabled.\n\n" +
-      "The user's Firestore data will NOT be deleted.\n\n" +
-      "Continue?"
-    );
+  if(!auth.currentUser){
 
-
-  if(!firstConfirm){
+    alert("Admin session is not active.");
 
     return;
-
   }
 
+  const confirmOne =
+  confirm(
+    "Disable this user account?\n\n"+
+    "Email: "+(email||"Unknown")+
+    "\n\n"+
+    "The user will not be able to sign in."
+  );
 
-  const secondConfirm =
-    confirm(
-      "FINAL WARNING!\n\n" +
-      "You are about to disable:\n\n" +
-      (email || uid) +
-      "\n\n" +
-      "The user will no longer be able to sign in.\n\n" +
-      "Their data will remain in Firestore."
-    );
-
-
-  if(!secondConfirm){
-
-    return;
-
-  }
-
+  if(!confirmOne) return;
 
   try{
 
-    if(!auth.currentUser){
-
-      throw new Error(
-        "Admin is not logged in."
-      );
-
-    }
-
-
     const callable =
-      httpsCallable(
-        functions,
-        "disableUserAccount"
-      );
-
+    httpsCallable(
+      functions,
+      "disableUserAccount"
+    );
 
     const result =
-      await callable({
+    await callable({
 
-        uid:uid,
+      uid:uid,
 
-        userDocId:userDocId,
+      userDocId:userDocId,
 
-        email:email || ""
+      email:email||""
 
-      });
-
+    });
 
     console.log(
       "Disable result:",
       result.data
     );
 
+    /*
+     * Store a simple account status in Firestore
+     * so the website can display a message to the user.
+     */
+    try{
 
-    alert(
-      "✅ User account disabled successfully.\n\n" +
-      "The user's Firestore data was not deleted."
-    );
-
-
-    await loadUsers();
-
-    await loadReferrals();
-
-    await loadWithdrawals();
-
-    await loadPromotions();
-
-    await loadProofs();
-
-
-  }catch(error){
-
-    console.error(
-      "Disable user error:",
-      error
-    );
-
-
-    let message =
-      error.message ||
-      "Unknown error";
-
-
-    if(
-      error.code ===
-      "functions/not-found"
-    ){
-
-      message =
-        "The disableUserAccount Cloud Function has not been deployed yet.";
-
-    }
-
-
-    if(
-      error.code ===
-      "functions/permission-denied"
-    ){
-
-      message =
-        "Permission denied. Make sure you are logged in with the correct admin account.";
-
-    }
-
-
-    if(
-      error.code ===
-      "functions/unauthenticated"
-    ){
-
-      message =
-        "You are not authenticated as admin.";
-
-    }
-
-
-    alert(
-      "❌ User was not disabled.\n\n" +
-      message
-    );
-
-  }
-
-};
-
-
-/* =====================================================
-REFERRAL MANAGEMENT
-===================================================== */
-
-window.loadReferrals =
-async function(){
-
-  const list =
-    document.getElementById(
-      "referralList"
-    );
-
-
-  list.innerHTML =
-    "<p class='loading'>Loading referrals...</p>";
-
-
-  try{
-
-    const snap =
-      await getDocs(
-        collection(db,"users")
+      await updateDoc(
+        doc(db,"users",userDocId),
+        {
+          accountDisabled:true,
+          accountStatus:"Disabled",
+          accountStatusMessage:
+          "Your account has been disabled for violating our rules.",
+          accountStatusUpdatedAt:
+          serverTimestamp(),
+          accountStatusUpdatedBy:
+          auth.currentUser.email
+        }
       );
 
+    }catch(statusError){
 
-    const users=[];
-
-
-    snap.forEach(userDoc => {
-
-      users.push({
-
-        id:userDoc.id,
-
-        ...userDoc.data()
-
-      });
-
-    });
-
-
-    const referrals =
-      users.filter(user => {
-
-        return (
-          user.referredByCode ||
-          user.referralCodeUsed ||
-          user.referredBy
-        );
-
-      });
-
-
-    document
-    .getElementById(
-      "totalReferrals"
-    )
-    .textContent =
-      referrals.length;
-
-
-    const credited =
-      referrals.filter(
-        user =>
-        user.referralBonusCredited === true
-      ).length;
-
-
-    document
-    .getElementById(
-      "creditedReferrals"
-    )
-    .textContent =
-      credited;
-
-
-    if(referrals.length === 0){
-
-      list.innerHTML=`
-
-        <div class="info-box">
-
-          No referrals found yet.
-
-          <br><br>
-
-          Make sure your registration page saves
-          <strong>referredByCode</strong> or
-          <strong>referralCodeUsed</strong>
-          when someone registers.
-
-        </div>
-
-      `;
-
-      return;
+      console.warn(
+        "Account status update:",
+        statusError
+      );
 
     }
 
-
-    list.innerHTML="";
-
-
-    referrals.forEach(referredUser => {
-
-      const usedCode =
-        referredUser.referredByCode ||
-        referredUser.referralCodeUsed ||
-        referredUser.referredBy ||
-        "";
-
-
-      const referrer =
-        users.find(user => {
-
-          return (
-            user.referralCode &&
-            String(user.referralCode)
-            .toLowerCase()
-            === String(usedCode)
-            .toLowerCase()
-          );
-
-        });
-
-
-      const credited =
-        referredUser.referralBonusCredited === true;
-
-
-      const div =
-        document.createElement("div");
-
-
-      div.className =
-        "referral-card";
-
-
-      div.innerHTML=`
-
-        <h3>
-          🎁 Referral Registration
-        </h3>
-
-        <p style="margin-top:10px;">
-
-          👤 <strong>New User:</strong>
-
-          ${safe(
-            referredUser.name ||
-            referredUser.email ||
-            "User"
-          )}
-
-        </p>
-
-        <p>
-
-          📧 Email:
-
-          ${safe(
-            referredUser.email ||
-            "No email"
-          )}
-
-        </p>
-
-        <p>
-
-          🆔 User ID:
-
-          ${safe(
-            referredUser.uid ||
-            referredUser.id
-          )}
-
-        </p>
-
-        <p>
-
-          🎟️ Referral Code Used:
-
-          <strong>
-            ${safe(usedCode)}
-          </strong>
-
-        </p>
-
-        <hr style="
-          margin:12px 0;
-          border:0;
-          border-top:1px solid #ddd;
-        ">
-
-        <p>
-
-          👑 <strong>Referrer:</strong>
-
-          ${
-            referrer
-            ? safe(
-                referrer.name ||
-                referrer.email ||
-                "Referrer"
-              )
-            : "Referrer not found"
-          }
-
-        </p>
-
-        <p>
-
-          📧 Referrer Email:
-
-          ${
-            referrer
-            ? safe(referrer.email || "")
-            : "Not found"
-          }
-
-        </p>
-
-        <p>
-
-          🎟️ Referrer Code:
-
-          ${
-            referrer
-            ? safe(referrer.referralCode || usedCode)
-            : safe(usedCode)
-          }
-
-        </p>
-
-        <p style="margin-top:10px;">
-
-          💰 Bonus:
-
-          <strong>
-            ₦${REFERRAL_BONUS.toLocaleString()}
-          </strong>
-
-        </p>
-
-        <p>
-
-          Status:
-
-          ${
-            credited
-            ? '<span class="status credited">✅ Bonus Credited</span>'
-            : '<span class="status notcredited">⏳ Waiting for Credit</span>'
-          }
-
-        </p>
-
-      `;
-
-
-      if(
-        referrer &&
-        !credited
-      ){
-
-        const button =
-          document.createElement("button");
-
-
-        button.className =
-          "btn gold";
-
-
-        button.textContent =
-          "🎁 Credit ₦200 to Referrer";
-
-
-        button.onclick =
-          function(){
-
-            creditReferralBonus(
-              referredUser.id
-            );
-
-          };
-
-
-        div.appendChild(button);
-
-      }
-
-
-      if(credited){
-
-        const done =
-          document.createElement("button");
-
-
-        done.className =
-          "btn gray";
-
-
-        done.disabled=true;
-
-
-        done.textContent =
-          "✅ Referral Already Credited";
-
-
-        div.appendChild(done);
-
-      }
-
-
-      list.appendChild(div);
-
-    });
-
+    alert(
+      "✅ User account has been disabled."
+    );
+
+    loadUsers();
 
   }catch(error){
 
     console.error(error);
 
-    list.innerHTML =
-      "<p class='small'>Could not load referrals: "
-      + safe(error.message)
-      + "</p>";
+    alert(
+      "❌ Could not disable user.\n\n"+
+      getFunctionError(error)
+    );
 
   }
 
 };
 
 
-/* =====================================================
-CREDIT REFERRAL BONUS
-===================================================== */
+/* ==============================
+ENABLE USER
+============================== */
+
+window.enableUserAccount =
+async function(
+  userDocId,
+  uid,
+  email
+){
+
+  if(!auth.currentUser){
+
+    alert("Admin session is not active.");
+
+    return;
+  }
+
+  const confirmOne =
+  confirm(
+    "Enable this user account?\n\n"+
+    "Email: "+(email||"Unknown")+
+    "\n\n"+
+    "The user will be allowed to sign in again."
+  );
+
+  if(!confirmOne) return;
+
+  try{
+
+    const callable =
+    httpsCallable(
+      functions,
+      "enableUserAccount"
+    );
+
+    const result =
+    await callable({
+
+      uid:uid,
+
+      userDocId:userDocId,
+
+      email:email||""
+
+    });
+
+    console.log(
+      "Enable result:",
+      result.data
+    );
+
+    try{
+
+      await updateDoc(
+        doc(db,"users",userDocId),
+        {
+          accountDisabled:false,
+          accountStatus:"Active",
+          accountStatusMessage:
+          "Your account is active.",
+          accountStatusUpdatedAt:
+          serverTimestamp(),
+          accountStatusUpdatedBy:
+          auth.currentUser.email
+        }
+      );
+
+    }catch(statusError){
+
+      console.warn(
+        "Account status update:",
+        statusError
+      );
+
+    }
+
+    alert(
+      "✅ User account has been enabled."
+    );
+
+    loadUsers();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "❌ Could not enable user.\n\n"+
+      getFunctionError(error)
+    );
+
+  }
+
+};
+
+
+/* ==============================
+FUNCTION ERROR
+============================== */
+
+function getFunctionError(error){
+
+  if(
+    error.code ===
+    "functions/not-found"
+  ){
+
+    return
+    "The required Cloud Function is not deployed.";
+
+  }
+
+  if(
+    error.code ===
+    "functions/permission-denied"
+  ){
+
+    return
+    "Permission denied. Make sure you are logged in as admin.";
+
+  }
+
+  if(
+    error.code ===
+    "functions/unauthenticated"
+  ){
+
+    return
+    "Admin authentication is required.";
+
+  }
+
+  return error.message ||
+  "Unknown error.";
+
+}
+
+
+/* ==============================
+CREDIT USER
+============================== */
+
+window.creditUser =
+async function(userDocId){
+
+  const amount =
+  Number(
+    document.getElementById(
+      "credit-"+userDocId
+    ).value
+  );
+
+  const reason =
+  document.getElementById(
+    "creditReason-"+userDocId
+  ).value.trim()
+  || "Admin credit";
+
+  if(!amount || amount<=0){
+
+    alert("Enter a valid amount.");
+
+    return;
+  }
+
+  if(
+    !confirm(
+      "Add ₦"+
+      amount.toLocaleString()+
+      " to this user's balance?"
+    )
+  ) return;
+
+  try{
+
+    const userRef =
+    doc(db,"users",userDocId);
+
+    const transactionRef =
+    doc(collection(db,"transactions"));
+
+    await runTransaction(
+      db,
+      async transaction => {
+
+        const userSnap =
+        await transaction.get(userRef);
+
+        if(!userSnap.exists()){
+
+          throw new Error(
+            "User record not found."
+          );
+
+        }
+
+        const data =
+        userSnap.data();
+
+        const oldBalance =
+        Number(data.balance||0);
+
+        const newBalance =
+        oldBalance+amount;
+
+        transaction.update(
+          userRef,
+          {
+            balance:newBalance
+          }
+        );
+
+        transaction.set(
+          transactionRef,
+          {
+
+            uid:
+            data.uid||userDocId,
+
+            userId:userDocId,
+
+            email:data.email||"",
+
+            type:"credit",
+
+            amount:amount,
+
+            oldBalance:oldBalance,
+
+            newBalance:newBalance,
+
+            reason:reason,
+
+            createdBy:
+            auth.currentUser.email,
+
+            createdAt:
+            serverTimestamp()
+
+          }
+        );
+
+      }
+    );
+
+    alert(
+      "₦"+
+      amount.toLocaleString()+
+      " added successfully."
+    );
+
+    loadUsers();
+
+  }catch(error){
+
+    alert(
+      "Could not add balance:\n"+
+      error.message
+    );
+
+  }
+
+};
+
+
+/* ==============================
+DEDUCT USER
+============================== */
+
+window.debitUser =
+async function(userDocId){
+
+  const amount =
+  Number(
+    document.getElementById(
+      "debit-"+userDocId
+    ).value
+  );
+
+  const reason =
+  document.getElementById(
+    "debitReason-"+userDocId
+  ).value.trim()
+  || "Admin deduction";
+
+  if(!amount || amount<=0){
+
+    alert(
+      "Enter a valid amount."
+    );
+
+    return;
+  }
+
+  if(
+    !confirm(
+      "Deduct ₦"+
+      amount.toLocaleString()+
+      " from this user's balance?"
+    )
+  ) return;
+
+  try{
+
+    const userRef =
+    doc(db,"users",userDocId);
+
+    const transactionRef =
+    doc(collection(db,"transactions"));
+
+    await runTransaction(
+      db,
+      async transaction => {
+
+        const userSnap =
+        await transaction.get(userRef);
+
+        if(!userSnap.exists()){
+
+          throw new Error(
+            "User record not found."
+          );
+
+        }
+
+        const data =
+        userSnap.data();
+
+        const oldBalance =
+        Number(data.balance||0);
+
+        if(amount>oldBalance){
+
+          throw new Error(
+            "Insufficient user balance."
+          );
+
+        }
+
+        const newBalance =
+        oldBalance-amount;
+
+        transaction.update(
+          userRef,
+          {
+            balance:newBalance
+          }
+        );
+
+        transaction.set(
+          transactionRef,
+          {
+
+            uid:
+            data.uid||userDocId,
+
+            userId:userDocId,
+
+            email:data.email||"",
+
+            type:"debit",
+
+            amount:amount,
+
+            oldBalance:oldBalance,
+
+            newBalance:newBalance,
+
+            reason:reason,
+
+            createdBy:
+            auth.currentUser.email,
+
+            createdAt:
+            serverTimestamp()
+
+          }
+        );
+
+      }
+    );
+
+    alert(
+      "₦"+
+      amount.toLocaleString()+
+      " deducted successfully."
+    );
+
+    loadUsers();
+
+  }catch(error){
+
+    alert(
+      "Could not deduct balance:\n"+
+      error.message
+    );
+
+  }
+
+};
+
+
+/* ==============================
+TRANSACTION HISTORY
+============================== */
+
+window.loadUserTransactions =
+async function(userDocId){
+
+  const box =
+  document.getElementById(
+    "transactions-"+userDocId
+  );
+
+  if(box.style.display==="block"){
+
+    box.style.display="none";
+
+    return;
+  }
+
+  box.style.display="block";
+
+  box.innerHTML =
+  "<p class='small'>Loading transactions...</p>";
+
+  try{
+
+    const q =
+    query(
+      collection(db,"transactions"),
+      where(
+        "userId",
+        "==",
+        userDocId
+      ),
+      limit(100)
+    );
+
+    const snap =
+    await getDocs(q);
+
+    if(snap.empty){
+
+      box.innerHTML =
+      "<p class='small'>No transactions found.</p>";
+
+      return;
+    }
+
+    const transactions=[];
+
+    snap.forEach(txDoc => {
+
+      transactions.push({
+        id:txDoc.id,
+        ...txDoc.data()
+      });
+
+    });
+
+    transactions.sort(
+      (a,b) =>
+      (b.createdAt?.seconds||0) -
+      (a.createdAt?.seconds||0)
+    );
+
+    box.innerHTML =
+    "<h3>📜 Transaction History</h3>";
+
+    transactions.forEach(tx => {
+
+      const isCredit =
+      tx.type==="credit";
+
+      const div =
+      document.createElement("div");
+
+      div.className =
+      "transaction "+
+      (isCredit?"credit":"debit");
+
+      let dateText="Date unavailable";
+
+      if(tx.createdAt){
+
+        try{
+
+          dateText =
+          new Date(
+            tx.createdAt.seconds*1000
+          ).toLocaleString();
+
+        }catch(e){}
+
+      }
+
+      div.innerHTML=`
+
+        <p>
+
+          <strong class="${
+            isCredit
+            ?"tx-credit"
+            :"tx-debit"
+          }">
+
+          ${
+            isCredit
+            ?"➕ CREDIT"
+            :"➖ DEBIT"
+          }
+
+          ₦${Number(
+            tx.amount||0
+          ).toLocaleString()}
+
+          </strong>
+
+        </p>
+
+        <p class="small">
+          Reason:
+          ${safe(tx.reason||"")}
+        </p>
+
+        <p class="small">
+          Previous Balance:
+          ₦${Number(
+            tx.oldBalance||0
+          ).toLocaleString()}
+        </p>
+
+        <p class="small">
+          Balance After:
+          ₦${Number(
+            tx.newBalance||0
+          ).toLocaleString()}
+        </p>
+
+        <p class="small">
+          By:
+          ${safe(tx.createdBy||"Admin")}
+        </p>
+
+        <p class="small">
+          ${safe(dateText)}
+        </p>
+
+      `;
+
+      box.appendChild(div);
+
+    });
+
+  }catch(error){
+
+    box.innerHTML =
+    "<p class='small'>"+
+    safe(error.message)+
+    "</p>";
+
+  }
+
+};
+
+
+/* ==============================
+REFERRALS
+============================== */
+
+window.loadReferrals =
+async function(){
+
+  const list =
+  document.getElementById(
+    "referralList"
+  );
+
+  list.innerHTML =
+  "<p class='loading'>Loading referrals...</p>";
+
+  try{
+
+    const snap =
+    await getDocs(
+      collection(db,"users")
+    );
+
+    const users=[];
+
+    snap.forEach(userDoc => {
+
+      users.push({
+        id:userDoc.id,
+        ...userDoc.data()
+      });
+
+    });
+
+    const referrals =
+    users.filter(user =>
+      user.referredByCode ||
+      user.referralCodeUsed ||
+      user.referredBy
+    );
+
+    document
+    .getElementById("totalReferrals")
+    .textContent=referrals.length;
+
+    const credited =
+    referrals.filter(
+      user =>
+      user.referralBonusCredited===true
+    ).length;
+
+    document
+    .getElementById("creditedReferrals")
+    .textContent=credited;
+
+    if(referrals.length===0){
+
+      list.innerHTML =
+      "<p class='small'>No referrals found.</p>";
+
+      return;
+    }
+
+    list.innerHTML="";
+
+    referrals.forEach(
+      referredUser => {
+
+        const usedCode =
+        referredUser.referredByCode ||
+        referredUser.referralCodeUsed ||
+        referredUser.referredBy ||
+        "";
+
+        const referrer =
+        users.find(
+          user =>
+          user.referralCode &&
+          String(user.referralCode)
+          .toLowerCase()===
+          String(usedCode)
+          .toLowerCase()
+        );
+
+        const credited =
+        referredUser.referralBonusCredited===true;
+
+        const div =
+        document.createElement("div");
+
+        div.className="referral-card";
+
+        div.innerHTML=`
+
+          <h3>🎁 Referral Registration</h3>
+
+          <p style="margin-top:10px;">
+            New User:
+            ${safe(
+              referredUser.name ||
+              referredUser.email ||
+              "User"
+            )}
+          </p>
+
+          <p>
+            Email:
+            ${safe(
+              referredUser.email||""
+            )}
+          </p>
+
+          <p>
+            Referral Code Used:
+            <strong>
+            ${safe(usedCode)}
+            </strong>
+          </p>
+
+          <p style="margin-top:10px;">
+            Referrer:
+            ${
+              referrer
+              ? safe(
+                referrer.name ||
+                referrer.email ||
+                "Referrer"
+              )
+              : "Referrer not found"
+            }
+          </p>
+
+          <p>
+            Bonus:
+            <strong>
+            ₦${REFERRAL_BONUS.toLocaleString()}
+            </strong>
+          </p>
+
+          <p>
+            Status:
+            ${
+              credited
+              ? '<span class="status credited">✅ Credited</span>'
+              : '<span class="status notcredited">⏳ Waiting</span>'
+            }
+          </p>
+
+        `;
+
+        if(
+          referrer &&
+          !credited
+        ){
+
+          const button =
+          document.createElement("button");
+
+          button.className="btn gold";
+
+          button.textContent =
+          "🎁 Credit ₦200 to Referrer";
+
+          button.onclick =
+          () =>
+          creditReferralBonus(
+            referredUser.id
+          );
+
+          div.appendChild(button);
+
+        }
+
+        list.appendChild(div);
+
+      }
+    );
+
+  }catch(error){
+
+    list.innerHTML =
+    "<p class='small'>"+
+    safe(error.message)+
+    "</p>";
+
+  }
+
+};
+
+
+/* ==============================
+CREDIT REFERRAL
+============================== */
 
 window.creditReferralBonus =
 async function(
@@ -2364,34 +2561,27 @@ async function(
 
   if(
     !confirm(
-      "Credit ₦200 referral bonus to the person who referred this user?"
+      "Credit ₦200 referral bonus?"
     )
-  ){
-
-    return;
-
-  }
-
+  ) return;
 
   try{
 
     const referredUserRef =
-      doc(
-        db,
-        "users",
-        referredUserId
-      );
-
+    doc(
+      db,
+      "users",
+      referredUserId
+    );
 
     await runTransaction(
       db,
       async transaction => {
 
         const referredSnap =
-          await transaction.get(
-            referredUserRef
-          );
-
+        await transaction.get(
+          referredUserRef
+        );
 
         if(!referredSnap.exists()){
 
@@ -2401,200 +2591,154 @@ async function(
 
         }
 
-
         const referredData =
-          referredSnap.data();
-
+        referredSnap.data();
 
         if(
           referredData.referralBonusCredited
-          === true
+          ===true
         ){
 
           throw new Error(
-            "This referral bonus has already been credited."
+            "This referral has already been credited."
           );
 
         }
 
-
         const usedCode =
-          referredData.referredByCode ||
-          referredData.referralCodeUsed ||
-          referredData.referredBy;
-
+        referredData.referredByCode ||
+        referredData.referralCodeUsed ||
+        referredData.referredBy;
 
         if(!usedCode){
 
           throw new Error(
-            "This user does not have a referral code."
+            "Referral code not found."
           );
 
         }
 
-
         const referrerQuery =
-          query(
-            collection(db,"users"),
-            where(
-              "referralCode",
-              "==",
-              usedCode
-            ),
-            limit(1)
-          );
-
+        query(
+          collection(db,"users"),
+          where(
+            "referralCode",
+            "==",
+            usedCode
+          ),
+          limit(1)
+        );
 
         const referrerSnap =
-          await getDocs(
-            referrerQuery
-          );
-
+        await getDocs(referrerQuery);
 
         if(referrerSnap.empty){
 
           throw new Error(
-            "The referrer could not be found using referral code: "
-            + usedCode
+            "Referrer account was not found."
           );
 
         }
-
 
         const referrerDoc =
-          referrerSnap.docs[0];
-
+        referrerSnap.docs[0];
 
         const referrerRef =
-          doc(
-            db,
-            "users",
-            referrerDoc.id
-          );
-
+        doc(
+          db,
+          "users",
+          referrerDoc.id
+        );
 
         const referrerSnapAgain =
-          await transaction.get(
-            referrerRef
-          );
-
-
-        if(!referrerSnapAgain.exists()){
-
-          throw new Error(
-            "Referrer account no longer exists."
-          );
-
-        }
-
+        await transaction.get(
+          referrerRef
+        );
 
         const referrerData =
-          referrerSnapAgain.data();
-
+        referrerSnapAgain.data();
 
         const oldBalance =
-          Number(
-            referrerData.balance || 0
-          );
-
+        Number(
+          referrerData.balance||0
+        );
 
         const newBalance =
-          oldBalance + REFERRAL_BONUS;
-
+        oldBalance+REFERRAL_BONUS;
 
         const transactionRef =
-          doc(
-            collection(db,"transactions")
-          );
-
+        doc(collection(db,"transactions"));
 
         transaction.update(
           referrerRef,
           {
 
-            balance:
-              newBalance,
+            balance:newBalance,
 
             totalReferralBonus:
-              Number(
-                referrerData.totalReferralBonus || 0
-              ) + REFERRAL_BONUS,
+            Number(
+              referrerData.totalReferralBonus||0
+            )+REFERRAL_BONUS,
 
             totalReferralsCredited:
-              Number(
-                referrerData.totalReferralsCredited || 0
-              ) + 1
+            Number(
+              referrerData.totalReferralsCredited||0
+            )+1
 
           }
         );
-
 
         transaction.update(
           referredUserRef,
           {
 
-            referralBonusCredited:
-              true,
+            referralBonusCredited:true,
 
             referralBonusAmount:
-              REFERRAL_BONUS,
+            REFERRAL_BONUS,
 
             referralBonusCreditedAt:
-              serverTimestamp(),
+            serverTimestamp(),
 
             referralBonusCreditedBy:
-              auth.currentUser.email
+            auth.currentUser.email
 
           }
         );
-
 
         transaction.set(
           transactionRef,
           {
 
             uid:
-              referrerData.uid ||
-              referrerDoc.id,
+            referrerData.uid||
+            referrerDoc.id,
 
             userId:
-              referrerDoc.id,
+            referrerDoc.id,
 
             email:
-              referrerData.email ||
-              "",
+            referrerData.email||"",
 
-            type:
-              "credit",
+            type:"credit",
 
             amount:
-              REFERRAL_BONUS,
+            REFERRAL_BONUS,
 
             oldBalance:
-              oldBalance,
+            oldBalance,
 
             newBalance:
-              newBalance,
+            newBalance,
 
             reason:
-              "Referral bonus",
-
-            referralCode:
-              usedCode,
-
-            referredUserId:
-              referredData.uid ||
-              referredUserId,
-
-            referredUserEmail:
-              referredData.email ||
-              "",
+            "Referral bonus",
 
             createdBy:
-              auth.currentUser.email,
+            auth.currentUser.email,
 
             createdAt:
-              serverTimestamp()
+            serverTimestamp()
 
           }
         );
@@ -2602,202 +2746,18 @@ async function(
       }
     );
 
-
     alert(
-      "✅ ₦200 referral bonus credited successfully."
+      "✅ Referral bonus credited."
     );
 
-
-    await loadReferrals();
-
-    await loadUsers();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "❌ Could not credit referral bonus:\n\n"
-      + error.message
-    );
-
-  }
-
-};
-
-
-/* =====================================================
-ADD BALANCE
-===================================================== */
-
-window.creditUser =
-async function(userDocId){
-
-  const amount =
-    Number(
-      document
-      .getElementById(
-        "credit-"+userDocId
-      )
-      .value
-    );
-
-
-  const reason =
-    document
-    .getElementById(
-      "creditReason-"+userDocId
-    )
-    .value.trim()
-    ||
-    "Admin credit";
-
-
-  if(!amount || amount <= 0){
-
-    alert(
-      "Enter a valid amount."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    !confirm(
-      "Add ₦" +
-      amount.toLocaleString() +
-      " to this user's balance?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  try{
-
-    const userRef =
-      doc(
-        db,
-        "users",
-        userDocId
-      );
-
-
-    const transactionRef =
-      doc(
-        collection(db,"transactions")
-      );
-
-
-    await runTransaction(
-      db,
-      async transaction => {
-
-        const userSnap =
-          await transaction.get(
-            userRef
-          );
-
-
-        if(!userSnap.exists()){
-
-          throw new Error(
-            "User record not found."
-          );
-
-        }
-
-
-        const data =
-          userSnap.data();
-
-
-        const oldBalance =
-          Number(
-            data.balance || 0
-          );
-
-
-        const newBalance =
-          oldBalance + amount;
-
-
-        transaction.update(
-          userRef,
-          {
-
-            balance:
-              newBalance
-
-          }
-        );
-
-
-        transaction.set(
-          transactionRef,
-          {
-
-            uid:
-              data.uid ||
-              userDocId,
-
-            userId:
-              userDocId,
-
-            email:
-              data.email ||
-              "",
-
-            type:
-              "credit",
-
-            amount:
-              amount,
-
-            oldBalance:
-              oldBalance,
-
-            newBalance:
-              newBalance,
-
-            reason:
-              reason,
-
-            createdBy:
-              auth.currentUser.email,
-
-            createdAt:
-              serverTimestamp()
-
-          }
-        );
-
-      }
-    );
-
-
-    alert(
-      "₦" +
-      amount.toLocaleString() +
-      " added successfully."
-    );
-
-
+    loadReferrals();
     loadUsers();
 
-
   }catch(error){
 
-    console.error(error);
-
     alert(
-      "Could not add balance: "
-      + error.message
+      "Could not credit referral:\n"+
+      error.message
     );
 
   }
@@ -2805,505 +2765,77 @@ async function(userDocId){
 };
 
 
-/* =====================================================
-DEDUCT BALANCE
-===================================================== */
-
-window.debitUser =
-async function(userDocId){
-
-  const amount =
-    Number(
-      document
-      .getElementById(
-        "debit-"+userDocId
-      )
-      .value
-    );
-
-
-  const reason =
-    document
-    .getElementById(
-      "debitReason-"+userDocId
-    )
-    .value.trim()
-    ||
-    "Admin deduction";
-
-
-  if(!amount || amount <= 0){
-
-    alert(
-      "Enter a valid deduction amount."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    !confirm(
-      "Deduct ₦" +
-      amount.toLocaleString() +
-      " from this user's balance?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  try{
-
-    const userRef =
-      doc(
-        db,
-        "users",
-        userDocId
-      );
-
-
-    const transactionRef =
-      doc(
-        collection(db,"transactions")
-      );
-
-
-    await runTransaction(
-      db,
-      async transaction => {
-
-        const userSnap =
-          await transaction.get(
-            userRef
-          );
-
-
-        if(!userSnap.exists()){
-
-          throw new Error(
-            "User record not found."
-          );
-
-        }
-
-
-        const data =
-          userSnap.data();
-
-
-        const oldBalance =
-          Number(
-            data.balance || 0
-          );
-
-
-        if(amount > oldBalance){
-
-          throw new Error(
-            "Insufficient user balance."
-          );
-
-        }
-
-
-        const newBalance =
-          oldBalance - amount;
-
-
-        transaction.update(
-          userRef,
-          {
-
-            balance:
-              newBalance
-
-          }
-        );
-
-
-        transaction.set(
-          transactionRef,
-          {
-
-            uid:
-              data.uid ||
-              userDocId,
-
-            userId:
-              userDocId,
-
-            email:
-              data.email ||
-              "",
-
-            type:
-              "debit",
-
-            amount:
-              amount,
-
-            oldBalance:
-              oldBalance,
-
-            newBalance:
-              newBalance,
-
-            reason:
-              reason,
-
-            createdBy:
-              auth.currentUser.email,
-
-            createdAt:
-              serverTimestamp()
-
-          }
-        );
-
-      }
-    );
-
-
-    alert(
-      "₦" +
-      amount.toLocaleString() +
-      " deducted successfully."
-    );
-
-
-    loadUsers();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not deduct balance: "
-      + error.message
-    );
-
-  }
-
-};
-
-
-/* =====================================================
-TRANSACTION HISTORY
-===================================================== */
-
-window.loadUserTransactions =
-async function(userDocId){
-
-  const box =
-    document.getElementById(
-      "transactions-"+userDocId
-    );
-
-
-  if(
-    box.style.display === "block"
-  ){
-
-    box.style.display="none";
-
-    return;
-
-  }
-
-
-  box.style.display="block";
-
-  box.innerHTML =
-    "<p class='small'>Loading transactions...</p>";
-
-
-  try{
-
-    const q =
-      query(
-        collection(db,"transactions"),
-        where(
-          "userId",
-          "==",
-          userDocId
-        ),
-        limit(100)
-      );
-
-
-    const snap =
-      await getDocs(q);
-
-
-    if(snap.empty){
-
-      box.innerHTML =
-        "<p class='small'>No transactions found.</p>";
-
-      return;
-
-    }
-
-
-    const transactions=[];
-
-
-    snap.forEach(txDoc => {
-
-      transactions.push({
-
-        id:
-          txDoc.id,
-
-        ...txDoc.data()
-
-      });
-
-    });
-
-
-    transactions.sort(
-      (a,b) => {
-
-        const aTime =
-          a.createdAt?.seconds || 0;
-
-        const bTime =
-          b.createdAt?.seconds || 0;
-
-        return bTime-aTime;
-
-      }
-    );
-
-
-    box.innerHTML =
-      "<h3>📜 Transaction History</h3>";
-
-
-    transactions.forEach(tx => {
-
-      const isCredit =
-        tx.type === "credit";
-
-
-      const div =
-        document.createElement("div");
-
-
-      div.className =
-        "transaction " +
-        (
-          isCredit
-          ? "credit"
-          : "debit"
-        );
-
-
-      let dateText =
-        "Date unavailable";
-
-
-      if(tx.createdAt){
-
-        try{
-
-          dateText =
-            new Date(
-              tx.createdAt.seconds * 1000
-            ).toLocaleString();
-
-        }catch(e){}
-
-      }
-
-
-      div.innerHTML=`
-
-        <p>
-
-          <strong class="${
-            isCredit
-            ? "tx-credit"
-            : "tx-debit"
-          }">
-
-            ${
-              isCredit
-              ? "➕ CREDIT"
-              : "➖ DEBIT"
-            }
-
-            ₦${Number(
-              tx.amount || 0
-            ).toLocaleString()}
-
-          </strong>
-
-        </p>
-
-        <p class="small">
-
-          Reason:
-          ${safe(
-            tx.reason ||
-            "No reason"
-          )}
-
-        </p>
-
-        <p class="small">
-
-          Previous Balance:
-          ₦${Number(
-            tx.oldBalance || 0
-          ).toLocaleString()}
-
-        </p>
-
-        <p class="small">
-
-          Balance After:
-          <strong>
-            ₦${Number(
-              tx.newBalance || 0
-            ).toLocaleString()}
-          </strong>
-
-        </p>
-
-        <p class="small">
-
-          By:
-          ${safe(
-            tx.createdBy ||
-            "Admin"
-          )}
-
-        </p>
-
-        <p class="small">
-
-          ${safe(dateText)}
-
-        </p>
-
-      `;
-
-
-      box.appendChild(div);
-
-    });
-
-
-  }catch(error){
-
-    console.error(error);
-
-    box.innerHTML =
-      "<p class='small'>Could not load transaction history: "
-      + safe(error.message)
-      + "</p>";
-
-  }
-
-};
-
-
-/* =====================================================
+/* ==============================
 LOAD PROOFS
-===================================================== */
+============================== */
 
 window.loadProofs =
 async function(){
 
   const list =
-    document.getElementById(
-      "proofList"
-    );
-
+  document.getElementById(
+    "proofList"
+  );
 
   list.innerHTML =
-    "<p class='loading'>Loading proofs...</p>";
-
+  "<p class='loading'>Loading proofs...</p>";
 
   try{
 
     const snap =
-      await getDocs(
-        collection(
-          db,
-          "taskSubmissions"
-        )
-      );
-
+    await getDocs(
+      collection(
+        db,
+        "taskSubmissions"
+      )
+    );
 
     let pending=0;
-
 
     if(snap.empty){
 
       list.innerHTML =
-        "<p class='small'>No proofs found.</p>";
-
+      "<p class='small'>No proofs found.</p>";
 
       document
       .getElementById(
         "pendingProofs"
-      )
-      .textContent="0";
-
+      ).textContent="0";
 
       return;
-
     }
-
 
     list.innerHTML="";
 
-
     snap.forEach(subDoc => {
 
-      const d =
-        subDoc.data();
+      const d=subDoc.data();
 
+      const status =
+      d.status||"Pending";
 
-      if(
-        (d.status || "Pending")
-        === "Pending"
-      ){
-
+      if(status==="Pending"){
         pending++;
-
       }
 
-
       const div =
-        document.createElement("div");
-
+      document.createElement("div");
 
       div.className="proof-card";
-
 
       div.innerHTML=`
 
         <h3>
           📝 ${safe(
-            d.taskTitle ||
-            "Task"
+            d.taskTitle||"Task"
           )}
         </h3>
 
         <p>
           User:
           ${safe(
-            d.email ||
-            d.uid ||
+            d.email||
+            d.uid||
             ""
           )}
         </p>
@@ -3311,132 +2843,92 @@ async function(){
         <p>
           Reward:
           ₦${Number(
-            d.reward || 0
+            d.reward||0
           ).toLocaleString()}
         </p>
 
         <p>
           Status:
-          ${safe(
-            d.status ||
-            "Pending"
-          )}
+          ${safe(status)}
         </p>
 
       `;
 
-
       if(d.proofImage){
 
         const img =
-          document.createElement("img");
+        document.createElement("img");
 
+        img.src=d.proofImage;
 
-        img.src =
-          d.proofImage;
+        img.className="proof-image";
 
-
-        img.className =
-          "proof-image";
-
-
-        img.alt =
-          "Task proof";
-
+        img.alt="Task proof";
 
         div.appendChild(img);
 
       }
 
-
-      if(
-        (d.status || "Pending")
-        === "Pending"
-      ){
+      if(status==="Pending"){
 
         const approve =
-          document.createElement("button");
+        document.createElement("button");
 
+        approve.className="btn green";
 
-        approve.className =
-          "btn green";
-
-
-        approve.textContent =
-          "✅ Approve Proof";
-
+        approve.textContent=
+        "✅ Approve Proof";
 
         approve.onclick =
-          () =>
-          approveProof(
-            subDoc.id,
-            d.uid,
-            Number(
-              d.reward || 0
-            )
-          );
-
-
-        div.appendChild(
-          approve
+        () =>
+        approveProof(
+          subDoc.id,
+          d.uid,
+          Number(d.reward||0)
         );
 
+        div.appendChild(approve);
 
         const reject =
-          document.createElement("button");
+        document.createElement("button");
 
+        reject.className="btn red";
 
-        reject.className =
-          "btn red";
-
-
-        reject.textContent =
-          "❌ Reject Proof";
-
+        reject.textContent=
+        "❌ Reject Proof";
 
         reject.onclick =
-          () =>
-          rejectProof(
-            subDoc.id
-          );
+        () =>
+        rejectProof(subDoc.id);
 
-
-        div.appendChild(
-          reject
-        );
+        div.appendChild(reject);
 
       }
-
 
       list.appendChild(div);
 
     });
 
-
     document
     .getElementById(
       "pendingProofs"
-    )
-    .textContent=pending;
-
+    ).textContent=pending;
 
   }catch(error){
 
-    console.error(error);
-
     list.innerHTML =
-      "<p class='small'>Could not load proofs: "
-      + safe(error.message)
-      + "</p>";
+    "<p class='small'>"+
+    safe(error.message)+
+    "</p>";
 
   }
 
 };
 
 
-/* =====================================================
+/* ==============================
 APPROVE PROOF
-===================================================== */
+============================== */
 
 window.approveProof =
 async function(
@@ -3447,34 +2939,23 @@ async function(
 
   if(
     !confirm(
-      "Approve this proof and add ₦" +
-      reward.toLocaleString() +
+      "Approve proof and add ₦"+
+      reward.toLocaleString()+
       "?"
     )
-  ){
-
-    return;
-
-  }
-
+  ) return;
 
   try{
 
     const q =
-      query(
-        collection(db,"users"),
-        where(
-          "uid",
-          "==",
-          uid
-        ),
-        limit(1)
-      );
-
+    query(
+      collection(db,"users"),
+      where("uid","==",uid),
+      limit(1)
+    );
 
     const userSnap =
-      await getDocs(q);
-
+    await getDocs(q);
 
     if(userSnap.empty){
 
@@ -3483,51 +2964,39 @@ async function(
       );
 
       return;
-
     }
 
-
     const userDoc =
-      userSnap.docs[0];
-
+    userSnap.docs[0];
 
     const userRef =
-      doc(
-        db,
-        "users",
-        userDoc.id
-      );
-
+    doc(
+      db,
+      "users",
+      userDoc.id
+    );
 
     const submissionRef =
-      doc(
-        db,
-        "taskSubmissions",
-        submissionId
-      );
-
+    doc(
+      db,
+      "taskSubmissions",
+      submissionId
+    );
 
     const transactionRef =
-      doc(
-        collection(db,"transactions")
-      );
-
+    doc(collection(db,"transactions"));
 
     await runTransaction(
       db,
       async transaction => {
 
         const user =
-          await transaction.get(
-            userRef
-          );
-
+        await transaction.get(userRef);
 
         const submission =
-          await transaction.get(
-            submissionRef
-          );
-
+        await transaction.get(
+          submissionRef
+        );
 
         if(!user.exists()){
 
@@ -3537,7 +3006,6 @@ async function(
 
         }
 
-
         if(!submission.exists()){
 
           throw new Error(
@@ -3546,35 +3014,26 @@ async function(
 
         }
 
-
         const submissionData =
-          submission.data();
-
+        submission.data();
 
         if(
-          submissionData.status === "Approved"
+          submissionData.status==="Approved"
         ){
 
           throw new Error(
-            "This proof has already been approved."
+            "This proof is already approved."
           );
 
         }
 
-
-        const data =
-          user.data();
-
+        const data=user.data();
 
         const oldBalance =
-          Number(
-            data.balance || 0
-          );
-
+        Number(data.balance||0);
 
         const newBalance =
-          oldBalance + reward;
-
+        oldBalance+reward;
 
         transaction.update(
           userRef,
@@ -3583,62 +3042,52 @@ async function(
           }
         );
 
-
         transaction.update(
           submissionRef,
           {
 
-            status:
-              "Approved",
+            status:"Approved",
 
             approvedAt:
-              serverTimestamp(),
+            serverTimestamp(),
 
             approvedBy:
-              auth.currentUser.email
+            auth.currentUser.email
 
           }
         );
-
 
         transaction.set(
           transactionRef,
           {
 
             uid:
-              data.uid ||
-              uid,
+            data.uid||uid,
 
             userId:
-              userDoc.id,
+            userDoc.id,
 
             email:
-              data.email ||
-              "",
+            data.email||"",
 
-            type:
-              "credit",
+            type:"credit",
 
-            amount:
-              reward,
+            amount:reward,
 
-            oldBalance:
-              oldBalance,
+            oldBalance:oldBalance,
 
-            newBalance:
-              newBalance,
+            newBalance:newBalance,
 
-            reason:
-              "Task reward",
+            reason:"Task reward",
 
             createdBy:
-              auth.currentUser.email,
+            auth.currentUser.email,
 
             relatedSubmission:
-              submissionId,
+            submissionId,
 
             createdAt:
-              serverTimestamp()
+            serverTimestamp()
 
           }
         );
@@ -3646,23 +3095,16 @@ async function(
       }
     );
 
-
     alert(
-      "Proof approved and ₦" +
-      reward.toLocaleString() +
-      " added."
+      "✅ Proof approved."
     );
-
 
     loadProofs();
 
-
   }catch(error){
 
-    console.error(error);
-
     alert(
-      "Could not approve proof: " +
+      "Could not approve proof:\n"+
       error.message
     );
 
@@ -3671,27 +3113,19 @@ async function(
 };
 
 
-/* =====================================================
+/* ==============================
 REJECT PROOF
-===================================================== */
+============================== */
 
 window.rejectProof =
-async function(
-  submissionId
-){
+async function(submissionId){
 
   const reason =
-    prompt(
-      "Enter rejection reason:"
-    );
+  prompt(
+    "Enter rejection reason:"
+  );
 
-
-  if(reason === null){
-
-    return;
-
-  }
-
+  if(reason===null) return;
 
   try{
 
@@ -3703,34 +3137,29 @@ async function(
       ),
       {
 
-        status:
-          "Rejected",
+        status:"Rejected",
 
-        rejectionReason:
-          reason,
+        rejectionReason:reason,
 
         rejectedAt:
-          serverTimestamp(),
+        serverTimestamp(),
 
         rejectedBy:
-          auth.currentUser.email
+        auth.currentUser.email
 
       }
     );
-
 
     alert(
       "Proof rejected."
     );
 
-
     loadProofs();
-
 
   }catch(error){
 
     alert(
-      "Could not reject proof: " +
+      "Could not reject proof:\n"+
       error.message
     );
 
@@ -3739,113 +3168,86 @@ async function(
 };
 
 
-/* =====================================================
-LOAD PROMOTIONS
-===================================================== */
+/* ==============================
+PROMOTIONS
+============================== */
 
 window.loadPromotions =
 async function(){
 
   const list =
-    document.getElementById(
-      "promotionList"
-    );
-
+  document.getElementById(
+    "promotionList"
+  );
 
   list.innerHTML =
-    "<p class='loading'>Loading promotions...</p>";
-
+  "<p class='loading'>Loading promotions...</p>";
 
   try{
 
     const snap =
-      await getDocs(
-        collection(
-          db,
-          "promotionOrders"
-        )
-      );
-
+    await getDocs(
+      collection(
+        db,
+        "promotionOrders"
+      )
+    );
 
     let pending=0;
-
 
     if(snap.empty){
 
       list.innerHTML =
-        "<p class='small'>No promotion orders.</p>";
-
-
-      document
-      .getElementById(
-        "pendingPromotions"
-      )
-      .textContent="0";
-
+      "<p class='small'>No promotion orders.</p>";
 
       return;
-
     }
-
 
     list.innerHTML="";
 
-
     snap.forEach(orderDoc => {
 
-      const d =
-        orderDoc.data();
-
+      const d=orderDoc.data();
 
       const status =
-        d.promotionStatus ||
-        "Pending";
-
+      d.promotionStatus||"Pending";
 
       if(status==="Pending"){
-
         pending++;
-
       }
 
-
       const div =
-        document.createElement("div");
+      document.createElement("div");
 
-
-      div.className =
-        "order-card";
-
+      div.className="order-card";
 
       div.innerHTML=`
 
         <h3>
           📢 ${safe(
-            d.promotionType ||
+            d.promotionType||
             "Promotion"
           )}
         </h3>
 
         <p>
           User:
-          ${safe(
-            d.email || ""
-          )}
+          ${safe(d.email||"")}
         </p>
 
         <p>
           Amount:
           <strong>
-            ₦${Number(
-              d.amount || 0
-            ).toLocaleString()}
+          ₦${Number(
+            d.amount||0
+          ).toLocaleString()}
           </strong>
         </p>
 
         <p>
           Payment Status:
           ${safe(
-            d.paymentStatus ||
+            d.paymentStatus||
             "Pending"
           )}
         </p>
@@ -3854,250 +3256,131 @@ async function(){
           Promotion Status:
           <span class="status ${
             status==="Approved"
-            ? "approved"
-            : status==="Rejected"
-            ? "rejected"
-            : "pending"
+            ?"approved"
+            :status==="Rejected"
+            ?"rejected"
+            :"pending"
           }">
-            ${safe(status)}
+          ${safe(status)}
           </span>
         </p>
 
       `;
 
+      const link =
+      d.promotionLink||
+      d.link||
+      d.targetLink||
+      d.websiteLink||
+      d.whatsappLink||
+      "";
 
-      const promotionLink =
-        d.promotionLink ||
-        d.link ||
-        d.targetLink ||
-        d.websiteLink ||
-        d.whatsappLink ||
-        "";
-
-
-      if(promotionLink){
-
-        const linkBox =
-          document.createElement("div");
-
-
-        linkBox.className="link-box";
-
-
-        const title =
-          document.createElement("strong");
-
-
-        title.textContent =
-          "🔗 Promotion Link";
-
-
-        linkBox.appendChild(title);
-
+      if(link){
 
         const row =
-          document.createElement("div");
-
+        document.createElement("div");
 
         row.className="copy-row";
 
-
         const input =
-          document.createElement("input");
+        document.createElement("input");
 
-
-        input.type="text";
-
-        input.value=promotionLink;
-
+        input.value=link;
         input.readOnly=true;
 
+        const button =
+        document.createElement("button");
 
-        const copyButton =
-          document.createElement("button");
+        button.className="btn purple";
+        button.textContent="📋 Copy Link";
 
-
-        copyButton.className =
-          "btn purple";
-
-
-        copyButton.textContent =
-          "📋 Copy Link";
-
-
-        copyButton.onclick =
-          () =>
-          copyText(
-            promotionLink,
-            copyButton
-          );
-
+        button.onclick =
+        () => copyText(link,button);
 
         row.appendChild(input);
+        row.appendChild(button);
 
-        row.appendChild(copyButton);
-
-        linkBox.appendChild(row);
-
-        div.appendChild(linkBox);
-
-      }else{
-
-        const noLink =
-          document.createElement("p");
-
-
-        noLink.className="small";
-
-        noLink.style.marginTop="10px";
-
-        noLink.textContent =
-          "No promotion link was saved for this order.";
-
-
-        div.appendChild(noLink);
+        div.appendChild(row);
 
       }
-
-
-      const proofTitle =
-        document.createElement("h4");
-
-
-      proofTitle.style.marginTop="15px";
-
-
-      proofTitle.textContent =
-        "🖼️ Payment Proof";
-
-
-      div.appendChild(proofTitle);
-
 
       if(d.paymentProofImage){
 
         const img =
-          document.createElement("img");
+        document.createElement("img");
 
+        img.src=d.paymentProofImage;
 
-        img.src =
-          d.paymentProofImage;
+        img.className="proof-image";
 
-
-        img.className =
-          "proof-image";
-
-
-        img.alt =
-          "Payment proof image";
-
+        img.alt="Payment proof";
 
         div.appendChild(img);
 
-      }else{
-
-        const noImage =
-          document.createElement("p");
-
-
-        noImage.className =
-          "small";
-
-
-        noImage.textContent =
-          "No payment proof image uploaded.";
-
-
-        div.appendChild(
-          noImage
-        );
-
       }
-
 
       if(status==="Pending"){
 
         const approve =
-          document.createElement("button");
+        document.createElement("button");
 
+        approve.className="btn green";
 
-        approve.className =
-          "btn green";
-
-
-        approve.textContent =
-          "✅ Approve Promotion";
-
+        approve.textContent=
+        "✅ Approve Promotion";
 
         approve.onclick =
-          () =>
-          updatePromotion(
-            orderDoc.id,
-            "Approved"
-          );
-
-
-        div.appendChild(
-          approve
+        () =>
+        updatePromotion(
+          orderDoc.id,
+          "Approved"
         );
 
+        div.appendChild(approve);
 
         const reject =
-          document.createElement("button");
+        document.createElement("button");
 
+        reject.className="btn red";
 
-        reject.className =
-          "btn red";
-
-
-        reject.textContent =
-          "❌ Reject Promotion";
-
+        reject.textContent=
+        "❌ Reject Promotion";
 
         reject.onclick =
-          () =>
-          updatePromotion(
-            orderDoc.id,
-            "Rejected"
-          );
-
-
-        div.appendChild(
-          reject
+        () =>
+        updatePromotion(
+          orderDoc.id,
+          "Rejected"
         );
 
-      }
+        div.appendChild(reject);
 
+      }
 
       list.appendChild(div);
 
     });
 
-
     document
     .getElementById(
       "pendingPromotions"
-    )
-    .textContent=pending;
-
+    ).textContent=pending;
 
   }catch(error){
 
-    console.error(error);
-
     list.innerHTML =
-      "<p class='small'>Could not load promotions: "
-      + safe(error.message)
-      + "</p>";
+    "<p class='small'>"+
+    safe(error.message)+
+    "</p>";
 
   }
 
 };
 
 
-/* =====================================================
+/* ==============================
 UPDATE PROMOTION
-===================================================== */
+============================== */
 
 window.updatePromotion =
 async function(
@@ -4107,16 +3390,10 @@ async function(
 
   if(
     !confirm(
-      "Change promotion status to "
-      + status
-      + "?"
+      "Change promotion status to "+
+      status+"?"
     )
-  ){
-
-    return;
-
-  }
-
+  ) return;
 
   try{
 
@@ -4128,32 +3405,28 @@ async function(
       ),
       {
 
-        promotionStatus:
-          status,
+        promotionStatus:status,
 
         updatedAt:
-          serverTimestamp(),
+        serverTimestamp(),
 
         processedBy:
-          auth.currentUser.email
+        auth.currentUser.email
 
       }
     );
-
 
     alert(
       "Promotion updated."
     );
 
-
     loadPromotions();
-
 
   }catch(error){
 
     alert(
-      "Could not update promotion: "
-      + error.message
+      "Could not update promotion:\n"+
+      error.message
     );
 
   }
@@ -4161,237 +3434,180 @@ async function(
 };
 
 
-/* =====================================================
-LOAD WITHDRAWALS
-===================================================== */
+/* ==============================
+WITHDRAWALS
+============================== */
 
 window.loadWithdrawals =
 async function(){
 
   const list =
-    document.getElementById(
-      "withdrawalList"
-    );
-
+  document.getElementById(
+    "withdrawalList"
+  );
 
   list.innerHTML =
-    "<p class='loading'>Loading withdrawals...</p>";
-
+  "<p class='loading'>Loading withdrawals...</p>";
 
   try{
 
     const snap =
-      await getDocs(
-        collection(
-          db,
-          "withdrawals"
-        )
-      );
-
+    await getDocs(
+      collection(
+        db,
+        "withdrawals"
+      )
+    );
 
     let pending=0;
-
 
     if(snap.empty){
 
       list.innerHTML =
-        "<p class='small'>No withdrawals.</p>";
-
+      "<p class='small'>No withdrawals.</p>";
 
       document
       .getElementById(
         "pendingWithdrawals"
-      )
-      .textContent="0";
-
+      ).textContent="0";
 
       return;
-
     }
-
 
     list.innerHTML="";
 
-
     snap.forEach(withdrawalDoc => {
 
-      const d =
-        withdrawalDoc.data();
-
+      const d=withdrawalDoc.data();
 
       const status =
-        d.status ||
-        "Pending";
-
+      d.status||"Pending";
 
       if(status==="Pending"){
-
         pending++;
-
       }
 
-
       const div =
-        document.createElement("div");
+      document.createElement("div");
 
-
-      div.className =
-        "withdraw-card";
-
+      div.className="withdraw-card";
 
       div.innerHTML=`
 
         <h3>
           💸 ₦${Number(
-            d.amount || 0
+            d.amount||0
           ).toLocaleString()}
         </h3>
 
         <p>
           User:
           ${safe(
-            d.email ||
-            d.uid ||
+            d.email||
+            d.uid||
             ""
           )}
         </p>
 
         <p>
-          User UID:
+          UID:
           ${safe(
-            d.uid ||
-            d.userId ||
-            "Not provided"
+            d.uid||
+            d.userId||
+            ""
           )}
         </p>
 
         <p>
           Bank:
-          ${safe(
-            d.bankName ||
-            ""
-          )}
+          ${safe(d.bankName||"")}
         </p>
 
         <p>
           Account Number:
-          ${safe(
-            d.accountNumber ||
-            ""
-          )}
+          ${safe(d.accountNumber||"")}
         </p>
 
         <p>
           Account Name:
-          ${safe(
-            d.accountName ||
-            ""
-          )}
+          ${safe(d.accountName||"")}
         </p>
 
         <p>
           Status:
-
           <span class="status ${
             status==="Approved"
-            ? "approved"
-            : status==="Rejected"
-            ? "rejected"
-            : "pending"
+            ?"approved"
+            :status==="Rejected"
+            ?"rejected"
+            :"pending"
           }">
-
-            ${safe(status)}
-
+          ${safe(status)}
           </span>
-
         </p>
 
       `;
 
-
       if(status==="Pending"){
 
         const approve =
-          document.createElement("button");
+        document.createElement("button");
 
+        approve.className="btn green";
 
-        approve.className =
-          "btn green";
-
-
-        approve.textContent =
-          "✅ Approve";
-
+        approve.textContent="✅ Approve";
 
         approve.onclick =
-          () =>
-          updateWithdrawal(
-            withdrawalDoc.id,
-            "Approved"
-          );
-
-
-        div.appendChild(
-          approve
+        () =>
+        updateWithdrawal(
+          withdrawalDoc.id,
+          "Approved"
         );
 
+        div.appendChild(approve);
 
         const reject =
-          document.createElement("button");
+        document.createElement("button");
 
+        reject.className="btn red";
 
-        reject.className =
-          "btn red";
-
-
-        reject.textContent =
-          "❌ Reject";
-
+        reject.textContent="❌ Reject";
 
         reject.onclick =
-          () =>
-          updateWithdrawal(
-            withdrawalDoc.id,
-            "Rejected"
-          );
-
-
-        div.appendChild(
-          reject
+        () =>
+        updateWithdrawal(
+          withdrawalDoc.id,
+          "Rejected"
         );
 
-      }
+        div.appendChild(reject);
 
+      }
 
       list.appendChild(div);
 
     });
 
-
     document
     .getElementById(
       "pendingWithdrawals"
-    )
-    .textContent=pending;
-
+    ).textContent=pending;
 
   }catch(error){
 
-    console.error(error);
-
     list.innerHTML =
-      "<p class='small'>Could not load withdrawals: "
-      + safe(error.message)
-      + "</p>";
+    "<p class='small'>"+
+    safe(error.message)+
+    "</p>";
 
   }
 
 };
 
 
-/* =====================================================
+/* ==============================
 UPDATE WITHDRAWAL
-===================================================== */
+============================== */
 
 window.updateWithdrawal =
 async function(
@@ -4401,16 +3617,10 @@ async function(
 
   if(
     !confirm(
-      "Change withdrawal status to "
-      + status
-      + "?"
+      "Change withdrawal status to "+
+      status+"?"
     )
-  ){
-
-    return;
-
-  }
-
+  ) return;
 
   try{
 
@@ -4422,32 +3632,28 @@ async function(
       ),
       {
 
-        status:
-          status,
+        status:status,
 
         processedAt:
-          serverTimestamp(),
+        serverTimestamp(),
 
         processedBy:
-          auth.currentUser.email
+        auth.currentUser.email
 
       }
     );
-
 
     alert(
       "Withdrawal updated."
     );
 
-
     loadWithdrawals();
-
 
   }catch(error){
 
     alert(
-      "Could not update withdrawal: "
-      + error.message
+      "Could not update withdrawal:\n"+
+      error.message
     );
 
   }
@@ -4455,9 +3661,9 @@ async function(
 };
 
 
-/* =====================================================
-COPY TEXT / COPY LINK
-===================================================== */
+/* ==============================
+COPY
+============================== */
 
 window.copyText =
 async function(
@@ -4465,179 +3671,98 @@ async function(
   button
 ){
 
-  if(!text){
-
-    alert(
-      "There is no link to copy."
-    );
-
-    return;
-
-  }
-
-
   try{
 
-    await navigator.clipboard.writeText(
-      text
-    );
+    await navigator.clipboard.writeText(text);
 
+    const old =
+    button.textContent;
 
-    const oldText =
-      button.textContent;
-
-
-    button.textContent =
-      "✅ Copied";
-
+    button.textContent=
+    "✅ Copied";
 
     setTimeout(
       () => {
-
-        button.textContent =
-          oldText;
-
+        button.textContent=old;
       },
       1500
     );
-
 
   }catch(error){
 
-    const temp =
-      document.createElement("textarea");
+    const textarea =
+    document.createElement("textarea");
 
+    textarea.value=text;
 
-    temp.value=text;
+    document.body.appendChild(textarea);
 
-    document.body.appendChild(temp);
-
-    temp.select();
+    textarea.select();
 
     document.execCommand("copy");
 
-    temp.remove();
+    textarea.remove();
 
-
-    button.textContent =
-      "✅ Copied";
-
-
-    setTimeout(
-      () => {
-
-        button.textContent =
-          "📋 Copy Link";
-
-      },
-      1500
-    );
+    button.textContent="✅ Copied";
 
   }
 
 };
 
 
-/* =====================================================
+/* ==============================
 REFRESH EVERYTHING
-===================================================== */
+============================== */
 
 window.refreshEverything =
 async function(){
 
-  try{
+  await loadUsers();
 
-    await loadUsers();
+  await loadTasks();
 
-    await loadTasks();
+  await loadProofs();
 
-    await loadProofs();
+  await loadReferrals();
 
-    await loadReferrals();
+  await loadPromotions();
 
-    await loadPromotions();
-
-    await loadWithdrawals();
-
-  }catch(error){
-
-    console.error(
-      "Refresh error:",
-      error
-    );
-
-  }
+  await loadWithdrawals();
 
 };
 
 
-/* =====================================================
+/* ==============================
 SAFE TEXT
-===================================================== */
+============================== */
 
 function safe(value){
 
   return String(value ?? "")
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
 
 }
 
 
-/* =====================================================
-SAFE HTML ATTRIBUTE
-===================================================== */
+/* ==============================
+SAFE ATTRIBUTE
+============================== */
 
 function safeAttribute(value){
 
   return String(value ?? "")
-
-    .replaceAll(
-      "\\",
-      "\\\\"
-    )
-
-    .replaceAll(
-      "'",
-      "\\'"
-    )
-
-    .replaceAll(
-      "\n",
-      "\\n"
-    )
-
-    .replaceAll(
-      "\r",
-      "\\r"
-    );
+  .replaceAll("\\","\\\\")
+  .replaceAll("'","\\'")
+  .replaceAll("\n","\\n")
+  .replaceAll("\r","\\r");
 
 }
 
 </script>
 
 </body>
-      </html>
+    </html>
