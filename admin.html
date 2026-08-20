@@ -377,7 +377,7 @@ button:disabled{
 .delete-zone{
   margin-top:20px;
   padding-top:15px;
-  border-top:1px solid #fecaca;
+  border-top:1px solid #fed7aa;
 }
 
 @media(max-width:700px){
@@ -583,13 +583,16 @@ DASHBOARD
 
     <div class="warning-box">
 
-      ⚠️ <strong>Account deletion:</strong>
+      🚫 <strong>Account disabling:</strong>
 
-      The Delete User button calls the secure
-      <strong>deleteUserAccount</strong> Cloud Function.
+      The Disable User button calls the secure
+      <strong>disableUserAccount</strong> Cloud Function.
 
-      Do not use it unless you are certain the account
-      should be permanently removed.
+      <br><br>
+
+      Disabling a user does <strong>not</strong> delete
+      their Firestore data, balance, referrals,
+      transactions, withdrawals, promotions or proofs.
 
     </div>
 
@@ -967,7 +970,7 @@ const db =
   The Cloud Function must be deployed in the same
   Firebase project and must be named:
 
-  deleteUserAccount
+  disableUserAccount
 */
 
 const functions =
@@ -1797,36 +1800,43 @@ async function(){
         </div>
 
 
+        <!-- =================================================
+        DISABLE USER
+        ================================================= -->
+
         <div class="delete-zone">
 
           <h3>
-            🗑️ Delete User Account
+            🚫 Disable User Account
           </h3>
 
           <p class="small">
             This sends the user's UID to the secure
-            <strong>deleteUserAccount</strong>
+            <strong>disableUserAccount</strong>
             Cloud Function.
           </p>
 
-          <div class="danger-box">
+          <div class="warning-box">
 
-            ⚠️ <strong>Permanent action.</strong>
+            ⚠️ <strong>Account disabling.</strong>
 
-            The Cloud Function should delete the user's
-            Firebase Authentication account and associated
-            Firestore records.
+            The user's Firebase Authentication account
+            will be disabled and the user will no longer
+            be able to sign in.
 
-            The user will need to register again as a new
-            account.
+            <br><br>
+
+            The user's Firestore data, balance, referrals,
+            transactions, withdrawals, promotions and
+            task proofs will NOT be deleted.
 
           </div>
 
           <button
-            class="btn red"
-            onclick="deleteUserAccount('${userDoc.id}','${safeAttribute(uid)}','${safeAttribute(d.email || "")}')"
+            class="btn orange"
+            onclick="disableUserAccount('${userDoc.id}','${safeAttribute(uid)}','${safeAttribute(d.email || "")}')"
           >
-            🗑️ Permanently Delete User
+            🚫 Disable User
           </button>
 
         </div>
@@ -1854,10 +1864,10 @@ async function(){
 
 
 /* =====================================================
-DELETE USER ACCOUNT
+DISABLE USER ACCOUNT
 ===================================================== */
 
-window.deleteUserAccount =
+window.disableUserAccount =
 async function(
   userDocId,
   uid,
@@ -1866,12 +1876,13 @@ async function(
 
   const firstConfirm =
     confirm(
-      "⚠️ DELETE USER ACCOUNT?\n\n" +
+      "⚠️ DISABLE USER ACCOUNT?\n\n" +
       "Email: " +
       (email || "Unknown") +
       "\n\n" +
-      "This action is intended to permanently remove " +
-      "the user's account.\n\n" +
+      "The user's Firebase Authentication account " +
+      "will be disabled.\n\n" +
+      "The user's Firestore data will NOT be deleted.\n\n" +
       "Continue?"
     );
 
@@ -1886,10 +1897,11 @@ async function(
   const secondConfirm =
     confirm(
       "FINAL WARNING!\n\n" +
-      "You are about to permanently delete:\n\n" +
+      "You are about to disable:\n\n" +
       (email || uid) +
       "\n\n" +
-      "Press OK only if you are absolutely sure."
+      "The user will no longer be able to sign in.\n\n" +
+      "Their data will remain in Firestore."
     );
 
 
@@ -1914,7 +1926,7 @@ async function(
     const callable =
       httpsCallable(
         functions,
-        "deleteUserAccount"
+        "disableUserAccount"
       );
 
 
@@ -1931,13 +1943,14 @@ async function(
 
 
     console.log(
-      "Delete result:",
+      "Disable result:",
       result.data
     );
 
 
     alert(
-      "✅ User deletion request completed."
+      "✅ User account disabled successfully.\n\n" +
+      "The user's Firestore data was not deleted."
     );
 
 
@@ -1955,7 +1968,7 @@ async function(
   }catch(error){
 
     console.error(
-      "Delete user error:",
+      "Disable user error:",
       error
     );
 
@@ -1971,7 +1984,7 @@ async function(
     ){
 
       message =
-        "The deleteUserAccount Cloud Function has not been deployed yet.";
+        "The disableUserAccount Cloud Function has not been deployed yet.";
 
     }
 
@@ -1999,7 +2012,7 @@ async function(
 
 
     alert(
-      "❌ User was not deleted.\n\n" +
+      "❌ User was not disabled.\n\n" +
       message
     );
 
@@ -3238,11 +3251,13 @@ async function(){
       list.innerHTML =
         "<p class='small'>No proofs found.</p>";
 
+
       document
       .getElementById(
         "pendingProofs"
       )
       .textContent="0";
+
 
       return;
 
@@ -3715,8 +3730,8 @@ async function(
   }catch(error){
 
     alert(
-      "Could not reject proof: "
-      + error.message
+      "Could not reject proof: " +
+      error.message
     );
 
   }
@@ -3760,11 +3775,13 @@ async function(){
       list.innerHTML =
         "<p class='small'>No promotion orders.</p>";
 
+
       document
       .getElementById(
         "pendingPromotions"
       )
       .textContent="0";
+
 
       return;
 
@@ -3849,11 +3866,6 @@ async function(){
       `;
 
 
-      /*
-        Support several possible field names
-        used by your promotion page.
-      */
-
       const promotionLink =
         d.promotionLink ||
         d.link ||
@@ -3868,13 +3880,17 @@ async function(){
         const linkBox =
           document.createElement("div");
 
+
         linkBox.className="link-box";
+
 
         const title =
           document.createElement("strong");
 
+
         title.textContent =
           "🔗 Promotion Link";
+
 
         linkBox.appendChild(title);
 
@@ -3882,11 +3898,13 @@ async function(){
         const row =
           document.createElement("div");
 
+
         row.className="copy-row";
 
 
         const input =
           document.createElement("input");
+
 
         input.type="text";
 
@@ -3898,8 +3916,10 @@ async function(){
         const copyButton =
           document.createElement("button");
 
+
         copyButton.className =
           "btn purple";
+
 
         copyButton.textContent =
           "📋 Copy Link";
@@ -3926,12 +3946,14 @@ async function(){
         const noLink =
           document.createElement("p");
 
+
         noLink.className="small";
 
         noLink.style.marginTop="10px";
 
         noLink.textContent =
           "No promotion link was saved for this order.";
+
 
         div.appendChild(noLink);
 
@@ -3941,10 +3963,13 @@ async function(){
       const proofTitle =
         document.createElement("h4");
 
+
       proofTitle.style.marginTop="15px";
+
 
       proofTitle.textContent =
         "🖼️ Payment Proof";
+
 
       div.appendChild(proofTitle);
 
@@ -4172,11 +4197,13 @@ async function(){
       list.innerHTML =
         "<p class='small'>No withdrawals.</p>";
 
+
       document
       .getElementById(
         "pendingWithdrawals"
       )
       .textContent="0";
+
 
       return;
 
@@ -4477,10 +4504,6 @@ async function(
 
   }catch(error){
 
-    /*
-      Fallback for some mobile browsers.
-    */
-
     const temp =
       document.createElement("textarea");
 
@@ -4617,4 +4640,4 @@ function safeAttribute(value){
 </script>
 
 </body>
-</html>
+      </html>
