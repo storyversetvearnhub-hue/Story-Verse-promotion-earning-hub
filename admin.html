@@ -86,7 +86,7 @@ header{
     margin-bottom:18px;
 }
 
-input{
+input,select,textarea{
     width:100%;
     padding:13px;
     margin:7px 0;
@@ -95,8 +95,19 @@ input{
     outline:none;
 }
 
-input:focus{
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
     border-color:#2575fc;
+}
+
+button{
+    cursor:pointer;
 }
 
 .primary-btn{
@@ -107,7 +118,6 @@ input:focus{
     background:#2575fc;
     color:#fff;
     font-weight:bold;
-    cursor:pointer;
     margin-top:10px;
 }
 
@@ -162,12 +172,38 @@ input:focus{
     color:#2575fc;
 }
 
+.nav{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.nav button{
+    border:none;
+    padding:13px;
+    border-radius:9px;
+    background:#fff;
+    font-weight:bold;
+    box-shadow:0 3px 10px rgba(0,0,0,.06);
+}
+
+.nav button.active{
+    background:#2575fc;
+    color:#fff;
+}
+
 .section{
+    display:none;
     background:#fff;
     padding:18px;
     border-radius:14px;
     margin-bottom:20px;
     box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.section.active{
+    display:block;
 }
 
 .section-title{
@@ -184,11 +220,21 @@ input:focus{
     flex-wrap:wrap;
 }
 
+.refresh-btn{
+    border:none;
+    background:#198754;
+    color:#fff;
+    padding:10px 15px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
 .search-box{
     margin-bottom:15px;
 }
 
-.user-card{
+.user-card,
+.item-card{
     border:1px solid #e5e5e5;
     border-radius:12px;
     padding:15px;
@@ -196,7 +242,8 @@ input:focus{
     background:#fff;
 }
 
-.user-top{
+.user-top,
+.item-top{
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -216,11 +263,11 @@ input:focus{
     margin-top:4px;
 }
 
-.user-info{
+.user-info,
+.item-info{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
     gap:10px;
-    margin-top:10px;
 }
 
 .info{
@@ -246,21 +293,37 @@ input:focus{
     padding:10px 14px;
     border-radius:8px;
     font-weight:bold;
-    cursor:pointer;
 }
 
 .delete-btn:disabled{
     opacity:.6;
 }
 
-.refresh-btn{
+.green-btn{
     border:none;
     background:#198754;
     color:#fff;
-    padding:10px 15px;
+    padding:10px 14px;
     border-radius:8px;
     font-weight:bold;
-    cursor:pointer;
+}
+
+.blue-btn{
+    border:none;
+    background:#2575fc;
+    color:#fff;
+    padding:10px 14px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.orange-btn{
+    border:none;
+    background:#fd7e14;
+    color:#fff;
+    padding:10px 14px;
+    border-radius:8px;
+    font-weight:bold;
 }
 
 .loading{
@@ -275,6 +338,42 @@ input:focus{
     color:#777;
 }
 
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:10px;
+}
+
+.form-box{
+    background:#f8f9fa;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.status{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.pending{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.approved{
+    background:#d1e7dd;
+    color:#0f5132;
+}
+
+.rejected{
+    background:#f8d7da;
+    color:#842029;
+}
+
 @media(max-width:600px){
 
     .header-content{
@@ -285,16 +384,16 @@ input:focus{
         font-size:17px;
     }
 
-    .logout-btn{
-        padding:8px 10px;
-    }
-
-    .user-top{
+    .user-top,
+    .item-top{
         flex-direction:column;
         align-items:flex-start;
     }
 
-    .delete-btn{
+    .delete-btn,
+    .green-btn,
+    .blue-btn,
+    .orange-btn{
         width:100%;
     }
 }
@@ -303,1084 +402,1594 @@ input:focus{
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header id="mainHeader" style="display:none;">
 
-    <div class="header-content">
+<div class="header-content">
 
-        <div>
-            <div class="logo">
-                StoryVerse Admin
-            </div>
+<div>
+<div class="logo">
+StoryVerse Admin
+</div>
 
-            <div
-                class="admin-email"
-                id="adminEmail"
-            >
-                Administrator
-            </div>
-        </div>
+<div class="admin-email" id="adminEmail">
+Administrator
+</div>
+</div>
 
-        <button
-            class="logout-btn"
-            id="logoutBtn"
-        >
-            Logout
-        </button>
+<button class="logout-btn" id="logoutBtn">
+Logout
+</button>
 
-    </div>
+</div>
 
 </header>
 
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 
 <div id="loginSection">
 
-    <div class="login-box">
+<div class="login-box">
 
-        <h2>StoryVerse Admin</h2>
+<h2>StoryVerse Admin</h2>
 
-        <p>
-            Administrator Login
-        </p>
+<p>Administrator Login</p>
 
-        <input
-            type="email"
-            id="loginEmail"
-            placeholder="Admin email"
-            autocomplete="email"
-        >
-
-        <input
-            type="password"
-            id="loginPassword"
-            placeholder="Admin password"
-            autocomplete="current-password"
-        >
-
-        <button
-            class="primary-btn"
-            id="loginBtn"
-        >
-            Login
-        </button>
-
-        <div
-            id="loginMessage"
-            class="message"
-        ></div>
-
-    </div>
-
-</div>
-
-
-<!-- ================= DASHBOARD ================= -->
-
-<div
-    class="dashboard"
-    id="dashboard"
+<input
+type="email"
+id="loginEmail"
+placeholder="Admin email"
+autocomplete="email"
 >
 
-    <div class="container">
+<input
+type="password"
+id="loginPassword"
+placeholder="Admin password"
+autocomplete="current-password"
+>
 
-        <!-- STATISTICS -->
+<button
+class="primary-btn"
+id="loginBtn"
+>
+Login
+</button>
 
-        <div class="cards">
+<div
+id="loginMessage"
+class="message"
+></div>
 
-            <div class="card">
-                <h3>Total Users</h3>
-                <strong id="totalUsers">0</strong>
-            </div>
-
-            <div class="card">
-                <h3>Users With Balance</h3>
-                <strong id="usersWithBalance">0</strong>
-            </div>
-
-            <div class="card">
-                <h3>Total Balance</h3>
-                <strong id="totalBalance">₦0</strong>
-            </div>
-
-        </div>
-
-
-        <!-- USERS -->
-
-        <div class="section">
-
-            <div class="top-row">
-
-                <div class="section-title">
-                    Registered Users
-                </div>
-
-                <button
-                    class="refresh-btn"
-                    id="refreshBtn"
-                >
-                    🔄 Refresh
-                </button>
-
-            </div>
-
-
-            <div class="search-box">
-
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search name, email, UID or referral ID..."
-                >
-
-            </div>
-
-
-            <div id="usersContainer">
-
-                <div class="loading">
-                    Loading users...
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </div>
 
 
-<!-- ================= FIREBASE ================= -->
+<!-- DASHBOARD -->
+
+<div
+class="dashboard"
+id="dashboard"
+>
+
+<div class="container">
+
+
+<!-- STATISTICS -->
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Users</h3>
+<strong id="totalUsers">0</strong>
+</div>
+
+<div class="card">
+<h3>Users With Balance</h3>
+<strong id="usersWithBalance">0</strong>
+</div>
+
+<div class="card">
+<h3>Total Balance</h3>
+<strong id="totalBalance">₦0</strong>
+</div>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="nav">
+
+<button class="nav-btn active" data-section="users">
+👥 Users
+</button>
+
+<button class="nav-btn" data-section="tasks">
+🎯 Tasks
+</button>
+
+<button class="nav-btn" data-section="promotions">
+📢 Promotions
+</button>
+
+<button class="nav-btn" data-section="withdrawals">
+💳 Withdrawals
+</button>
+
+<button class="nav-btn" data-section="deposits">
+💰 Deposits
+</button>
+
+<button class="nav-btn" data-section="proofs">
+🖼️ Proofs
+</button>
+
+</div>
+
+
+<!-- USERS -->
+
+<div
+class="section active"
+id="users"
+>
+
+<div class="top-row">
+
+<div class="section-title">
+Registered Users
+</div>
+
+<button
+class="refresh-btn"
+id="refreshUsers"
+>
+🔄 Refresh
+</button>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search name, email, UID or referral ID..."
+>
+
+</div>
+
+<div id="usersContainer">
+
+<div class="loading">
+Loading users...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TASKS -->
+
+<div
+class="section"
+id="tasks"
+>
+
+<div class="section-title">
+🎯 Daily Tasks
+</div>
+
+<div class="form-box">
+
+<div class="form-grid">
+
+<input
+id="taskTitle"
+placeholder="Task title"
+>
+
+<input
+id="taskReward"
+type="number"
+placeholder="Reward ₦"
+>
+
+</div>
+
+<textarea
+id="taskDescription"
+placeholder="Task description"
+></textarea>
+
+<input
+id="taskLink"
+placeholder="Task link"
+>
+
+<button
+class="primary-btn"
+id="addTaskBtn"
+>
+➕ Add Task
+</button>
+
+</div>
+
+<div id="tasksContainer">
+
+<div class="loading">
+Loading tasks...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PROMOTIONS -->
+
+<div
+class="section"
+id="promotions"
+>
+
+<div class="section-title">
+📢 Promotion Orders
+</div>
+
+<div id="promotionsContainer">
+
+<div class="loading">
+Loading promotions...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- WITHDRAWALS -->
+
+<div
+class="section"
+id="withdrawals"
+>
+
+<div class="section-title">
+💳 Withdrawal Requests
+</div>
+
+<div id="withdrawalsContainer">
+
+<div class="loading">
+Loading withdrawals...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- DEPOSITS -->
+
+<div
+class="section"
+id="deposits"
+>
+
+<div class="section-title">
+💰 Deposit Requests
+</div>
+
+<div id="depositsContainer">
+
+<div class="loading">
+Loading deposits...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PROOFS -->
+
+<div
+class="section"
+id="proofs"
+>
+
+<div class="section-title">
+🖼️ Task Image Proofs
+</div>
+
+<div id="proofsContainer">
+
+<div class="loading">
+Loading proofs...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 
 <script type="module">
 
 import {
-    initializeApp
+initializeApp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-
 import {
-    getAuth,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut
+getAuth,
+signInWithEmailAndPassword,
+onAuthStateChanged,
+signOut
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-
 import {
-    getFirestore,
-    collection,
-    getDocs
+getFirestore,
+collection,
+getDocs,
+addDoc,
+deleteDoc,
+doc,
+updateDoc,
+serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-
 import {
-    getFunctions,
-    httpsCallable
+getFunctions,
+httpsCallable
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-functions.js";
 
 
 /* =====================================================
-   YOUR FIREBASE CONFIG
+FIREBASE CONFIG
 ===================================================== */
 
 const firebaseConfig = {
 
-    apiKey:
-        "AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
+apiKey:
+"AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
 
-    authDomain:
-        "story-verse-earnig.firebaseapp.com",
+authDomain:
+"story-verse-earnig.firebaseapp.com",
 
-    databaseURL:
-        "https://story-verse-earnig-default-rtdb.firebaseio.com",
+databaseURL:
+"https://story-verse-earnig-default-rtdb.firebaseio.com",
 
-    projectId:
-        "story-verse-earnig",
+projectId:
+"story-verse-earnig",
 
-    storageBucket:
-        "story-verse-earnig.firebasestorage.app",
+storageBucket:
+"story-verse-earnig.firebasestorage.app",
 
-    messagingSenderId:
-        "650131396615",
+messagingSenderId:
+"650131396615",
 
-    appId:
-        "1:650131396615:web:ad655e6412de909d8db2a2",
+appId:
+"1:650131396615:web:ad655e6412de909d8db2a2",
 
-    measurementId:
-        "G-ZLQ6G156LX"
+measurementId:
+"G-ZLQ6G156LX"
+
 };
 
 
 /* =====================================================
-   INITIALIZE FIREBASE
+INITIALIZE
 ===================================================== */
 
 const app =
-    initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const auth =
-    getAuth(app);
+getAuth(app);
 
 const db =
-    getFirestore(app);
+getFirestore(app);
 
 const functions =
-    getFunctions(app);
+getFunctions(app);
 
 
 /* =====================================================
-   ELEMENTS
+ELEMENTS
 ===================================================== */
 
 const loginSection =
-    document.getElementById("loginSection");
+document.getElementById("loginSection");
 
 const dashboard =
-    document.getElementById("dashboard");
+document.getElementById("dashboard");
 
 const mainHeader =
-    document.getElementById("mainHeader");
+document.getElementById("mainHeader");
 
 const loginBtn =
-    document.getElementById("loginBtn");
+document.getElementById("loginBtn");
 
 const logoutBtn =
-    document.getElementById("logoutBtn");
-
-const refreshBtn =
-    document.getElementById("refreshBtn");
+document.getElementById("logoutBtn");
 
 const loginMessage =
-    document.getElementById("loginMessage");
+document.getElementById("loginMessage");
 
 const usersContainer =
-    document.getElementById("usersContainer");
+document.getElementById("usersContainer");
 
 const searchInput =
-    document.getElementById("searchInput");
+document.getElementById("searchInput");
 
 const totalUsers =
-    document.getElementById("totalUsers");
+document.getElementById("totalUsers");
 
 const usersWithBalance =
-    document.getElementById("usersWithBalance");
+document.getElementById("usersWithBalance");
 
 const totalBalance =
-    document.getElementById("totalBalance");
+document.getElementById("totalBalance");
 
 const adminEmail =
-    document.getElementById("adminEmail");
-
+document.getElementById("adminEmail");
 
 let allUsers = [];
 
 
 /* =====================================================
-   MESSAGE
+NAVIGATION
 ===================================================== */
 
-function showMessage(
-    element,
-    text,
-    type
-){
+document
+.querySelectorAll(".nav-btn")
+.forEach(button => {
 
-    element.textContent = text;
+button.addEventListener(
+"click",
+() => {
 
-    element.className =
-        "message " + type;
+document
+.querySelectorAll(".nav-btn")
+.forEach(btn =>
+btn.classList.remove("active")
+);
 
-    element.style.display =
-        "block";
+document
+.querySelectorAll(".section")
+.forEach(section =>
+section.classList.remove("active")
+);
+
+button.classList.add("active");
+
+const section =
+document.getElementById(
+button.dataset.section
+);
+
+if(section){
+section.classList.add("active");
 }
+
+if(button.dataset.section === "tasks"){
+loadTasks();
+}
+
+if(button.dataset.section === "promotions"){
+loadCollection(
+"promotions",
+"promotionsContainer"
+);
+}
+
+if(button.dataset.section === "withdrawals"){
+loadCollection(
+"withdrawals",
+"withdrawalsContainer"
+);
+}
+
+if(button.dataset.section === "deposits"){
+loadCollection(
+"depositRequests",
+"depositsContainer"
+);
+}
+
+if(button.dataset.section === "proofs"){
+loadCollection(
+"taskProofs",
+"proofsContainer"
+);
+}
+
+}
+);
+
+});
 
 
 /* =====================================================
-   LOGIN
+LOGIN
 ===================================================== */
 
 loginBtn.addEventListener(
-    "click",
-    async () => {
+"click",
+async () => {
 
-        const email =
-            document
-            .getElementById("loginEmail")
-            .value
-            .trim();
+const email =
+document
+.getElementById("loginEmail")
+.value
+.trim();
 
-        const password =
-            document
-            .getElementById("loginPassword")
-            .value;
+const password =
+document
+.getElementById("loginPassword")
+.value;
 
+if(!email || !password){
 
-        if(!email || !password){
-
-            showMessage(
-                loginMessage,
-                "Please enter your email and password.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        loginBtn.disabled =
-            true;
-
-        loginBtn.textContent =
-            "Logging in...";
-
-
-        try{
-
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-        }catch(error){
-
-            console.error(error);
-
-            showMessage(
-                loginMessage,
-                getFirebaseError(error),
-                "error"
-            );
-
-        }
-
-
-        loginBtn.disabled =
-            false;
-
-        loginBtn.textContent =
-            "Login";
-
-    }
+showMessage(
+loginMessage,
+"Please enter your email and password.",
+"error"
 );
+
+return;
+}
+
+loginBtn.disabled = true;
+
+loginBtn.textContent =
+"Logging in...";
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+loginMessage,
+getFirebaseError(error),
+"error"
+);
+
+}
+
+loginBtn.disabled = false;
+
+loginBtn.textContent =
+"Login";
+
+});
 
 
 /* =====================================================
-   AUTH STATE
+AUTH
 ===================================================== */
 
 onAuthStateChanged(
-    auth,
-    async (user) => {
+auth,
+async user => {
 
-        if(user){
+if(user){
 
-            try{
+try{
 
-                /*
-                 * Refresh token so Firebase receives
-                 * the latest admin custom claim.
-                 */
+await user.getIdToken(true);
 
-                await user.getIdToken(true);
+}catch(error){
 
-            }catch(error){
+console.error(error);
 
-                console.error(error);
+}
 
-            }
+loginSection.style.display =
+"none";
 
+dashboard.style.display =
+"block";
 
-            loginSection.style.display =
-                "none";
+mainHeader.style.display =
+"block";
 
-            dashboard.style.display =
-                "block";
+adminEmail.textContent =
+user.email ||
+"Administrator";
 
-            mainHeader.style.display =
-                "block";
+await loadUsers();
 
-            adminEmail.textContent =
-                user.email ||
-                "Administrator";
+}else{
 
+loginSection.style.display =
+"block";
 
-            await loadUsers();
+dashboard.style.display =
+"none";
 
-        }else{
+mainHeader.style.display =
+"none";
 
-            loginSection.style.display =
-                "block";
+}
 
-            dashboard.style.display =
-                "none";
-
-            mainHeader.style.display =
-                "none";
-
-        }
-
-    }
-);
+});
 
 
 /* =====================================================
-   LOAD USERS
+LOAD USERS
 ===================================================== */
 
 async function loadUsers(){
 
-    usersContainer.innerHTML = `
-        <div class="loading">
-            Loading users...
-        </div>
-    `;
+usersContainer.innerHTML = `
+<div class="loading">
+Loading users...
+</div>
+`;
 
+try{
 
-    try{
+const snapshot =
+await getDocs(
+collection(db,"users")
+);
 
-        const snapshot =
-            await getDocs(
-                collection(db, "users")
-            );
+allUsers = [];
 
+snapshot.forEach(
+docSnap => {
 
-        allUsers = [];
+allUsers.push({
 
+uid:docSnap.id,
 
-        snapshot.forEach(
-            (doc) => {
+...docSnap.data()
 
-                allUsers.push({
+});
 
-                    uid: doc.id,
+});
 
-                    ...doc.data()
+updateStatistics();
 
-                });
+renderUsers(
+getFilteredUsers()
+);
 
-            }
-        );
+}catch(error){
 
+console.error(error);
 
-        updateStatistics();
+usersContainer.innerHTML = `
+<div class="empty">
+❌ Unable to load users.
+<br><br>
+${escapeHTML(error.message)}
+</div>
+`;
 
-        renderUsers(
-            getFilteredUsers()
-        );
-
-
-    }catch(error){
-
-        console.error(
-            "Loading users error:",
-            error
-        );
-
-
-        usersContainer.innerHTML = `
-            <div class="empty">
-                ❌ Unable to load users.
-                <br><br>
-                ${escapeHTML(error.message)}
-            </div>
-        `;
-
-    }
+}
 
 }
 
 
 /* =====================================================
-   STATISTICS
+STATISTICS
 ===================================================== */
 
 function updateStatistics(){
 
-    totalUsers.textContent =
-        allUsers.length;
+totalUsers.textContent =
+allUsers.length;
 
+let total = 0;
 
-    let balanceTotal = 0;
+let withBalance = 0;
 
-    let usersBalance = 0;
+allUsers.forEach(user => {
 
+const balance =
+Number(
+user.balance ??
+user.earningBalance ??
+user.walletBalance ??
+0
+);
 
-    allUsers.forEach(
-        user => {
+if(balance > 0){
+withBalance++;
+}
 
-            const balance =
-                Number(
-                    user.balance ??
-                    user.earningBalance ??
-                    user.walletBalance ??
-                    0
-                );
+total += balance;
 
+});
 
-            if(balance > 0){
+usersWithBalance.textContent =
+withBalance;
 
-                usersBalance++;
-
-            }
-
-
-            balanceTotal +=
-                balance;
-
-        }
-    );
-
-
-    usersWithBalance.textContent =
-        usersBalance;
-
-
-    totalBalance.textContent =
-        formatNaira(balanceTotal);
+totalBalance.textContent =
+formatNaira(total);
 
 }
 
 
 /* =====================================================
-   RENDER USERS
+USERS
 ===================================================== */
 
 function renderUsers(users){
 
-    if(!users.length){
+if(!users.length){
 
-        usersContainer.innerHTML = `
-            <div class="empty">
-                No users found.
-            </div>
-        `;
+usersContainer.innerHTML = `
+<div class="empty">
+No users found.
+</div>
+`;
 
-        return;
-    }
+return;
+}
 
+usersContainer.innerHTML = "";
 
-    usersContainer.innerHTML =
-        "";
+users.forEach(user => {
 
+const card =
+document.createElement("div");
 
-    users.forEach(
-        user => {
+card.className =
+"user-card";
 
-            const card =
-                document.createElement(
-                    "div"
-                );
+const name =
+user.name ||
+user.fullName ||
+user.username ||
+"No name";
 
+const email =
+user.email ||
+"No email";
 
-            card.className =
-                "user-card";
+const balance =
+Number(
+user.balance ??
+user.earningBalance ??
+user.walletBalance ??
+0
+);
 
+const referralId =
+user.referralId ||
+user.referralCode ||
+user.referral ||
+"N/A";
 
-            const name =
-                user.name ||
-                user.fullName ||
-                user.username ||
-                "No name";
+const referrals =
+user.referrals ||
+user.referralCount ||
+0;
 
+card.innerHTML = `
 
-            const email =
-                user.email ||
-                "No email";
+<div class="user-top">
 
+<div>
 
-            const balance =
-                Number(
-                    user.balance ??
-                    user.earningBalance ??
-                    user.walletBalance ??
-                    0
-                );
+<div class="user-name">
+${escapeHTML(name)}
+</div>
 
+<div class="user-email">
+${escapeHTML(email)}
+</div>
 
-            const referralId =
-                user.referralId ||
-                user.referralCode ||
-                user.referral ||
-                "N/A";
+</div>
 
+<button
+class="delete-btn"
+data-uid="${escapeHTML(user.uid)}"
+data-name="${escapeHTML(name)}"
+>
+🗑️ Delete User
+</button>
 
-            const referrals =
-                user.referrals ||
-                user.referralCount ||
-                0;
+</div>
 
+<div class="user-info">
 
-            card.innerHTML = `
+<div class="info">
+<small>UID</small>
+<strong>
+${escapeHTML(user.uid)}
+</strong>
+</div>
 
-                <div class="user-top">
+<div class="info">
+<small>Balance</small>
+<strong>
+${formatNaira(balance)}
+</strong>
+</div>
 
-                    <div>
+<div class="info">
+<small>Referral ID</small>
+<strong>
+${escapeHTML(referralId)}
+</strong>
+</div>
 
-                        <div class="user-name">
-                            ${escapeHTML(name)}
-                        </div>
+<div class="info">
+<small>Referrals</small>
+<strong>
+${escapeHTML(referrals)}
+</strong>
+</div>
 
-                        <div class="user-email">
-                            ${escapeHTML(email)}
-                        </div>
+</div>
 
-                    </div>
+`;
 
+usersContainer.appendChild(card);
 
-                    <button
-                        class="delete-btn"
-                        data-uid="${escapeHTML(user.uid)}"
-                        data-name="${escapeHTML(name)}"
-                    >
-                        🗑️ Delete User
-                    </button>
+});
 
-                </div>
+document
+.querySelectorAll(".delete-btn")
+.forEach(button => {
 
+button.addEventListener(
+"click",
+() => {
 
-                <div class="user-info">
+deleteUserAccount(
+button.dataset.uid,
+button.dataset.name,
+button
+);
 
-                    <div class="info">
+});
 
-                        <small>User UID</small>
-
-                        <strong>
-                            ${escapeHTML(user.uid)}
-                        </strong>
-
-                    </div>
-
-
-                    <div class="info">
-
-                        <small>Balance</small>
-
-                        <strong>
-                            ${formatNaira(balance)}
-                        </strong>
-
-                    </div>
-
-
-                    <div class="info">
-
-                        <small>Referral ID</small>
-
-                        <strong>
-                            ${escapeHTML(referralId)}
-                        </strong>
-
-                    </div>
-
-
-                    <div class="info">
-
-                        <small>Referrals</small>
-
-                        <strong>
-                            ${escapeHTML(referrals)}
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            `;
-
-
-            usersContainer.appendChild(card);
-
-        }
-    );
-
-
-    document
-        .querySelectorAll(".delete-btn")
-        .forEach(
-            button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        deleteUserAccount(
-                            button.dataset.uid,
-                            button.dataset.name,
-                            button
-                        );
-
-                    }
-                );
-
-            }
-        );
+});
 
 }
 
 
 /* =====================================================
-   DELETE USER
+SECURE CLOUD DELETE
 ===================================================== */
 
 async function deleteUserAccount(
-    uid,
-    name,
-    button
+uid,
+name,
+button
 ){
 
-    if(!uid){
+if(!uid){
 
-        alert(
-            "❌ User UID was not found."
-        );
+alert(
+"❌ User UID was not found."
+);
 
-        return;
-    }
+return;
+}
 
+const confirmed =
+confirm(
 
-    const confirmed =
-        confirm(
+"⚠️ DELETE USER\n\n" +
 
-            "⚠️ DELETE USER\n\n" +
+"User: " +
+name +
+"\n\n" +
 
-            "User: " +
-            name +
-            "\n\n" +
+"This will permanently delete:\n" +
 
-            "This will permanently delete:\n" +
+"• Firebase Authentication account\n" +
+"• users/" + uid + "\n" +
+"• Firestore subcollections under the user\n\n" +
 
-            "• Firebase Authentication account\n" +
+"This action cannot be undone.\n\n" +
 
-            "• users/" +
-            uid +
-            "\n" +
+"Continue?"
 
-            "• Firestore subcollections under the user\n\n" +
+);
 
-            "This action cannot be undone.\n\n" +
+if(!confirmed){
+return;
+}
 
-            "Continue?"
+button.disabled = true;
 
-        );
+button.textContent =
+"Deleting...";
 
+try{
 
-    if(!confirmed){
+const deleteUser =
+httpsCallable(
+functions,
+"deleteUser"
+);
 
-        return;
-    }
+const result =
+await deleteUser({
+uid:uid
+});
 
+console.log(
+"Cloud Function result:",
+result.data
+);
 
-    button.disabled =
-        true;
+alert(
+"✅ User deleted successfully."
+);
 
-    button.textContent =
-        "Deleting...";
+allUsers =
+allUsers.filter(
+user =>
+user.uid !== uid
+);
 
+updateStatistics();
 
-    try{
+renderUsers(
+getFilteredUsers()
+);
 
-        /*
-         * Secure Cloud Function
-         */
+}catch(error){
 
-        const deleteUser =
-            httpsCallable(
-                functions,
-                "deleteUser"
-            );
+console.error(
+"Delete error:",
+error
+);
 
+let message =
+"Unable to delete user.";
 
-        const result =
-            await deleteUser({
+if(
+error.code ===
+"functions/permission-denied"
+){
 
-                uid: uid
+message =
+"❌ You are not authorized to delete users.";
 
-            });
+}
 
+else if(
+error.code ===
+"functions/unauthenticated"
+){
 
-        console.log(
-            "Delete result:",
-            result.data
-        );
+message =
+"❌ Please log in again.";
 
+}
 
-        alert(
-            "✅ User deleted successfully."
-        );
+else if(
+error.code ===
+"functions/failed-precondition"
+){
 
+message =
+"❌ You cannot delete the administrator account.";
 
-        /*
-         * Remove deleted user from
-         * the current admin list.
-         */
+}
 
-        allUsers =
-            allUsers.filter(
-                user =>
-                    user.uid !== uid
-            );
+else if(error.message){
 
+message =
+"❌ " + error.message;
 
-        updateStatistics();
+}
 
-        renderUsers(
-            getFilteredUsers()
-        );
+alert(message);
 
+button.disabled = false;
 
-    }catch(error){
+button.textContent =
+"🗑️ Delete User";
 
-        console.error(
-            "Delete user error:",
-            error
-        );
-
-
-        let message =
-            "Unable to delete user.";
-
-
-        if(
-            error.code ===
-            "functions/permission-denied"
-        ){
-
-            message =
-                "❌ You are not authorized to delete users.";
-
-        }
-
-        else if(
-            error.code ===
-            "functions/unauthenticated"
-        ){
-
-            message =
-                "❌ Your administrator session has expired. Please log in again.";
-
-        }
-
-        else if(
-            error.code ===
-            "functions/failed-precondition"
-        ){
-
-            message =
-                "❌ You cannot delete the administrator account you are currently using.";
-
-        }
-
-        else if(error.message){
-
-            message =
-                "❌ " +
-                error.message;
-
-        }
-
-
-        alert(message);
-
-
-        button.disabled =
-            false;
-
-        button.textContent =
-            "🗑️ Delete User";
-
-    }
+}
 
 }
 
 
 /* =====================================================
-   SEARCH
+SEARCH
 ===================================================== */
 
 searchInput.addEventListener(
-    "input",
-    () => {
+"input",
+() => {
 
-        renderUsers(
-            getFilteredUsers()
-        );
-
-    }
+renderUsers(
+getFilteredUsers()
 );
+
+});
 
 
 function getFilteredUsers(){
 
-    const search =
-        searchInput
-        .value
-        .trim()
-        .toLowerCase();
+const search =
+searchInput.value
+.trim()
+.toLowerCase();
 
+if(!search){
+return allUsers;
+}
 
-    if(!search){
+return allUsers.filter(
+user => {
 
-        return allUsers;
+const values = [
 
-    }
+user.uid,
+user.name,
+user.fullName,
+user.username,
+user.email,
+user.referralId,
+user.referralCode,
+user.referral
 
+];
 
-    return allUsers.filter(
-        user => {
+return values.some(
+value =>
+String(value || "")
+.toLowerCase()
+.includes(search)
+);
 
-            const values = [
-
-                user.uid,
-                user.name,
-                user.fullName,
-                user.username,
-                user.email,
-                user.referralId,
-                user.referralCode,
-                user.referral
-
-            ];
-
-
-            return values.some(
-                value =>
-
-                    String(value || "")
-                    .toLowerCase()
-                    .includes(search)
-
-            );
-
-        }
-    );
+});
 
 }
 
 
 /* =====================================================
-   REFRESH
+TASKS
 ===================================================== */
 
-refreshBtn.addEventListener(
-    "click",
-    async () => {
-
-        refreshBtn.disabled =
-            true;
-
-        refreshBtn.textContent =
-            "Refreshing...";
+document
+.getElementById("addTaskBtn")
+.addEventListener(
+"click",
+addTask
+);
 
 
-        await loadUsers();
+async function addTask(){
+
+const title =
+document
+.getElementById("taskTitle")
+.value
+.trim();
+
+const reward =
+Number(
+document
+.getElementById("taskReward")
+.value
+);
+
+const description =
+document
+.getElementById("taskDescription")
+.value
+.trim();
+
+const link =
+document
+.getElementById("taskLink")
+.value
+.trim();
+
+if(!title){
+
+alert(
+"Please enter a task title."
+);
+
+return;
+}
+
+try{
+
+await addDoc(
+collection(db,"tasks"),
+{
+
+title:title,
+
+description:description,
+
+reward:reward,
+
+link:link,
+
+status:"Active",
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+alert(
+"✅ Task added successfully."
+);
+
+document
+.getElementById("taskTitle")
+.value = "";
+
+document
+.getElementById("taskReward")
+.value = "";
+
+document
+.getElementById("taskDescription")
+.value = "";
+
+document
+.getElementById("taskLink")
+.value = "";
+
+loadTasks();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"❌ " +
+error.message
+);
+
+}
+
+}
 
 
-        refreshBtn.disabled =
-            false;
+/* =====================================================
+LOAD TASKS
+===================================================== */
 
-        refreshBtn.textContent =
-            "🔄 Refresh";
+async function loadTasks(){
 
-    }
+const container =
+document.getElementById(
+"tasksContainer"
+);
+
+container.innerHTML = `
+<div class="loading">
+Loading tasks...
+</div>
+`;
+
+try{
+
+const snapshot =
+await getDocs(
+collection(db,"tasks")
+);
+
+if(snapshot.empty){
+
+container.innerHTML = `
+<div class="empty">
+No tasks found.
+</div>
+`;
+
+return;
+}
+
+container.innerHTML = "";
+
+snapshot.forEach(
+docSnap => {
+
+const data =
+docSnap.data();
+
+const card =
+document.createElement("div");
+
+card.className =
+"item-card";
+
+card.innerHTML = `
+
+<div class="item-top">
+
+<strong>
+${escapeHTML(
+data.title || "Untitled Task"
+)}
+</strong>
+
+<button
+class="delete-btn"
+>
+🗑️ Delete
+</button>
+
+</div>
+
+<div class="item-info">
+
+<div class="info">
+<small>Reward</small>
+<strong>
+${formatNaira(data.reward || 0)}
+</strong>
+</div>
+
+<div class="info">
+<small>Status</small>
+<strong>
+${escapeHTML(data.status || "Active")}
+</strong>
+</div>
+
+</div>
+
+<p style="margin-top:10px;">
+${escapeHTML(
+data.description || ""
+)}
+</p>
+
+`;
+
+card
+.querySelector(".delete-btn")
+.addEventListener(
+"click",
+async () => {
+
+if(!confirm(
+"Delete this task?"
+)){
+return;
+}
+
+try{
+
+await deleteDoc(
+doc(
+db,
+"tasks",
+docSnap.id
+)
+);
+
+loadTasks();
+
+}catch(error){
+
+alert(
+"❌ " +
+error.message
+);
+
+}
+
+});
+
+container.appendChild(card);
+
+});
+
+}catch(error){
+
+console.error(error);
+
+container.innerHTML = `
+<div class="empty">
+❌ ${escapeHTML(error.message)}
+</div>
+`;
+
+}
+
+}
+
+
+/* =====================================================
+GENERIC COLLECTION LOADER
+===================================================== */
+
+async function loadCollection(
+collectionName,
+containerId
+){
+
+const container =
+document.getElementById(
+containerId
+);
+
+container.innerHTML = `
+<div class="loading">
+Loading...
+</div>
+`;
+
+try{
+
+const snapshot =
+await getDocs(
+collection(db,collectionName)
+);
+
+if(snapshot.empty){
+
+container.innerHTML = `
+<div class="empty">
+No records found.
+</div>
+`;
+
+return;
+}
+
+container.innerHTML = "";
+
+snapshot.forEach(
+docSnap => {
+
+const data =
+docSnap.data();
+
+const card =
+document.createElement("div");
+
+card.className =
+"item-card";
+
+const userId =
+data.uid ||
+data.userId ||
+data.userUID ||
+"N/A";
+
+const status =
+data.status ||
+"Pending";
+
+card.innerHTML = `
+
+<div class="item-top">
+
+<strong>
+${escapeHTML(
+data.title ||
+data.name ||
+data.email ||
+collectionName
+)}
+</strong>
+
+<span class="status ${getStatusClass(status)}">
+${escapeHTML(status)}
+</span>
+
+</div>
+
+<div class="item-info">
+
+<div class="info">
+<small>User ID</small>
+<strong>
+${escapeHTML(userId)}
+</strong>
+</div>
+
+<div class="info">
+<small>Amount</small>
+<strong>
+${formatNaira(
+data.amount || 0
+)}
+</strong>
+</div>
+
+<div class="info">
+<small>Email</small>
+<strong>
+${escapeHTML(
+data.email || "N/A"
+)}
+</strong>
+</div>
+
+</div>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}catch(error){
+
+console.error(error);
+
+container.innerHTML = `
+<div class="empty">
+❌ ${escapeHTML(error.message)}
+</div>
+`;
+
+}
+
+}
+
+
+/* =====================================================
+STATUS CLASS
+===================================================== */
+
+function getStatusClass(status){
+
+const value =
+String(status || "")
+.toLowerCase();
+
+if(value === "approved" ||
+value === "completed" ||
+value === "success"){
+
+return "approved";
+
+}
+
+if(value === "rejected" ||
+value === "failed"){
+
+return "rejected";
+
+}
+
+return "pending";
+
+}
+
+
+/* =====================================================
+REFRESH USERS
+===================================================== */
+
+document
+.getElementById("refreshUsers")
+.addEventListener(
+"click",
+loadUsers
 );
 
 
 /* =====================================================
-   LOGOUT
+LOGOUT
 ===================================================== */
 
 logoutBtn.addEventListener(
-    "click",
-    async () => {
+"click",
+async () => {
 
-        try{
+try{
 
-            await signOut(auth);
+await signOut(auth);
 
-        }catch(error){
+}catch(error){
 
-            console.error(error);
+console.error(error);
 
-        }
+}
 
-    }
-);
+});
 
 
 /* =====================================================
-   NAIRA FORMAT
+HELPERS
 ===================================================== */
 
 function formatNaira(amount){
 
-    return "₦" +
-        Number(amount || 0)
-        .toLocaleString(
-            "en-NG",
-            {
-                minimumFractionDigits:0,
-                maximumFractionDigits:2
-            }
-        );
+return "₦" +
+Number(amount || 0)
+.toLocaleString(
+"en-NG",
+{
+minimumFractionDigits:0,
+maximumFractionDigits:2
+}
+);
 
 }
 
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
 
 function escapeHTML(value){
 
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
 
-/* =====================================================
-   FIREBASE LOGIN ERRORS
-===================================================== */
+function showMessage(
+element,
+text,
+type
+){
+
+element.textContent =
+text;
+
+element.className =
+"message " + type;
+
+element.style.display =
+"block";
+
+}
+
 
 function getFirebaseError(error){
 
-    switch(error.code){
+switch(error.code){
 
-        case "auth/invalid-credential":
-            return "❌ Incorrect email or password.";
+case "auth/invalid-credential":
+return "❌ Incorrect email or password.";
 
-        case "auth/invalid-email":
-            return "❌ Invalid email address.";
+case "auth/invalid-email":
+return "❌ Invalid email address.";
 
-        case "auth/user-disabled":
-            return "❌ This account has been disabled.";
+case "auth/user-disabled":
+return "❌ This account has been disabled.";
 
-        case "auth/too-many-requests":
-            return "❌ Too many login attempts. Try again later.";
+case "auth/too-many-requests":
+return "❌ Too many login attempts.";
 
-        default:
+default:
+return "❌ " +
+(
+error.message ||
+"Login failed."
+);
 
-            return "❌ " +
-                (
-                    error.message ||
-                    "Login failed."
-                );
-
-    }
+}
 
 }
 
 </script>
 
 </body>
-  </html>
+    </html>
