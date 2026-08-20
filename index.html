@@ -102,11 +102,25 @@ opacity:.6;
 cursor:not-allowed;
 }
 
-.green{background:#16a34a}
-.red{background:#dc2626}
-.gray{background:#4b5563}
-.whatsapp{background:#25D366}
-.orange{background:#ea580c}
+.green{
+background:#16a34a;
+}
+
+.red{
+background:#dc2626;
+}
+
+.gray{
+background:#4b5563;
+}
+
+.whatsapp{
+background:#25D366;
+}
+
+.orange{
+background:#ea580c;
+}
 
 .msg{
 display:none;
@@ -129,6 +143,41 @@ color:#991b1b;
 
 #app{
 display:none;
+}
+
+#disabledScreen{
+display:none;
+min-height:100vh;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:linear-gradient(135deg,#111827,#7f1d1d);
+}
+
+.disabledBox{
+width:100%;
+max-width:450px;
+background:white;
+padding:30px 22px;
+border-radius:18px;
+box-shadow:0 10px 35px rgba(0,0,0,.3);
+text-align:center;
+}
+
+.disabledIcon{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.disabledBox h1{
+color:#dc2626;
+margin-bottom:12px;
+}
+
+.disabledBox p{
+color:#555;
+line-height:1.6;
+margin-bottom:15px;
 }
 
 header{
@@ -357,7 +406,9 @@ margin:-20px -20px 20px -20px;
 <body>
 
 
-<!-- ================= AUTH ================= -->
+<!-- =====================================================
+     AUTH SCREEN
+===================================================== -->
 
 <div id="authScreen">
 
@@ -398,49 +449,128 @@ placeholder="Enter referral code (optional)">
 If someone referred you, enter their referral code above.
 </p>
 
-<button class="btn" onclick="registerUser()">
+<button
+class="btn"
+onclick="registerUser()">
 📝 Create Account
 </button>
 
-<button class="btn green" onclick="loginUser()">
+<button
+class="btn green"
+onclick="loginUser()">
 🔐 Login
 </button>
 
-<button class="btn gray" onclick="forgotPassword()">
+<button
+class="btn gray"
+onclick="forgotPassword()">
 🔑 Forgot Password
 </button>
 
-<button class="btn whatsapp" onclick="contactSupport()">
+<button
+class="btn whatsapp"
+onclick="contactSupport()">
 💬 Customer Service
 </button>
 
-<div id="authMessage" class="msg"></div>
+<div
+id="authMessage"
+class="msg">
+</div>
 
 </div>
 </div>
 
 
-<!-- ================= APP ================= -->
+<!-- =====================================================
+     DISABLED ACCOUNT SCREEN
+===================================================== -->
+
+<div id="disabledScreen">
+
+<div class="disabledBox">
+
+<div class="disabledIcon">
+🚫
+</div>
+
+<h1>
+Account Disabled
+</h1>
+
+<p>
+Your StoryVerse account has been temporarily disabled by the administrator.
+</p>
+
+<p>
+You cannot access the StoryVerse platform while your account is disabled.
+</p>
+
+<p class="small">
+If you believe this was done by mistake, please contact customer service.
+</p>
+
+<button
+class="btn whatsapp"
+onclick="contactSupport()">
+💬 Contact Customer Service
+</button>
+
+<button
+class="btn gray"
+onclick="returnToLogin()">
+↩️ Return to Login
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN APP
+===================================================== -->
 
 <div id="app">
 
 <header>
 
-<h1>🚀 StoryVerse Promotion & Earning Hub</h1>
+<h1>
+🚀 StoryVerse Promotion & Earning Hub
+</h1>
 
-<p>Promote • Earn • Grow</p>
+<p>
+Promote • Earn • Grow
+</p>
 
 </header>
 
 
 <nav>
 
-<button onclick="showSection('home')">🏠 Home</button>
-<button onclick="showSection('promotion')">📢 Promote</button>
-<button onclick="showSection('earning')">💰 Earn</button>
-<button onclick="showSection('withdraw')">💸 Withdraw</button>
-<button onclick="showSection('account')">👤 Account</button>
-<button onclick="showSection('support')">📞 Support</button>
+<button onclick="showSection('home')">
+🏠 Home
+</button>
+
+<button onclick="showSection('promotion')">
+📢 Promote
+</button>
+
+<button onclick="showSection('earning')">
+💰 Earn
+</button>
+
+<button onclick="showSection('withdraw')">
+💸 Withdraw
+</button>
+
+<button onclick="showSection('account')">
+👤 Account
+</button>
+
+<button onclick="showSection('support')">
+📞 Support
+</button>
 
 </nav>
 
@@ -448,13 +578,19 @@ If someone referred you, enter their referral code above.
 <div class="container">
 
 
-<!-- ================= HOME ================= -->
+<!-- =====================================================
+     HOME
+===================================================== -->
 
-<section id="home" class="section active">
+<section
+id="home"
+class="section active">
 
 <div class="card">
 
-<h2>👋 Welcome to StoryVerse</h2>
+<h2>
+👋 Welcome to StoryVerse
+</h2>
 
 <p>
 Welcome to StoryVerse Promotion & Earning Hub.
@@ -472,7 +608,9 @@ submit proof and earn approved rewards.
 
 <div class="balanceBox">
 
-<p>💰 Your Balance</p>
+<p>
+💰 Your Balance
+</p>
 
 <div class="balance">
 ₦<span id="balance">0</span>
@@ -483,14 +621,18 @@ submit proof and earn approved rewards.
 
 <div class="card">
 
-<h2>📢 Promotion Hub</h2>
+<h2>
+📢 Promotion Hub
+</h2>
 
 <p>
 Promote WhatsApp, TikTok, YouTube, Telegram,
 Facebook, websites, referral links and apps.
 </p>
 
-<button class="btn" onclick="showSection('promotion')">
+<button
+class="btn"
+onclick="showSection('promotion')">
 📢 Promote Now
 </button>
 
@@ -499,13 +641,17 @@ Facebook, websites, referral links and apps.
 
 <div class="card">
 
-<h2>💰 Earning Hub</h2>
+<h2>
+💰 Earning Hub
+</h2>
 
 <p>
 Complete available tasks and submit image proof.
 </p>
 
-<button class="btn green" onclick="showSection('earning')">
+<button
+class="btn green"
+onclick="showSection('earning')">
 📋 View Tasks
 </button>
 
@@ -514,7 +660,9 @@ Complete available tasks and submit image proof.
 
 <div class="card">
 
-<h2>👥 Referral Bonus</h2>
+<h2>
+👥 Referral Bonus
+</h2>
 
 <p>
 Refer a new member and earn
@@ -523,29 +671,42 @@ Refer a new member and earn
 
 <div class="referralBox">
 
-<p>Your Referral Code:</p>
+<p>
+Your Referral Code:
+</p>
 
-<div id="homeReferralCode" class="referralCode">
+<div
+id="homeReferralCode"
+class="referralCode">
 Loading...
 </div>
 
-<button class="btn green" onclick="copyReferral()">
+<button
+class="btn green"
+onclick="copyReferral()">
 📋 Copy Referral Link
 </button>
 
 </div>
+
 </div>
 
 </section>
 
 
-<!-- ================= PROMOTION ================= -->
+<!-- =====================================================
+     PROMOTION
+===================================================== -->
 
-<section id="promotion" class="section">
+<section
+id="promotion"
+class="section">
 
 <div class="card">
 
-<h2>📢 Promote Your Platform</h2>
+<h2>
+📢 Promote Your Platform
+</h2>
 
 <select id="promotionType">
 
@@ -566,43 +727,95 @@ type="url"
 id="promotionLink"
 placeholder="Paste your promotion link">
 
+
 <select id="promotionPackage">
 
-<option value="500">₦500 = 30 Followers</option>
-<option value="1000">₦1,000 = 80 Followers</option>
-<option value="1500">₦1,500 = 120 Followers</option>
-<option value="2000">₦2,000 = 180 Followers</option>
-<option value="2500">₦2,500 = 250 Followers</option>
-<option value="3000">₦3,000 = 320 Followers</option>
-<option value="4000">₦4,000 = 450 Followers</option>
-<option value="5000">₦5,000 = 600 Followers</option>
-<option value="7500">₦7,500 = 900 Followers</option>
-<option value="10000">₦10,000 = 1,300 Followers</option>
-<option value="15000">₦15,000 = 2,000 Followers</option>
-<option value="20000">₦20,000 = 3,000 Followers</option>
+<option value="500">
+₦500 = 30 Followers
+</option>
+
+<option value="1000">
+₦1,000 = 80 Followers
+</option>
+
+<option value="1500">
+₦1,500 = 120 Followers
+</option>
+
+<option value="2000">
+₦2,000 = 180 Followers
+</option>
+
+<option value="2500">
+₦2,500 = 250 Followers
+</option>
+
+<option value="3000">
+₦3,000 = 320 Followers
+</option>
+
+<option value="4000">
+₦4,000 = 450 Followers
+</option>
+
+<option value="5000">
+₦5,000 = 600 Followers
+</option>
+
+<option value="7500">
+₦7,500 = 900 Followers
+</option>
+
+<option value="10000">
+₦10,000 = 1,300 Followers
+</option>
+
+<option value="15000">
+₦15,000 = 2,000 Followers
+</option>
+
+<option value="20000">
+₦20,000 = 3,000 Followers
+</option>
 
 </select>
 
 
 <div class="paymentBox">
 
-<strong>💳 Payment Account</strong><br>
+<strong>
+💳 Payment Account
+</strong>
+
+<br>
 
 Account Number:
-<strong>6587578800</strong><br>
+<strong>
+6587578800
+</strong>
+
+<br>
 
 Bank:
-<strong>OPay</strong><br>
+<strong>
+OPay
+</strong>
+
+<br>
 
 Account Name:
-<strong>ANSELEM CHUKWUEBUKA AGBOM</strong>
+<strong>
+ANSELEM CHUKWUEBUKA AGBOM
+</strong>
 
 </div>
 
 
 <div class="proofBox">
 
-<h3>📷 Payment Proof</h3>
+<h3>
+📷 Payment Proof
+</h3>
 
 <p class="small">
 After payment, upload your receipt screenshot.
@@ -636,21 +849,30 @@ onclick="submitPromotion()">
 
 </button>
 
-<div id="promotionMessage" class="msg"></div>
+<div
+id="promotionMessage"
+class="msg">
+</div>
 
 </div>
 
 
 <div class="card">
 
-<h2>📋 My Promotion Orders</h2>
+<h2>
+📋 My Promotion Orders
+</h2>
 
-<button class="btn gray" onclick="loadPromotionOrders()">
+<button
+class="btn gray"
+onclick="loadPromotionOrders()">
 🔄 Refresh Orders
 </button>
 
 <div id="promotionOrders">
-<p class="small">Loading...</p>
+<p class="small">
+Loading...
+</p>
 </div>
 
 </div>
@@ -658,13 +880,19 @@ onclick="submitPromotion()">
 </section>
 
 
-<!-- ================= EARNING ================= -->
+<!-- =====================================================
+     EARNING
+===================================================== -->
 
-<section id="earning" class="section">
+<section
+id="earning"
+class="section">
 
 <div class="balanceBox">
 
-<p>💰 Available Balance</p>
+<p>
+💰 Available Balance
+</p>
 
 <div class="balance">
 ₦<span id="earningBalance">0</span>
@@ -675,18 +903,24 @@ onclick="submitPromotion()">
 
 <div class="card">
 
-<h2>📋 Daily Tasks</h2>
+<h2>
+📋 Daily Tasks
+</h2>
 
 <p class="small">
 Tasks created by the administrator will appear here.
 </p>
 
-<button class="btn" onclick="loadTasks()">
+<button
+class="btn"
+onclick="loadTasks()">
 🔄 Refresh Tasks
 </button>
 
 <div id="taskList">
-<p class="small">Loading tasks...</p>
+<p class="small">
+Loading tasks...
+</p>
 </div>
 
 </div>
@@ -694,14 +928,20 @@ Tasks created by the administrator will appear here.
 
 <div class="card">
 
-<h2>📝 My Task Proofs</h2>
+<h2>
+📝 My Task Proofs
+</h2>
 
-<button class="btn gray" onclick="loadSubmissions()">
+<button
+class="btn gray"
+onclick="loadSubmissions()">
 🔄 Refresh Proofs
 </button>
 
 <div id="submissionList">
-<p class="small">Loading...</p>
+<p class="small">
+Loading...
+</p>
 </div>
 
 </div>
@@ -709,25 +949,36 @@ Tasks created by the administrator will appear here.
 
 <div class="card">
 
-<h2>👥 My Referrals</h2>
+<h2>
+👥 My Referrals
+</h2>
 
 <div class="referralBox">
 
-<p>Your Referral Code:</p>
+<p>
+Your Referral Code:
+</p>
 
-<div id="referralId" class="referralCode">
+<div
+id="referralId"
+class="referralCode">
 Loading...
 </div>
 
 <p class="small">
-Referral bonus: <strong>₦200</strong>.
+Referral bonus:
+<strong>₦200</strong>.
 </p>
 
-<div id="referralLinkDisplay" class="referralLink">
+<div
+id="referralLinkDisplay"
+class="referralLink">
 Loading...
 </div>
 
-<button class="btn green" onclick="copyReferral()">
+<button
+class="btn green"
+onclick="copyReferral()">
 📋 Copy Referral Link
 </button>
 
@@ -736,19 +987,33 @@ Loading...
 
 <hr>
 
-<h3>Who Referred Me?</h3>
+<h3>
+Who Referred Me?
+</h3>
 
-<div id="myReferrer" class="task">
-<p class="small">Checking...</p>
+<div
+id="myReferrer"
+class="task">
+
+<p class="small">
+Checking...
+</p>
+
 </div>
 
 
 <hr>
 
-<h3>My Referral History</h3>
+<h3>
+My Referral History
+</h3>
 
 <div id="myReferralsList">
-<p class="small">Loading...</p>
+
+<p class="small">
+Loading...
+</p>
+
 </div>
 
 </div>
@@ -756,13 +1021,19 @@ Loading...
 </section>
 
 
-<!-- ================= WITHDRAW ================= -->
+<!-- =====================================================
+     WITHDRAW
+===================================================== -->
 
-<section id="withdraw" class="section">
+<section
+id="withdraw"
+class="section">
 
 <div class="card">
 
-<h2>💸 Withdrawal Request</h2>
+<h2>
+💸 Withdrawal Request
+</h2>
 
 <div class="infoBox">
 
@@ -803,25 +1074,36 @@ id="accountName"
 placeholder="Account Name">
 
 
-<button class="btn" onclick="submitWithdrawal()">
+<button
+class="btn"
+onclick="submitWithdrawal()">
 💸 Submit Withdrawal
 </button>
 
-<div id="withdrawMessage" class="msg"></div>
+<div
+id="withdrawMessage"
+class="msg">
+</div>
 
 </div>
 
 
 <div class="card">
 
-<h2>📜 My Withdrawals</h2>
+<h2>
+📜 My Withdrawals
+</h2>
 
-<button class="btn gray" onclick="loadWithdrawals()">
+<button
+class="btn gray"
+onclick="loadWithdrawals()">
 🔄 Refresh
 </button>
 
 <div id="withdrawalList">
-<p class="small">Loading...</p>
+<p class="small">
+Loading...
+</p>
 </div>
 
 </div>
@@ -829,49 +1111,83 @@ placeholder="Account Name">
 </section>
 
 
-<!-- ================= ACCOUNT ================= -->
+<!-- =====================================================
+     ACCOUNT
+===================================================== -->
 
-<section id="account" class="section">
+<section
+id="account"
+class="section">
 
 <div class="card">
 
-<h2>👤 My Account</h2>
+<h2>
+👤 My Account
+</h2>
 
-<p>Email:</p>
+<p>
+Email:
+</p>
+
 <strong id="userEmail"></strong>
 
 <br><br>
 
-<p>User ID:</p>
+<p>
+User ID:
+</p>
+
 <small id="userId"></small>
 
 <br><br>
 
-<p>My Referral Code:</p>
+<p>
+My Referral Code:
+</p>
+
 <strong id="accountReferral"></strong>
 
 <br><br>
 
-<p>Referred By:</p>
-<strong id="accountReferredBy">None</strong>
+<p>
+Referred By:
+</p>
+
+<strong id="accountReferredBy">
+None
+</strong>
 
 <br><br>
 
-<p>Referral Bonus:</p>
-<strong>₦200 per credited referral</strong>
+<p>
+Referral Bonus:
+</p>
+
+<strong>
+₦200 per credited referral
+</strong>
 
 <br><br>
 
-<p>Account Status:</p>
-<strong>✅ Logged In</strong>
+<p>
+Account Status:
+</p>
+
+<strong id="accountStatus">
+✅ Active
+</strong>
 
 <hr>
 
-<button class="btn" onclick="loadAllData()">
+<button
+class="btn"
+onclick="loadAllData()">
 🔄 Refresh Account
 </button>
 
-<button class="btn red" onclick="logoutUser()">
+<button
+class="btn red"
+onclick="logoutUser()">
 🚪 Logout
 </button>
 
@@ -880,19 +1196,29 @@ placeholder="Account Name">
 </section>
 
 
-<!-- ================= SUPPORT ================= -->
+<!-- =====================================================
+     SUPPORT
+===================================================== -->
 
-<section id="support" class="section">
+<section
+id="support"
+class="section">
 
 <div class="card">
 
-<h2>📞 Customer Service</h2>
+<h2>
+📞 Customer Service
+</h2>
 
-<p>Need help? Contact StoryVerse customer service.</p>
+<p>
+Need help? Contact StoryVerse customer service.
+</p>
 
 <br>
 
-<button class="btn whatsapp" onclick="contactSupport()">
+<button
+class="btn whatsapp"
+onclick="contactSupport()">
 💬 WhatsApp Customer Service
 </button>
 
@@ -911,12 +1237,18 @@ placeholder="Account Name">
 </div>
 
 
-<!-- ================= FIREBASE ================= -->
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 
 import {
 getAuth,
@@ -926,7 +1258,9 @@ sendPasswordResetEmail,
 signOut,
 onAuthStateChanged
 }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
 
 import {
 getFirestore,
@@ -939,51 +1273,80 @@ doc,
 query,
 where,
 limit,
-serverTimestamp
+serverTimestamp,
+onSnapshot
 }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
 
 const firebaseConfig={
 
-apiKey:"AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
+apiKey:
+"AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
 
-authDomain:"story-verse-earnig.firebaseapp.com",
+authDomain:
+"story-verse-earnig.firebaseapp.com",
 
 databaseURL:
 "https://story-verse-earnig-default-rtdb.firebaseio.com",
 
-projectId:"story-verse-earnig",
+projectId:
+"story-verse-earnig",
 
 storageBucket:
 "story-verse-earnig.firebasestorage.app",
 
-messagingSenderId:"650131396615",
+messagingSenderId:
+"650131396615",
 
 appId:
 "1:650131396615:web:ad655e6412de909d8db2a2",
 
-measurementId:"G-ZLQ6G156LX"
+measurementId:
+"G-ZLQ6G156LX"
 
 };
 
 
-const app=initializeApp(firebaseConfig);
+const app=
+initializeApp(firebaseConfig);
 
-const auth=getAuth(app);
+const auth=
+getAuth(app);
 
-const db=getFirestore(app);
+const db=
+getFirestore(app);
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
 
 const REFERRAL_BONUS=200;
 
-const SUPPORT_1="2347035349951";
+const SUPPORT_1=
+"2347035349951";
+
+let statusUnsubscribe=null;
 
 
-/* ================= MESSAGE ================= */
+/* =====================================================
+   MESSAGE
+===================================================== */
 
-function message(id,text,type="success"){
+function message(
+id,
+text,
+type="success"
+){
 
-const box=document.getElementById(id);
+const box=
+document.getElementById(id);
 
 if(!box)return;
 
@@ -991,20 +1354,230 @@ box.style.display="block";
 
 box.className=
 type==="error"
-?"msg error"
-:"msg success";
+?
+"msg error"
+:
+"msg success";
 
 box.textContent=text;
 
 }
 
 
-/* ================= REFERRAL ================= */
+/* =====================================================
+   DISABLED ACCOUNT
+===================================================== */
+
+function showDisabledScreen(){
+
+document.getElementById(
+"authScreen"
+).style.display="none";
+
+document.getElementById(
+"app"
+).style.display="none";
+
+document.getElementById(
+"disabledScreen"
+).style.display="flex";
+
+}
+
+
+function hideDisabledScreen(){
+
+document.getElementById(
+"disabledScreen"
+).style.display="none";
+
+}
+
+
+window.returnToLogin=function(){
+
+if(statusUnsubscribe){
+
+statusUnsubscribe();
+
+statusUnsubscribe=null;
+
+}
+
+signOut(auth).finally(()=>{
+
+hideDisabledScreen();
+
+document.getElementById(
+"app"
+).style.display="none";
+
+document.getElementById(
+"authScreen"
+).style.display="flex";
+
+});
+
+};
+
+
+/* =====================================================
+   CHECK USER STATUS
+===================================================== */
+
+async function checkUserStatus(){
+
+const user=
+auth.currentUser;
+
+if(!user)return false;
+
+
+try{
+
+const userRef=
+doc(
+db,
+"users",
+user.uid
+);
+
+const snap=
+await getDoc(userRef);
+
+
+if(!snap.exists()){
+
+return true;
+
+}
+
+
+const data=
+snap.data();
+
+
+if(data.disabled===true){
+
+showDisabledScreen();
+
+await signOut(auth);
+
+return false;
+
+}
+
+
+return true;
+
+}
+
+catch(error){
+
+console.error(
+"STATUS CHECK ERROR:",
+error
+);
+
+return true;
+
+}
+
+
+/* =====================================================
+   LIVE USER STATUS
+===================================================== */
+
+function watchUserStatus(user){
+
+if(statusUnsubscribe){
+
+statusUnsubscribe();
+
+statusUnsubscribe=null;
+
+}
+
+
+const userRef=
+doc(
+db,
+"users",
+user.uid
+);
+
+
+statusUnsubscribe=
+onSnapshot(
+userRef,
+async snap=>{
+
+if(!snap.exists())return;
+
+const data=
+snap.data();
+
+
+if(data.disabled===true){
+
+showDisabledScreen();
+
+try{
+
+await signOut(auth);
+
+}
+catch(error){
+
+console.error(error);
+
+}
+
+return;
+
+}
+
+
+hideDisabledScreen();
+
+
+const status=
+document.getElementById(
+"accountStatus"
+);
+
+if(status){
+
+status.textContent=
+"✅ Active";
+
+}
+
+},
+error=>{
+
+console.error(
+"LIVE STATUS ERROR:",
+error
+);
+
+}
+);
+
+}
+
+
+/* =====================================================
+   REFERRAL
+===================================================== */
 
 function makeReferralCode(uid){
 
 return "SV"+
-uid.substring(0,8).toUpperCase();
+uid.substring(
+0,
+8
+).toUpperCase();
 
 }
 
@@ -1017,13 +1590,18 @@ window.location.search
 );
 
 return(
-params.get("ref")||""
-).trim().toUpperCase();
+params.get("ref")||
+""
+)
+.trim()
+.toUpperCase();
 
 }
 
 
-const urlReferral=getUrlReferral();
+const urlReferral=
+getUrlReferral();
+
 
 if(urlReferral){
 
@@ -1032,15 +1610,22 @@ document.getElementById(
 "referralCodeInput"
 );
 
-if(input)
-input.value=urlReferral;
+if(input){
+
+input.value=
+urlReferral;
+
+}
 
 }
 
 
-/* ================= REGISTER ================= */
+/* =====================================================
+   REGISTER
+===================================================== */
 
-window.registerUser=async function(){
+window.registerUser=
+async function(){
 
 const email=
 document.getElementById(
@@ -1055,7 +1640,9 @@ document.getElementById(
 const enteredReferral=
 document.getElementById(
 "referralCodeInput"
-).value.trim().toUpperCase();
+).value
+.trim()
+.toUpperCase();
 
 
 if(!email||!password){
@@ -1100,7 +1687,8 @@ password
 );
 
 
-const uid=result.user.uid;
+const uid=
+result.user.uid;
 
 const myReferralCode=
 makeReferralCode(uid);
@@ -1114,7 +1702,8 @@ let referrerCode="";
 
 if(enteredReferral){
 
-const refQuery=query(
+const refQuery=
+query(
 collection(db,"users"),
 where(
 "referralCode",
@@ -1123,6 +1712,7 @@ enteredReferral
 ),
 limit(1)
 );
+
 
 const refSnap=
 await getDocs(refQuery);
@@ -1138,7 +1728,8 @@ refData.uid||
 refSnap.docs[0].id;
 
 referrerEmail=
-refData.email||"";
+refData.email||
+"";
 
 referrerCode=
 refData.referralCode||
@@ -1150,13 +1741,15 @@ enteredReferral;
 
 
 /*
-IMPORTANT:
-The document ID is now
-the Firebase Auth UID.
+Create user account.
 */
 
 await setDoc(
-doc(db,"users",uid),
+doc(
+db,
+"users",
+uid
+),
 {
 
 uid:uid,
@@ -1166,6 +1759,8 @@ email:email,
 balance:0,
 
 role:"user",
+
+disabled:false,
 
 referralCode:
 myReferralCode,
@@ -1185,6 +1780,10 @@ serverTimestamp()
 }
 );
 
+
+/*
+Create referral record.
+*/
 
 if(referrerUid){
 
@@ -1249,9 +1848,12 @@ error.message,
 };
 
 
-/* ================= LOGIN ================= */
+/* =====================================================
+   LOGIN
+===================================================== */
 
-window.loginUser=async function(){
+window.loginUser=
+async function(){
 
 const email=
 document.getElementById(
@@ -1306,10 +1908,13 @@ console.error(
 error
 );
 
-let text="Login failed.";
+let text=
+"Login failed.";
+
 
 if(
-error.code==="auth/invalid-credential"
+error.code===
+"auth/invalid-credential"
 ){
 
 text=
@@ -1318,7 +1923,8 @@ text=
 }
 
 else if(
-error.code==="auth/user-not-found"
+error.code===
+"auth/user-not-found"
 ){
 
 text=
@@ -1327,7 +1933,8 @@ text=
 }
 
 else if(
-error.code==="auth/wrong-password"
+error.code===
+"auth/wrong-password"
 ){
 
 text=
@@ -1336,7 +1943,8 @@ text=
 }
 
 else if(
-error.code==="auth/invalid-email"
+error.code===
+"auth/invalid-email"
 ){
 
 text=
@@ -1345,7 +1953,8 @@ text=
 }
 
 else if(
-error.code==="auth/too-many-requests"
+error.code===
+"auth/too-many-requests"
 ){
 
 text=
@@ -1361,6 +1970,7 @@ error.message;
 
 }
 
+
 message(
 "authMessage",
 text,
@@ -1372,9 +1982,12 @@ text,
 };
 
 
-/* ================= FORGOT ================= */
+/* =====================================================
+   FORGOT PASSWORD
+===================================================== */
 
-window.forgotPassword=async function(){
+window.forgotPassword=
+async function(){
 
 const email=
 document.getElementById(
@@ -1423,22 +2036,49 @@ error.message,
 };
 
 
-/* ================= LOGOUT ================= */
+/* =====================================================
+   LOGOUT
+===================================================== */
 
-window.logoutUser=async function(){
+window.logoutUser=
+async function(){
+
+if(statusUnsubscribe){
+
+statusUnsubscribe();
+
+statusUnsubscribe=null;
+
+}
 
 await signOut(auth);
 
 };
 
 
-/* ================= AUTH STATE ================= */
+/* =====================================================
+   AUTH STATE
+===================================================== */
 
 onAuthStateChanged(
 auth,
-async(user)=>{
+async user=>{
 
 if(user){
+
+const allowed=
+await checkUserStatus();
+
+
+if(!allowed){
+
+return;
+
+}
+
+
+hideDisabledScreen();
+
 
 document.getElementById(
 "authScreen"
@@ -1461,6 +2101,9 @@ document.getElementById(
 user.uid;
 
 
+watchUserStatus(user);
+
+
 try{
 
 await loadAllData();
@@ -1480,6 +2123,14 @@ error
 
 else{
 
+if(statusUnsubscribe){
+
+statusUnsubscribe();
+
+statusUnsubscribe=null;
+
+}
+
 document.getElementById(
 "authScreen"
 ).style.display="flex";
@@ -1494,32 +2145,45 @@ document.getElementById(
 );
 
 
-/* ================= NAV ================= */
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
-window.showSection=function(name){
+window.showSection=
+function(name){
 
 document
 .querySelectorAll(".section")
 .forEach(
-x=>x.classList.remove("active")
+x=>
+x.classList.remove("active")
 );
+
 
 const section=
 document.getElementById(name);
 
-if(section)
+
+if(section){
+
 section.classList.add("active");
+
+}
 
 };
 
 
-/* ================= USER DOCUMENT ================= */
+/* =====================================================
+   USER DOCUMENT
+===================================================== */
 
 async function getUserDocument(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return null;
+
 
 const ref=
 doc(
@@ -1528,20 +2192,29 @@ db,
 user.uid
 );
 
+
 const snap=
 await getDoc(ref);
 
+
 if(!snap.exists())
 return null;
+
 
 return snap.data();
 
 }
 
 
-/* ================= LOAD ALL ================= */
+/* =====================================================
+   LOAD ALL DATA
+===================================================== */
 
-window.loadAllData=async function(){
+window.loadAllData=
+async function(){
+
+if(!(await checkUserStatus()))
+return;
 
 await loadUserData();
 
@@ -1560,11 +2233,14 @@ await loadReferralData();
 };
 
 
-/* ================= LOAD USER ================= */
+/* =====================================================
+   LOAD USER DATA
+===================================================== */
 
 async function loadUserData(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -1580,8 +2256,13 @@ if(!data){
 const referralCode=
 makeReferralCode(user.uid);
 
+
 await setDoc(
-doc(db,"users",user.uid),
+doc(
+db,
+"users",
+user.uid
+),
 {
 
 uid:user.uid,
@@ -1592,7 +2273,10 @@ balance:0,
 
 role:"user",
 
-referralCode:referralCode,
+disabled:false,
+
+referralCode:
+referralCode,
 
 referredByUid:"",
 
@@ -1604,8 +2288,11 @@ createdAt:
 serverTimestamp()
 
 },
-{merge:true}
+{
+merge:true
+}
 );
+
 
 data=
 await getUserDocument();
@@ -1618,7 +2305,9 @@ if(!data)return;
 
 const referralCode=
 data.referralCode||
-makeReferralCode(user.uid);
+makeReferralCode(
+user.uid
+);
 
 
 document.getElementById(
@@ -1632,12 +2321,6 @@ document.getElementById(
 ).textContent=
 referralCode;
 
-
-/*
-FIXED:
-The old code was missing
-the dot before textContent.
-*/
 
 document.getElementById(
 "accountReferral"
@@ -1666,6 +2349,24 @@ document.getElementById(
 data.referredByCode||
 "None";
 
+
+const accountStatus=
+document.getElementById(
+"accountStatus"
+);
+
+
+if(accountStatus){
+
+accountStatus.textContent=
+data.disabled===true
+?
+"🚫 Disabled"
+:
+"✅ Active";
+
+}
+
 }
 
 catch(error){
@@ -1680,11 +2381,14 @@ error
 }
 
 
-/* ================= BALANCE ================= */
+/* =====================================================
+   BALANCE
+===================================================== */
 
 async function loadBalance(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -1728,12 +2432,6 @@ document.getElementById(
 ).textContent=
 formatted;
 
-
-console.log(
-"Balance:",
-balance
-);
-
 }
 
 catch(error){
@@ -1748,13 +2446,21 @@ error
 }
 
 
-/* ================= TASKS ================= */
+/* =====================================================
+   TASKS
+===================================================== */
 
-window.loadTasks=async function(){
+window.loadTasks=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
+
+
+if(!(await checkUserStatus()))
+return;
 
 
 const list=
@@ -1762,16 +2468,23 @@ document.getElementById(
 "taskList"
 );
 
+
 list.innerHTML=
 "<p class='small'>Loading tasks...</p>";
 
 
 try{
 
-const taskQuery=query(
+const taskQuery=
+query(
 collection(db,"tasks"),
-where("active","==",true)
+where(
+"active",
+"==",
+true
+)
 );
+
 
 const taskSnap=
 await getDocs(taskQuery);
@@ -1787,13 +2500,22 @@ return;
 }
 
 
-const submissionQuery=query(
+const submissionQuery=
+query(
 collection(db,"taskSubmissions"),
-where("uid","==",user.uid)
+where(
+"uid",
+"==",
+user.uid
+)
 );
 
+
 const submissionSnap=
-await getDocs(submissionQuery);
+await getDocs(
+submissionQuery
+);
+
 
 const completed=
 new Set();
@@ -1805,7 +2527,9 @@ d=>{
 const data=d.data();
 
 if(data.taskId)
-completed.add(data.taskId);
+completed.add(
+data.taskId
+);
 
 });
 
@@ -1816,15 +2540,22 @@ list.innerHTML="";
 taskSnap.forEach(
 taskDoc=>{
 
-const task=taskDoc.data();
+const task=
+taskDoc.data();
 
 const done=
-completed.has(taskDoc.id);
+completed.has(
+taskDoc.id
+);
+
 
 const div=
-document.createElement("div");
+document.createElement(
+"div"
+);
 
 div.className="task";
+
 
 const title=
 safe(
@@ -1832,14 +2563,18 @@ task.title||
 "Daily Task"
 );
 
+
 const description=
 safe(
 task.description||
 "Complete this task."
 );
 
+
 const reward=
-Number(task.reward||0);
+Number(
+task.reward||0
+);
 
 
 if(done){
@@ -1874,21 +2609,26 @@ div.innerHTML=`
 💰 ₦${reward.toLocaleString()}
 </div>
 
-<button class="btn"
+<button
+class="btn"
 onclick="openTask('${encodeURIComponent(task.link||"#")}')">
 🔗 Open Task
 </button>
 
-<button class="btn green"
+<button
+class="btn green"
 onclick="showProofForm('${taskDoc.id}')">
 🖼️ Submit Image Proof
 </button>
 
-<div id="proofArea_${taskDoc.id}"></div>
+<div
+id="proofArea_${taskDoc.id}">
+</div>
 
 `;
 
 }
+
 
 list.appendChild(div);
 
@@ -1911,12 +2651,16 @@ list.innerHTML=
 };
 
 
-/* ================= OPEN TASK ================= */
+/* =====================================================
+   OPEN TASK
+===================================================== */
 
-window.openTask=function(encoded){
+window.openTask=
+function(encoded){
 
 const link=
 decodeURIComponent(encoded);
+
 
 if(!link||link==="#"){
 
@@ -1928,6 +2672,7 @@ return;
 
 }
 
+
 window.open(
 link,
 "_blank"
@@ -1936,19 +2681,28 @@ link,
 };
 
 
-/* ================= PROOF FORM ================= */
+/* =====================================================
+   PROOF FORM
+===================================================== */
 
-window.showProofForm=async function(taskId){
+window.showProofForm=
+async function(taskId){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
+
+
+if(!(await checkUserStatus()))
+return;
 
 
 const area=
 document.getElementById(
 "proofArea_"+taskId
 );
+
 
 if(!area)return;
 
@@ -1957,7 +2711,11 @@ try{
 
 const taskSnap=
 await getDoc(
-doc(db,"tasks",taskId)
+doc(
+db,
+"tasks",
+taskId
+)
 );
 
 
@@ -1979,7 +2737,9 @@ area.innerHTML=`
 
 <div class="proofBox">
 
-<h3>🖼️ Submit Proof</h3>
+<h3>
+🖼️ Submit Proof
+</h3>
 
 <br>
 
@@ -2042,23 +2802,31 @@ area.innerHTML=
 };
 
 
-/* ================= PREVIEW ================= */
+/* =====================================================
+   PREVIEW PROOF
+===================================================== */
 
-window.previewProofImage=function(event,taskId){
+window.previewProofImage=
+function(event,taskId){
 
 const file=
 event.target.files[0];
+
 
 const preview=
 document.getElementById(
 "proofPreview_"+taskId
 );
 
+
 if(!file)return;
+
 
 if(!file.type.startsWith("image/")){
 
-alert("Please select an image.");
+alert(
+"Please select an image."
+);
 
 event.target.value="";
 
@@ -2066,24 +2834,31 @@ return;
 
 }
 
+
 const reader=
 new FileReader();
+
 
 reader.onload=
 e=>{
 
-preview.src=e.target.result;
+preview.src=
+e.target.result;
 
-preview.style.display="block";
+preview.style.display=
+"block";
 
 };
+
 
 reader.readAsDataURL(file);
 
 };
 
 
-/* ================= COMPRESS ================= */
+/* =====================================================
+   COMPRESS IMAGE
+===================================================== */
 
 function compressImage(file){
 
@@ -2093,20 +2868,24 @@ return new Promise(
 const reader=
 new FileReader();
 
+
 reader.onload=
 event=>{
 
 const img=
 new Image();
 
+
 img.onload=
 ()=>{
 
 const max=1200;
 
-let width=img.width;
+let width=
+img.width;
 
-let height=img.height;
+let height=
+img.height;
 
 
 if(width>max){
@@ -2134,15 +2913,23 @@ height=max;
 
 
 const canvas=
-document.createElement("canvas");
+document.createElement(
+"canvas"
+);
 
-canvas.width=width;
 
-canvas.height=height;
+canvas.width=
+width;
+
+canvas.height=
+height;
 
 
 const ctx=
-canvas.getContext("2d");
+canvas.getContext(
+"2d"
+);
+
 
 ctx.drawImage(
 img,
@@ -2162,24 +2949,34 @@ canvas.toDataURL(
 
 };
 
+
 img.onerror=
-()=>reject(
+()=>{
+reject(
 new Error(
 "Could not process image."
 )
 );
+};
+
 
 img.src=
 event.target.result;
 
 };
 
+
 reader.onerror=
-()=>reject(
+()=>{
+reject(
 new Error(
 "Could not read image."
 )
 );
+
+
+};
+
 
 reader.readAsDataURL(file);
 
@@ -2189,13 +2986,21 @@ reader.readAsDataURL(file);
 }
 
 
-/* ================= SUBMIT PROOF ================= */
+/* =====================================================
+   SUBMIT PROOF
+===================================================== */
 
-window.submitProof=async function(taskId){
+window.submitProof=
+async function(taskId){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
+
+
+if(!(await checkUserStatus()))
+return;
 
 
 const input=
@@ -2203,10 +3008,12 @@ document.getElementById(
 "proofImage_"+taskId
 );
 
+
 const text=
 document.getElementById(
 "proofText_"+taskId
 );
+
 
 const messageId=
 "proofMessage_"+taskId;
@@ -2229,7 +3036,11 @@ try{
 
 const taskSnap=
 await getDoc(
-doc(db,"tasks",taskId)
+doc(
+db,
+"tasks",
+taskId
+)
 );
 
 
@@ -2257,7 +3068,10 @@ input.files[0]
 
 
 await addDoc(
-collection(db,"taskSubmissions"),
+collection(
+db,
+"taskSubmissions"
+),
 {
 
 uid:user.uid,
@@ -2267,15 +3081,20 @@ email:user.email||"",
 taskId:taskId,
 
 taskTitle:
-task.title||"Task",
+task.title||
+"Task",
 
 reward:
-Number(task.reward||0),
+Number(
+task.reward||0
+),
 
-proofImage:image,
+proofImage:
+image,
 
 proofText:
-text?.value.trim()||"",
+text?.value.trim()||
+"",
 
 status:"Pending",
 
@@ -2321,11 +3140,15 @@ error.message,
 };
 
 
-/* ================= SUBMISSIONS ================= */
+/* =====================================================
+   SUBMISSIONS
+===================================================== */
 
-window.loadSubmissions=async function(){
+window.loadSubmissions=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -2338,10 +3161,19 @@ document.getElementById(
 
 try{
 
-const q=query(
-collection(db,"taskSubmissions"),
-where("uid","==",user.uid)
+const q=
+query(
+collection(
+db,
+"taskSubmissions"
+),
+where(
+"uid",
+"==",
+user.uid
+)
 );
+
 
 const snap=
 await getDocs(q);
@@ -2363,31 +3195,46 @@ list.innerHTML="";
 snap.forEach(
 d=>{
 
-const data=d.data();
+const data=
+d.data();
+
 
 const div=
-document.createElement("div");
+document.createElement(
+"div"
+);
+
 
 div.className="task";
+
 
 div.innerHTML=`
 
 <h3>
-${safe(data.taskTitle||"Task")}
+${safe(
+data.taskTitle||
+"Task"
+)}
 </h3>
 
 <p>
 Reward:
-₦${Number(data.reward||0).toLocaleString()}
+₦${Number(
+data.reward||0
+).toLocaleString()}
 </p>
 
 <br>
 
 <span class="status ${getStatusClass(data.status)}">
-${safe(data.status||"Pending")}
+${safe(
+data.status||
+"Pending"
+)}
 </span>
 
 `;
+
 
 list.appendChild(div);
 
@@ -2407,25 +3254,32 @@ list.innerHTML=
 };
 
 
-/* ================= PAYMENT PREVIEW ================= */
+/* =====================================================
+   PAYMENT PREVIEW
+===================================================== */
 
-window.previewPaymentProof=function(event){
+window.previewPaymentProof=
+function(event){
 
 const file=
 event.target.files[0];
+
 
 const preview=
 document.getElementById(
 "paymentProofPreview"
 );
 
+
 if(!file){
 
-preview.style.display="none";
+preview.style.display=
+"none";
 
 return;
 
 }
+
 
 if(!file.type.startsWith("image/")){
 
@@ -2439,30 +3293,43 @@ return;
 
 }
 
+
 const reader=
 new FileReader();
+
 
 reader.onload=
 e=>{
 
-preview.src=e.target.result;
+preview.src=
+e.target.result;
 
-preview.style.display="block";
+preview.style.display=
+"block";
 
 };
+
 
 reader.readAsDataURL(file);
 
 };
 
 
-/* ================= PROMOTION ================= */
+/* =====================================================
+   PROMOTION
+===================================================== */
 
-window.submitPromotion=async function(){
+window.submitPromotion=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
+
+
+if(!(await checkUserStatus()))
+return;
 
 
 const type=
@@ -2470,10 +3337,12 @@ document.getElementById(
 "promotionType"
 ).value;
 
+
 const link=
 document.getElementById(
 "promotionLink"
 ).value.trim();
+
 
 const amount=
 Number(
@@ -2482,15 +3351,18 @@ document.getElementById(
 ).value
 );
 
+
 const proof=
 document.getElementById(
 "paymentProofImage"
 );
 
+
 const note=
 document.getElementById(
 "paymentProofNote"
 ).value.trim();
+
 
 const button=
 document.getElementById(
@@ -2539,7 +3411,10 @@ proof.files[0]
 
 
 await addDoc(
-collection(db,"promotionOrders"),
+collection(
+db,
+"promotionOrders"
+),
 {
 
 uid:user.uid,
@@ -2577,17 +3452,21 @@ document.getElementById(
 "promotionLink"
 ).value="";
 
+
 document.getElementById(
 "paymentProofImage"
 ).value="";
+
 
 document.getElementById(
 "paymentProofNote"
 ).value="";
 
+
 document.getElementById(
 "paymentProofPreview"
-).style.display="none";
+).style.display=
+"none";
 
 
 await loadPromotionOrders();
@@ -2611,6 +3490,7 @@ error.message,
 "error"
 );
 
+
 button.disabled=false;
 
 button.textContent=
@@ -2621,11 +3501,15 @@ button.textContent=
 };
 
 
-/* ================= PROMOTION ORDERS ================= */
+/* =====================================================
+   PROMOTION ORDERS
+===================================================== */
 
-window.loadPromotionOrders=async function(){
+window.loadPromotionOrders=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -2638,10 +3522,19 @@ document.getElementById(
 
 try{
 
-const q=query(
-collection(db,"promotionOrders"),
-where("uid","==",user.uid)
+const q=
+query(
+collection(
+db,
+"promotionOrders"
+),
+where(
+"uid",
+"==",
+user.uid
+)
 );
+
 
 const snap=
 await getDocs(q);
@@ -2663,12 +3556,18 @@ list.innerHTML="";
 snap.forEach(
 d=>{
 
-const data=d.data();
+const data=
+d.data();
+
 
 const div=
-document.createElement("div");
+document.createElement(
+"div"
+);
+
 
 div.className="task";
+
 
 div.innerHTML=`
 
@@ -2690,33 +3589,44 @@ data.amount||0
 Promotion Link:
 </p>
 
-<p style="word-break:break-all;color:#2563eb">
+<p
+style="word-break:break-all;color:#2563eb">
 ${safe(
-data.promotionLink||""
+data.promotionLink||
+""
 )}
 </p>
 
 <br>
 
-<p>Payment:</p>
+<p>
+Payment:
+</p>
 
-<span class="status ${getStatusClass(data.paymentStatus)}">
+<span
+class="status ${getStatusClass(data.paymentStatus)}">
 ${safe(
-data.paymentStatus||"Pending"
+data.paymentStatus||
+"Pending"
 )}
 </span>
 
 <br><br>
 
-<p>Promotion:</p>
+<p>
+Promotion:
+</p>
 
-<span class="status ${getStatusClass(data.promotionStatus)}">
+<span
+class="status ${getStatusClass(data.promotionStatus)}">
 ${safe(
-data.promotionStatus||"Pending"
+data.promotionStatus||
+"Pending"
 )}
 </span>
 
 `;
+
 
 list.appendChild(div);
 
@@ -2736,11 +3646,16 @@ list.innerHTML=
 };
 
 
-/* ================= WITHDRAW ================= */
+/* =====================================================
+   WITHDRAWAL
+===================================================== */
 
-window.submitWithdrawal=async function(){
+window.submitWithdrawal=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
+
 
 if(!user){
 
@@ -2755,6 +3670,10 @@ return;
 }
 
 
+if(!(await checkUserStatus()))
+return;
+
+
 const amount=
 Number(
 document.getElementById(
@@ -2762,15 +3681,18 @@ document.getElementById(
 ).value
 );
 
+
 const bank=
 document.getElementById(
 "bankName"
 ).value.trim();
 
+
 const account=
 document.getElementById(
 "accountNumber"
 ).value.trim();
+
 
 const name=
 document.getElementById(
@@ -2819,18 +3741,13 @@ return;
 
 try{
 
-/*
- IMPORTANT:
- Find the user directly by
- Firebase Auth UID.
-*/
-
 const userRef=
 doc(
 db,
 "users",
 user.uid
 );
+
 
 const userSnap=
 await getDoc(userRef);
@@ -2853,6 +3770,17 @@ const userData=
 userSnap.data();
 
 
+if(userData.disabled===true){
+
+showDisabledScreen();
+
+await signOut(auth);
+
+return;
+
+}
+
+
 const balance=
 Number(
 userData.balance||0
@@ -2872,12 +3800,11 @@ return;
 }
 
 
-/*
-Create withdrawal request.
-*/
-
 await addDoc(
-collection(db,"withdrawals"),
+collection(
+db,
+"withdrawals"
+),
 {
 
 uid:user.uid,
@@ -2911,13 +3838,16 @@ document.getElementById(
 "withdrawAmount"
 ).value="";
 
+
 document.getElementById(
 "bankName"
 ).value="";
 
+
 document.getElementById(
 "accountNumber"
 ).value="";
+
 
 document.getElementById(
 "accountName"
@@ -2947,11 +3877,15 @@ error.message,
 };
 
 
-/* ================= WITHDRAWALS ================= */
+/* =====================================================
+   WITHDRAWALS
+===================================================== */
 
-window.loadWithdrawals=async function(){
+window.loadWithdrawals=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -2964,10 +3898,19 @@ document.getElementById(
 
 try{
 
-const q=query(
-collection(db,"withdrawals"),
-where("uid","==",user.uid)
+const q=
+query(
+collection(
+db,
+"withdrawals"
+),
+where(
+"uid",
+"==",
+user.uid
+)
 );
+
 
 const snap=
 await getDocs(q);
@@ -2989,12 +3932,18 @@ list.innerHTML="";
 snap.forEach(
 d=>{
 
-const data=d.data();
+const data=
+d.data();
+
 
 const div=
-document.createElement("div");
+document.createElement(
+"div"
+);
+
 
 div.className="task";
+
 
 div.innerHTML=`
 
@@ -3006,26 +3955,37 @@ data.amount||0
 
 <p>
 Bank:
-${safe(data.bankName||"")}
+${safe(
+data.bankName||""
+)}
 </p>
 
 <p>
 Account:
-${safe(data.accountNumber||"")}
+${safe(
+data.accountNumber||""
+)}
 </p>
 
 <p>
 Name:
-${safe(data.accountName||"")}
+${safe(
+data.accountName||""
+)}
 </p>
 
 <br>
 
-<span class="status ${getStatusClass(data.status)}">
-${safe(data.status||"Pending")}
+<span
+class="status ${getStatusClass(data.status)}">
+${safe(
+data.status||
+"Pending"
+)}
 </span>
 
 `;
+
 
 list.appendChild(div);
 
@@ -3048,11 +4008,15 @@ list.innerHTML=
 };
 
 
-/* ================= REFERRALS ================= */
+/* =====================================================
+   REFERRALS
+===================================================== */
 
-window.loadReferralData=async function(){
+window.loadReferralData=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -3083,14 +4047,17 @@ if(data.referredByUid){
 box.innerHTML=`
 
 <p>
-<strong>You were referred by:</strong>
+<strong>
+You were referred by:
+</strong>
 </p>
 
 <p>
 Referral Code:
 <strong>
 ${safe(
-data.referredByCode||""
+data.referredByCode||
+""
 )}
 </strong>
 </p>
@@ -3109,7 +4076,8 @@ box.innerHTML=
 }
 
 
-const q=query(
+const q=
+query(
 collection(db,"referrals"),
 where(
 "referrerUid",
@@ -3117,6 +4085,7 @@ where(
 user.uid
 )
 );
+
 
 const snap=
 await getDocs(q);
@@ -3144,12 +4113,18 @@ list.innerHTML="";
 snap.forEach(
 d=>{
 
-const data=d.data();
+const data=
+d.data();
+
 
 const div=
-document.createElement("div");
+document.createElement(
+"div"
+);
+
 
 div.className="task";
+
 
 div.innerHTML=`
 
@@ -3172,13 +4147,16 @@ REFERRAL_BONUS
 
 <br>
 
-<span class="status ${getStatusClass(data.status)}">
+<span
+class="status ${getStatusClass(data.status)}">
 ${safe(
-data.status||"Pending"
+data.status||
+"Pending"
 )}
 </span>
 
 `;
+
 
 list.appendChild(div);
 
@@ -3203,11 +4181,15 @@ document.getElementById(
 };
 
 
-/* ================= COPY REFERRAL ================= */
+/* =====================================================
+   COPY REFERRAL
+===================================================== */
 
-window.copyReferral=async function(){
+window.copyReferral=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -3217,9 +4199,12 @@ try{
 const data=
 await getUserDocument();
 
+
 const code=
 data?.referralCode||
-makeReferralCode(user.uid);
+makeReferralCode(
+user.uid
+);
 
 
 const link=
@@ -3229,13 +4214,12 @@ window.location.pathname+
 encodeURIComponent(code);
 
 
-if(
-navigator.clipboard
-){
+if(navigator.clipboard){
 
 await navigator.clipboard.writeText(
 link
 );
+
 
 alert(
 "✅ Referral link copied!\n\n"+
@@ -3264,14 +4248,18 @@ console.error(error);
 };
 
 
-/* ================= SUPPORT ================= */
+/* =====================================================
+   SUPPORT
+===================================================== */
 
-window.contactSupport=function(){
+window.contactSupport=
+function(){
 
 const text=
 encodeURIComponent(
 "Hello StoryVerse Customer Service, I need assistance."
 );
+
 
 window.open(
 "https://wa.me/"+
@@ -3284,7 +4272,9 @@ text,
 };
 
 
-/* ================= STATUS ================= */
+/* =====================================================
+   STATUS CLASS
+===================================================== */
 
 function getStatusClass(status){
 
@@ -3304,7 +4294,9 @@ return "approved";
 }
 
 
-if(value==="rejected"){
+if(
+value==="rejected"
+){
 
 return "rejected";
 
@@ -3316,25 +4308,42 @@ return "pending";
 }
 
 
-/* ================= SAFE ================= */
+/* =====================================================
+   SAFE TEXT
+===================================================== */
 
 function safe(value){
 
 return String(value)
 
-.replaceAll("&","&amp;")
+.replaceAll(
+"&",
+"&amp;"
+)
 
-.replaceAll("<","&lt;")
+.replaceAll(
+"<",
+"&lt;"
+)
 
-.replaceAll(">","&gt;")
+.replaceAll(
+">",
+"&gt;"
+)
 
-.replaceAll('"',"&quot;")
+.replaceAll(
+'"',
+"&quot;"
+)
 
-.replaceAll("'","&#039;");
+.replaceAll(
+"'",
+"&#039;"
+);
 
 }
 
 </script>
 
 </body>
-   </html>
+ </html>
