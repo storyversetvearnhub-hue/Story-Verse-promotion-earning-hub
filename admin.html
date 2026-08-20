@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>StoryVerse Admin Dashboard</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -50,7 +48,9 @@ header p{
   box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-input,textarea,select{
+input,
+textarea,
+select{
   width:100%;
   padding:12px;
   border:1px solid #d1d5db;
@@ -78,29 +78,12 @@ button{
   margin-top:7px;
 }
 
-.green{
-  background:#16a34a;
-}
-
-.red{
-  background:#dc2626;
-}
-
-.orange{
-  background:#ea580c;
-}
-
-.gray{
-  background:#4b5563;
-}
-
-.purple{
-  background:#7c3aed;
-}
-
-.gold{
-  background:#ca8a04;
-}
+.green{background:#16a34a}
+.red{background:#dc2626}
+.orange{background:#ea580c}
+.gray{background:#4b5563}
+.purple{background:#7c3aed}
+.gold{background:#ca8a04}
 
 .nav{
   display:flex;
@@ -287,12 +270,6 @@ button{
   display:none;
 }
 
-.user-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
 .referral-code{
   background:#eff6ff;
   border:1px dashed #2563eb;
@@ -301,11 +278,6 @@ button{
   font-weight:bold;
   color:#1d4ed8;
   margin:8px 0;
-}
-
-.money{
-  color:#15803d;
-  font-weight:bold;
 }
 
 .warning-box{
@@ -332,22 +304,15 @@ button{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .user-actions{
-    grid-template-columns:1fr;
-  }
-
 }
-
 </style>
-
 </head>
 
 <body>
 
-
-<!-- =====================================================
+<!-- =========================
 ADMIN LOGIN
-===================================================== -->
+========================= -->
 
 <div id="loginPage">
 
@@ -392,9 +357,9 @@ ADMIN LOGIN
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
 ADMIN PAGE
-===================================================== -->
+========================= -->
 
 <div id="adminPage">
 
@@ -416,10 +381,6 @@ ADMIN PAGE
 
 </header>
 
-
-<!-- =====================================================
-NAVIGATION
-===================================================== -->
 
 <div class="nav">
 
@@ -457,9 +418,9 @@ NAVIGATION
 <div class="container">
 
 
-<!-- =====================================================
+<!-- =========================
 DASHBOARD
-===================================================== -->
+========================= -->
 
 <section id="dashboard" class="section active">
 
@@ -497,7 +458,6 @@ DASHBOARD
 
   </div>
 
-
   <div class="card">
 
     <h2>⚡ Admin Dashboard</h2>
@@ -514,8 +474,8 @@ DASHBOARD
 
       <br><br>
 
-      The referral bonus is credited manually by the
-      administrator after confirming the referral.
+      Referral bonuses are credited manually by the
+      administrator.
 
     </div>
 
@@ -531,9 +491,9 @@ DASHBOARD
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
 TASKS
-===================================================== -->
+========================= -->
 
 <section id="tasks" class="section">
 
@@ -609,9 +569,9 @@ TASKS
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
 PROOFS
-===================================================== -->
+========================= -->
 
 <section id="proofs" class="section">
 
@@ -639,9 +599,9 @@ PROOFS
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
 USERS
-===================================================== -->
+========================= -->
 
 <section id="users" class="section">
 
@@ -665,9 +625,9 @@ USERS
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
 REFERRALS
-===================================================== -->
+========================= -->
 
 <section id="referrals" class="section">
 
@@ -676,18 +636,18 @@ REFERRALS
     <h2>🎁 Referral Management</h2>
 
     <p class="small">
-      View users who registered through another user's
-      referral code and manually credit the ₦200 referral
-      bonus.
+      View users who registered through another
+      user's referral code.
     </p>
 
     <div class="info-box">
 
-      💰 <strong>Referral Bonus:</strong> ₦200
+      💰 <strong>Referral Bonus:</strong>
+      ₦200
 
       <br>
 
-      Each successful referral should only be credited once.
+      Each successful referral can only be credited once.
 
     </div>
 
@@ -707,9 +667,9 @@ REFERRALS
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
 PROMOTIONS
-===================================================== -->
+========================= -->
 
 <section id="promotions" class="section">
 
@@ -733,15 +693,21 @@ PROMOTIONS
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
 WITHDRAWALS
-===================================================== -->
+========================= -->
 
 <section id="withdrawals" class="section">
 
   <div class="card">
 
     <h2>💸 Withdrawal Requests</h2>
+
+    <p class="small">
+      The system checks the withdrawal for
+      Firebase UID, userId, accountUserId,
+      userUid and email.
+    </p>
 
     <button
       class="btn gray"
@@ -763,9 +729,9 @@ WITHDRAWALS
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
 FIREBASE
-===================================================== -->
+========================= -->
 
 <script type="module">
 
@@ -773,7 +739,6 @@ import {
   initializeApp
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
 
 import {
   getAuth,
@@ -784,12 +749,12 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-
 import {
   getFirestore,
   collection,
   addDoc,
   getDocs,
+  getDoc,
   doc,
   updateDoc,
   query,
@@ -800,10 +765,6 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-
-/* =====================================================
-FIREBASE CONFIG
-===================================================== */
 
 const firebaseConfig = {
 
@@ -837,35 +798,46 @@ const firebaseConfig = {
 const app =
   initializeApp(firebaseConfig);
 
-
 const auth =
   getAuth(app);
-
 
 const db =
   getFirestore(app);
 
 
-/* =====================================================
-ADMIN EMAIL
-===================================================== */
-
 const ADMIN_EMAIL =
   "storyversetvearnhub@gmail.com";
 
-
-/* =====================================================
-REFERRAL BONUS
-===================================================== */
-
-const REFERRAL_BONUS = 200;
+const REFERRAL_BONUS =
+  200;
 
 
-/* =====================================================
+/* =========================
+SAFE TEXT
+========================= */
+
+function safe(value){
+
+  return String(value ?? "")
+
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================
 MESSAGE
-===================================================== */
+========================= */
 
-function showMessage(id,text,type="success"){
+function showMessage(
+  id,
+  text,
+  type="success"
+){
 
   const box =
     document.getElementById(id);
@@ -884,11 +856,12 @@ function showMessage(id,text,type="success"){
 }
 
 
-/* =====================================================
+/* =========================
 LOGIN
-===================================================== */
+========================= */
 
-window.loginAdmin = async function(){
+window.loginAdmin =
+async function(){
 
   const email =
     document
@@ -900,7 +873,6 @@ window.loginAdmin = async function(){
     document
     .getElementById("loginPassword")
     .value;
-
 
   if(!email || !password){
 
@@ -914,10 +886,10 @@ window.loginAdmin = async function(){
 
   }
 
-
   if(
     email.toLowerCase()
-    !== ADMIN_EMAIL.toLowerCase()
+    !==
+    ADMIN_EMAIL.toLowerCase()
   ){
 
     showMessage(
@@ -929,7 +901,6 @@ window.loginAdmin = async function(){
     return;
 
   }
-
 
   try{
 
@@ -954,11 +925,12 @@ window.loginAdmin = async function(){
 };
 
 
-/* =====================================================
+/* =========================
 FORGOT PASSWORD
-===================================================== */
+========================= */
 
-window.forgotPassword = async function(){
+window.forgotPassword =
+async function(){
 
   const email =
     document
@@ -966,10 +938,10 @@ window.forgotPassword = async function(){
     .value
     .trim();
 
-
   if(
     email.toLowerCase()
-    !== ADMIN_EMAIL.toLowerCase()
+    !==
+    ADMIN_EMAIL.toLowerCase()
   ){
 
     showMessage(
@@ -982,7 +954,6 @@ window.forgotPassword = async function(){
 
   }
 
-
   try{
 
     await sendPasswordResetEmail(
@@ -990,18 +961,15 @@ window.forgotPassword = async function(){
       email
     );
 
-
     showMessage(
       "loginMessage",
       "Password reset email sent. Check your Gmail."
     );
 
-
   }catch(error){
 
     showMessage(
       "loginMessage",
-      "Could not send reset email: " +
       error.message,
       "error"
     );
@@ -1011,9 +979,9 @@ window.forgotPassword = async function(){
 };
 
 
-/* =====================================================
+/* =========================
 AUTH STATE
-===================================================== */
+========================= */
 
 onAuthStateChanged(
   auth,
@@ -1023,18 +991,17 @@ onAuthStateChanged(
       user &&
       user.email &&
       user.email.toLowerCase()
-      === ADMIN_EMAIL.toLowerCase()
+      ===
+      ADMIN_EMAIL.toLowerCase()
     ){
 
       document
       .getElementById("loginPage")
       .style.display="none";
 
-
       document
       .getElementById("adminPage")
       .style.display="block";
-
 
       refreshEverything();
 
@@ -1043,7 +1010,6 @@ onAuthStateChanged(
       document
       .getElementById("loginPage")
       .style.display="flex";
-
 
       document
       .getElementById("adminPage")
@@ -1055,20 +1021,21 @@ onAuthStateChanged(
 );
 
 
-/* =====================================================
+/* =========================
 LOGOUT
-===================================================== */
+========================= */
 
-window.logoutAdmin = async function(){
+window.logoutAdmin =
+async function(){
 
   await signOut(auth);
 
 };
 
 
-/* =====================================================
+/* =========================
 NAVIGATION
-===================================================== */
+========================= */
 
 window.showSection =
 function(name){
@@ -1080,10 +1047,8 @@ function(name){
     section.classList.remove("active")
   );
 
-
   const section =
     document.getElementById(name);
-
 
   if(section){
 
@@ -1094,29 +1059,30 @@ function(name){
 };
 
 
-/* =====================================================
+/* =========================
 ADD TASK
-===================================================== */
+========================= */
 
-window.addTask = async function(){
+window.addTask =
+async function(){
 
   const title =
     document
     .getElementById("taskTitle")
-    .value.trim();
-
+    .value
+    .trim();
 
   const description =
     document
     .getElementById("taskDescription")
-    .value.trim();
-
+    .value
+    .trim();
 
   const link =
     document
     .getElementById("taskLink")
-    .value.trim();
-
+    .value
+    .trim();
 
   const reward =
     Number(
@@ -1125,12 +1091,12 @@ window.addTask = async function(){
       .value
     );
 
-
   const active =
     document
     .getElementById("taskActive")
-    .value === "true";
-
+    .value
+    ===
+    "true";
 
   if(!title){
 
@@ -1144,7 +1110,6 @@ window.addTask = async function(){
 
   }
 
-
   if(!description){
 
     showMessage(
@@ -1157,8 +1122,11 @@ window.addTask = async function(){
 
   }
 
-
-  if(isNaN(reward) || reward < 0){
+  if(
+    isNaN(reward)
+    ||
+    reward < 0
+  ){
 
     showMessage(
       "taskMessage",
@@ -1170,22 +1138,21 @@ window.addTask = async function(){
 
   }
 
-
   try{
 
     await addDoc(
       collection(db,"tasks"),
       {
 
-        title,
+        title:title,
 
-        description,
+        description:description,
 
-        link,
+        link:link,
 
-        reward,
+        reward:reward,
 
-        active,
+        active:active,
 
         createdBy:
           auth.currentUser.uid,
@@ -1196,39 +1163,19 @@ window.addTask = async function(){
       }
     );
 
-
     showMessage(
       "taskMessage",
       "✅ Task added successfully."
     );
 
-
-    document
-    .getElementById("taskTitle")
-    .value="";
-
-
-    document
-    .getElementById("taskDescription")
-    .value="";
-
-
-    document
-    .getElementById("taskLink")
-    .value="";
-
-
-    document
-    .getElementById("taskReward")
-    .value="";
-
+    document.getElementById("taskTitle").value="";
+    document.getElementById("taskDescription").value="";
+    document.getElementById("taskLink").value="";
+    document.getElementById("taskReward").value="";
 
     loadTasks();
 
-
   }catch(error){
-
-    console.error(error);
 
     showMessage(
       "taskMessage",
@@ -1242,19 +1189,18 @@ window.addTask = async function(){
 };
 
 
-/* =====================================================
+/* =========================
 LOAD TASKS
-===================================================== */
+========================= */
 
-window.loadTasks = async function(){
+window.loadTasks =
+async function(){
 
   const list =
     document.getElementById("taskList");
 
-
   list.innerHTML =
     "<p class='small'>Loading...</p>";
-
 
   try{
 
@@ -1262,7 +1208,6 @@ window.loadTasks = async function(){
       await getDocs(
         collection(db,"tasks")
       );
-
 
     if(snap.empty){
 
@@ -1273,22 +1218,17 @@ window.loadTasks = async function(){
 
     }
 
-
     list.innerHTML="";
-
 
     snap.forEach(taskDoc => {
 
       const d =
         taskDoc.data();
 
-
       const div =
         document.createElement("div");
 
-
       div.className="task-card";
-
 
       div.innerHTML=`
 
@@ -1316,41 +1256,37 @@ window.loadTasks = async function(){
 
       `;
 
-
       const button =
         document.createElement("button");
-
 
       button.className =
         d.active
         ? "btn red"
         : "btn green";
 
-
       button.textContent =
         d.active
         ? "Disable Task"
         : "Activate Task";
 
-
       button.onclick =
-        async function(){
+      async function(){
 
-          await updateDoc(
-            doc(
-              db,
-              "tasks",
-              taskDoc.id
-            ),
-            {
-              active:!d.active
-            }
-          );
+        await updateDoc(
+          doc(
+            db,
+            "tasks",
+            taskDoc.id
+          ),
+          {
+            active:
+              !d.active
+          }
+        );
 
-          loadTasks();
+        loadTasks();
 
-        };
-
+      };
 
       div.appendChild(button);
 
@@ -1358,32 +1294,32 @@ window.loadTasks = async function(){
 
     });
 
-
   }catch(error){
 
-    console.error(error);
-
     list.innerHTML =
-      "<p class='small'>Could not load tasks.</p>";
+      "<p class='small'>Could not load tasks: "
+      +
+      safe(error.message)
+      +
+      "</p>";
 
   }
 
 };
 
 
-/* =====================================================
+/* =========================
 LOAD USERS
-===================================================== */
+========================= */
 
-window.loadUsers = async function(){
+window.loadUsers =
+async function(){
 
   const list =
     document.getElementById("userList");
 
-
   list.innerHTML =
     "<p class='small'>Loading users...</p>";
-
 
   try{
 
@@ -1392,11 +1328,10 @@ window.loadUsers = async function(){
         collection(db,"users")
       );
 
-
     document
     .getElementById("totalUsers")
-    .textContent=snap.size;
-
+    .textContent =
+      snap.size;
 
     if(snap.empty){
 
@@ -1407,28 +1342,22 @@ window.loadUsers = async function(){
 
     }
 
-
     list.innerHTML="";
-
 
     snap.forEach(userDoc => {
 
       const d =
         userDoc.data();
 
-
       const uid =
         d.uid || userDoc.id;
-
 
       const balance =
         Number(d.balance || 0);
 
-
       const referralCode =
         d.referralCode ||
         "Not generated";
-
 
       const referredBy =
         d.referredByCode ||
@@ -1436,17 +1365,13 @@ window.loadUsers = async function(){
         d.referredBy ||
         "None";
 
-
-      const referralCredited =
+      const credited =
         d.referralBonusCredited === true;
-
 
       const div =
         document.createElement("div");
 
-
       div.className="user-card";
-
 
       div.innerHTML=`
 
@@ -1476,35 +1401,32 @@ window.loadUsers = async function(){
         </p>
 
         <div class="referral-code">
-
           🎁 Referral Code:
           ${safe(referralCode)}
-
         </div>
 
         <p>
-
           👥 Referred By:
           <strong>
             ${safe(referredBy)}
           </strong>
-
         </p>
 
         <p>
-
           Referral Bonus:
-
           ${
             referredBy !== "None"
-            ? (
-              referralCredited
-              ? '<span class="status credited">✅ Credited</span>'
-              : '<span class="status notcredited">⏳ Not Credited</span>'
+            ?
+            (
+              credited
+              ?
+              '<span class="status credited">✅ Credited</span>'
+              :
+              '<span class="status notcredited">⏳ Not Credited</span>'
             )
-            : '<span class="small">No referral</span>'
+            :
+            '<span class="small">No referral</span>'
           }
-
         </p>
 
         <hr style="
@@ -1535,7 +1457,6 @@ window.loadUsers = async function(){
           ➕ Add Balance
         </button>
 
-
         <h3 style="margin-top:20px;">
           ➖ Deduct Money
         </h3>
@@ -1550,7 +1471,7 @@ window.loadUsers = async function(){
         <input
           type="text"
           id="debitReason-${userDoc.id}"
-          placeholder="Reason e.g. Promotion payment"
+          placeholder="Reason e.g. Withdrawal"
         >
 
         <button
@@ -1560,10 +1481,12 @@ window.loadUsers = async function(){
           ➖ Deduct Balance
         </button>
 
-
         ${
-          referredBy !== "None" && !referralCredited
-          ? `
+          referredBy !== "None"
+          &&
+          !credited
+          ?
+          `
           <button
             class="btn gold"
             onclick="creditReferralBonus('${userDoc.id}')"
@@ -1571,18 +1494,9 @@ window.loadUsers = async function(){
             🎁 Credit ₦200 Referral Bonus
           </button>
           `
-          : referredBy !== "None"
-          ? `
-          <button
-            class="btn gray"
-            disabled
-          >
-            ✅ Referral Bonus Already Credited
-          </button>
-          `
-          : ""
+          :
+          ""
         }
-
 
         <button
           class="btn purple"
@@ -1591,659 +1505,37 @@ window.loadUsers = async function(){
           📜 View Transaction History
         </button>
 
-
         <div
           id="transactions-${userDoc.id}"
           style="display:none;margin-top:15px;"
-        >
-        </div>
+        ></div>
 
       `;
-
 
       list.appendChild(div);
 
     });
 
-
   }catch(error){
-
-    console.error(error);
 
     list.innerHTML =
       "<p class='small'>Could not load users: "
-      + safe(error.message)
-      + "</p>";
+      +
+      safe(error.message)
+      +
+      "</p>";
 
   }
 
 };
 
 
-/* =====================================================
-REFERRAL MANAGEMENT
-===================================================== */
-
-window.loadReferrals = async function(){
-
-  const list =
-    document.getElementById(
-      "referralList"
-    );
-
-
-  list.innerHTML =
-    "<p class='small'>Loading referrals...</p>";
-
-
-  try{
-
-    const snap =
-      await getDocs(
-        collection(db,"users")
-      );
-
-
-    const users=[];
-
-
-    snap.forEach(userDoc => {
-
-      users.push({
-
-        id:userDoc.id,
-
-        ...userDoc.data()
-
-      });
-
-    });
-
-
-    const referrals =
-      users.filter(user => {
-
-        return (
-          user.referredByCode ||
-          user.referralCodeUsed ||
-          user.referredBy
-        );
-
-      });
-
-
-    document
-    .getElementById(
-      "totalReferrals"
-    )
-    .textContent =
-      referrals.length;
-
-
-    const credited =
-      referrals.filter(
-        user =>
-        user.referralBonusCredited === true
-      ).length;
-
-
-    document
-    .getElementById(
-      "creditedReferrals"
-    )
-    .textContent =
-      credited;
-
-
-    if(referrals.length === 0){
-
-      list.innerHTML=`
-
-        <div class="info-box">
-
-          No referrals found yet.
-
-          <br><br>
-
-          Make sure your registration page saves
-          <strong>referredByCode</strong> or
-          <strong>referralCodeUsed</strong>
-          when someone registers.
-
-        </div>
-
-      `;
-
-      return;
-
-    }
-
-
-    list.innerHTML="";
-
-
-    referrals.forEach(referredUser => {
-
-      const usedCode =
-        referredUser.referredByCode ||
-        referredUser.referralCodeUsed ||
-        referredUser.referredBy ||
-        "";
-
-
-      const referrer =
-        users.find(user => {
-
-          return (
-            user.referralCode &&
-            String(user.referralCode)
-            .toLowerCase()
-            === String(usedCode)
-            .toLowerCase()
-          );
-
-        });
-
-
-      const credited =
-        referredUser.referralBonusCredited === true;
-
-
-      const div =
-        document.createElement("div");
-
-
-      div.className =
-        "referral-card";
-
-
-      div.innerHTML=`
-
-        <h3>
-          🎁 Referral Registration
-        </h3>
-
-        <p style="margin-top:10px;">
-
-          👤 <strong>New User:</strong>
-
-          ${safe(
-            referredUser.name ||
-            referredUser.email ||
-            "User"
-          )}
-
-        </p>
-
-        <p>
-
-          📧 Email:
-
-          ${safe(
-            referredUser.email ||
-            "No email"
-          )}
-
-        </p>
-
-        <p>
-
-          🆔 User ID:
-
-          ${safe(
-            referredUser.uid ||
-            referredUser.id
-          )}
-
-        </p>
-
-        <p>
-
-          🎟️ Referral Code Used:
-
-          <strong>
-            ${safe(usedCode)}
-          </strong>
-
-        </p>
-
-        <hr style="
-          margin:12px 0;
-          border:0;
-          border-top:1px solid #ddd;
-        ">
-
-        <p>
-
-          👑 <strong>Referrer:</strong>
-
-          ${
-            referrer
-            ? safe(
-                referrer.name ||
-                referrer.email ||
-                "Referrer"
-              )
-            : "Referrer not found"
-          }
-
-        </p>
-
-        <p>
-
-          📧 Referrer Email:
-
-          ${
-            referrer
-            ? safe(referrer.email || "")
-            : "Not found"
-          }
-
-        </p>
-
-        <p>
-
-          🎟️ Referrer Code:
-
-          ${
-            referrer
-            ? safe(referrer.referralCode || usedCode)
-            : safe(usedCode)
-          }
-
-        </p>
-
-        <p style="margin-top:10px;">
-
-          💰 Bonus:
-
-          <strong>
-            ₦${REFERRAL_BONUS.toLocaleString()}
-          </strong>
-
-        </p>
-
-        <p>
-
-          Status:
-
-          ${
-            credited
-            ? '<span class="status credited">✅ Bonus Credited</span>'
-            : '<span class="status notcredited">⏳ Waiting for Credit</span>'
-          }
-
-        </p>
-
-      `;
-
-
-      if(
-        referrer &&
-        !credited
-      ){
-
-        const button =
-          document.createElement("button");
-
-
-        button.className =
-          "btn gold";
-
-
-        button.textContent =
-          "🎁 Credit ₦200 to Referrer";
-
-
-        button.onclick =
-          function(){
-
-            creditReferralBonus(
-              referredUser.id
-            );
-
-          };
-
-
-        div.appendChild(button);
-
-      }
-
-
-      if(credited){
-
-        const done =
-          document.createElement("button");
-
-
-        done.className =
-          "btn gray";
-
-
-        done.disabled=true;
-
-
-        done.textContent =
-          "✅ Referral Already Credited";
-
-
-        div.appendChild(done);
-
-      }
-
-
-      list.appendChild(div);
-
-    });
-
-
-  }catch(error){
-
-    console.error(error);
-
-    list.innerHTML =
-      "<p class='small'>Could not load referrals: "
-      + safe(error.message)
-      + "</p>";
-
-  }
-
-};
-
-
-/* =====================================================
-CREDIT REFERRAL BONUS
-===================================================== */
-
-window.creditReferralBonus =
-async function(referredUserId){
-
-  if(
-    !confirm(
-      "Credit ₦200 referral bonus to the person who referred this user?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  try{
-
-    const referredUserRef =
-      doc(
-        db,
-        "users",
-        referredUserId
-      );
-
-
-    await runTransaction(
-      db,
-      async transaction => {
-
-        const referredSnap =
-          await transaction.get(
-            referredUserRef
-          );
-
-
-        if(!referredSnap.exists()){
-
-          throw new Error(
-            "Referred user was not found."
-          );
-
-        }
-
-
-        const referredData =
-          referredSnap.data();
-
-
-        if(
-          referredData.referralBonusCredited
-          === true
-        ){
-
-          throw new Error(
-            "This referral bonus has already been credited."
-          );
-
-        }
-
-
-        const usedCode =
-          referredData.referredByCode ||
-          referredData.referralCodeUsed ||
-          referredData.referredBy;
-
-
-        if(!usedCode){
-
-          throw new Error(
-            "This user does not have a referral code."
-          );
-
-        }
-
-
-        /*
-          Find the referrer by referral code.
-        */
-
-        const referrerQuery =
-          query(
-            collection(db,"users"),
-            where(
-              "referralCode",
-              "==",
-              usedCode
-            ),
-            limit(1)
-          );
-
-
-        const referrerSnap =
-          await getDocs(
-            referrerQuery
-          );
-
-
-        if(referrerSnap.empty){
-
-          throw new Error(
-            "The referrer could not be found using referral code: "
-            + usedCode
-          );
-
-        }
-
-
-        const referrerDoc =
-          referrerSnap.docs[0];
-
-
-        const referrerRef =
-          doc(
-            db,
-            "users",
-            referrerDoc.id
-          );
-
-
-        const referrerSnapAgain =
-          await transaction.get(
-            referrerRef
-          );
-
-
-        if(!referrerSnapAgain.exists()){
-
-          throw new Error(
-            "Referrer account no longer exists."
-          );
-
-        }
-
-
-        const referrerData =
-          referrerSnapAgain.data();
-
-
-        const oldBalance =
-          Number(
-            referrerData.balance || 0
-          );
-
-
-        const newBalance =
-          oldBalance + REFERRAL_BONUS;
-
-
-        const transactionRef =
-          doc(
-            collection(db,"transactions")
-          );
-
-
-        /*
-          Add money to referrer.
-        */
-
-        transaction.update(
-          referrerRef,
-          {
-
-            balance:
-              newBalance,
-
-            totalReferralBonus:
-              Number(
-                referrerData.totalReferralBonus || 0
-              ) + REFERRAL_BONUS,
-
-            totalReferralsCredited:
-              Number(
-                referrerData.totalReferralsCredited || 0
-              ) + 1
-
-          }
-        );
-
-
-        /*
-          Mark the referred user as credited.
-        */
-
-        transaction.update(
-          referredUserRef,
-          {
-
-            referralBonusCredited:
-              true,
-
-            referralBonusAmount:
-              REFERRAL_BONUS,
-
-            referralBonusCreditedAt:
-              serverTimestamp(),
-
-            referralBonusCreditedBy:
-              auth.currentUser.email
-
-          }
-        );
-
-
-        /*
-          Create transaction record.
-        */
-
-        transaction.set(
-          transactionRef,
-          {
-
-            uid:
-              referrerData.uid ||
-              referrerDoc.id,
-
-            userId:
-              referrerDoc.id,
-
-            email:
-              referrerData.email ||
-              "",
-
-            type:
-              "credit",
-
-            amount:
-              REFERRAL_BONUS,
-
-            oldBalance:
-              oldBalance,
-
-            newBalance:
-              newBalance,
-
-            reason:
-              "Referral bonus",
-
-            referralCode:
-              usedCode,
-
-            referredUserId:
-              referredData.uid ||
-              referredUserId,
-
-            referredUserEmail:
-              referredData.email ||
-              "",
-
-            createdBy:
-              auth.currentUser.email,
-
-            createdAt:
-              serverTimestamp()
-
-          }
-        );
-
-      }
-    );
-
-
-    alert(
-      "✅ ₦200 referral bonus credited successfully."
-    );
-
-
-    await loadReferrals();
-
-    await loadUsers();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "❌ Could not credit referral bonus:\n\n"
-      + error.message
-    );
-
-  }
-
-};
-
-
-/* =====================================================
+/* =========================
 ADD BALANCE
-===================================================== */
+========================= */
 
-window.creditUser = async function(userDocId){
+window.creditUser =
+async function(userDocId){
 
   const amount =
     Number(
@@ -2254,32 +1546,30 @@ window.creditUser = async function(userDocId){
       .value
     );
 
-
   const reason =
     document
     .getElementById(
       "creditReason-"+userDocId
     )
-    .value.trim()
+    .value
+    .trim()
     ||
     "Admin credit";
 
-
   if(!amount || amount <= 0){
 
-    alert(
-      "Enter a valid amount."
-    );
+    alert("Enter a valid amount.");
 
     return;
 
   }
 
-
   if(
     !confirm(
-      "Add ₦" +
-      amount.toLocaleString() +
+      "Add ₦"
+      +
+      amount.toLocaleString()
+      +
       " to this user's balance?"
     )
   ){
@@ -2287,7 +1577,6 @@ window.creditUser = async function(userDocId){
     return;
 
   }
-
 
   try{
 
@@ -2298,24 +1587,21 @@ window.creditUser = async function(userDocId){
         userDocId
       );
 
-
-    const transactionRef =
+    const txRef =
       doc(
         collection(db,"transactions")
       );
-
 
     await runTransaction(
       db,
       async transaction => {
 
-        const userSnap =
+        const snap =
           await transaction.get(
             userRef
           );
 
-
-        if(!userSnap.exists()){
+        if(!snap.exists()){
 
           throw new Error(
             "User record not found."
@@ -2323,34 +1609,24 @@ window.creditUser = async function(userDocId){
 
         }
 
-
         const data =
-          userSnap.data();
-
+          snap.data();
 
         const oldBalance =
-          Number(
-            data.balance || 0
-          );
-
+          Number(data.balance || 0);
 
         const newBalance =
           oldBalance + amount;
 
-
         transaction.update(
           userRef,
           {
-
-            balance:
-              newBalance
-
+            balance:newBalance
           }
         );
 
-
         transaction.set(
-          transactionRef,
+          txRef,
           {
 
             uid:
@@ -2361,8 +1637,7 @@ window.creditUser = async function(userDocId){
               userDocId,
 
             email:
-              data.email ||
-              "",
+              data.email || "",
 
             type:
               "credit",
@@ -2391,24 +1666,22 @@ window.creditUser = async function(userDocId){
       }
     );
 
-
     alert(
-      "₦" +
-      amount.toLocaleString() +
+      "₦"
+      +
+      amount.toLocaleString()
+      +
       " added successfully."
     );
 
-
     loadUsers();
-
 
   }catch(error){
 
-    console.error(error);
-
     alert(
       "Could not add balance: "
-      + error.message
+      +
+      error.message
     );
 
   }
@@ -2416,11 +1689,12 @@ window.creditUser = async function(userDocId){
 };
 
 
-/* =====================================================
+/* =========================
 DEDUCT BALANCE
-===================================================== */
+========================= */
 
-window.debitUser = async function(userDocId){
+window.debitUser =
+async function(userDocId){
 
   const amount =
     Number(
@@ -2431,40 +1705,39 @@ window.debitUser = async function(userDocId){
       .value
     );
 
-
   const reason =
     document
     .getElementById(
       "debitReason-"+userDocId
     )
-    .value.trim()
+    .value
+    .trim()
     ||
     "Admin deduction";
-
 
   if(!amount || amount <= 0){
 
     alert(
-      "Enter a valid deduction amount."
+      "Enter a valid amount."
     );
 
     return;
 
   }
 
-
   if(
     !confirm(
-      "Deduct ₦" +
-      amount.toLocaleString() +
-      " from this user's balance?"
+      "Deduct ₦"
+      +
+      amount.toLocaleString()
+      +
+      " from this user?"
     )
   ){
 
     return;
 
   }
-
 
   try{
 
@@ -2475,24 +1748,21 @@ window.debitUser = async function(userDocId){
         userDocId
       );
 
-
-    const transactionRef =
+    const txRef =
       doc(
         collection(db,"transactions")
       );
-
 
     await runTransaction(
       db,
       async transaction => {
 
-        const userSnap =
+        const snap =
           await transaction.get(
             userRef
           );
 
-
-        if(!userSnap.exists()){
+        if(!snap.exists()){
 
           throw new Error(
             "User record not found."
@@ -2500,16 +1770,13 @@ window.debitUser = async function(userDocId){
 
         }
 
-
         const data =
-          userSnap.data();
-
+          snap.data();
 
         const oldBalance =
           Number(
             data.balance || 0
           );
-
 
         if(amount > oldBalance){
 
@@ -2519,24 +1786,18 @@ window.debitUser = async function(userDocId){
 
         }
 
-
         const newBalance =
           oldBalance - amount;
-
 
         transaction.update(
           userRef,
           {
-
-            balance:
-              newBalance
-
+            balance:newBalance
           }
         );
 
-
         transaction.set(
-          transactionRef,
+          txRef,
           {
 
             uid:
@@ -2547,8 +1808,7 @@ window.debitUser = async function(userDocId){
               userDocId,
 
             email:
-              data.email ||
-              "",
+              data.email || "",
 
             type:
               "debit",
@@ -2577,24 +1837,22 @@ window.debitUser = async function(userDocId){
       }
     );
 
-
     alert(
-      "₦" +
-      amount.toLocaleString() +
+      "₦"
+      +
+      amount.toLocaleString()
+      +
       " deducted successfully."
     );
 
-
     loadUsers();
-
 
   }catch(error){
 
-    console.error(error);
-
     alert(
       "Could not deduct balance: "
-      + error.message
+      +
+      error.message
     );
 
   }
@@ -2602,9 +1860,9 @@ window.debitUser = async function(userDocId){
 };
 
 
-/* =====================================================
-TRANSACTION HISTORY
-===================================================== */
+/* =========================
+TRANSACTIONS
+========================= */
 
 window.loadUserTransactions =
 async function(userDocId){
@@ -2614,10 +1872,7 @@ async function(userDocId){
       "transactions-"+userDocId
     );
 
-
-  if(
-    box.style.display === "block"
-  ){
+  if(box.style.display==="block"){
 
     box.style.display="none";
 
@@ -2625,12 +1880,10 @@ async function(userDocId){
 
   }
 
-
   box.style.display="block";
 
   box.innerHTML =
     "<p class='small'>Loading transactions...</p>";
-
 
   try{
 
@@ -2645,10 +1898,8 @@ async function(userDocId){
         limit(100)
       );
 
-
     const snap =
       await getDocs(q);
-
 
     if(snap.empty){
 
@@ -2659,94 +1910,49 @@ async function(userDocId){
 
     }
 
-
-    const transactions=[];
-
-
-    snap.forEach(txDoc => {
-
-      transactions.push({
-
-        id:
-          txDoc.id,
-
-        ...txDoc.data()
-
-      });
-
-    });
-
-
-    transactions.sort(
-      (a,b) => {
-
-        const aTime =
-          a.createdAt?.seconds || 0;
-
-        const bTime =
-          b.createdAt?.seconds || 0;
-
-        return bTime-aTime;
-
-      }
-    );
-
-
     box.innerHTML =
       "<h3>📜 Transaction History</h3>";
 
+    snap.forEach(txDoc => {
 
-    transactions.forEach(tx => {
+      const tx =
+        txDoc.data();
 
-      const isCredit =
+      const credit =
         tx.type === "credit";
-
 
       const div =
         document.createElement("div");
 
-
       div.className =
-        "transaction " +
+        "transaction "
+        +
         (
-          isCredit
-          ? "credit"
-          : "debit"
+          credit
+          ?
+          "credit"
+          :
+          "debit"
         );
-
-
-      let dateText =
-        "Date unavailable";
-
-
-      if(tx.createdAt){
-
-        try{
-
-          dateText =
-            new Date(
-              tx.createdAt.seconds * 1000
-            ).toLocaleString();
-
-        }catch(e){}
-
-      }
-
 
       div.innerHTML=`
 
         <p>
 
           <strong class="${
-            isCredit
-            ? "tx-credit"
-            : "tx-debit"
+            credit
+            ?
+            "tx-credit"
+            :
+            "tx-debit"
           }">
 
             ${
-              isCredit
-              ? "➕ CREDIT"
-              : "➖ DEBIT"
+              credit
+              ?
+              "➕ CREDIT"
+              :
+              "➖ DEBIT"
             }
 
             ₦${Number(
@@ -2758,88 +1964,458 @@ async function(userDocId){
         </p>
 
         <p class="small">
-
           Reason:
-          ${safe(
-            tx.reason ||
-            "No reason"
-          )}
-
+          ${safe(tx.reason || "")}
         </p>
 
         <p class="small">
-
           Previous Balance:
           ₦${Number(
             tx.oldBalance || 0
           ).toLocaleString()}
-
         </p>
 
         <p class="small">
-
           Balance After:
-          <strong>
-            ₦${Number(
-              tx.newBalance || 0
-            ).toLocaleString()}
-          </strong>
-
-        </p>
-
-        <p class="small">
-
-          By:
-          ${safe(
-            tx.createdBy ||
-            "Admin"
-          )}
-
-        </p>
-
-        <p class="small">
-
-          ${safe(dateText)}
-
+          ₦${Number(
+            tx.newBalance || 0
+          ).toLocaleString()}
         </p>
 
       `;
-
 
       box.appendChild(div);
 
     });
 
-
   }catch(error){
 
-    console.error(error);
-
     box.innerHTML =
-      "<p class='small'>Could not load transaction history: "
-      + safe(error.message)
-      + "</p>";
+      "<p class='small'>Could not load transactions: "
+      +
+      safe(error.message)
+      +
+      "</p>";
 
   }
 
 };
 
 
-/* =====================================================
-LOAD PROOFS
-===================================================== */
+/* =========================
+REFERRALS
+========================= */
 
-window.loadProofs = async function(){
+window.loadReferrals =
+async function(){
+
+  const list =
+    document.getElementById(
+      "referralList"
+    );
+
+  list.innerHTML =
+    "<p class='small'>Loading referrals...</p>";
+
+  try{
+
+    const snap =
+      await getDocs(
+        collection(db,"users")
+      );
+
+    const users=[];
+
+    snap.forEach(d => {
+
+      users.push({
+        id:d.id,
+        ...d.data()
+      });
+
+    });
+
+    const referrals =
+      users.filter(
+        u =>
+          u.referredByCode ||
+          u.referralCodeUsed ||
+          u.referredBy
+      );
+
+    document
+    .getElementById(
+      "totalReferrals"
+    )
+    .textContent =
+      referrals.length;
+
+    const credited =
+      referrals.filter(
+        u =>
+          u.referralBonusCredited === true
+      ).length;
+
+    document
+    .getElementById(
+      "creditedReferrals"
+    )
+    .textContent =
+      credited;
+
+    if(!referrals.length){
+
+      list.innerHTML =
+        "<div class='info-box'>No referrals found.</div>";
+
+      return;
+
+    }
+
+    list.innerHTML="";
+
+    referrals.forEach(user => {
+
+      const usedCode =
+        user.referredByCode ||
+        user.referralCodeUsed ||
+        user.referredBy;
+
+      const referrer =
+        users.find(
+          r =>
+            r.referralCode &&
+            String(r.referralCode)
+            .toLowerCase()
+            ===
+            String(usedCode)
+            .toLowerCase()
+        );
+
+      const div =
+        document.createElement("div");
+
+      div.className =
+        "referral-card";
+
+      div.innerHTML=`
+
+        <h3>
+          🎁 Referral Registration
+        </h3>
+
+        <p>
+          New User:
+          <strong>
+            ${safe(
+              user.name ||
+              user.email ||
+              "User"
+            )}
+          </strong>
+        </p>
+
+        <p>
+          Email:
+          ${safe(user.email || "")}
+        </p>
+
+        <p>
+          Referral Code Used:
+          <strong>
+            ${safe(usedCode)}
+          </strong>
+        </p>
+
+        <p>
+          Referrer:
+          ${
+            referrer
+            ?
+            safe(
+              referrer.name ||
+              referrer.email ||
+              "Referrer"
+            )
+            :
+            "Referrer not found"
+          }
+        </p>
+
+        <p>
+          Bonus:
+          <strong>₦200</strong>
+        </p>
+
+      `;
+
+      if(
+        referrer
+        &&
+        user.referralBonusCredited !== true
+      ){
+
+        const button =
+          document.createElement("button");
+
+        button.className =
+          "btn gold";
+
+        button.textContent =
+          "🎁 Credit ₦200 Referral Bonus";
+
+        button.onclick =
+          () =>
+          creditReferralBonus(
+            user.id
+          );
+
+        div.appendChild(button);
+
+      }
+
+      list.appendChild(div);
+
+    });
+
+  }catch(error){
+
+    list.innerHTML =
+      "<p class='small'>Could not load referrals: "
+      +
+      safe(error.message)
+      +
+      "</p>";
+
+  }
+
+};
+
+
+/* =========================
+CREDIT REFERRAL
+========================= */
+
+window.creditReferralBonus =
+async function(referredUserId){
+
+  if(
+    !confirm(
+      "Credit ₦200 referral bonus?"
+    )
+  ){
+
+    return;
+
+  }
+
+  try{
+
+    const referredRef =
+      doc(
+        db,
+        "users",
+        referredUserId
+      );
+
+    await runTransaction(
+      db,
+      async transaction => {
+
+        const referred =
+          await transaction.get(
+            referredRef
+          );
+
+        if(!referred.exists()){
+
+          throw new Error(
+            "Referred user was not found."
+          );
+
+        }
+
+        const data =
+          referred.data();
+
+        if(
+          data.referralBonusCredited
+          ===
+          true
+        ){
+
+          throw new Error(
+            "Referral bonus already credited."
+          );
+
+        }
+
+        const code =
+          data.referredByCode ||
+          data.referralCodeUsed ||
+          data.referredBy;
+
+        if(!code){
+
+          throw new Error(
+            "Referral code not found."
+          );
+
+        }
+
+        const q =
+          query(
+            collection(db,"users"),
+            where(
+              "referralCode",
+              "==",
+              code
+            ),
+            limit(1)
+          );
+
+        const refSnap =
+          await getDocs(q);
+
+        if(refSnap.empty){
+
+          throw new Error(
+            "Referrer account was not found."
+          );
+
+        }
+
+        const refDoc =
+          refSnap.docs[0];
+
+        const refData =
+          refDoc.data();
+
+        const oldBalance =
+          Number(
+            refData.balance || 0
+          );
+
+        const newBalance =
+          oldBalance +
+          REFERRAL_BONUS;
+
+        const txRef =
+          doc(
+            collection(db,"transactions")
+          );
+
+        transaction.update(
+          refDoc.ref,
+          {
+
+            balance:
+              newBalance,
+
+            totalReferralBonus:
+              Number(
+                refData.totalReferralBonus || 0
+              )
+              +
+              REFERRAL_BONUS
+
+          }
+        );
+
+        transaction.update(
+          referredRef,
+          {
+
+            referralBonusCredited:
+              true,
+
+            referralBonusAmount:
+              REFERRAL_BONUS,
+
+            referralBonusCreditedAt:
+              serverTimestamp(),
+
+            referralBonusCreditedBy:
+              auth.currentUser.email
+
+          }
+        );
+
+        transaction.set(
+          txRef,
+          {
+
+            uid:
+              refData.uid ||
+              refDoc.id,
+
+            userId:
+              refDoc.id,
+
+            email:
+              refData.email || "",
+
+            type:
+              "credit",
+
+            amount:
+              REFERRAL_BONUS,
+
+            oldBalance:
+              oldBalance,
+
+            newBalance:
+              newBalance,
+
+            reason:
+              "Referral bonus",
+
+            createdBy:
+              auth.currentUser.email,
+
+            createdAt:
+              serverTimestamp()
+
+          }
+        );
+
+      }
+    );
+
+    alert(
+      "✅ ₦200 referral bonus credited."
+    );
+
+    loadReferrals();
+    loadUsers();
+
+  }catch(error){
+
+    alert(
+      "❌ Could not credit referral:\n\n"
+      +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================
+PROOFS
+========================= */
+
+window.loadProofs =
+async function(){
 
   const list =
     document.getElementById(
       "proofList"
     );
 
-
   list.innerHTML =
     "<p class='small'>Loading...</p>";
-
 
   try{
 
@@ -2851,45 +2427,42 @@ window.loadProofs = async function(){
         )
       );
 
-
     let pending=0;
 
+    list.innerHTML="";
 
     if(snap.empty){
 
       list.innerHTML =
         "<p class='small'>No proofs found.</p>";
 
+      document
+      .getElementById(
+        "pendingProofs"
+      )
+      .textContent="0";
+
       return;
 
     }
 
-
-    list.innerHTML="";
-
-
-    snap.forEach(subDoc => {
+    snap.forEach(sub => {
 
       const d =
-        subDoc.data();
+        sub.data();
 
+      const status =
+        d.status ||
+        "Pending";
 
-      if(
-        (d.status || "Pending")
-        === "Pending"
-      ){
-
+      if(status==="Pending")
         pending++;
-
-      }
-
 
       const div =
         document.createElement("div");
 
-
-      div.className="proof-card";
-
+      div.className =
+        "proof-card";
 
       div.innerHTML=`
 
@@ -2918,126 +2491,92 @@ window.loadProofs = async function(){
 
         <p>
           Status:
-          ${safe(
-            d.status ||
-            "Pending"
-          )}
+          ${safe(status)}
         </p>
 
       `;
-
 
       if(d.proofImage){
 
         const img =
           document.createElement("img");
 
-
         img.src =
           d.proofImage;
 
-
         img.className =
           "proof-image";
-
-
-        img.alt =
-          "Task proof";
-
 
         div.appendChild(img);
 
       }
 
-
-      if(
-        (d.status || "Pending")
-        === "Pending"
-      ){
+      if(status==="Pending"){
 
         const approve =
           document.createElement("button");
 
-
         approve.className =
           "btn green";
-
 
         approve.textContent =
           "✅ Approve Proof";
 
-
         approve.onclick =
           () =>
           approveProof(
-            subDoc.id,
+            sub.id,
             d.uid,
-            Number(
-              d.reward || 0
-            )
+            Number(d.reward || 0)
           );
 
-
-        div.appendChild(
-          approve
-        );
-
+        div.appendChild(approve);
 
         const reject =
           document.createElement("button");
 
-
         reject.className =
           "btn red";
-
 
         reject.textContent =
           "❌ Reject Proof";
 
-
         reject.onclick =
           () =>
-          rejectProof(
-            subDoc.id
-          );
+          rejectProof(sub.id);
 
-
-        div.appendChild(
-          reject
-        );
+        div.appendChild(reject);
 
       }
-
 
       list.appendChild(div);
 
     });
 
-
     document
     .getElementById(
       "pendingProofs"
     )
-    .textContent=pending;
-
+    .textContent =
+      pending;
 
   }catch(error){
 
-    console.error(error);
-
     list.innerHTML =
       "<p class='small'>Could not load proofs: "
-      + safe(error.message)
-      + "</p>";
+      +
+      safe(error.message)
+      +
+      "</p>";
 
   }
 
 };
 
 
-/* =====================================================
+/* =========================
 APPROVE PROOF
-===================================================== */
+========================= */
 
 window.approveProof =
 async function(
@@ -3048,8 +2587,10 @@ async function(
 
   if(
     !confirm(
-      "Approve this proof and add ₦" +
-      reward.toLocaleString() +
+      "Approve proof and add ₦"
+      +
+      reward.toLocaleString()
+      +
       "?"
     )
   ){
@@ -3057,7 +2598,6 @@ async function(
     return;
 
   }
-
 
   try{
 
@@ -3072,12 +2612,10 @@ async function(
         limit(1)
       );
 
-
-    const userSnap =
+    const users =
       await getDocs(q);
 
-
-    if(userSnap.empty){
+    if(users.empty){
 
       alert(
         "User record not found."
@@ -3087,18 +2625,11 @@ async function(
 
     }
 
-
     const userDoc =
-      userSnap.docs[0];
-
+      users.docs[0];
 
     const userRef =
-      doc(
-        db,
-        "users",
-        userDoc.id
-      );
-
+      userDoc.ref;
 
     const submissionRef =
       doc(
@@ -3107,12 +2638,10 @@ async function(
         submissionId
       );
 
-
-    const transactionRef =
+    const txRef =
       doc(
         collection(db,"transactions")
       );
-
 
     await runTransaction(
       db,
@@ -3123,59 +2652,46 @@ async function(
             userRef
           );
 
-
         const submission =
           await transaction.get(
             submissionRef
           );
 
-
-        if(!user.exists()){
-
-          throw new Error(
-            "User record not found."
-          );
-
-        }
-
-
-        if(!submission.exists()){
-
-          throw new Error(
-            "Submission not found."
-          );
-
-        }
-
-
-        const submissionData =
-          submission.data();
-
-
         if(
-          submissionData.status === "Approved"
+          !user.exists()
+          ||
+          !submission.exists()
         ){
 
           throw new Error(
-            "This proof has already been approved."
+            "User or submission not found."
           );
 
         }
 
+        if(
+          submission.data().status
+          ===
+          "Approved"
+        ){
+
+          throw new Error(
+            "Proof already approved."
+          );
+
+        }
 
         const data =
           user.data();
-
 
         const oldBalance =
           Number(
             data.balance || 0
           );
 
-
         const newBalance =
-          oldBalance + reward;
-
+          oldBalance +
+          reward;
 
         transaction.update(
           userRef,
@@ -3183,7 +2699,6 @@ async function(
             balance:newBalance
           }
         );
-
 
         transaction.update(
           submissionRef,
@@ -3201,9 +2716,8 @@ async function(
           }
         );
 
-
         transaction.set(
-          transactionRef,
+          txRef,
           {
 
             uid:
@@ -3214,8 +2728,7 @@ async function(
               userDoc.id,
 
             email:
-              data.email ||
-              "",
+              data.email || "",
 
             type:
               "credit",
@@ -3232,11 +2745,11 @@ async function(
             reason:
               "Task reward",
 
-            createdBy:
-              auth.currentUser.email,
-
             relatedSubmission:
               submissionId,
+
+            createdBy:
+              auth.currentUser.email,
 
             createdAt:
               serverTimestamp()
@@ -3247,23 +2760,21 @@ async function(
       }
     );
 
-
     alert(
-      "Proof approved and ₦" +
-      reward.toLocaleString() +
+      "Proof approved and ₦"
+      +
+      reward.toLocaleString()
+      +
       " added."
     );
 
-
     loadProofs();
-
 
   }catch(error){
 
-    console.error(error);
-
     alert(
-      "Could not approve proof: " +
+      "Could not approve proof: "
+      +
       error.message
     );
 
@@ -3272,25 +2783,20 @@ async function(
 };
 
 
-/* =====================================================
+/* =========================
 REJECT PROOF
-===================================================== */
+========================= */
 
 window.rejectProof =
-async function(submissionId){
+async function(id){
 
   const reason =
     prompt(
       "Enter rejection reason:"
     );
 
-
-  if(reason === null){
-
+  if(reason===null)
     return;
-
-  }
-
 
   try{
 
@@ -3298,7 +2804,7 @@ async function(submissionId){
       doc(
         db,
         "taskSubmissions",
-        submissionId
+        id
       ),
       {
 
@@ -3317,20 +2823,18 @@ async function(submissionId){
       }
     );
 
-
     alert(
       "Proof rejected."
     );
 
-
     loadProofs();
-
 
   }catch(error){
 
     alert(
       "Could not reject proof: "
-      + error.message
+      +
+      error.message
     );
 
   }
@@ -3338,9 +2842,9 @@ async function(submissionId){
 };
 
 
-/* =====================================================
-LOAD PROMOTIONS
-===================================================== */
+/* =========================
+PROMOTIONS
+========================= */
 
 window.loadPromotions =
 async function(){
@@ -3350,10 +2854,8 @@ async function(){
       "promotionList"
     );
 
-
   list.innerHTML =
     "<p class='small'>Loading...</p>";
-
 
   try{
 
@@ -3365,48 +2867,42 @@ async function(){
         )
       );
 
-
     let pending=0;
 
+    list.innerHTML="";
 
     if(snap.empty){
 
       list.innerHTML =
         "<p class='small'>No promotion orders.</p>";
 
+      document
+      .getElementById(
+        "pendingPromotions"
+      )
+      .textContent="0";
+
       return;
 
     }
 
-
-    list.innerHTML="";
-
-
-    snap.forEach(orderDoc => {
+    snap.forEach(order => {
 
       const d =
-        orderDoc.data();
-
+        order.data();
 
       const status =
         d.promotionStatus ||
         "Pending";
 
-
-      if(status==="Pending"){
-
+      if(status==="Pending")
         pending++;
-
-      }
-
 
       const div =
         document.createElement("div");
 
-
       div.className =
         "order-card";
-
 
       div.innerHTML=`
 
@@ -3419,13 +2915,11 @@ async function(){
 
         <p>
           User:
-          ${safe(
-            d.email || ""
-          )}
+          ${safe(d.email || "")}
         </p>
 
         <p>
-          Promotion Link:
+          Link:
           ${safe(
             d.promotionLink ||
             d.link ||
@@ -3454,164 +2948,114 @@ async function(){
           Promotion Status:
           <span class="status ${
             status==="Approved"
-            ? "approved"
-            : status==="Rejected"
-            ? "rejected"
-            : "pending"
+            ?
+            "approved"
+            :
+            status==="Rejected"
+            ?
+            "rejected"
+            :
+            "pending"
           }">
             ${safe(status)}
           </span>
         </p>
 
-        <hr style="
-          margin:15px 0;
-          border:0;
-          border-top:1px solid #ddd;
-        ">
-
-        <h4>
-          🖼️ Payment Proof
-        </h4>
-
       `;
-
 
       if(d.paymentProofImage){
 
         const img =
           document.createElement("img");
 
-
         img.src =
           d.paymentProofImage;
-
 
         img.className =
           "proof-image";
 
-
-        img.alt =
-          "Payment proof image";
-
-
         div.appendChild(img);
 
-      }else{
-
-        const noImage =
-          document.createElement("p");
-
-
-        noImage.className =
-          "small";
-
-
-        noImage.textContent =
-          "No payment proof image uploaded.";
-
-
-        div.appendChild(
-          noImage
-        );
-
       }
-
 
       if(status==="Pending"){
 
         const approve =
           document.createElement("button");
 
-
         approve.className =
           "btn green";
-
 
         approve.textContent =
           "✅ Approve Promotion";
 
-
         approve.onclick =
           () =>
           updatePromotion(
-            orderDoc.id,
+            order.id,
             "Approved"
           );
 
-
-        div.appendChild(
-          approve
-        );
-
+        div.appendChild(approve);
 
         const reject =
           document.createElement("button");
 
-
         reject.className =
           "btn red";
-
 
         reject.textContent =
           "❌ Reject Promotion";
 
-
         reject.onclick =
           () =>
           updatePromotion(
-            orderDoc.id,
+            order.id,
             "Rejected"
           );
 
-
-        div.appendChild(
-          reject
-        );
+        div.appendChild(reject);
 
       }
-
 
       list.appendChild(div);
 
     });
 
-
     document
     .getElementById(
       "pendingPromotions"
     )
-    .textContent=pending;
-
+    .textContent =
+      pending;
 
   }catch(error){
 
-    console.error(error);
-
     list.innerHTML =
       "<p class='small'>Could not load promotions: "
-      + safe(error.message)
-      + "</p>";
+      +
+      safe(error.message)
+      +
+      "</p>";
 
   }
 
 };
 
 
-/* =====================================================
-UPDATE PROMOTION
-===================================================== */
-
 window.updatePromotion =
 async function(
-  promotionId,
+  id,
   status
 ){
 
   if(
     !confirm(
       "Change promotion status to "
-      + status
-      + "?"
+      +
+      status
+      +
+      "?"
     )
   ){
 
@@ -3619,14 +3063,13 @@ async function(
 
   }
 
-
   try{
 
     await updateDoc(
       doc(
         db,
         "promotionOrders",
-        promotionId
+        id
       ),
       {
 
@@ -3642,20 +3085,18 @@ async function(
       }
     );
 
-
     alert(
       "Promotion updated."
     );
 
-
     loadPromotions();
-
 
   }catch(error){
 
     alert(
       "Could not update promotion: "
-      + error.message
+      +
+      error.message
     );
 
   }
@@ -3663,9 +3104,217 @@ async function(
 };
 
 
-/* =====================================================
+/* =================================================
+IMPORTANT WITHDRAWAL FIX
+================================================= */
+
+
+/*
+  This function tries all common fields used
+  by the withdrawal document.
+
+  It checks:
+
+  1. document ID
+  2. userId
+  3. uid
+  4. accountUserId
+  5. userUid
+  6. email
+  7. accountEmail
+*/
+
+async function findUserForWithdrawal(
+  withdrawalData
+){
+
+  const usersRef =
+    collection(
+      db,
+      "users"
+    );
+
+
+  const possibleIds = [
+
+    withdrawalData.userId,
+
+    withdrawalData.uid,
+
+    withdrawalData.accountUserId,
+
+    withdrawalData.userUid
+
+  ].filter(Boolean);
+
+
+  /* Check document IDs */
+
+  for(
+    const id of possibleIds
+  ){
+
+    try{
+
+      const userDoc =
+        await getDoc(
+          doc(
+            db,
+            "users",
+            String(id)
+          )
+        );
+
+      if(
+        userDoc.exists()
+      ){
+
+        return {
+
+          ref:
+            userDoc.ref,
+
+          id:
+            userDoc.id,
+
+          data:
+            userDoc.data()
+
+        };
+
+      }
+
+    }catch(error){
+
+      console.log(
+        "Document ID check failed:",
+        error
+      );
+
+    }
+
+
+    /* Check uid field */
+
+    try{
+
+      const q =
+        query(
+          usersRef,
+          where(
+            "uid",
+            "==",
+            String(id)
+          ),
+          limit(1)
+        );
+
+      const snap =
+        await getDocs(q);
+
+      if(
+        !snap.empty
+      ){
+
+        return {
+
+          ref:
+            snap.docs[0].ref,
+
+          id:
+            snap.docs[0].id,
+
+          data:
+            snap.docs[0].data()
+
+        };
+
+      }
+
+    }catch(error){
+
+      console.log(
+        "UID query failed:",
+        error
+      );
+
+    }
+
+  }
+
+
+  /* Check email */
+
+  const possibleEmails = [
+
+    withdrawalData.email,
+
+    withdrawalData.accountEmail
+
+  ].filter(Boolean);
+
+
+  for(
+    const email
+    of
+    possibleEmails
+  ){
+
+    try{
+
+      const q =
+        query(
+          usersRef,
+          where(
+            "email",
+            "==",
+            String(email).trim()
+          ),
+          limit(1)
+        );
+
+      const snap =
+        await getDocs(q);
+
+      if(
+        !snap.empty
+      ){
+
+        return {
+
+          ref:
+            snap.docs[0].ref,
+
+          id:
+            snap.docs[0].id,
+
+          data:
+            snap.docs[0].data()
+
+        };
+
+      }
+
+    }catch(error){
+
+      console.log(
+        "Email query failed:",
+        error
+      );
+
+    }
+
+  }
+
+
+  return null;
+
+}
+
+
+/* =================================================
 LOAD WITHDRAWALS
-===================================================== */
+================================================= */
 
 window.loadWithdrawals =
 async function(){
@@ -3675,10 +3324,8 @@ async function(){
       "withdrawalList"
     );
 
-
   list.innerHTML =
-    "<p class='small'>Loading...</p>";
-
+    "<p class='small'>Loading withdrawals...</p>";
 
   try{
 
@@ -3690,44 +3337,90 @@ async function(){
         )
       );
 
-
     let pending=0;
 
-
-    if(snap.empty){
+    if(
+      snap.empty
+    ){
 
       list.innerHTML =
-        "<p class='small'>No withdrawals.</p>";
+        "<p class='small'>No withdrawals found.</p>";
+
+      document
+      .getElementById(
+        "pendingWithdrawals"
+      )
+      .textContent="0";
 
       return;
 
     }
 
-
     list.innerHTML="";
 
 
-    snap.forEach(withdrawalDoc => {
+    /*
+      Use for...of because we need to
+      await user lookup for every withdrawal.
+    */
+
+    for(
+      const withdrawalDoc
+      of
+      snap.docs
+    ){
 
       const d =
         withdrawalDoc.data();
-
 
       const status =
         d.status ||
         "Pending";
 
 
-      if(status==="Pending"){
+      if(
+        status === "Pending"
+      ){
 
         pending++;
 
       }
 
 
-      const div =
-        document.createElement("div");
+      let user =
+        null;
 
+
+      try{
+
+        user =
+          await findUserForWithdrawal(
+            d
+          );
+
+      }catch(error){
+
+        console.error(
+          error
+        );
+
+      }
+
+
+      const userData =
+        user?.data || {};
+
+
+      const balance =
+        Number(
+          userData.balance || 0
+        );
+
+
+      const div =
+        document.createElement(
+          "div"
+        );
 
       div.className =
         "withdraw-card";
@@ -3741,48 +3434,116 @@ async function(){
           ).toLocaleString()}
         </h3>
 
-        <p>
-          User:
-          ${safe(
-            d.email ||
-            d.uid ||
-            ""
-          )}
-        </p>
 
         <p>
-          Bank:
+
+          👤 User:
+
+          <strong>
+
+            ${safe(
+              userData.name ||
+              d.name ||
+              d.accountName ||
+              "User"
+            )}
+
+          </strong>
+
+        </p>
+
+
+        <p>
+
+          📧 Email:
+
+          ${safe(
+            userData.email ||
+            d.email ||
+            d.accountEmail ||
+            "Not available"
+          )}
+
+        </p>
+
+
+        <p>
+
+          🆔 UID:
+
+          ${safe(
+            userData.uid ||
+            d.uid ||
+            d.userId ||
+            d.accountUserId ||
+            d.userUid ||
+            "Not available"
+          )}
+
+        </p>
+
+
+        <p>
+
+          🏦 Bank:
+
           ${safe(
             d.bankName ||
             ""
           )}
+
         </p>
 
+
         <p>
-          Account Number:
+
+          💳 Account Number:
+
           ${safe(
             d.accountNumber ||
             ""
           )}
+
         </p>
 
+
         <p>
-          Account Name:
+
+          👤 Account Name:
+
           ${safe(
             d.accountName ||
             ""
           )}
+
         </p>
 
+
         <p>
+
+          💰 Current Balance:
+
+          <strong>
+            ₦${balance.toLocaleString()}
+          </strong>
+
+        </p>
+
+
+        <p>
+
           Status:
 
           <span class="status ${
-            status==="Approved"
-            ? "approved"
-            : status==="Rejected"
-            ? "rejected"
-            : "pending"
+            status === "Approved"
+            ?
+            "approved"
+            :
+            status === "Rejected"
+            ?
+            "rejected"
+            :
+            "pending"
           }">
 
             ${safe(status)}
@@ -3791,13 +3552,72 @@ async function(){
 
         </p>
 
+
+        ${
+          user
+
+          ?
+
+          `
+          <div class="info-box">
+
+            ✅ <strong>User account found.</strong>
+
+            <br><br>
+
+            Firestore User Document ID:
+
+            <strong>
+              ${safe(user.id)}
+            </strong>
+
+          </div>
+          `
+
+          :
+
+          `
+          <div class="warning-box">
+
+            ⚠️ <strong>User account was not found.</strong>
+
+            <br><br>
+
+            The system checked:
+
+            <br>
+            • userId
+            <br>
+            • uid
+            <br>
+            • accountUserId
+            <br>
+            • userUid
+            <br>
+            • email
+
+            <br><br>
+
+            Make sure the withdrawal document
+            contains the Firebase user's UID
+            or email.
+
+          </div>
+          `
+
+        }
+
       `;
 
 
-      if(status==="Pending"){
+      if(
+        status === "Pending"
+      ){
 
         const approve =
-          document.createElement("button");
+          document.createElement(
+            "button"
+          );
 
 
         approve.className =
@@ -3805,7 +3625,11 @@ async function(){
 
 
         approve.textContent =
-          "✅ Approve";
+          user
+          ?
+          "✅ Approve Withdrawal"
+          :
+          "⚠️ Approve Withdrawal";
 
 
         approve.onclick =
@@ -3822,7 +3646,9 @@ async function(){
 
 
         const reject =
-          document.createElement("button");
+          document.createElement(
+            "button"
+          );
 
 
         reject.className =
@@ -3830,7 +3656,7 @@ async function(){
 
 
         reject.textContent =
-          "❌ Reject";
+          "❌ Reject Withdrawal";
 
 
         reject.onclick =
@@ -3848,16 +3674,19 @@ async function(){
       }
 
 
-      list.appendChild(div);
+      list.appendChild(
+        div
+      );
 
-    });
+    }
 
 
     document
     .getElementById(
       "pendingWithdrawals"
     )
-    .textContent=pending;
+    .textContent =
+      pending;
 
 
   }catch(error){
@@ -3866,17 +3695,19 @@ async function(){
 
     list.innerHTML =
       "<p class='small'>Could not load withdrawals: "
-      + safe(error.message)
-      + "</p>";
+      +
+      safe(error.message)
+      +
+      "</p>";
 
   }
 
 };
 
 
-/* =====================================================
+/* =================================================
 UPDATE WITHDRAWAL
-===================================================== */
+================================================= */
 
 window.updateWithdrawal =
 async function(
@@ -3885,10 +3716,25 @@ async function(
 ){
 
   if(
+    !auth.currentUser
+  ){
+
+    alert(
+      "Admin session expired. Login again."
+    );
+
+    return;
+
+  }
+
+
+  if(
     !confirm(
       "Change withdrawal status to "
-      + status
-      + "?"
+      +
+      status
+      +
+      "?"
     )
   ){
 
@@ -3899,40 +3745,345 @@ async function(
 
   try{
 
-    await updateDoc(
+    const withdrawalRef =
       doc(
         db,
         "withdrawals",
         withdrawalId
-      ),
-      {
+      );
 
-        status:
-          status,
 
-        processedAt:
-          serverTimestamp(),
+    const withdrawalSnap =
+      await getDoc(
+        withdrawalRef
+      );
 
-        processedBy:
-          auth.currentUser.email
+
+    if(
+      !withdrawalSnap.exists()
+    ){
+
+      throw new Error(
+        "Withdrawal request was not found."
+      );
+
+    }
+
+
+    const withdrawalData =
+      withdrawalSnap.data();
+
+
+    /* =========================
+       REJECT
+       ========================= */
+
+    if(
+      status === "Rejected"
+    ){
+
+      await updateDoc(
+        withdrawalRef,
+        {
+
+          status:
+            "Rejected",
+
+          processedAt:
+            serverTimestamp(),
+
+          processedBy:
+            auth.currentUser.email
+
+        }
+      );
+
+
+      alert(
+        "❌ Withdrawal rejected."
+      );
+
+
+      await loadWithdrawals();
+
+      return;
+
+    }
+
+
+    /* =========================
+       APPROVE
+       ========================= */
+
+    if(
+      status === "Approved"
+    ){
+
+      const user =
+        await findUserForWithdrawal(
+          withdrawalData
+        );
+
+
+      if(
+        !user
+      ){
+
+        throw new Error(
+          "User account was not found. " +
+          "The withdrawal has no matching " +
+          "UID, userId, accountUserId, " +
+          "userUid or email."
+        );
 
       }
-    );
 
 
-    alert(
-      "Withdrawal updated."
-    );
+      const transactionRef =
+        doc(
+          collection(
+            db,
+            "transactions"
+          )
+        );
 
 
-    loadWithdrawals();
+      await runTransaction(
+        db,
+        async transaction => {
+
+
+          /* Get fresh user */
+
+          const userSnap =
+            await transaction.get(
+              user.ref
+            );
+
+
+          /* Get fresh withdrawal */
+
+          const freshWithdrawal =
+            await transaction.get(
+              withdrawalRef
+            );
+
+
+          if(
+            !userSnap.exists()
+          ){
+
+            throw new Error(
+              "User account was not found."
+            );
+
+          }
+
+
+          if(
+            !freshWithdrawal.exists()
+          ){
+
+            throw new Error(
+              "Withdrawal request was not found."
+            );
+
+          }
+
+
+          const freshData =
+            freshWithdrawal.data();
+
+
+          /* Prevent double approval */
+
+          if(
+            freshData.status ===
+            "Approved"
+          ){
+
+            throw new Error(
+              "This withdrawal has already been approved."
+            );
+
+          }
+
+
+          const userData =
+            userSnap.data();
+
+
+          const oldBalance =
+            Number(
+              userData.balance || 0
+            );
+
+
+          const amount =
+            Number(
+              freshData.amount || 0
+            );
+
+
+          if(
+            !amount ||
+            amount <= 0
+          ){
+
+            throw new Error(
+              "Invalid withdrawal amount."
+            );
+
+          }
+
+
+          if(
+            amount >
+            oldBalance
+          ){
+
+            throw new Error(
+              "Insufficient user balance. " +
+              "Current balance: ₦" +
+              oldBalance.toLocaleString()
+            );
+
+          }
+
+
+          const newBalance =
+            oldBalance -
+            amount;
+
+
+          /* Deduct money */
+
+          transaction.update(
+            user.ref,
+            {
+
+              balance:
+                newBalance,
+
+              updatedAt:
+                serverTimestamp()
+
+            }
+          );
+
+
+          /* Update withdrawal */
+
+          transaction.update(
+            withdrawalRef,
+            {
+
+              status:
+                "Approved",
+
+              processedAt:
+                serverTimestamp(),
+
+              processedBy:
+                auth.currentUser.email,
+
+              userId:
+                user.id,
+
+              uid:
+                userData.uid ||
+                user.id
+
+            }
+          );
+
+
+          /* Transaction history */
+
+          transaction.set(
+            transactionRef,
+            {
+
+              uid:
+                userData.uid ||
+                user.id,
+
+              userId:
+                user.id,
+
+              email:
+                userData.email ||
+                freshData.email ||
+                "",
+
+              type:
+                "debit",
+
+              amount:
+                amount,
+
+              oldBalance:
+                oldBalance,
+
+              newBalance:
+                newBalance,
+
+              reason:
+                "Withdrawal",
+
+              withdrawalId:
+                withdrawalId,
+
+              bankName:
+                freshData.bankName ||
+                "",
+
+              accountNumber:
+                freshData.accountNumber ||
+                "",
+
+              accountName:
+                freshData.accountName ||
+                "",
+
+              createdBy:
+                auth.currentUser.email,
+
+              createdAt:
+                serverTimestamp()
+
+            }
+          );
+
+        }
+      );
+
+
+      alert(
+        "✅ Withdrawal approved.\n\n" +
+        "₦" +
+        Number(
+          withdrawalData.amount || 0
+        ).toLocaleString() +
+        " deducted from the user's balance."
+      );
+
+    }
+
+
+    await loadWithdrawals();
+
+    await loadUsers();
 
 
   }catch(error){
 
+    console.error(error);
+
     alert(
-      "Could not update withdrawal: "
-      + error.message
+      "❌ Could not update withdrawal:\n\n"
+      +
+      error.message
     );
 
   }
@@ -3940,9 +4091,9 @@ async function(
 };
 
 
-/* =====================================================
+/* =========================
 REFRESH EVERYTHING
-===================================================== */
+========================= */
 
 window.refreshEverything =
 async function(){
@@ -3961,43 +4112,7 @@ async function(){
 
 };
 
-
-/* =====================================================
-SAFE TEXT
-===================================================== */
-
-function safe(value){
-
-  return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
 </script>
 
 </body>
-  </html>
+      </html>
