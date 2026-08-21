@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>StoryVerse Admin Dashboard</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -21,100 +19,55 @@ body{
   color:#111827;
 }
 
-header{
-  background:linear-gradient(135deg,#111827,#2563eb);
-  color:white;
-  padding:25px 15px;
-  text-align:center;
-}
-
-header h1{
-  font-size:25px;
-}
-
-header p{
-  margin-top:7px;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:15px;
-}
-
-.card{
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  margin-bottom:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
-}
-
-input,
-textarea,
-select{
-  width:100%;
-  padding:12px;
-  border:1px solid #d1d5db;
-  border-radius:9px;
-  margin:6px 0 12px;
-  font-size:15px;
-}
-
-textarea{
-  min-height:100px;
+button,input,textarea,select{
+  font:inherit;
 }
 
 button{
   cursor:pointer;
 }
 
-button:disabled{
-  cursor:not-allowed;
-  opacity:.6;
+header{
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
+  padding:22px 15px;
+  text-align:center;
 }
 
-.btn{
-  width:100%;
-  padding:12px;
-  border:0;
-  border-radius:9px;
-  background:#2563eb;
-  color:white;
-  font-weight:bold;
+header h1{
+  font-size:24px;
+}
+
+header p{
   margin-top:7px;
 }
 
-.green{background:#16a34a}
-.red{background:#dc2626}
-.orange{background:#ea580c}
-.gray{background:#4b5563}
-.purple{background:#7c3aed}
-.gold{background:#ca8a04}
-.dark{background:#111827}
-.warning{background:#b91c1c}
-
-.nav{
+nav{
   display:flex;
   overflow-x:auto;
   background:white;
   border-bottom:1px solid #ddd;
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:100;
 }
 
-.nav button{
-  flex:1;
-  min-width:110px;
+nav button{
+  min-width:125px;
   padding:14px 8px;
   border:0;
   background:white;
   font-weight:bold;
 }
 
-.nav button:hover{
+nav button:hover{
   background:#eff6ff;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:15px;
 }
 
 .section{
@@ -125,114 +78,78 @@ button:disabled{
   display:block;
 }
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
+.card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
   margin-bottom:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.stat{
-  background:white;
-  padding:18px;
-  border-radius:12px;
-  box-shadow:0 3px 12px rgba(0,0,0,.07);
+.card h2{
+  margin-bottom:12px;
 }
 
-.stat strong{
-  display:block;
-  font-size:23px;
-  margin-top:6px;
-}
-
-.user-card,
-.order-card,
-.proof-card,
-.task-card,
-.withdraw-card,
-.referral-card{
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:15px;
-  margin-top:12px;
-  background:white;
-}
-
-.user-card{
-  border-left:5px solid #2563eb;
-}
-
-.proof-card{
-  border-left:5px solid #7c3aed;
-}
-
-.referral-card{
-  border-left:5px solid #ca8a04;
-}
-
-.proof-image{
-  display:block;
+input,
+textarea,
+select{
   width:100%;
-  max-width:600px;
-  max-height:500px;
-  object-fit:contain;
-  margin:12px auto;
-  border-radius:10px;
-  border:1px solid #ddd;
-  background:#f9fafb;
+  padding:12px;
+  border:1px solid #d1d5db;
+  border-radius:9px;
+  margin:7px 0 12px;
+  background:white;
 }
 
-.status{
-  display:inline-block;
-  padding:5px 10px;
-  border-radius:20px;
-  font-size:12px;
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.btn{
+  border:0;
+  border-radius:9px;
+  padding:12px 15px;
+  color:white;
+  background:#2563eb;
   font-weight:bold;
   margin:5px 0;
 }
 
-.pending{
-  background:#fef3c7;
-  color:#92400e;
+.btn:hover{
+  opacity:.9;
 }
 
-.approved,
-.credited{
-  background:#dcfce7;
-  color:#166534;
+.green{
+  background:#16a34a;
 }
 
-.rejected{
-  background:#fee2e2;
-  color:#991b1b;
+.red{
+  background:#dc2626;
 }
 
-.notcredited{
-  background:#fef3c7;
-  color:#92400e;
+.orange{
+  background:#ea580c;
 }
 
-.warning-status{
-  background:#fee2e2;
-  color:#991b1b;
+.gray{
+  background:#4b5563;
 }
 
-.small{
-  font-size:13px;
-  color:#6b7280;
-  line-height:1.5;
+.purple{
+  background:#7c3aed;
 }
 
-.money{
-  color:#15803d;
-  font-weight:bold;
+.full{
+  width:100%;
 }
 
-.message{
+.msg{
   display:none;
   padding:12px;
-  border-radius:8px;
+  border-radius:9px;
   margin-top:10px;
+  line-height:1.5;
 }
 
 .success{
@@ -245,5257 +162,2967 @@ button:disabled{
   color:#991b1b;
 }
 
-#loginPage{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  background:#f3f4f6;
+.warning{
+  background:#fef3c7;
+  color:#92400e;
 }
 
-.login-box{
-  width:100%;
-  max-width:420px;
+.info{
+  background:#dbeafe;
+  color:#1e40af;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:15px;
+}
+
+.stat{
   background:white;
-  padding:25px;
-  border-radius:18px;
-  box-shadow:0 5px 25px rgba(0,0,0,.1);
+  padding:18px;
+  border-radius:14px;
+  box-shadow:0 3px 10px rgba(0,0,0,.07);
 }
 
-#adminPage{
+.stat strong{
+  display:block;
+  font-size:25px;
+  margin-top:8px;
+  color:#2563eb;
+}
+
+.userCard,
+.item{
+  border:1px solid #e5e7eb;
+  padding:15px;
+  border-radius:12px;
+  margin-top:12px;
+  background:#fff;
+}
+
+.userCard h3,
+.item h3{
+  margin-bottom:8px;
+}
+
+.small{
+  font-size:13px;
+  color:#6b7280;
+  line-height:1.5;
+}
+
+.badge{
+  display:inline-block;
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+  margin:4px 0;
+}
+
+.pending{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.approved{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.rejected{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.unread{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.read{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.warningBox{
+  background:#fff7ed;
+  border:2px solid #fb923c;
+  padding:16px;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+.selectedUser{
+  background:#eff6ff;
+  border:2px solid #2563eb;
+  padding:15px;
+  border-radius:12px;
+  margin-top:10px;
   display:none;
 }
 
-.referral-code{
-  background:#eff6ff;
-  border:1px dashed #2563eb;
-  padding:10px;
-  border-radius:8px;
-  font-weight:bold;
-  color:#1d4ed8;
-  margin:8px 0;
-}
-
-.info-box{
-  background:#eff6ff;
-  border:1px solid #bfdbfe;
-  color:#1e40af;
-  padding:12px;
-  border-radius:9px;
-  margin-top:10px;
-}
-
-.warning-box{
+.notification{
+  border-left:5px solid #ea580c;
   background:#fff7ed;
-  border:1px solid #fed7aa;
-  color:#9a3412;
-  padding:12px;
-  border-radius:9px;
+  padding:15px;
+  border-radius:8px;
   margin-top:10px;
 }
 
-.loading{
-  text-align:center;
-  padding:20px;
-  color:#6b7280;
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
 }
 
-.transaction{
-  padding:12px;
-  border-radius:9px;
-  margin-top:8px;
+th,
+td{
+  padding:10px;
+  border-bottom:1px solid #e5e7eb;
+  text-align:left;
+  font-size:13px;
+}
+
+th{
   background:#f9fafb;
-  border:1px solid #e5e7eb;
 }
 
-.transaction.credit{
-  border-left:5px solid #16a34a;
-}
-
-.transaction.debit{
-  border-left:5px solid #dc2626;
-}
-
-.tx-credit{
-  color:#15803d;
-  font-weight:bold;
-}
-
-.tx-debit{
+.dangerText{
   color:#dc2626;
   font-weight:bold;
 }
 
-.account-identifier{
-  background:#111827;
-  color:white;
-  padding:12px;
-  border-radius:9px;
-  margin:12px 0;
-  word-break:break-all;
-}
-
-.uid-box{
-  background:#f3f4f6;
-  border:1px solid #d1d5db;
-  padding:10px;
-  border-radius:8px;
-  word-break:break-all;
-  margin-top:8px;
-}
-
-.proof-user-box{
-  background:#eff6ff;
-  border:1px solid #bfdbfe;
-  padding:12px;
-  border-radius:9px;
-  margin-top:12px;
-}
-
-.proof-status-box{
-  margin-top:10px;
-}
-
-.copy-row{
-  display:grid;
-  grid-template-columns:1fr 110px;
-  gap:8px;
-  margin-top:8px;
-}
-
-.copy-row input{
-  margin:0;
-}
-
-.copy-row button{
-  margin:0;
-}
-
-.date-heading{
-  margin-top:20px;
-  padding:12px 15px;
-  border-radius:10px;
-  background:#111827;
-  color:white;
-  font-size:17px;
-  font-weight:bold;
-}
-
-.date-heading:first-child{
-  margin-top:0;
-}
-
-.time-badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:15px;
-  background:#eff6ff;
-  color:#1d4ed8;
-  font-size:12px;
-  font-weight:bold;
-  margin-top:5px;
-}
-
-.warning-history{
-  margin-top:10px;
-  padding:10px;
-  background:#fff7ed;
-  border:1px solid #fed7aa;
-  border-radius:8px;
-}
-
-.no-record{
-  padding:15px;
-  background:#f9fafb;
-  border-radius:9px;
+footer{
   text-align:center;
-  color:#6b7280;
+  padding:25px;
+  color:#777;
 }
 
-@media(max-width:700px){
+@media(max-width:750px){
 
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
+.stats{
+  grid-template-columns:repeat(2,1fr);
+}
 
-  .copy-row{
-    grid-template-columns:1fr;
-  }
+table{
+  display:block;
+  overflow-x:auto;
+  white-space:nowrap;
+}
 
 }
 
+@media(max-width:500px){
+
+header h1{
+  font-size:20px;
+}
+
+.card{
+  padding:15px;
+}
+
+.stats{
+  grid-template-columns:1fr 1fr;
+}
+
+.stat strong{
+  font-size:20px;
+}
+
+}
 </style>
 </head>
 
 <body>
 
-
-<!-- ==================================================
-ADMIN LOGIN
-================================================== -->
-
-<div id="loginPage">
-
-  <div class="login-box">
-
-    <h2>🔐 Admin Login</h2>
-
-    <p class="small" style="margin:8px 0 15px;">
-      StoryVerseTV Promotion & Earning Hub
-    </p>
-
-    <input
-      type="email"
-      id="loginEmail"
-      placeholder="Admin email"
-      autocomplete="email"
-    >
-
-    <input
-      type="password"
-      id="loginPassword"
-      placeholder="Password"
-      autocomplete="current-password"
-    >
-
-    <button
-      class="btn"
-      onclick="loginAdmin()"
-    >
-      🔐 Login
-    </button>
-
-    <button
-      class="btn gray"
-      onclick="forgotPassword()"
-    >
-      🔑 Forgot Password
-    </button>
-
-    <div id="loginMessage" class="message"></div>
-
-  </div>
-
-</div>
-
-
-<!-- ==================================================
-ADMIN PAGE
-================================================== -->
-
-<div id="adminPage">
-
 <header>
 
-  <h1>🚀 StoryVerse Admin Dashboard</h1>
+<h1>🚀 StoryVerse Admin Dashboard</h1>
 
-  <p>Promotion & Earning Hub Management</p>
-
-  <button
-    class="btn red"
-    style="max-width:180px;margin:15px auto 0;"
-    onclick="logoutAdmin()"
-  >
-    🚪 Logout
-  </button>
+<p>Manage Users • Tasks • Promotions • Referrals • Withdrawals</p>
 
 </header>
 
 
-<!-- ==================================================
-NAVIGATION
-================================================== -->
+<nav>
 
-<div class="nav">
+<button onclick="showSection('dashboard')">
+🏠 Dashboard
+</button>
 
-  <button onclick="showSection('dashboard')">
-    🏠 Dashboard
-  </button>
+<button onclick="showSection('users')">
+👥 Users
+</button>
 
-  <button onclick="showSection('tasks')">
-    📋 Tasks
-  </button>
+<button onclick="showSection('warnings')">
+⚠️ Warnings
+</button>
 
-  <button onclick="showSection('proofs')">
-    🖼️ Proofs
-  </button>
+<button onclick="showSection('tasks')">
+📋 Tasks
+</button>
 
-  <button onclick="showSection('users')">
-    👥 Users
-  </button>
+<button onclick="showSection('promotions')">
+📢 Promotions
+</button>
 
-  <button onclick="showSection('referrals')">
-    🎁 Referrals
-  </button>
+<button onclick="showSection('referrals')">
+👥 Referrals
+</button>
 
-  <button onclick="showSection('promotions')">
-    📢 Promotions
-  </button>
+<button onclick="showSection('withdrawals')">
+💸 Withdrawals
+</button>
 
-  <button onclick="showSection('withdrawals')">
-    💸 Withdrawals
-  </button>
-
-</div>
+</nav>
 
 
 <div class="container">
 
 
-<!-- ==================================================
-DASHBOARD
-================================================== -->
+<!-- ================= DASHBOARD ================= -->
 
 <section id="dashboard" class="section active">
 
-  <div class="stats">
+<div class="stats">
 
-    <div class="stat">
-      👥 Users
-      <strong id="totalUsers">0</strong>
-    </div>
+<div class="stat">
+👥 Users
+<strong id="totalUsers">0</strong>
+</div>
 
-    <div class="stat">
-      🖼️ Pending Proofs
-      <strong id="pendingProofs">0</strong>
-    </div>
+<div class="stat">
+📋 Tasks
+<strong id="totalTasks">0</strong>
+</div>
 
-    <div class="stat">
-      📢 Pending Promotions
-      <strong id="pendingPromotions">0</strong>
-    </div>
+<div class="stat">
+📢 Promotions
+<strong id="totalPromotions">0</strong>
+</div>
 
-    <div class="stat">
-      💸 Withdrawals
-      <strong id="pendingWithdrawals">0</strong>
-    </div>
+<div class="stat">
+💸 Withdrawals
+<strong id="totalWithdrawals">0</strong>
+</div>
 
-    <div class="stat">
-      🎁 Referrals
-      <strong id="totalReferrals">0</strong>
-    </div>
-
-    <div class="stat">
-      💰 Credited Referrals
-      <strong id="creditedReferrals">0</strong>
-    </div>
-
-  </div>
+</div>
 
 
-  <div class="card">
+<div class="card">
 
-    <h2>⚡ Admin Dashboard</h2>
+<h2>⚡ Admin Controls</h2>
 
-    <p class="small" style="margin-top:8px;">
-      Manage users, balances, tasks, referrals,
-      promotions, task proofs and withdrawals.
-    </p>
+<p class="small">
+Use the sections above to manage StoryVerse users and requests.
+</p>
 
-    <div class="info-box">
+<button class="btn full" onclick="loadEverything()">
+🔄 Refresh Dashboard
+</button>
 
-      🔎 <strong>User Count:</strong>
+</div>
 
-      The Users count is calculated directly from
-      the current <strong>users</strong> collection.
-      When your delete-user Cloud Function removes
-      the user's Firestore document, that user will
-      automatically disappear from this count.
 
-    </div>
+<div class="card">
 
-    <div class="warning-box">
+<h2>⚠️ Individual User Warning</h2>
 
-      ⚠️ <strong>Important:</strong>
+<p>
+Send a warning or notice to a specific registered user.
+</p>
 
-      A browser admin page cannot directly list Firebase
-      Authentication users. If an Authentication account
-      is deleted, your Cloud Function should also delete
-      its matching <strong>users/{uid}</strong> document.
+<button
+class="btn orange full"
+onclick="showSection('warnings')">
+⚠️ Send User Warning
+</button>
 
-    </div>
-
-    <button
-      class="btn"
-      onclick="refreshEverything()"
-    >
-      🔄 Refresh Everything
-    </button>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- ==================================================
-TASKS
-================================================== -->
-
-<section id="tasks" class="section">
-
-  <div class="card">
-
-    <h2>➕ Add Daily Task</h2>
-
-    <input
-      type="text"
-      id="taskTitle"
-      placeholder="Task title"
-    >
-
-    <textarea
-      id="taskDescription"
-      placeholder="Task description"
-    ></textarea>
-
-    <input
-      type="url"
-      id="taskLink"
-      placeholder="Task link"
-    >
-
-    <input
-      type="number"
-      id="taskReward"
-      placeholder="Reward e.g. 100"
-      min="0"
-    >
-
-    <select id="taskActive">
-      <option value="true">Active</option>
-      <option value="false">Inactive</option>
-    </select>
-
-    <button
-      class="btn green"
-      onclick="addTask()"
-    >
-      ➕ Add Task
-    </button>
-
-    <div id="taskMessage" class="message"></div>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>📋 Existing Tasks</h2>
-
-    <button
-      class="btn gray"
-      onclick="loadTasks()"
-    >
-      🔄 Refresh Tasks
-    </button>
-
-    <div id="taskList">
-      Loading...
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ==================================================
-PROOFS
-================================================== -->
-
-<section id="proofs" class="section">
-
-  <div class="card">
-
-    <h2>🖼️ Task Proof Images</h2>
-
-    <p class="small">
-      Proofs are arranged by the actual submission date
-      and time. Newest submissions appear first.
-    </p>
-
-    <div class="info-box">
-
-      🕐 <strong>Date & Time:</strong>
-
-      A proof submitted on 28/05/2026 will appear
-      under the 28/05/2026 date heading and will be
-      sorted by its exact submission time.
-
-    </div>
-
-    <div class="info-box">
-
-      🆔 <strong>Account identification:</strong>
-
-      Always check the Firebase UID before approving
-      a proof when you suspect duplicate accounts.
-
-    </div>
-
-    <button
-      class="btn gray"
-      onclick="loadProofs()"
-    >
-      🔄 Refresh Proofs
-    </button>
-
-    <div id="proofList">
-      Loading...
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ==================================================
-USERS
-================================================== -->
+<!-- ================= USERS ================= -->
 
 <section id="users" class="section">
 
-  <div class="card">
+<div class="card">
 
-    <h2>👥 Registered Users</h2>
+<h2>👥 Registered Users</h2>
 
-    <p class="small">
-      View currently stored user accounts and manage
-      balances and warnings.
-    </p>
+<input
+type="text"
+id="userSearch"
+placeholder="Search by email or User ID..."
+oninput="filterUsers()">
 
-    <div class="info-box">
+<button
+class="btn gray full"
+onclick="loadUsers()">
+🔄 Refresh Users
+</button>
 
-      👥 The count below represents the current
-      Firestore <strong>users</strong> collection.
-      Deleted Firestore user documents are not counted.
+<div id="usersList">
+<p class="small">Loading users...</p>
+</div>
 
-    </div>
-
-    <button
-      class="btn gray"
-      onclick="loadUsers()"
-    >
-      🔄 Refresh Users
-    </button>
-
-    <div id="userList">
-      Loading...
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- ==================================================
-REFERRALS
-================================================== -->
+<!-- ================= INDIVIDUAL WARNINGS ================= -->
 
-<section id="referrals" class="section">
+<section id="warnings" class="section">
 
-  <div class="card">
+<div class="warningBox">
 
-    <h2>🎁 Referral Management</h2>
+<h2>⚠️ Individual User Warning / Notice</h2>
 
-    <p class="small">
-      All referral registrations are displayed and
-      sorted by their registration date/time.
-    </p>
+<p>
+Select <strong>one user</strong> below. The message will be stored
+under that user's UID and only that user will receive it.
+</p>
 
-    <div class="info-box">
+</div>
 
-      💰 Referral Bonus:
-      <strong>₦200</strong>
 
-      <br><br>
+<div class="card">
 
-      Approving a referral automatically credits the
-      ₦200 bonus to the correct referrer's balance.
+<h2>1️⃣ Select User</h2>
 
-    </div>
+<input
+type="text"
+id="warningUserSearch"
+placeholder="Search user email or UID..."
+oninput="filterWarningUsers()">
 
-    <button
-      class="btn gray"
-      onclick="loadReferrals()"
-    >
-      🔄 Refresh Referrals
-    </button>
+<div id="warningUsersList">
+<p class="small">
+Loading users...
+</p>
+</div>
 
-    <div id="referralList">
-      Loading...
-    </div>
 
-  </div>
+<div
+id="selectedUser"
+class="selectedUser">
+
+<h3>✅ Selected User</h3>
+
+<p>
+Email:
+<strong id="selectedUserEmail"></strong>
+</p>
+
+<p>
+UID:
+<small id="selectedUserUid"></small>
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>2️⃣ Write Warning / Notice</h2>
+
+<label>
+<strong>Message Type</strong>
+</label>
+
+<select id="notificationType">
+
+<option value="Warning">
+⚠️ Warning
+</option>
+
+<option value="Notice">
+📢 Notice
+</option>
+
+<option value="Account Warning">
+🚨 Account Warning
+</option>
+
+<option value="Important">
+🔔 Important Notice
+</option>
+
+</select>
+
+
+<label>
+<strong>Subject</strong>
+</label>
+
+<input
+type="text"
+id="notificationTitle"
+placeholder="Example: Account Warning">
+
+
+<label>
+<strong>Message</strong>
+</label>
+
+<textarea
+id="notificationMessage"
+placeholder="Write the warning or notice to this user..."></textarea>
+
+
+<button
+id="sendWarningButton"
+class="btn orange full"
+onclick="sendIndividualWarning()">
+
+⚠️ Send Warning To Selected User
+
+</button>
+
+<div id="warningMessage" class="msg"></div>
+
+</div>
+
+
+<div class="card">
+
+<h2>📜 Warning History</h2>
+
+<p class="small">
+This shows warnings/notices previously sent by the admin.
+</p>
+
+<button
+class="btn gray full"
+onclick="loadWarningHistory()">
+🔄 Refresh Warning History
+</button>
+
+<div id="warningHistory">
+<p class="small">Loading...</p>
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ==================================================
-PROMOTIONS
-================================================== -->
+<!-- ================= TASKS ================= -->
+
+<section id="tasks" class="section">
+
+<div class="card">
+
+<h2>➕ Create Task</h2>
+
+<input
+type="text"
+id="taskTitle"
+placeholder="Task title">
+
+<textarea
+id="taskDescription"
+placeholder="Task description"></textarea>
+
+<input
+type="url"
+id="taskLink"
+placeholder="Task link">
+
+<input
+type="number"
+id="taskReward"
+placeholder="Reward amount">
+
+<button
+class="btn green full"
+onclick="createTask()">
+➕ Create Task
+</button>
+
+<div id="taskMessage" class="msg"></div>
+
+</div>
+
+
+<div class="card">
+
+<h2>📋 Existing Tasks</h2>
+
+<button
+class="btn gray full"
+onclick="loadTasks()">
+🔄 Refresh Tasks
+</button>
+
+<div id="tasksList">
+<p class="small">Loading...</p>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>🖼️ Task Proof Submissions</h2>
+
+<button
+class="btn gray full"
+onclick="loadSubmissions()">
+🔄 Refresh Submissions
+</button>
+
+<div id="submissionsList">
+<p class="small">Loading...</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PROMOTIONS ================= -->
 
 <section id="promotions" class="section">
 
-  <div class="card">
+<div class="card">
 
-    <h2>📢 Promotion Orders</h2>
+<h2>📢 Promotion Orders</h2>
 
-    <button
-      class="btn gray"
-      onclick="loadPromotions()"
-    >
-      🔄 Refresh Orders
-    </button>
+<button
+class="btn gray full"
+onclick="loadPromotions()">
+🔄 Refresh Promotion Orders
+</button>
 
-    <div id="promotionList">
-      Loading...
-    </div>
+<div id="promotionsList">
+<p class="small">Loading...</p>
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- ==================================================
-WITHDRAWALS
-================================================== -->
+<!-- ================= REFERRALS ================= -->
+
+<section id="referrals" class="section">
+
+<div class="card">
+
+<h2>👥 Referral Requests</h2>
+
+<button
+class="btn gray full"
+onclick="loadReferrals()">
+🔄 Refresh Referrals
+</button>
+
+<div id="referralsList">
+<p class="small">Loading...</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= WITHDRAWALS ================= -->
 
 <section id="withdrawals" class="section">
 
-  <div class="card">
+<div class="card">
 
-    <h2>💸 Withdrawal Requests</h2>
+<h2>💸 Withdrawal Requests</h2>
 
-    <button
-      class="btn gray"
-      onclick="loadWithdrawals()"
-    >
-      🔄 Refresh Withdrawals
-    </button>
+<button
+class="btn gray full"
+onclick="loadWithdrawals()">
+🔄 Refresh Withdrawals
+</button>
 
-    <div id="withdrawalList">
-      Loading...
-    </div>
+<div id="withdrawalsList">
+<p class="small">Loading...</p>
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
 </div>
-</div>
 
 
-<!-- ==================================================
-FIREBASE
-================================================== -->
+<footer>
+© 2026 StoryVerse Promotion & Earning Hub — Admin
+</footer>
+
+
+
+<!-- ================= FIREBASE ================= -->
 
 <script type="module">
 
 import {
-  initializeApp
+initializeApp
 }
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-  onAuthStateChanged,
-  signOut
+getAuth,
+onAuthStateChanged
 }
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  doc,
-  updateDoc,
-  query,
-  where,
-  limit,
-  serverTimestamp,
-  runTransaction
+getFirestore,
+collection,
+addDoc,
+getDocs,
+getDoc,
+setDoc,
+updateDoc,
+deleteDoc,
+doc,
+query,
+where,
+serverTimestamp
 }
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* ==================================================
-FIREBASE CONFIG
-================================================== */
+/* ================= FIREBASE CONFIG ================= */
 
-const firebaseConfig = {
+const firebaseConfig={
 
-  apiKey:
-  "AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
+apiKey:"AIzaSyAkDGP6ML77vHL9dmt4iZChaKg-7fbMceE",
 
-  authDomain:
-  "story-verse-earnig.firebaseapp.com",
+authDomain:
+"story-verse-earnig.firebaseapp.com",
 
-  databaseURL:
-  "https://story-verse-earnig-default-rtdb.firebaseio.com",
+databaseURL:
+"https://story-verse-earnig-default-rtdb.firebaseio.com",
 
-  projectId:
-  "story-verse-earnig",
+projectId:
+"story-verse-earnig",
 
-  storageBucket:
-  "story-verse-earnig.firebasestorage.app",
+storageBucket:
+"story-verse-earnig.firebasestorage.app",
 
-  messagingSenderId:
-  "650131396615",
+messagingSenderId:
+"650131396615",
 
-  appId:
-  "1:650131396615:web:ad655e6412de909d8db2a2",
+appId:
+"1:650131396615:web:ad655e6412de909d8db2a2",
 
-  measurementId:
-  "G-ZLQ6G156LX"
+measurementId:
+"G-ZLQ6G156LX"
 
 };
 
 
-const app =
-initializeApp(firebaseConfig);
+const app=initializeApp(firebaseConfig);
 
-const auth =
-getAuth(app);
+const auth=getAuth(app);
 
-const db =
-getFirestore(app);
+const db=getFirestore(app);
 
 
-/* ==================================================
-ADMIN SETTINGS
-================================================== */
+/* ================= ADMIN EMAIL ================= */
 
-const ADMIN_EMAIL =
-"storyversetvearnhub@gmail.com";
+/*
+CHANGE THIS TO THE EMAIL YOU USE
+FOR YOUR ADMIN ACCOUNT.
+*/
 
-const REFERRAL_BONUS =
-200;
+const ADMIN_EMAIL="YOUR_ADMIN_EMAIL@gmail.com";
 
 
-/* ==================================================
-MESSAGE
-================================================== */
+/* ================= DATA ================= */
 
-function showMessage(
-  id,
-  text,
-  type="success"
-){
+let allUsers=[];
 
-  const box =
-  document.getElementById(id);
+let warningUsers=[];
 
-  if(!box) return;
+let selectedUserUid="";
 
-  box.style.display="block";
 
-  box.className =
-  type==="error"
-  ? "message error"
-  : "message success";
 
-  box.textContent=text;
+/* ================= NAVIGATION ================= */
+
+window.showSection=function(name){
+
+document
+.querySelectorAll(".section")
+.forEach(section=>{
+section.classList.remove("active");
+});
+
+const section=
+document.getElementById(name);
+
+if(section){
+section.classList.add("active");
 }
 
+if(name==="users"){
+loadUsers();
+}
 
-/* ==================================================
-LOGIN
-================================================== */
+if(name==="warnings"){
+loadUsersForWarnings();
+loadWarningHistory();
+}
 
-window.loginAdmin =
-async function(){
+if(name==="tasks"){
+loadTasks();
+loadSubmissions();
+}
 
-  const email =
-  document
-  .getElementById("loginEmail")
-  .value
-  .trim();
+if(name==="promotions"){
+loadPromotions();
+}
 
-  const password =
-  document
-  .getElementById("loginPassword")
-  .value;
+if(name==="referrals"){
+loadReferrals();
+}
 
-  if(!email || !password){
+if(name==="withdrawals"){
+loadWithdrawals();
+}
 
-    showMessage(
-      "loginMessage",
-      "Enter your email and password.",
-      "error"
-    );
-
-    return;
-  }
-
-  if(
-    email.toLowerCase() !==
-    ADMIN_EMAIL.toLowerCase()
-  ){
-
-    showMessage(
-      "loginMessage",
-      "This is not the admin account.",
-      "error"
-    );
-
-    return;
-  }
-
-  try{
-
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    showMessage(
-      "loginMessage",
-      "Login failed: "+error.message,
-      "error"
-    );
-  }
 };
 
 
-/* ==================================================
-FORGOT PASSWORD
-================================================== */
 
-window.forgotPassword =
-async function(){
-
-  const email =
-  document
-  .getElementById("loginEmail")
-  .value
-  .trim();
-
-  if(
-    email.toLowerCase() !==
-    ADMIN_EMAIL.toLowerCase()
-  ){
-
-    showMessage(
-      "loginMessage",
-      "Enter the admin email first.",
-      "error"
-    );
-
-    return;
-  }
-
-  try{
-
-    await sendPasswordResetEmail(
-      auth,
-      email
-    );
-
-    showMessage(
-      "loginMessage",
-      "Password reset email sent."
-    );
-
-  }catch(error){
-
-    showMessage(
-      "loginMessage",
-      error.message,
-      "error"
-    );
-  }
-};
-
-
-/* ==================================================
-AUTH STATE
-================================================== */
+/* ================= AUTH CHECK ================= */
 
 onAuthStateChanged(
-  auth,
-  user => {
+auth,
+async(user)=>{
 
-    if(
-      user &&
-      user.email &&
-      user.email.toLowerCase() ===
-      ADMIN_EMAIL.toLowerCase()
-    ){
+if(!user){
 
-      document
-      .getElementById("loginPage")
-      .style.display="none";
+document.body.innerHTML=`
 
-      document
-      .getElementById("adminPage")
-      .style.display="block";
+<div style="
+padding:40px;
+text-align:center;
+font-family:Arial">
 
-      refreshEverything();
+<h2>🔐 Admin Login Required</h2>
 
-    }else{
+<p>
+Please log in with your Firebase account.
+</p>
 
-      document
-      .getElementById("loginPage")
-      .style.display="flex";
+</div>
 
-      document
-      .getElementById("adminPage")
-      .style.display="none";
-    }
-  }
+`;
+
+return;
+
+}
+
+
+/*
+IMPORTANT:
+Only the email configured above
+is allowed to use this dashboard.
+*/
+
+if(
+ADMIN_EMAIL!=="YOUR_ADMIN_EMAIL@gmail.com" &&
+user.email!==ADMIN_EMAIL
+){
+
+document.body.innerHTML=`
+
+<div style="
+padding:40px;
+text-align:center;
+font-family:Arial">
+
+<h2 style="color:#dc2626">
+🚫 Access Denied
+</h2>
+
+<p>
+This account is not authorized as an administrator.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+await loadEverything();
+
+}
 );
 
 
-/* ==================================================
-LOGOUT
-================================================== */
 
-window.logoutAdmin =
-async function(){
+/* ================= MESSAGE ================= */
 
-  try{
-
-    await signOut(auth);
-
-    document
-    .getElementById("adminPage")
-    .style.display="none";
-
-    document
-    .getElementById("loginPage")
-    .style.display="flex";
-
-    document
-    .getElementById("loginPassword")
-    .value="";
-
-  }catch(error){
-
-    alert(
-      "Logout failed: "+
-      error.message
-    );
-  }
-};
-
-
-/* ==================================================
-NAVIGATION
-================================================== */
-
-window.showSection =
-function(name){
-
-  document
-  .querySelectorAll(".section")
-  .forEach(
-    section =>
-    section.classList.remove("active")
-  );
-
-  const section =
-  document.getElementById(name);
-
-  if(section){
-
-    section.classList.add("active");
-
-  }
-};
-
-
-/* ==================================================
-ADD TASK
-================================================== */
-
-window.addTask =
-async function(){
-
-  const title =
-  document
-  .getElementById("taskTitle")
-  .value.trim();
-
-  const description =
-  document
-  .getElementById("taskDescription")
-  .value.trim();
-
-  const link =
-  document
-  .getElementById("taskLink")
-  .value.trim();
-
-  const reward =
-  Number(
-    document
-    .getElementById("taskReward")
-    .value
-  );
-
-  const active =
-  document
-  .getElementById("taskActive")
-  .value === "true";
-
-
-  if(!title){
-
-    showMessage(
-      "taskMessage",
-      "Enter a task title.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  if(!description){
-
-    showMessage(
-      "taskMessage",
-      "Enter a task description.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  if(isNaN(reward) || reward < 0){
-
-    showMessage(
-      "taskMessage",
-      "Enter a valid reward.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  try{
-
-    await addDoc(
-      collection(db,"tasks"),
-      {
-
-        title,
-
-        description,
-
-        link,
-
-        reward,
-
-        active,
-
-        createdBy:
-        auth.currentUser.uid,
-
-        createdAt:
-        serverTimestamp()
-
-      }
-    );
-
-
-    showMessage(
-      "taskMessage",
-      "Task added successfully."
-    );
-
-
-    document
-    .getElementById("taskTitle")
-    .value="";
-
-    document
-    .getElementById("taskDescription")
-    .value="";
-
-    document
-    .getElementById("taskLink")
-    .value="";
-
-    document
-    .getElementById("taskReward")
-    .value="";
-
-
-    loadTasks();
-
-
-  }catch(error){
-
-    showMessage(
-      "taskMessage",
-      error.message,
-      "error"
-    );
-  }
-};
-
-
-/* ==================================================
-LOAD TASKS
-================================================== */
-
-window.loadTasks =
-async function(){
-
-  const list =
-  document.getElementById("taskList");
-
-  list.innerHTML =
-  "<p class='loading'>Loading tasks...</p>";
-
-
-  try{
-
-    const snap =
-    await getDocs(
-      collection(db,"tasks")
-    );
-
-
-    if(snap.empty){
-
-      list.innerHTML =
-      "<p class='small'>No tasks found.</p>";
-
-      return;
-    }
-
-
-    const tasks=[];
-
-
-    snap.forEach(taskDoc => {
-
-      tasks.push({
-        id:taskDoc.id,
-        ...taskDoc.data()
-      });
-
-    });
-
-
-    tasks.sort(
-      (a,b) =>
-      timestampMillis(b.createdAt) -
-      timestampMillis(a.createdAt)
-    );
-
-
-    list.innerHTML="";
-
-
-    tasks.forEach(d => {
-
-      const div =
-      document.createElement("div");
-
-      div.className="task-card";
-
-
-      div.innerHTML=`
-
-        <h3>
-          📋 ${safe(d.title || "Task")}
-        </h3>
-
-        <p style="margin-top:8px;">
-          ${safe(d.description || "")}
-        </p>
-
-        <p style="margin-top:8px;">
-          Reward:
-          <strong>
-          ₦${Number(d.reward||0).toLocaleString()}
-          </strong>
-        </p>
-
-        <p style="margin-top:8px;">
-          Status:
-          ${d.active ? "🟢 Active" : "🔴 Inactive"}
-        </p>
-
-        ${
-          d.createdAt
-          ?
-          `
-          <p class="small">
-            Created:
-            ${safe(formatTimestamp(d.createdAt))}
-          </p>
-          `
-          :
-          ""
-        }
-
-      `;
-
-
-      if(d.link){
-
-        const row =
-        document.createElement("div");
-
-        row.className="copy-row";
-
-
-        const input =
-        document.createElement("input");
-
-        input.value=d.link;
-
-        input.readOnly=true;
-
-
-        const button =
-        document.createElement("button");
-
-        button.className="btn purple";
-
-        button.textContent="📋 Copy";
-
-
-        button.onclick =
-        () =>
-        copyText(
-          d.link,
-          button
-        );
-
-
-        row.appendChild(input);
-
-        row.appendChild(button);
-
-        div.appendChild(row);
-
-      }
-
-
-      const button =
-      document.createElement("button");
-
-
-      button.className =
-      d.active
-      ? "btn red"
-      : "btn green";
-
-
-      button.textContent =
-      d.active
-      ? "Disable Task"
-      : "Activate Task";
-
-
-      button.onclick =
-      async function(){
-
-        try{
-
-          await updateDoc(
-            doc(db,"tasks",d.id),
-            {
-              active:!d.active
-            }
-          );
-
-          loadTasks();
-
-        }catch(error){
-
-          alert(error.message);
-
-        }
-
-      };
-
-
-      div.appendChild(button);
-
-      list.appendChild(div);
-
-    });
-
-
-  }catch(error){
-
-    list.innerHTML =
-    "<p class='small'>"+
-    safe(error.message)+
-    "</p>";
-
-  }
-
-};
-
-
-/* ==================================================
-LOAD USERS
-================================================== */
-
-window.loadUsers =
-async function(){
-
-  const list =
-  document.getElementById("userList");
-
-  list.innerHTML =
-  "<p class='loading'>Loading users...</p>";
-
-
-  try{
-
-    const snap =
-    await getDocs(
-      collection(db,"users")
-    );
-
-
-    const users=[];
-
-
-    snap.forEach(userDoc => {
-
-      users.push({
-        id:userDoc.id,
-        ...userDoc.data()
-      });
-
-    });
-
-
-    document
-    .getElementById("totalUsers")
-    .textContent=users.length;
-
-
-    if(users.length===0){
-
-      list.innerHTML =
-      "<div class='no-record'>No users found.</div>";
-
-      return;
-    }
-
-
-    users.sort(
-      (a,b) =>
-      timestampMillis(b.createdAt) -
-      timestampMillis(a.createdAt)
-    );
-
-
-    list.innerHTML="";
-
-
-    users.forEach(d => {
-
-      const userDocId =
-      d.id;
-
-      const uid =
-      d.uid ||
-      userDocId;
-
-
-      const balance =
-      Number(d.balance||0);
-
-
-      const referralCode =
-      d.referralCode ||
-      "Not generated";
-
-
-      const referredBy =
-      d.referredByCode ||
-      d.referralCodeUsed ||
-      d.referredBy ||
-      "None";
-
-
-      const referralCredited =
-      d.referralBonusCredited===true;
-
-
-      const warningCount =
-      Number(d.warningCount||0);
-
-
-      const div =
-      document.createElement("div");
-
-
-      div.className="user-card";
-
-
-      div.innerHTML=`
-
-        <h3>
-          👤 ${safe(
-            d.name ||
-            d.email ||
-            "User"
-          )}
-        </h3>
-
-
-        <p style="margin-top:8px;">
-          📧 Email:
-          ${safe(d.email || "No email")}
-        </p>
-
-
-        <div class="uid-box">
-
-          🆔 <strong>Firebase UID:</strong><br>
-
-          ${safe(uid)}
-
-        </div>
-
-
-        <p style="margin-top:8px;">
-
-          🗂️ Firestore User ID:
-
-          ${safe(userDocId)}
-
-        </p>
-
-
-        <p style="margin-top:8px;">
-
-          💰 Balance:
-
-          <strong class="money">
-
-          ₦${balance.toLocaleString()}
-
-          </strong>
-
-        </p>
-
-
-        ${
-          d.createdAt
-          ?
-          `
-          <p class="small">
-
-            🕐 Registered:
-
-            ${safe(formatTimestamp(d.createdAt))}
-
-          </p>
-          `
-          :
-          ""
-        }
-
-
-        <div class="referral-code">
-
-          🎁 Referral Code:
-
-          ${safe(referralCode)}
-
-        </div>
-
-
-        <p>
-
-          👥 Referred By:
-
-          <strong>
-          ${safe(referredBy)}
-          </strong>
-
-        </p>
-
-
-        <p>
-
-          Referral Bonus:
-
-          ${
-            referredBy!=="None"
-
-            ?
-
-            (
-
-              referralCredited
-
-              ?
-
-              '<span class="status credited">✅ Credited</span>'
-
-              :
-
-              '<span class="status notcredited">⏳ Not Credited</span>'
-
-            )
-
-            :
-
-            '<span class="small">No referral</span>'
-          }
-
-        </p>
-
-
-        ${
-          warningCount>0
-
-          ?
-
-          `
-          <div class="warning-box">
-
-            ⚠️
-
-            <strong>
-            Warnings: ${warningCount}
-            </strong>
-
-            ${
-              d.warningMessage
-              ?
-              `
-              <br><br>
-              Latest warning:
-              ${safe(d.warningMessage)}
-              `
-              :
-              ""
-            }
-
-            ${
-              d.warningAt
-              ?
-              `
-              <br>
-              ${safe(formatTimestamp(d.warningAt))}
-              `
-              :
-              ""
-            }
-
-          </div>
-          `
-
-          :
-
-          ""
-        }
-
-
-        <hr style="
-          margin:15px 0;
-          border:0;
-          border-top:1px solid #ddd;
-        ">
-
-
-        <h3>💰 Add Money</h3>
-
-
-        <input
-          type="number"
-          id="credit-${safeAttribute(userDocId)}"
-          placeholder="Amount to add"
-          min="1"
-        >
-
-
-        <input
-          type="text"
-          id="creditReason-${safeAttribute(userDocId)}"
-          placeholder="Reason"
-        >
-
-
-        <button
-          class="btn green"
-          onclick="creditUser(
-            '${safeAttribute(userDocId)}'
-          )"
-        >
-
-          ➕ Add Balance
-
-        </button>
-
-
-        <h3 style="margin-top:20px;">
-          ➖ Deduct Money
-        </h3>
-
-
-        <input
-          type="number"
-          id="debit-${safeAttribute(userDocId)}"
-          placeholder="Amount to deduct"
-          min="1"
-        >
-
-
-        <input
-          type="text"
-          id="debitReason-${safeAttribute(userDocId)}"
-          placeholder="Reason"
-        >
-
-
-        <button
-          class="btn red"
-          onclick="debitUser(
-            '${safeAttribute(userDocId)}'
-          )"
-        >
-
-          ➖ Deduct Balance
-
-        </button>
-
-
-        ${
-          referredBy!=="None" &&
-          !referralCredited
-
-          ?
-
-          `
-          <button
-            class="btn gold"
-            onclick="creditReferralBonus(
-              '${safeAttribute(userDocId)}'
-            )"
-          >
-
-            🎁 Approve Referral + Credit ₦200
-
-          </button>
-          `
-
-          :
-
-          ""
-        }
-
-
-        <button
-          class="btn warning"
-          onclick="warnUser(
-            '${safeAttribute(userDocId)}'
-          )"
-        >
-
-          ⚠️ Warn This User
-
-        </button>
-
-
-        <button
-          class="btn purple"
-          onclick="loadUserTransactions(
-            '${safeAttribute(userDocId)}'
-          )"
-        >
-
-          📜 View Transaction History
-
-        </button>
-
-
-        <div
-          id="transactions-${safeAttribute(userDocId)}"
-          style="display:none;margin-top:15px;"
-        ></div>
-
-      `;
-
-
-      list.appendChild(div);
-
-    });
-
-
-  }catch(error){
-
-    console.error(error);
-
-
-    list.innerHTML =
-    "<p class='small'>Could not load users: "+
-    safe(error.message)+
-    "</p>";
-
-  }
-
-};
-
-
-/* ==================================================
-WARN USER
-================================================== */
-
-window.warnUser =
-async function(userDocId){
-
-  const userRef =
-  doc(
-    db,
-    "users",
-    userDocId
-  );
-
-
-  let userSnap;
-
-
-  try{
-
-    userSnap =
-    await getDocs(
-      query(
-        collection(db,"users"),
-        where(
-          "__name__",
-          "==",
-          userDocId
-        ),
-        limit(1)
-      )
-    );
-
-
-    if(userSnap.empty){
-
-      alert(
-        "❌ User account was not found."
-      );
-
-      return;
-    }
-
-
-    const userData =
-    userSnap.docs[0].data();
-
-
-    const userName =
-    userData.name ||
-    userData.email ||
-    "this user";
-
-
-    const message =
-    prompt(
-      "⚠️ Warning for "+userName+
-      "\n\nEnter the reason for this warning:"
-    );
-
-
-    if(message===null){
-
-      return;
-    }
-
-
-    const cleanMessage =
-    message.trim();
-
-
-    if(!cleanMessage){
-
-      alert(
-        "Please enter a warning message."
-      );
-
-      return;
-    }
-
-
-    if(
-      !confirm(
-        "Send this warning?\n\n"+
-        cleanMessage
-      )
-    ){
-
-      return;
-    }
-
-
-    const uid =
-    userData.uid ||
-    userDocId;
-
-
-    /*
-     * Store complete warning record.
-     */
-
-    await addDoc(
-      collection(db,"warnings"),
-      {
-
-        uid,
-
-        userId:userDocId,
-
-        email:
-        userData.email||"",
-
-        name:
-        userData.name||"",
-
-        message:
-        cleanMessage,
-
-        warnedBy:
-        auth.currentUser.email,
-
-        createdAt:
-        serverTimestamp(),
-
-        read:false
-
-      }
-    );
-
-
-    /*
-     * Also keep latest warning directly
-     * on the user's account.
-     */
-
-    await updateDoc(
-      userRef,
-      {
-
-        warningMessage:
-        cleanMessage,
-
-        warningAt:
-        serverTimestamp(),
-
-        warningBy:
-        auth.currentUser.email,
-
-        warningCount:
-        Number(
-          userData.warningCount||0
-        )+1,
-
-        hasWarning:true
-
-      }
-    );
-
-
-    alert(
-      "⚠️ Warning sent successfully."
-    );
-
-
-    loadUsers();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not warn user:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* ==================================================
-CREDIT USER
-================================================== */
-
-window.creditUser =
-async function(userDocId){
-
-  const amount =
-  Number(
-    document.getElementById(
-      "credit-"+userDocId
-    ).value
-  );
-
-
-  const reason =
-  document.getElementById(
-    "creditReason-"+userDocId
-  ).value.trim()
-  || "Admin credit";
-
-
-  if(!amount || amount<=0){
-
-    alert("Enter a valid amount.");
-
-    return;
-  }
-
-
-  if(
-    !confirm(
-      "Add ₦"+
-      amount.toLocaleString()+
-      " to this user's balance?"
-    )
-  ) return;
-
-
-  try{
-
-    const userRef =
-    doc(
-      db,
-      "users",
-      userDocId
-    );
-
-
-    const transactionRef =
-    doc(
-      collection(
-        db,
-        "transactions"
-      )
-    );
-
-
-    await runTransaction(
-      db,
-      async transaction => {
-
-        const userSnap =
-        await transaction.get(
-          userRef
-        );
-
-
-        if(!userSnap.exists()){
-
-          throw new Error(
-            "User record not found."
-          );
-        }
-
-
-        const data =
-        userSnap.data();
-
-
-        const oldBalance =
-        Number(
-          data.balance||0
-        );
-
-
-        const newBalance =
-        oldBalance+amount;
-
-
-        transaction.update(
-          userRef,
-          {
-            balance:newBalance
-          }
-        );
-
-
-        transaction.set(
-          transactionRef,
-          {
-
-            uid:
-            data.uid||
-            userDocId,
-
-            userId:
-            userDocId,
-
-            email:
-            data.email||"",
-
-            type:"credit",
-
-            amount,
-
-            oldBalance,
-
-            newBalance,
-
-            reason,
-
-            createdBy:
-            auth.currentUser.email,
-
-            createdAt:
-            serverTimestamp()
-
-          }
-        );
-
-      }
-    );
-
-
-    alert(
-      "₦"+
-      amount.toLocaleString()+
-      " added successfully."
-    );
-
-
-    loadUsers();
-
-
-  }catch(error){
-
-    alert(
-      "Could not add balance:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* ==================================================
-DEDUCT USER
-================================================== */
-
-window.debitUser =
-async function(userDocId){
-
-  const amount =
-  Number(
-    document.getElementById(
-      "debit-"+userDocId
-    ).value
-  );
-
-
-  const reason =
-  document.getElementById(
-    "debitReason-"+userDocId
-  ).value.trim()
-  || "Admin deduction";
-
-
-  if(!amount || amount<=0){
-
-    alert("Enter a valid amount.");
-
-    return;
-  }
-
-
-  if(
-    !confirm(
-      "Deduct ₦"+
-      amount.toLocaleString()+
-      " from this user's balance?"
-    )
-  ) return;
-
-
-  try{
-
-    const userRef =
-    doc(
-      db,
-      "users",
-      userDocId
-    );
-
-
-    const transactionRef =
-    doc(
-      collection(
-        db,
-        "transactions"
-      )
-    );
-
-
-    await runTransaction(
-      db,
-      async transaction => {
-
-        const userSnap =
-        await transaction.get(
-          userRef
-        );
-
-
-        if(!userSnap.exists()){
-
-          throw new Error(
-            "User record not found."
-          );
-        }
-
-
-        const data =
-        userSnap.data();
-
-
-        const oldBalance =
-        Number(
-          data.balance||0
-        );
-
-
-        if(amount>oldBalance){
-
-          throw new Error(
-            "Insufficient user balance."
-          );
-        }
-
-
-        const newBalance =
-        oldBalance-amount;
-
-
-        transaction.update(
-          userRef,
-          {
-            balance:newBalance
-          }
-        );
-
-
-        transaction.set(
-          transactionRef,
-          {
-
-            uid:
-            data.uid||
-            userDocId,
-
-            userId:
-            userDocId,
-
-            email:
-            data.email||"",
-
-            type:"debit",
-
-            amount,
-
-            oldBalance,
-
-            newBalance,
-
-            reason,
-
-            createdBy:
-            auth.currentUser.email,
-
-            createdAt:
-            serverTimestamp()
-
-          }
-        );
-
-      }
-    );
-
-
-    alert(
-      "₦"+
-      amount.toLocaleString()+
-      " deducted successfully."
-    );
-
-
-    loadUsers();
-
-
-  }catch(error){
-
-    alert(
-      "Could not deduct balance:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* ==================================================
-TRANSACTION HISTORY
-================================================== */
-
-window.loadUserTransactions =
-async function(userDocId){
-
-  const box =
-  document.getElementById(
-    "transactions-"+userDocId
-  );
-
-
-  if(box.style.display==="block"){
-
-    box.style.display="none";
-
-    return;
-  }
-
-
-  box.style.display="block";
-
-
-  box.innerHTML =
-  "<p class='small'>Loading transactions...</p>";
-
-
-  try{
-
-    const q =
-    query(
-      collection(
-        db,
-        "transactions"
-      ),
-      where(
-        "userId",
-        "==",
-        userDocId
-      ),
-      limit(100)
-    );
-
-
-    const snap =
-    await getDocs(q);
-
-
-    if(snap.empty){
-
-      box.innerHTML =
-      "<p class='small'>No transactions found.</p>";
-
-      return;
-    }
-
-
-    const transactions=[];
-
-
-    snap.forEach(txDoc => {
-
-      transactions.push({
-        id:txDoc.id,
-        ...txDoc.data()
-      });
-
-    });
-
-
-    transactions.sort(
-      (a,b) =>
-      timestampMillis(b.createdAt) -
-      timestampMillis(a.createdAt)
-    );
-
-
-    box.innerHTML =
-    "<h3>📜 Transaction History</h3>";
-
-
-    transactions.forEach(tx => {
-
-      const isCredit =
-      tx.type==="credit";
-
-
-      const div =
-      document.createElement("div");
-
-
-      div.className =
-      "transaction "+
-      (isCredit?"credit":"debit");
-
-
-      div.innerHTML=`
-
-        <p>
-
-          <strong class="${
-            isCredit
-            ?"tx-credit"
-            :"tx-debit"
-          }">
-
-          ${
-            isCredit
-            ?"➕ CREDIT"
-            :"➖ DEBIT"
-          }
-
-          ₦${Number(
-            tx.amount||0
-          ).toLocaleString()}
-
-          </strong>
-
-        </p>
-
-
-        <p class="small">
-
-          Reason:
-          ${safe(tx.reason||"")}
-
-        </p>
-
-
-        <p class="small">
-
-          Previous Balance:
-          ₦${Number(
-            tx.oldBalance||0
-          ).toLocaleString()}
-
-        </p>
-
-
-        <p class="small">
-
-          Balance After:
-          ₦${Number(
-            tx.newBalance||0
-          ).toLocaleString()}
-
-        </p>
-
-
-        <p class="small">
-
-          By:
-          ${safe(tx.createdBy||"Admin")}
-
-        </p>
-
-
-        <p class="small">
-
-          ${safe(
-            formatTimestamp(tx.createdAt)
-          )}
-
-        </p>
-
-      `;
-
-
-      box.appendChild(div);
-
-    });
-
-
-  }catch(error){
-
-    box.innerHTML =
-    "<p class='small'>"+
-    safe(error.message)+
-    "</p>";
-
-  }
-
-};
-
-
-/* ==================================================
-LOAD REFERRALS
-================================================== */
-
-window.loadReferrals =
-async function(){
-
-  const list =
-  document.getElementById(
-    "referralList"
-  );
-
-
-  list.innerHTML =
-  "<p class='loading'>Loading referrals...</p>";
-
-
-  try{
-
-    const snap =
-    await getDocs(
-      collection(db,"users")
-    );
-
-
-    const users=[];
-
-
-    snap.forEach(userDoc => {
-
-      users.push({
-        id:userDoc.id,
-        ...userDoc.data()
-      });
-
-    });
-
-
-    const referrals =
-    users.filter(user =>
-      user.referredByCode ||
-      user.referralCodeUsed ||
-      user.referredBy
-    );
-
-
-    referrals.sort(
-      (a,b) =>
-      timestampMillis(b.createdAt) -
-      timestampMillis(a.createdAt)
-    );
-
-
-    document
-    .getElementById("totalReferrals")
-    .textContent=
-    referrals.length;
-
-
-    const credited =
-    referrals.filter(
-      user =>
-      user.referralBonusCredited===true
-    ).length;
-
-
-    document
-    .getElementById("creditedReferrals")
-    .textContent=
-    credited;
-
-
-    if(referrals.length===0){
-
-      list.innerHTML =
-      "<div class='no-record'>No referrals found.</div>";
-
-      return;
-    }
-
-
-    list.innerHTML="";
-
-
-    let lastDate="";
-
-
-    referrals.forEach(
-      referredUser => {
-
-        const currentDate =
-        getDateOnly(
-          referredUser.createdAt
-        );
-
-
-        if(currentDate!==lastDate){
-
-          const heading =
-          document.createElement("div");
-
-          heading.className=
-          "date-heading";
-
-          heading.textContent =
-          "📅 "+currentDate;
-
-
-          list.appendChild(heading);
-
-          lastDate=currentDate;
-
-        }
-
-
-        const usedCode =
-        referredUser.referredByCode ||
-        referredUser.referralCodeUsed ||
-        referredUser.referredBy ||
-        "";
-
-
-        const referrer =
-        users.find(
-          user =>
-          user.referralCode &&
-          String(user.referralCode)
-          .toLowerCase()===
-          String(usedCode)
-          .toLowerCase()
-        );
-
-
-        const credited =
-        referredUser.referralBonusCredited===true;
-
-
-        const div =
-        document.createElement("div");
-
-
-        div.className=
-        "referral-card";
-
-
-        div.innerHTML=`
-
-          <h3>
-            🎁 Referral Registration
-          </h3>
-
-
-          ${
-            referredUser.createdAt
-            ?
-            `
-            <span class="time-badge">
-
-              🕐
-
-              ${safe(
-                formatTimestamp(
-                  referredUser.createdAt
-                )
-              )}
-
-            </span>
-            `
-            :
-            ""
-          }
-
-
-          <p style="margin-top:10px;">
-
-            New User:
-
-            ${safe(
-              referredUser.name ||
-              referredUser.email ||
-              "User"
-            )}
-
-          </p>
-
-
-          <p>
-
-            Email:
-
-            ${safe(
-              referredUser.email||""
-            )}
-
-          </p>
-
-
-          <p>
-
-            Firebase UID:
-
-            <strong>
-
-            ${safe(
-              referredUser.uid||
-              referredUser.id
-            )}
-
-            </strong>
-
-          </p>
-
-
-          <p>
-
-            Referral Code Used:
-
-            <strong>
-
-            ${safe(usedCode)}
-
-            </strong>
-
-          </p>
-
-
-          <p style="margin-top:10px;">
-
-            Referrer:
-
-            ${
-              referrer
-
-              ?
-
-              safe(
-                referrer.name ||
-                referrer.email ||
-                "Referrer"
-              )
-
-              :
-
-              "⚠️ Referrer not found"
-            }
-
-          </p>
-
-
-          <p>
-
-            Bonus:
-
-            <strong>
-            ₦${REFERRAL_BONUS.toLocaleString()}
-            </strong>
-
-          </p>
-
-
-          <p>
-
-            Status:
-
-            ${
-              credited
-
-              ?
-
-              '<span class="status credited">✅ Credited</span>'
-
-              :
-
-              '<span class="status notcredited">⏳ Waiting for approval</span>'
-            }
-
-          </p>
-
-        `;
-
-
-        if(
-          referrer &&
-          !credited
-        ){
-
-          const button =
-          document.createElement("button");
-
-
-          button.className=
-          "btn gold";
-
-
-          button.textContent=
-          "🎁 Approve Referral + Credit ₦200";
-
-
-          button.onclick =
-          () =>
-          creditReferralBonus(
-            referredUser.id
-          );
-
-
-          div.appendChild(button);
-
-        }
-
-
-        list.appendChild(div);
-
-      }
-    );
-
-
-  }catch(error){
-
-    list.innerHTML =
-    "<p class='small'>"+
-    safe(error.message)+
-    "</p>";
-
-  }
-
-};
-
-
-/* ==================================================
-CREDIT REFERRAL
-================================================== */
-
-window.creditReferralBonus =
-async function(
-  referredUserId
+function showMessage(
+id,
+text,
+type="success"
 ){
 
-  if(
-    !confirm(
-      "Approve this referral and credit ₦"+
-      REFERRAL_BONUS+
-      " to the referrer?"
-    )
-  ) return;
+const box=
+document.getElementById(id);
 
+if(!box)return;
 
-  try{
+box.style.display="block";
 
-    const referredUserRef =
-    doc(
-      db,
-      "users",
-      referredUserId
-    );
+box.className=
+"msg "+
+type;
 
-
-    /*
-     * Find the referral first.
-     */
-
-    const referredSnap =
-    await getDocs(
-      query(
-        collection(db,"users"),
-        where(
-          "__name__",
-          "==",
-          referredUserId
-        ),
-        limit(1)
-      )
-    );
-
-
-    if(referredSnap.empty){
-
-      throw new Error(
-        "Referred user was not found."
-      );
-    }
-
-
-    const referredData =
-    referredSnap.docs[0].data();
-
-
-    if(
-      referredData.referralBonusCredited===true
-    ){
-
-      throw new Error(
-        "This referral has already been credited."
-      );
-
-    }
-
-
-    const usedCode =
-    referredData.referredByCode ||
-    referredData.referralCodeUsed ||
-    referredData.referredBy;
-
-
-    if(!usedCode){
-
-      throw new Error(
-        "Referral code not found."
-      );
-
-    }
-
-
-    /*
-     * Find the referrer.
-     */
-
-    const referrerQuery =
-    query(
-      collection(db,"users"),
-      where(
-        "referralCode",
-        "==",
-        usedCode
-      ),
-      limit(1)
-    );
-
-
-    const referrerSnap =
-    await getDocs(
-      referrerQuery
-    );
-
-
-    if(referrerSnap.empty){
-
-      throw new Error(
-        "Referrer account was not found."
-      );
-
-    }
-
-
-    const referrerDoc =
-    referrerSnap.docs[0];
-
-
-    const referrerRef =
-    doc(
-      db,
-      "users",
-      referrerDoc.id
-    );
-
-
-    const transactionRef =
-    doc(
-      collection(
-        db,
-        "transactions"
-      )
-    );
-
-
-    await runTransaction(
-      db,
-      async transaction => {
-
-        const referredSnapAgain =
-        await transaction.get(
-          referredUserRef
-        );
-
-
-        const referrerSnapAgain =
-        await transaction.get(
-          referrerRef
-        );
-
-
-        if(
-          !referredSnapAgain.exists()
-        ){
-
-          throw new Error(
-            "Referred user was not found."
-          );
-
-        }
-
-
-        if(
-          !referrerSnapAgain.exists()
-        ){
-
-          throw new Error(
-            "Referrer account was not found."
-          );
-
-        }
-
-
-        const referredDataAgain =
-        referredSnapAgain.data();
-
-
-        const referrerData =
-        referrerSnapAgain.data();
-
-
-        if(
-          referredDataAgain
-          .referralBonusCredited===true
-        ){
-
-          throw new Error(
-            "This referral has already been credited."
-          );
-
-        }
-
-
-        const oldBalance =
-        Number(
-          referrerData.balance||0
-        );
-
-
-        const newBalance =
-        oldBalance+
-        REFERRAL_BONUS;
-
-
-        transaction.update(
-          referrerRef,
-          {
-
-            balance:
-            newBalance,
-
-            totalReferralBonus:
-            Number(
-              referrerData.totalReferralBonus||0
-            )+
-            REFERRAL_BONUS,
-
-            totalReferralsCredited:
-            Number(
-              referrerData.totalReferralsCredited||0
-            )+
-            1
-
-          }
-        );
-
-
-        transaction.update(
-          referredUserRef,
-          {
-
-            referralBonusCredited:
-            true,
-
-            referralBonusAmount:
-            REFERRAL_BONUS,
-
-            referralBonusCreditedAt:
-            serverTimestamp(),
-
-            referralBonusCreditedBy:
-            auth.currentUser.email
-
-          }
-        );
-
-
-        transaction.set(
-          transactionRef,
-          {
-
-            uid:
-            referrerData.uid||
-            referrerDoc.id,
-
-            userId:
-            referrerDoc.id,
-
-            email:
-            referrerData.email||"",
-
-            type:"credit",
-
-            amount:
-            REFERRAL_BONUS,
-
-            oldBalance,
-
-            newBalance,
-
-            reason:
-            "Referral bonus",
-
-            createdBy:
-            auth.currentUser.email,
-
-            relatedReferral:
-            referredUserId,
-
-            createdAt:
-            serverTimestamp()
-
-          }
-        );
-
-      }
-    );
-
-
-    alert(
-      "✅ Referral approved.\n\n"+
-      "₦"+
-      REFERRAL_BONUS+
-      " has been credited to the referrer."
-    );
-
-
-    loadReferrals();
-
-    loadUsers();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not credit referral:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* ==================================================
-LOAD PROOFS
-SORTED BY DATE + TIME
-================================================== */
-
-window.loadProofs =
-async function(){
-
-  const list =
-  document.getElementById(
-    "proofList"
-  );
-
-
-  list.innerHTML =
-  "<p class='loading'>Loading proofs...</p>";
-
-
-  try{
-
-    /*
-     * Load users so the proof UID can be matched
-     * with the correct account.
-     */
-
-    const usersSnap =
-    await getDocs(
-      collection(db,"users")
-    );
-
-
-    const usersByUid={};
-
-
-    usersSnap.forEach(userDoc => {
-
-      const user =
-      userDoc.data();
-
-
-      const userUid =
-      user.uid ||
-      userDoc.id;
-
-
-      usersByUid[userUid]={
-
-        id:userDoc.id,
-
-        uid:userUid,
-
-        name:user.name||"",
-
-        email:user.email||""
-
-      };
-
-    });
-
-
-    const snap =
-    await getDocs(
-      collection(
-        db,
-        "taskSubmissions"
-      )
-    );
-
-
-    const proofs=[];
-
-
-    snap.forEach(subDoc => {
-
-      proofs.push({
-
-        id:subDoc.id,
-
-        ...subDoc.data()
-
-      });
-
-    });
-
-
-    /*
-     * Sort newest first.
-     */
-
-    proofs.sort(
-      (a,b) =>
-      timestampMillis(
-        getProofTimestamp(b)
-      )
-      -
-      timestampMillis(
-        getProofTimestamp(a)
-      )
-    );
-
-
-    let pending=0;
-
-
-    proofs.forEach(d => {
-
-      if(
-        (d.status||"Pending")
-        ==="Pending"
-      ){
-
-        pending++;
-
-      }
-
-    });
-
-
-    document
-    .getElementById(
-      "pendingProofs"
-    )
-    .textContent=
-    pending;
-
-
-    if(proofs.length===0){
-
-      list.innerHTML =
-      "<div class='no-record'>No task proofs found.</div>";
-
-      return;
-    }
-
-
-    list.innerHTML="";
-
-
-    /*
-     * Group by date.
-     */
-
-    let lastDate="";
-
-
-    proofs.forEach(d => {
-
-      const status =
-      d.status ||
-      "Pending";
-
-
-      const proofTimestamp =
-      getProofTimestamp(d);
-
-
-      const currentDate =
-      getDateOnly(
-        proofTimestamp
-      );
-
-
-      if(currentDate!==lastDate){
-
-        const heading =
-        document.createElement("div");
-
-
-        heading.className=
-        "date-heading";
-
-
-        heading.textContent =
-        "📅 "+currentDate;
-
-
-        list.appendChild(
-          heading
-        );
-
-
-        lastDate=
-        currentDate;
-
-      }
-
-
-      /*
-       * Exact UID from proof.
-       */
-
-      const proofUid =
-      d.uid ||
-      d.userId ||
-      d.userUID ||
-      d.firebaseUid ||
-      "";
-
-
-      const matchedUser =
-      usersByUid[proofUid];
-
-
-      const userName =
-      matchedUser?.name ||
-      d.name ||
-      "Name not found";
-
-
-      const userEmail =
-      matchedUser?.email ||
-      d.email ||
-      "Email not found";
-
-
-      const userDocId =
-      matchedUser?.id ||
-      "User record not found";
-
-
-      const div =
-      document.createElement("div");
-
-
-      div.className=
-      "proof-card";
-
-
-      div.innerHTML=`
-
-        <h3>
-
-          📝 ${safe(
-            d.taskTitle ||
-            d.title ||
-            "Task Proof"
-          )}
-
-        </h3>
-
-
-        ${
-          proofTimestamp
-
-          ?
-
-          `
-          <span class="time-badge">
-
-            🕐
-
-            ${safe(
-              formatTimestamp(
-                proofTimestamp
-              )
-            )}
-
-          </span>
-          `
-
-          :
-
-          `
-          <span class="time-badge">
-            🕐 Date/time not stored
-          </span>
-          `
-        }
-
-
-        <div class="account-identifier">
-
-          🔐
-
-          <strong>
-          EXACT ACCOUNT THAT SUBMITTED THIS PROOF
-          </strong>
-
-
-          <div
-            class="uid-box"
-            style="
-            background:#fff;
-            color:#111827;
-            margin-top:10px;
-            "
-          >
-
-            🆔
-
-            <strong>
-            Firebase UID:
-            </strong>
-
-            <br>
-
-
-            ${
-              proofUid
-
-              ?
-
-              safe(proofUid)
-
-              :
-
-              "⚠️ UID NOT STORED IN THIS PROOF"
-            }
-
-          </div>
-
-        </div>
-
-
-        <div class="proof-user-box">
-
-          <p>
-
-            👤
-
-            <strong>
-            Name:
-            </strong>
-
-            ${safe(userName)}
-
-          </p>
-
-
-          <p style="margin-top:7px;">
-
-            📧
-
-            <strong>
-            Email:
-            </strong>
-
-            ${safe(userEmail)}
-
-          </p>
-
-
-          <p style="margin-top:7px;">
-
-            🗂️
-
-            <strong>
-            Firestore User ID:
-            </strong>
-
-            ${safe(userDocId)}
-
-          </p>
-
-        </div>
-
-
-        <p style="margin-top:12px;">
-
-          💰 Reward:
-
-          <strong class="money">
-
-          ₦${Number(
-            d.reward||0
-          ).toLocaleString()}
-
-          </strong>
-
-        </p>
-
-
-        <div class="proof-status-box">
-
-          Status:
-
-          <span class="status ${
-            status==="Approved"
-
-            ?
-
-            "approved"
-
-            :
-
-            status==="Rejected"
-
-            ?
-
-            "rejected"
-
-            :
-
-            "pending"
-
-          }">
-
-            ${safe(status)}
-
-          </span>
-
-        </div>
-
-
-        ${
-          d.rejectionReason
-
-          ?
-
-          `
-          <div class="warning-box">
-
-            ❌
-
-            <strong>
-            Rejection reason:
-            </strong>
-
-            ${safe(
-              d.rejectionReason
-            )}
-
-          </div>
-          `
-
-          :
-
-          ""
-        }
-
-      `;
-
-
-      /*
-       * Proof image.
-       */
-
-      const imageUrl =
-      d.proofImage ||
-      d.proofImageUrl ||
-      d.imageUrl ||
-      d.image ||
-      "";
-
-
-      if(imageUrl){
-
-        const img =
-        document.createElement("img");
-
-
-        img.src=
-        imageUrl;
-
-
-        img.className=
-        "proof-image";
-
-
-        img.alt=
-        "Task proof submitted by user";
-
-
-        img.onerror =
-        function(){
-
-          this.style.display=
-          "none";
-
-
-          const errorText =
-          document.createElement("p");
-
-
-          errorText.className=
-          "small";
-
-
-          errorText.textContent =
-          "⚠️ Proof image could not be loaded.";
-
-
-          div.appendChild(
-            errorText
-          );
-
-        };
-
-
-        div.appendChild(img);
-
-      }else{
-
-        const noImage =
-        document.createElement("div");
-
-
-        noImage.className=
-        "info-box";
-
-
-        noImage.textContent =
-        "⚠️ No proof image URL was found.";
-
-
-        div.appendChild(
-          noImage
-        );
-
-      }
-
-
-      /*
-       * Approval buttons.
-       */
-
-      if(status==="Pending"){
-
-        const approve =
-        document.createElement("button");
-
-
-        approve.className=
-        "btn green";
-
-
-        approve.textContent=
-        "✅ Approve Proof + Credit Reward";
-
-
-        approve.onclick =
-        function(){
-
-          approveProof(
-            d.id,
-            proofUid,
-            Number(
-              d.reward||0
-            )
-          );
-
-        };
-
-
-        div.appendChild(
-          approve
-        );
-
-
-        const reject =
-        document.createElement("button");
-
-
-        reject.className=
-        "btn red";
-
-
-        reject.textContent=
-        "❌ Reject Proof";
-
-
-        reject.onclick =
-        function(){
-
-          rejectProof(
-            d.id
-          );
-
-        };
-
-
-        div.appendChild(
-          reject
-        );
-
-      }
-
-
-      list.appendChild(
-        div
-      );
-
-    });
-
-
-  }catch(error){
-
-    console.error(
-      "loadProofs error:",
-      error
-    );
-
-
-    list.innerHTML =
-    "<p class='small'>"+
-    safe(error.message)+
-    "</p>";
-
-  }
-
-};
-
-
-/* ==================================================
-APPROVE PROOF
-AUTOMATICALLY CREDIT REWARD
-================================================== */
-
-window.approveProof =
-async function(
-  submissionId,
-  uid,
-  reward
-){
-
-  if(!uid){
-
-    alert(
-      "❌ This proof does not contain a Firebase UID.\n\n"+
-      "The exact account cannot be identified, so no money was added."
-    );
-
-    return;
-  }
-
-
-  if(reward<0){
-
-    alert(
-      "❌ Invalid reward amount."
-    );
-
-    return;
-  }
-
-
-  if(
-    !confirm(
-      "Approve this proof?\n\n"+
-      "Firebase UID:\n"+
-      uid+
-      "\n\n"+
-      "Reward: ₦"+
-      reward.toLocaleString()+
-      "\n\n"+
-      "The reward will be credited automatically."
-    )
-  ) return;
-
-
-  try{
-
-    /*
-     * First find the exact user by UID.
-     */
-
-    let userDoc=null;
-
-
-    const uidQuery =
-    query(
-      collection(db,"users"),
-      where(
-        "uid",
-        "==",
-        uid
-      ),
-      limit(1)
-    );
-
-
-    const uidSnap =
-    await getDocs(
-      uidQuery
-    );
-
-
-    if(!uidSnap.empty){
-
-      userDoc=
-      uidSnap.docs[0];
-
-    }else{
-
-      /*
-       * Older accounts may use their Firestore
-       * document ID as the UID.
-       */
-
-      const directRef =
-      doc(
-        db,
-        "users",
-        uid
-      );
-
-
-      /*
-       * We cannot use transaction.get outside
-       * transaction here, so use a direct query.
-       */
-
-      const directQuery =
-      query(
-        collection(db,"users"),
-        where(
-          "__name__",
-          "==",
-          uid
-        ),
-        limit(1)
-      );
-
-
-      const directSnap =
-      await getDocs(
-        directQuery
-      );
-
-
-      if(!directSnap.empty){
-
-        userDoc=
-        directSnap.docs[0];
-
-      }
-
-    }
-
-
-    if(!userDoc){
-
-      alert(
-        "❌ Exact user account was not found for this Firebase UID:\n\n"+
-        uid+
-        "\n\nNo money was added."
-      );
-
-      return;
-    }
-
-
-    const userRef =
-    doc(
-      db,
-      "users",
-      userDoc.id
-    );
-
-
-    const submissionRef =
-    doc(
-      db,
-      "taskSubmissions",
-      submissionId
-    );
-
-
-    const transactionRef =
-    doc(
-      collection(
-        db,
-        "transactions"
-      )
-    );
-
-
-    await runTransaction(
-      db,
-      async transaction => {
-
-        const user =
-        await transaction.get(
-          userRef
-        );
-
-
-        const submission =
-        await transaction.get(
-          submissionRef
-        );
-
-
-        if(!user.exists()){
-
-          throw new Error(
-            "User record not found."
-          );
-
-        }
-
-
-        if(!submission.exists()){
-
-          throw new Error(
-            "Submission not found."
-          );
-
-        }
-
-
-        const submissionData =
-        submission.data();
-
-
-        /*
-         * Prevent duplicate approval.
-         */
-
-        if(
-          submissionData.status==="Approved" ||
-          submissionData.rewardCredited===true
-        ){
-
-          throw new Error(
-            "This proof has already been approved or credited."
-          );
-
-        }
-
-
-        const data =
-        user.data();
-
-
-        const oldBalance =
-        Number(
-          data.balance||0
-        );
-
-
-        const newBalance =
-        oldBalance+
-        reward;
-
-
-        /*
-         * Update user balance.
-         */
-
-        transaction.update(
-          userRef,
-          {
-
-            balance:
-            newBalance,
-
-            totalTaskRewards:
-            Number(
-              data.totalTaskRewards||0
-            )+
-            reward
-
-          }
-        );
-
-
-        /*
-         * Mark proof approved and credited.
-         */
-
-        transaction.update(
-          submissionRef,
-          {
-
-            status:
-            "Approved",
-
-            rewardCredited:
-            true,
-
-            rewardCreditedAmount:
-            reward,
-
-            approvedAt:
-            serverTimestamp(),
-
-            approvedBy:
-            auth.currentUser.email
-
-          }
-        );
-
-
-        /*
-         * Transaction history.
-         */
-
-        transaction.set(
-          transactionRef,
-          {
-
-            uid:
-            data.uid||
-            uid,
-
-            userId:
-            userDoc.id,
-
-            email:
-            data.email||"",
-
-            type:
-            "credit",
-
-            amount:
-            reward,
-
-            oldBalance,
-
-            newBalance,
-
-            reason:
-            "Task reward",
-
-            createdBy:
-            auth.currentUser.email,
-
-            relatedSubmission:
-            submissionId,
-
-            createdAt:
-            serverTimestamp()
-
-          }
-        );
-
-      }
-    );
-
-
-    alert(
-      "✅ Proof approved successfully.\n\n"+
-      "₦"+
-      reward.toLocaleString()+
-      " has been credited automatically."
-    );
-
-
-    loadProofs();
-
-    loadUsers();
-
-
-  }catch(error){
-
-    console.error(error);
-
-
-    alert(
-      "❌ Could not approve proof:\n\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* ==================================================
-REJECT PROOF
-================================================== */
-
-window.rejectProof =
-async function(
-  submissionId
-){
-
-  const reason =
-  prompt(
-    "Enter rejection reason:"
-  );
-
-
-  if(reason===null) return;
-
-
-  try{
-
-    await updateDoc(
-      doc(
-        db,
-        "taskSubmissions",
-        submissionId
-      ),
-      {
-
-        status:
-        "Rejected",
-
-        rejectionReason:
-        reason,
-
-        rejectedAt:
-        serverTimestamp(),
-
-        rejectedBy:
-        auth.currentUser.email
-
-      }
-    );
-
-
-    alert(
-      "Proof rejected."
-    );
-
-
-    loadProofs();
-
-
-  }catch(error){
-
-    alert(
-      "Could not reject proof:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* ==================================================
-PROMOTIONS
-================================================== */
-
-window.loadPromotions =
-async function(){
-
-  const list =
-  document.getElementById(
-    "promotionList"
-  );
-
-
-  list.innerHTML =
-  "<p class='loading'>Loading promotions...</p>";
-
-
-  try{
-
-    const snap =
-    await getDocs(
-      collection(
-        db,
-        "promotionOrders"
-      )
-    );
-
-
-    const orders=[];
-
-
-    snap.forEach(orderDoc => {
-
-      orders.push({
-
-        id:orderDoc.id,
-
-        ...orderDoc.data()
-
-      });
-
-    });
-
-
-    orders.sort(
-      (a,b) =>
-      timestampMillis(
-        getOrderTimestamp(b)
-      )
-      -
-      timestampMillis(
-        getOrderTimestamp(a)
-      )
-    );
-
-
-    let pending=0;
-
-
-    orders.forEach(d => {
-
-      if(
-        (d.promotionStatus||"Pending")
-        ==="Pending"
-      ){
-
-        pending++;
-
-      }
-
-    });
-
-
-    document
-    .getElementById(
-      "pendingPromotions"
-    )
-    .textContent=
-    pending;
-
-
-    if(orders.length===0){
-
-      list.innerHTML =
-      "<div class='no-record'>No promotion orders.</div>";
-
-      return;
-    }
-
-
-    list.innerHTML="";
-
-
-    orders.forEach(d => {
-
-      const status =
-      d.promotionStatus||
-      "Pending";
-
-
-      const div =
-      document.createElement("div");
-
-
-      div.className=
-      "order-card";
-
-
-      div.innerHTML=`
-
-        <h3>
-
-          📢 ${safe(
-            d.promotionType||
-            "Promotion"
-          )}
-
-        </h3>
-
-
-        ${
-          getOrderTimestamp(d)
-
-          ?
-
-          `
-          <p class="small">
-
-            🕐
-
-            ${safe(
-              formatTimestamp(
-                getOrderTimestamp(d)
-              )
-            )}
-
-          </p>
-          `
-
-          :
-
-          ""
-        }
-
-
-        <p>
-
-          User:
-
-          ${safe(d.email||"")}
-
-        </p>
-
-
-        <p>
-
-          UID:
-
-          ${safe(
-            d.uid||
-            d.userId||
-            "Not provided"
-          )}
-
-        </p>
-
-
-        <p>
-
-          Amount:
-
-          <strong>
-
-          ₦${Number(
-            d.amount||0
-          ).toLocaleString()}
-
-          </strong>
-
-        </p>
-
-
-        <p>
-
-          Payment Status:
-
-          ${safe(
-            d.paymentStatus||
-            "Pending"
-          )}
-
-        </p>
-
-
-        <p>
-
-          Promotion Status:
-
-          <span class="status ${
-            status==="Approved"
-            ?"approved"
-            :status==="Rejected"
-            ?"rejected"
-            :"pending"
-          }">
-
-          ${safe(status)}
-
-          </span>
-
-        </p>
-
-      `;
-
-
-      const link =
-      d.promotionLink||
-      d.link||
-      d.targetLink||
-      d.websiteLink||
-      d.whatsappLink||
-      "";
-
-
-      if(link){
-
-        const row =
-        document.createElement("div");
-
-
-        row.className=
-        "copy-row";
-
-
-        const input =
-        document.createElement("input");
-
-
-        input.value=
-        link;
-
-
-        input.readOnly=
-        true;
-
-
-        const button =
-        document.createElement("button");
-
-
-        button.className=
-        "btn purple";
-
-
-        button.textContent=
-        "📋 Copy Link";
-
-
-        button.onclick =
-        () =>
-        copyText(
-          link,
-          button
-        );
-
-
-        row.appendChild(input);
-
-        row.appendChild(button);
-
-        div.appendChild(row);
-
-      }
-
-
-      if(d.paymentProofImage){
-
-        const img =
-        document.createElement("img");
-
-
-        img.src=
-        d.paymentProofImage;
-
-
-        img.className=
-        "proof-image";
-
-
-        img.alt=
-        "Payment proof";
-
-
-        div.appendChild(img);
-
-      }
-
-
-      if(status==="Pending"){
-
-        const approve =
-        document.createElement("button");
-
-
-        approve.className=
-        "btn green";
-
-
-        approve.textContent=
-        "✅ Approve Promotion";
-
-
-        approve.onclick =
-        () =>
-        updatePromotion(
-          d.id,
-          "Approved"
-        );
-
-
-        div.appendChild(
-          approve
-        );
-
-
-        const reject =
-        document.createElement("button");
-
-
-        reject.className=
-        "btn red";
-
-
-        reject.textContent=
-        "❌ Reject Promotion";
-
-
-        reject.onclick =
-        () =>
-        updatePromotion(
-          d.id,
-          "Rejected"
-        );
-
-
-        div.appendChild(
-          reject
-        );
-
-      }
-
-
-      list.appendChild(div);
-
-    });
-
-
-  }catch(error){
-
-    list.innerHTML =
-    "<p class='small'>"+
-    safe(error.message)+
-    "</p>";
-
-  }
-
-};
-
-
-/* ==================================================
-UPDATE PROMOTION
-================================================== */
-
-window.updatePromotion =
-async function(
-  promotionId,
-  status
-){
-
-  if(
-    !confirm(
-      "Change promotion status to "+
-      status+"?"
-    )
-  ) return;
-
-
-  try{
-
-    await updateDoc(
-      doc(
-        db,
-        "promotionOrders",
-        promotionId
-      ),
-      {
-
-        promotionStatus:
-        status,
-
-        updatedAt:
-        serverTimestamp(),
-
-        processedBy:
-        auth.currentUser.email
-
-      }
-    );
-
-
-    alert(
-      "Promotion updated."
-    );
-
-
-    loadPromotions();
-
-
-  }catch(error){
-
-    alert(
-      "Could not update promotion:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* ==================================================
-WITHDRAWALS
-================================================== */
-
-window.loadWithdrawals =
-async function(){
-
-  const list =
-  document.getElementById(
-    "withdrawalList"
-  );
-
-
-  list.innerHTML =
-  "<p class='loading'>Loading withdrawals...</p>";
-
-
-  try{
-
-    const snap =
-    await getDocs(
-      collection(
-        db,
-        "withdrawals"
-      )
-    );
-
-
-    const withdrawals=[];
-
-
-    snap.forEach(withdrawalDoc => {
-
-      withdrawals.push({
-
-        id:
-        withdrawalDoc.id,
-
-        ...withdrawalDoc.data()
-
-      });
-
-    });
-
-
-    withdrawals.sort(
-      (a,b) =>
-      timestampMillis(
-        getWithdrawalTimestamp(b)
-      )
-      -
-      timestampMillis(
-        getWithdrawalTimestamp(a)
-      )
-    );
-
-
-    let pending=0;
-
-
-    withdrawals.forEach(d => {
-
-      if(
-        (d.status||"Pending")
-        ==="Pending"
-      ){
-
-        pending++;
-
-      }
-
-    });
-
-
-    document
-    .getElementById(
-      "pendingWithdrawals"
-    )
-    .textContent=
-    pending;
-
-
-    if(withdrawals.length===0){
-
-      list.innerHTML =
-      "<div class='no-record'>No withdrawals.</div>";
-
-      return;
-    }
-
-
-    list.innerHTML="";
-
-
-    withdrawals.forEach(d => {
-
-      const status =
-      d.status||
-      "Pending";
-
-
-      const div =
-      document.createElement("div");
-
-
-      div.className=
-      "withdraw-card";
-
-
-      div.innerHTML=`
-
-        <h3>
-
-          💸 ₦${Number(
-            d.amount||0
-          ).toLocaleString()}
-
-        </h3>
-
-
-        ${
-          getWithdrawalTimestamp(d)
-
-          ?
-
-          `
-          <p class="small">
-
-            🕐
-
-            ${safe(
-              formatTimestamp(
-                getWithdrawalTimestamp(d)
-              )
-            )}
-
-          </p>
-          `
-
-          :
-
-          ""
-        }
-
-
-        <p>
-
-          User:
-
-          ${safe(
-            d.email||
-            d.uid||
-            ""
-          )}
-
-        </p>
-
-
-        <p>
-
-          🆔 UID:
-
-          ${safe(
-            d.uid||
-            d.userId||
-            "Not provided"
-          )}
-
-        </p>
-
-
-        <p>
-
-          Bank:
-
-          ${safe(d.bankName||"")}
-
-        </p>
-
-
-        <p>
-
-          Account Number:
-
-          ${safe(d.accountNumber||"")}
-
-        </p>
-
-
-        <p>
-
-          Account Name:
-
-          ${safe(d.accountName||"")}
-
-        </p>
-
-
-        <p>
-
-          Status:
-
-          <span class="status ${
-            status==="Approved"
-            ?"approved"
-            :status==="Rejected"
-            ?"rejected"
-            :"pending"
-          }">
-
-          ${safe(status)}
-
-          </span>
-
-        </p>
-
-      `;
-
-
-      if(status==="Pending"){
-
-        const approve =
-        document.createElement("button");
-
-
-        approve.className=
-        "btn green";
-
-
-        approve.textContent=
-        "✅ Approve";
-
-
-        approve.onclick =
-        () =>
-        updateWithdrawal(
-          d.id,
-          "Approved"
-        );
-
-
-        div.appendChild(
-          approve
-        );
-
-
-        const reject =
-        document.createElement("button");
-
-
-        reject.className=
-        "btn red";
-
-
-        reject.textContent=
-        "❌ Reject";
-
-
-        reject.onclick =
-        () =>
-        updateWithdrawal(
-          d.id,
-          "Rejected"
-        );
-
-
-        div.appendChild(
-          reject
-        );
-
-      }
-
-
-      list.appendChild(
-        div
-      );
-
-    });
-
-
-  }catch(error){
-
-    list.innerHTML =
-    "<p class='small'>"+
-    safe(error.message)+
-    "</p>";
-
-  }
-
-};
-
-
-/* ==================================================
-UPDATE WITHDRAWAL
-================================================== */
-
-window.updateWithdrawal =
-async function(
-  withdrawalId,
-  status
-){
-
-  if(
-    !confirm(
-      "Change withdrawal status to "+
-      status+"?"
-    )
-  ) return;
-
-
-  try{
-
-    await updateDoc(
-      doc(
-        db,
-        "withdrawals",
-        withdrawalId
-      ),
-      {
-
-        status,
-
-        processedAt:
-        serverTimestamp(),
-
-        processedBy:
-        auth.currentUser.email
-
-      }
-    );
-
-
-    alert(
-      "Withdrawal updated."
-    );
-
-
-    loadWithdrawals();
-
-
-  }catch(error){
-
-    alert(
-      "Could not update withdrawal:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* ==================================================
-COPY TEXT
-================================================== */
-
-window.copyText =
-async function(
-  text,
-  button
-){
-
-  try{
-
-    await navigator.clipboard.writeText(
-      text
-    );
-
-
-    const old =
-    button.textContent;
-
-
-    button.textContent=
-    "✅ Copied";
-
-
-    setTimeout(
-      () => {
-
-        button.textContent=
-        old;
-
-      },
-      1500
-    );
-
-
-  }catch(error){
-
-    const textarea =
-    document.createElement(
-      "textarea"
-    );
-
-
-    textarea.value=
-    text;
-
-
-    document
-    .body
-    .appendChild(
-      textarea
-    );
-
-
-    textarea.select();
-
-
-    document.execCommand(
-      "copy"
-    );
-
-
-    textarea.remove();
-
-
-    button.textContent=
-    "✅ Copied";
-
-  }
-
-};
-
-
-/* ==================================================
-REFRESH EVERYTHING
-================================================== */
-
-window.refreshEverything =
-async function(){
-
-  if(!auth.currentUser){
-
-    return;
-
-  }
-
-
-  try{
-
-    await loadUsers();
-
-    await loadTasks();
-
-    await loadProofs();
-
-    await loadReferrals();
-
-    await loadPromotions();
-
-    await loadWithdrawals();
-
-  }catch(error){
-
-    console.error(
-      "Refresh error:",
-      error
-    );
-
-  }
-
-};
-
-
-/* ==================================================
-GET TIMESTAMP MILLISECONDS
-================================================== */
-
-function timestampMillis(timestamp){
-
-  if(!timestamp){
-
-    return 0;
-
-  }
-
-
-  try{
-
-    if(
-      typeof timestamp.toMillis ===
-      "function"
-    ){
-
-      return timestamp.toMillis();
-
-    }
-
-
-    if(
-      timestamp.seconds !==
-      undefined
-    ){
-
-      return (
-        Number(timestamp.seconds)*
-        1000
-      );
-
-    }
-
-
-    if(
-      timestamp instanceof Date
-    ){
-
-      return timestamp.getTime();
-
-    }
-
-
-    if(
-      typeof timestamp ===
-      "number"
-    ){
-
-      return timestamp;
-
-    }
-
-
-    if(
-      typeof timestamp ===
-      "string"
-    ){
-
-      const parsed =
-      Date.parse(timestamp);
-
-
-      return isNaN(parsed)
-      ? 0
-      : parsed;
-
-    }
-
-  }catch(error){}
-
-
-  return 0;
+box.textContent=text;
 
 }
 
 
-/* ==================================================
-GET PROOF TIMESTAMP
-================================================== */
 
-function getProofTimestamp(d){
+/* ================= LOAD EVERYTHING ================= */
 
-  return (
-    d.submittedAt ||
-    d.createdAt ||
-    d.timestamp ||
-    d.date ||
-    null
-  );
+window.loadEverything=async function(){
+
+await Promise.allSettled([
+
+loadUsers(),
+loadTasks(),
+loadPromotions(),
+loadReferrals(),
+loadWithdrawals()
+
+]);
+
+};
+
+
+
+/* ================= USERS ================= */
+
+window.loadUsers=async function(){
+
+const list=
+document.getElementById("usersList");
+
+if(list){
+list.innerHTML=
+"<p class='small'>Loading users...</p>";
+}
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"users")
+);
+
+allUsers=[];
+
+snap.forEach(d=>{
+
+allUsers.push({
+id:d.id,
+...d.data()
+});
+
+});
+
+
+document.getElementById(
+"totalUsers"
+).textContent=
+allUsers.length;
+
+
+renderUsers(allUsers);
+
+renderWarningUsers(allUsers);
+
+}
+
+catch(error){
+
+console.error(error);
+
+if(list){
+
+list.innerHTML=
+"<p class='small'>Could not load users.</p>";
+
+}
+
+}
+
+};
+
+
+
+function renderUsers(users){
+
+const list=
+document.getElementById("usersList");
+
+if(!list)return;
+
+if(!users.length){
+
+list.innerHTML=
+"<p class='small'>No users found.</p>";
+
+return;
+
+}
+
+list.innerHTML="";
+
+users.forEach(user=>{
+
+const div=
+document.createElement("div");
+
+div.className="userCard";
+
+div.innerHTML=`
+
+<h3>👤 ${safe(user.email||"No email")}</h3>
+
+<p>
+<strong>User ID:</strong>
+<br>
+<small>${safe(user.uid||user.id)}</small>
+</p>
+
+<p>
+<strong>Balance:</strong>
+₦${Number(user.balance||0).toLocaleString()}
+</p>
+
+<p>
+<strong>Referral Code:</strong>
+${safe(user.referralCode||"None")}
+</p>
+
+<p>
+<strong>Role:</strong>
+${safe(user.role||"user")}
+</p>
+
+<br>
+
+<button
+class="btn orange"
+onclick="selectUserForWarning('${safeAttr(user.uid||user.id)}')">
+
+⚠️ Send Warning
+
+</button>
+
+<button
+class="btn purple"
+onclick="viewUserNotifications('${safeAttr(user.uid||user.id)}')">
+
+🔔 Notifications
+
+</button>
+
+`;
+
+list.appendChild(div);
+
+});
 
 }
 
 
-/* ==================================================
-GET ORDER TIMESTAMP
-================================================== */
 
-function getOrderTimestamp(d){
+window.filterUsers=function(){
 
-  return (
-    d.createdAt ||
-    d.submittedAt ||
-    d.orderDate ||
-    d.timestamp ||
-    null
-  );
+const search=
+document.getElementById(
+"userSearch"
+).value
+.toLowerCase()
+.trim();
+
+if(!search){
+
+renderUsers(allUsers);
+
+return;
+
+}
+
+const filtered=
+allUsers.filter(user=>{
+
+const email=
+String(user.email||"")
+.toLowerCase();
+
+const uid=
+String(user.uid||user.id||"")
+.toLowerCase();
+
+return(
+email.includes(search)||
+uid.includes(search)
+);
+
+});
+
+renderUsers(filtered);
+
+};
+
+
+
+/* ================= WARNING USER LIST ================= */
+
+async function loadUsersForWarnings(){
+
+if(!allUsers.length){
+
+await loadUsers();
+
+return;
+
+}
+
+renderWarningUsers(allUsers);
 
 }
 
 
-/* ==================================================
-GET WITHDRAWAL TIMESTAMP
-================================================== */
 
-function getWithdrawalTimestamp(d){
+function renderWarningUsers(users){
 
-  return (
-    d.createdAt ||
-    d.requestedAt ||
-    d.timestamp ||
-    d.date ||
-    null
-  );
+warningUsers=users;
+
+const list=
+document.getElementById(
+"warningUsersList"
+);
+
+if(!list)return;
+
+if(!users.length){
+
+list.innerHTML=
+"<p class='small'>No users found.</p>";
+
+return;
+
+}
+
+list.innerHTML="";
+
+users.forEach(user=>{
+
+const div=
+document.createElement("div");
+
+div.className="userCard";
+
+div.innerHTML=`
+
+<h3>👤 ${safe(user.email||"No email")}</h3>
+
+<p class="small">
+UID: ${safe(user.uid||user.id)}
+</p>
+
+<p class="small">
+Referral: ${safe(user.referralCode||"None")}
+</p>
+
+<button
+class="btn orange full"
+onclick="selectUserForWarning('${safeAttr(user.uid||user.id)}')">
+
+⚠️ Select This User
+
+</button>
+
+`;
+
+list.appendChild(div);
+
+});
 
 }
 
 
-/* ==================================================
-FORMAT TIMESTAMP
-================================================== */
 
-function formatTimestamp(
-  timestamp
+window.filterWarningUsers=function(){
+
+const search=
+document.getElementById(
+"warningUserSearch"
+).value
+.toLowerCase()
+.trim();
+
+if(!search){
+
+renderWarningUsers(warningUsers);
+
+return;
+
+}
+
+const filtered=
+warningUsers.filter(user=>{
+
+const email=
+String(user.email||"")
+.toLowerCase();
+
+const uid=
+String(user.uid||user.id||"")
+.toLowerCase();
+
+return(
+email.includes(search)||
+uid.includes(search)
+);
+
+});
+
+renderWarningUsers(filtered);
+
+};
+
+
+
+/* ================= SELECT USER ================= */
+
+window.selectUserForWarning=async function(uid){
+
+selectedUserUid=uid;
+
+let user=
+allUsers.find(
+u=>(u.uid||u.id)===uid
+);
+
+
+if(!user){
+
+try{
+
+const snap=
+await getDoc(
+doc(db,"users",uid)
+);
+
+if(snap.exists()){
+
+user={
+uid:uid,
+...snap.data()
+};
+
+}
+
+}
+catch(error){
+
+console.error(error);
+
+}
+
+}
+
+
+if(!user){
+
+showMessage(
+"warningMessage",
+"User could not be found.",
+"error"
+);
+
+return;
+
+}
+
+
+document.getElementById(
+"selectedUser"
+).style.display="block";
+
+
+document.getElementById(
+"selectedUserEmail"
+).textContent=
+user.email||"No email";
+
+
+document.getElementById(
+"selectedUserUid"
+).textContent=
+uid;
+
+
+/*
+Move the admin directly to
+the warning section.
+*/
+
+showSection("warnings");
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+
+
+/* ================= SEND INDIVIDUAL WARNING ================= */
+
+window.sendIndividualWarning=async function(){
+
+if(!selectedUserUid){
+
+showMessage(
+"warningMessage",
+"Please select one user first.",
+"error"
+);
+
+return;
+
+}
+
+
+const type=
+document.getElementById(
+"notificationType"
+).value;
+
+
+const title=
+document.getElementById(
+"notificationTitle"
+).value
+.trim();
+
+
+const text=
+document.getElementById(
+"notificationMessage"
+).value
+.trim();
+
+
+if(!title){
+
+showMessage(
+"warningMessage",
+"Please enter a subject.",
+"error"
+);
+
+return;
+
+}
+
+
+if(!text){
+
+showMessage(
+"warningMessage",
+"Please write the warning message.",
+"error"
+);
+
+return;
+
+}
+
+
+const button=
+document.getElementById(
+"sendWarningButton"
+);
+
+
+try{
+
+button.disabled=true;
+
+button.textContent=
+"⏳ Sending...";
+
+
+/*
+THIS IS THE IMPORTANT PART.
+
+The notification contains the
+SELECTED USER'S UID.
+
+Therefore the notification
+belongs to ONLY that user.
+*/
+
+await addDoc(
+collection(db,"notifications"),
+{
+
+recipientUid:
+selectedUserUid,
+
+type:type,
+
+title:title,
+
+message:text,
+
+read:false,
+
+sentBy:
+auth.currentUser?.email||"Admin",
+
+sentAt:
+serverTimestamp()
+
+}
+);
+
+
+showMessage(
+"warningMessage",
+"✅ Warning sent successfully to the selected user only.",
+"success"
+);
+
+
+document.getElementById(
+"notificationTitle"
+).value="";
+
+
+document.getElementById(
+"notificationMessage"
+).value="";
+
+
+await loadWarningHistory();
+
+}
+
+catch(error){
+
+console.error(
+"WARNING SEND ERROR:",
+error
+);
+
+showMessage(
+"warningMessage",
+"Could not send warning: "+
+error.message,
+"error"
+);
+
+}
+
+finally{
+
+button.disabled=false;
+
+button.textContent=
+"⚠️ Send Warning To Selected User";
+
+}
+
+};
+
+
+
+/* ================= WARNING HISTORY ================= */
+
+window.loadWarningHistory=async function(){
+
+const list=
+document.getElementById(
+"warningHistory"
+);
+
+if(!list)return;
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"notifications")
+);
+
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>No notifications have been sent.</p>";
+
+return;
+
+}
+
+
+const records=[];
+
+snap.forEach(d=>{
+
+records.push({
+id:d.id,
+...d.data()
+});
+
+});
+
+
+records.sort(
+(a,b)=>
+getTime(b.sentAt)-
+getTime(a.sentAt)
+);
+
+
+list.innerHTML="";
+
+
+records.forEach(data=>{
+
+const div=
+document.createElement("div");
+
+div.className="notification";
+
+div.innerHTML=`
+
+<h3>
+${safe(data.type||"Notice")}
+</h3>
+
+<p>
+<strong>${safe(data.title||"Notification")}</strong>
+</p>
+
+<p style="margin-top:8px">
+${safe(data.message||"")}
+</p>
+
+<hr>
+
+<p class="small">
+Recipient UID:
+<br>
+<strong>${safe(data.recipientUid||"")}</strong>
+</p>
+
+<p class="small">
+Sent by:
+${safe(data.sentBy||"Admin")}
+</p>
+
+<span class="badge ${
+data.read ? "read":"unread"
+}">
+${data.read ? "READ":"UNREAD"}
+</span>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML=
+"<p class='small'>Could not load notification history.</p>";
+
+}
+
+};
+
+
+
+/* ================= VIEW USER NOTIFICATIONS ================= */
+
+window.viewUserNotifications=async function(uid){
+
+showSection("warnings");
+
+selectedUserUid=uid;
+
+document.getElementById(
+"selectedUser"
+).style.display="block";
+
+document.getElementById(
+"selectedUserUid"
+).textContent=uid;
+
+
+const user=
+allUsers.find(
+u=>(u.uid||u.id)===uid
+);
+
+document.getElementById(
+"selectedUserEmail"
+).textContent=
+user?.email||"User";
+
+
+const list=
+document.getElementById(
+"warningHistory"
+);
+
+list.innerHTML=
+"<p class='small'>Loading this user's notifications...</p>";
+
+
+try{
+
+const q=query(
+collection(db,"notifications"),
+where(
+"recipientUid",
+"==",
+uid
+)
+);
+
+
+const snap=
+await getDocs(q);
+
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>This user has no notifications.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+snap.forEach(d=>{
+
+const data=d.data();
+
+const div=
+document.createElement("div");
+
+div.className="notification";
+
+div.innerHTML=`
+
+<h3>
+${safe(data.type||"Notice")}
+</h3>
+
+<p>
+<strong>${safe(data.title||"Notification")}</strong>
+</p>
+
+<p style="margin-top:8px">
+${safe(data.message||"")}
+</p>
+
+<br>
+
+<span class="badge ${
+data.read ? "read":"unread"
+}">
+${data.read ? "READ":"UNREAD"}
+</span>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML=
+"<p class='small'>Could not load notifications.</p>";
+
+}
+
+};
+
+
+
+/* ================= TASK CREATE ================= */
+
+window.createTask=async function(){
+
+const title=
+document.getElementById(
+"taskTitle"
+).value.trim();
+
+const description=
+document.getElementById(
+"taskDescription"
+).value.trim();
+
+const link=
+document.getElementById(
+"taskLink"
+).value.trim();
+
+const reward=
+Number(
+document.getElementById(
+"taskReward"
+).value
+);
+
+
+if(!title||!description||!reward){
+
+showMessage(
+"taskMessage",
+"Please complete the task title, description and reward.",
+"error"
+);
+
+return;
+
+}
+
+
+try{
+
+await addDoc(
+collection(db,"tasks"),
+{
+
+title:title,
+
+description:description,
+
+link:link,
+
+reward:reward,
+
+active:true,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+
+showMessage(
+"taskMessage",
+"✅ Task created successfully.",
+"success"
+);
+
+
+document.getElementById(
+"taskTitle"
+).value="";
+
+
+document.getElementById(
+"taskDescription"
+).value="";
+
+
+document.getElementById(
+"taskLink"
+).value="";
+
+
+document.getElementById(
+"taskReward"
+).value="";
+
+
+loadTasks();
+
+}
+
+catch(error){
+
+console.error(error);
+
+showMessage(
+"taskMessage",
+"Could not create task: "+
+error.message,
+"error"
+);
+
+}
+
+};
+
+
+
+/* ================= LOAD TASKS ================= */
+
+window.loadTasks=async function(){
+
+const list=
+document.getElementById(
+"tasksList"
+);
+
+if(!list)return;
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"tasks")
+);
+
+
+document.getElementById(
+"totalTasks"
+).textContent=
+snap.size;
+
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>No tasks found.</p>";
+
+return;
+
+}
+
+list.innerHTML="";
+
+
+snap.forEach(d=>{
+
+const data=d.data();
+
+const div=
+document.createElement("div");
+
+div.className="item";
+
+div.innerHTML=`
+
+<h3>${safe(data.title||"Task")}</h3>
+
+<p>
+${safe(data.description||"")}
+</p>
+
+<p>
+Reward:
+<strong>
+₦${Number(data.reward||0).toLocaleString()}
+</strong>
+</p>
+
+<p>
+Status:
+<span class="badge ${
+data.active ? "approved":"rejected"
+}">
+${data.active ? "ACTIVE":"INACTIVE"}
+</span>
+</p>
+
+<button
+class="btn ${
+data.active ? "red":"green"
+}"
+onclick="toggleTask('${safeAttr(d.id)}',${!data.active})">
+
+${data.active ? "⛔ Disable":"✅ Activate"}
+
+</button>
+
+<button
+class="btn red"
+onclick="deleteTask('${safeAttr(d.id)}')">
+
+🗑️ Delete
+
+</button>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML=
+"<p class='small'>Could not load tasks.</p>";
+
+}
+
+};
+
+
+
+window.toggleTask=async function(id,status){
+
+try{
+
+await updateDoc(
+doc(db,"tasks",id),
+{
+active:status
+}
+);
+
+loadTasks();
+
+}
+catch(error){
+
+alert(
+"Could not update task: "+
+error.message
+);
+
+}
+
+};
+
+
+
+window.deleteTask=async function(id){
+
+if(!confirm(
+"Delete this task?"
+))return;
+
+try{
+
+await deleteDoc(
+doc(db,"tasks",id)
+);
+
+loadTasks();
+
+}
+catch(error){
+
+alert(
+"Could not delete task: "+
+error.message
+);
+
+}
+
+};
+
+
+
+/* ================= SUBMISSIONS ================= */
+
+window.loadSubmissions=async function(){
+
+const list=
+document.getElementById(
+"submissionsList"
+);
+
+if(!list)return;
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"taskSubmissions")
+);
+
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>No submissions.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+snap.forEach(d=>{
+
+const data=d.data();
+
+const div=
+document.createElement("div");
+
+div.className="item";
+
+div.innerHTML=`
+
+<h3>
+${safe(data.taskTitle||"Task")}
+</h3>
+
+<p>
+User:
+${safe(data.email||data.uid||"")}
+</p>
+
+<p>
+Reward:
+<strong>
+₦${Number(data.reward||0).toLocaleString()}
+</strong>
+</p>
+
+<p>
+Status:
+<span class="badge ${
+statusClass(data.status)
+}">
+${safe(data.status||"Pending")}
+</span>
+</p>
+
+<button
+class="btn green"
+onclick="approveSubmission(
+'${safeAttr(d.id)}',
+'${safeAttr(data.uid||"")}',
+${Number(data.reward||0)}
+)">
+
+✅ Approve & Credit
+
+</button>
+
+<button
+class="btn red"
+onclick="rejectSubmission('${safeAttr(d.id)}')">
+
+❌ Reject
+
+</button>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML=
+"<p class='small'>Could not load submissions.</p>";
+
+}
+
+};
+
+
+
+window.approveSubmission=async function(
+id,
+uid,
+reward
 ){
 
-  try{
+try{
 
-    const milliseconds =
-    timestampMillis(
-      timestamp
-    );
+const userRef=
+doc(db,"users",uid);
 
+const userSnap=
+await getDoc(userRef);
 
-    if(!milliseconds){
+if(!userSnap.exists()){
 
-      return "";
+alert("User account not found.");
 
-    }
-
-
-    return new Date(
-      milliseconds
-    ).toLocaleString(
-      undefined,
-      {
-        year:"numeric",
-        month:"2-digit",
-        day:"2-digit",
-        hour:"2-digit",
-        minute:"2-digit",
-        second:"2-digit"
-      }
-    );
-
-  }catch(error){
-
-    return "";
-
-  }
+return;
 
 }
 
 
-/* ==================================================
-DATE ONLY
-================================================== */
+const current=
+Number(
+userSnap.data().balance||0
+);
 
-function getDateOnly(
-  timestamp
+
+await updateDoc(
+userRef,
+{
+balance:current+Number(reward)
+}
+);
+
+
+await updateDoc(
+doc(db,"taskSubmissions",id),
+{
+status:"Approved",
+approvedAt:
+serverTimestamp()
+}
+);
+
+
+alert(
+"✅ Submission approved and ₦"+
+Number(reward).toLocaleString()+
+" credited."
+);
+
+
+loadSubmissions();
+
+}
+catch(error){
+
+console.error(error);
+
+alert(
+"Approval failed: "+
+error.message
+);
+
+}
+
+};
+
+
+
+window.rejectSubmission=async function(id){
+
+if(!confirm(
+"Reject this task proof?"
+))return;
+
+try{
+
+await updateDoc(
+doc(db,"taskSubmissions",id),
+{
+status:"Rejected",
+rejectedAt:
+serverTimestamp()
+}
+);
+
+loadSubmissions();
+
+}
+catch(error){
+
+alert(
+"Could not reject proof: "+
+error.message
+);
+
+}
+
+};
+
+
+
+/* ================= PROMOTIONS ================= */
+
+window.loadPromotions=async function(){
+
+const list=
+document.getElementById(
+"promotionsList"
+);
+
+if(!list)return;
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"promotionOrders")
+);
+
+
+document.getElementById(
+"totalPromotions"
+).textContent=
+snap.size;
+
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>No promotion orders.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+snap.forEach(d=>{
+
+const data=d.data();
+
+const div=
+document.createElement("div");
+
+div.className="item";
+
+div.innerHTML=`
+
+<h3>
+📢 ${safe(data.promotionType||"Promotion")}
+</h3>
+
+<p>
+User:
+${safe(data.email||data.uid||"")}
+</p>
+
+<p>
+Amount:
+<strong>
+₦${Number(data.amount||0).toLocaleString()}
+</strong>
+</p>
+
+<p style="word-break:break-all">
+Link:
+${safe(data.promotionLink||"")}
+</p>
+
+<br>
+
+<p>
+Payment:
+<span class="badge ${
+statusClass(data.paymentStatus)
+}">
+${safe(data.paymentStatus||"Pending")}
+</span>
+</p>
+
+<p>
+Promotion:
+<span class="badge ${
+statusClass(data.promotionStatus)
+}">
+${safe(data.promotionStatus||"Pending")}
+</span>
+</p>
+
+<button
+class="btn green"
+onclick="approvePromotion('${safeAttr(d.id)}')">
+
+✅ Approve Promotion
+
+</button>
+
+<button
+class="btn red"
+onclick="rejectPromotion('${safeAttr(d.id)}')">
+
+❌ Reject
+
+</button>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML=
+"<p class='small'>Could not load promotions.</p>";
+
+}
+
+};
+
+
+
+window.approvePromotion=async function(id){
+
+try{
+
+await updateDoc(
+doc(db,"promotionOrders",id),
+{
+
+paymentStatus:"Approved",
+
+promotionStatus:"Approved",
+
+approvedAt:
+serverTimestamp()
+
+}
+);
+
+loadPromotions();
+
+}
+catch(error){
+
+alert(
+"Could not approve promotion: "+
+error.message
+);
+
+}
+
+};
+
+
+
+window.rejectPromotion=async function(id){
+
+try{
+
+await updateDoc(
+doc(db,"promotionOrders",id),
+{
+
+paymentStatus:"Rejected",
+
+promotionStatus:"Rejected",
+
+rejectedAt:
+serverTimestamp()
+
+}
+);
+
+loadPromotions();
+
+}
+catch(error){
+
+alert(
+"Could not reject promotion: "+
+error.message
+);
+
+}
+
+};
+
+
+
+/* ================= REFERRALS ================= */
+
+window.loadReferrals=async function(){
+
+const list=
+document.getElementById(
+"referralsList"
+);
+
+if(!list)return;
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"referrals")
+);
+
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>No referrals found.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+snap.forEach(d=>{
+
+const data=d.data();
+
+const div=
+document.createElement("div");
+
+div.className="item";
+
+div.innerHTML=`
+
+<h3>
+👥 ${safe(data.referredEmail||"New User")}
+</h3>
+
+<p>
+Referrer:
+${safe(data.referrerEmail||data.referrerUid||"")}
+</p>
+
+<p>
+Bonus:
+<strong>
+₦${Number(data.bonus||200).toLocaleString()}
+</strong>
+</p>
+
+<p>
+Status:
+<span class="badge ${
+statusClass(data.status)
+}">
+${safe(data.status||"Pending")}
+</span>
+</p>
+
+<button
+class="btn green"
+onclick="approveReferral(
+'${safeAttr(d.id)}',
+'${safeAttr(data.referrerUid||"")}',
+${Number(data.bonus||200)}
+)">
+
+✅ Approve & Credit
+
+</button>
+
+<button
+class="btn red"
+onclick="rejectReferral('${safeAttr(d.id)}')">
+
+❌ Reject
+
+</button>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML=
+"<p class='small'>Could not load referrals.</p>";
+
+}
+
+};
+
+
+
+window.approveReferral=async function(
+id,
+uid,
+bonus
 ){
 
-  const milliseconds =
-  timestampMillis(
-    timestamp
-  );
+if(!uid){
 
+alert(
+"Referrer account was not found."
+);
 
-  if(!milliseconds){
-
-    return "Date not recorded";
-
-  }
-
-
-  return new Date(
-    milliseconds
-  ).toLocaleDateString(
-    undefined,
-    {
-      year:"numeric",
-      month:"2-digit",
-      day:"2-digit"
-    }
-  );
+return;
 
 }
 
 
-/* ==================================================
-SAFE HTML
-================================================== */
+try{
+
+const referralRef=
+doc(db,"referrals",id);
+
+const referralSnap=
+await getDoc(referralRef);
+
+if(!referralSnap.exists()){
+
+alert("Referral record not found.");
+
+return;
+
+}
+
+
+const referralData=
+referralSnap.data();
+
+
+if(
+referralData.credited===true ||
+referralData.status==="Approved"
+){
+
+alert(
+"This referral has already been credited."
+);
+
+return;
+
+}
+
+
+const userRef=
+doc(db,"users",uid);
+
+const userSnap=
+await getDoc(userRef);
+
+if(!userSnap.exists()){
+
+alert("Referrer account was not found.");
+
+return;
+
+}
+
+
+const balance=
+Number(
+userSnap.data().balance||0
+);
+
+
+await updateDoc(
+userRef,
+{
+balance:
+balance+Number(bonus)
+}
+);
+
+
+await updateDoc(
+referralRef,
+{
+
+status:"Approved",
+
+credited:true,
+
+creditedAt:
+serverTimestamp()
+
+}
+);
+
+
+alert(
+"✅ Referral approved and ₦"+
+Number(bonus).toLocaleString()+
+" credited."
+);
+
+
+loadReferrals();
+
+}
+catch(error){
+
+console.error(error);
+
+alert(
+"Referral approval failed: "+
+error.message
+);
+
+}
+
+};
+
+
+
+window.rejectReferral=async function(id){
+
+try{
+
+await updateDoc(
+doc(db,"referrals",id),
+{
+status:"Rejected",
+credited:false
+}
+);
+
+loadReferrals();
+
+}
+catch(error){
+
+alert(
+"Could not reject referral: "+
+error.message
+);
+
+}
+
+};
+
+
+
+/* ================= WITHDRAWALS ================= */
+
+window.loadWithdrawals=async function(){
+
+const list=
+document.getElementById(
+"withdrawalsList"
+);
+
+if(!list)return;
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"withdrawals")
+);
+
+
+document.getElementById(
+"totalWithdrawals"
+).textContent=
+snap.size;
+
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>No withdrawal requests.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+snap.forEach(d=>{
+
+const data=d.data();
+
+const div=
+document.createElement("div");
+
+div.className="item";
+
+div.innerHTML=`
+
+<h3>
+💸 ₦${Number(data.amount||0).toLocaleString()}
+</h3>
+
+<p>
+User:
+${safe(data.email||data.uid||"")}
+</p>
+
+<p>
+Bank:
+<strong>
+${safe(data.bankName||"")}
+</strong>
+</p>
+
+<p>
+Account:
+${safe(data.accountNumber||"")}
+</p>
+
+<p>
+Account Name:
+${safe(data.accountName||"")}
+</p>
+
+<br>
+
+<span class="badge ${
+statusClass(data.status)
+}">
+${safe(data.status||"Pending")}
+</span>
+
+<br>
+
+<button
+class="btn green"
+onclick="processWithdrawal(
+'${safeAttr(d.id)}',
+'${safeAttr(data.uid||"")}',
+${Number(data.amount||0)}
+)">
+
+✅ Process Withdrawal
+
+</button>
+
+<button
+class="btn red"
+onclick="rejectWithdrawal('${safeAttr(d.id)}')">
+
+❌ Reject
+
+</button>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML=
+"<p class='small'>Could not load withdrawals.</p>";
+
+}
+
+};
+
+
+
+window.processWithdrawal=async function(
+id,
+uid,
+amount
+){
+
+if(!uid){
+
+alert(
+"User account was not found."
+);
+
+return;
+
+}
+
+
+if(!confirm(
+"Confirm that this withdrawal has been paid?"
+))return;
+
+
+try{
+
+const withdrawalRef=
+doc(db,"withdrawals",id);
+
+const withdrawalSnap=
+await getDoc(withdrawalRef);
+
+if(!withdrawalSnap.exists()){
+
+alert(
+"Withdrawal request not found."
+);
+
+return;
+
+}
+
+
+const withdrawal=
+withdrawalSnap.data();
+
+
+if(withdrawal.status==="Approved"){
+
+alert(
+"This withdrawal has already been processed."
+);
+
+return;
+
+}
+
+
+const userRef=
+doc(db,"users",uid);
+
+const userSnap=
+await getDoc(userRef);
+
+if(!userSnap.exists()){
+
+alert(
+"User account was not found."
+);
+
+return;
+
+}
+
+
+const balance=
+Number(
+userSnap.data().balance||0
+);
+
+
+if(amount>balance){
+
+alert(
+"User balance is lower than the withdrawal amount."
+);
+
+return;
+
+}
+
+
+/*
+Deduct the money only when the
+withdrawal is approved.
+*/
+
+await updateDoc(
+userRef,
+{
+
+balance:
+balance-Number(amount)
+
+}
+);
+
+
+await updateDoc(
+withdrawalRef,
+{
+
+status:"Approved",
+
+processedAt:
+serverTimestamp()
+
+}
+);
+
+
+alert(
+"✅ Withdrawal processed successfully."
+);
+
+
+loadWithdrawals();
+
+}
+catch(error){
+
+console.error(error);
+
+alert(
+"Withdrawal processing failed: "+
+error.message
+);
+
+}
+
+};
+
+
+
+window.rejectWithdrawal=async function(id){
+
+if(!confirm(
+"Reject this withdrawal?"
+))return;
+
+try{
+
+await updateDoc(
+doc(db,"withdrawals",id),
+{
+
+status:"Rejected",
+
+rejectedAt:
+serverTimestamp()
+
+}
+);
+
+loadWithdrawals();
+
+}
+catch(error){
+
+alert(
+"Could not reject withdrawal: "+
+error.message
+);
+
+}
+
+};
+
+
+
+/* ================= STATUS ================= */
+
+function statusClass(status){
+
+const value=
+String(status||"")
+.toLowerCase();
+
+if(
+value==="approved"||
+value==="credited"||
+value==="active"
+){
+
+return "approved";
+
+}
+
+if(value==="rejected"||
+value==="inactive"){
+
+return "rejected";
+
+}
+
+return "pending";
+
+}
+
+
+
+/* ================= TIME ================= */
+
+function getTime(value){
+
+if(!value)return 0;
+
+if(
+typeof value.toMillis==="function"
+){
+
+return value.toMillis();
+
+}
+
+return 0;
+
+}
+
+
+
+/* ================= SAFE HTML ================= */
 
 function safe(value){
 
-  return String(
-    value ?? ""
-  )
+return String(value||"")
 
-  .replaceAll(
-    "&",
-    "&amp;"
-  )
+.replaceAll("&","&amp;")
 
-  .replaceAll(
-    "<",
-    "&lt;"
-  )
+.replaceAll("<","&lt;")
 
-  .replaceAll(
-    ">",
-    "&gt;"
-  )
+.replaceAll(">","&gt;")
 
-  .replaceAll(
-    '"',
-    "&quot;"
-  )
+.replaceAll('"',"&quot;")
 
-  .replaceAll(
-    "'",
-    "&#039;"
-  );
+.replaceAll("'","&#039;");
 
 }
 
 
-/* ==================================================
-SAFE ATTRIBUTE
-================================================== */
+function safeAttr(value){
 
-function safeAttribute(value){
+return String(value||"")
 
-  return String(
-    value ?? ""
-  )
-
-  .replaceAll(
-    "\\",
-    "\\\\"
-  )
-
-  .replaceAll(
-    "'",
-    "\\'"
-  )
-
-  .replaceAll(
-    "\n",
-    "\\n"
-  )
-
-  .replaceAll(
-    "\r",
-    "\\r"
-  );
+.replaceAll("\\","\\\\")
+.replaceAll("'","\\'");
 
 }
 
 </script>
 
 </body>
-  </html>
+</html>
