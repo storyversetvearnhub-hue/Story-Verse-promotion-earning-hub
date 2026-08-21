@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>StoryVerse Admin Dashboard</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -90,6 +92,7 @@ button:disabled{
 .purple{background:#7c3aed}
 .gold{background:#ca8a04}
 .dark{background:#111827}
+.warning{background:#b91c1c}
 
 .nav{
   display:flex;
@@ -209,6 +212,11 @@ button:disabled{
   color:#92400e;
 }
 
+.warning-status{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
 .small{
   font-size:13px;
   color:#6b7280;
@@ -273,6 +281,15 @@ button:disabled{
   background:#eff6ff;
   border:1px solid #bfdbfe;
   color:#1e40af;
+  padding:12px;
+  border-radius:9px;
+  margin-top:10px;
+}
+
+.warning-box{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
   padding:12px;
   border-radius:9px;
   margin-top:10px;
@@ -355,7 +372,49 @@ button:disabled{
   margin:0;
 }
 
+.date-heading{
+  margin-top:20px;
+  padding:12px 15px;
+  border-radius:10px;
+  background:#111827;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+}
+
+.date-heading:first-child{
+  margin-top:0;
+}
+
+.time-badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:15px;
+  background:#eff6ff;
+  color:#1d4ed8;
+  font-size:12px;
+  font-weight:bold;
+  margin-top:5px;
+}
+
+.warning-history{
+  margin-top:10px;
+  padding:10px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-radius:8px;
+}
+
+.no-record{
+  padding:15px;
+  background:#f9fafb;
+  border-radius:9px;
+  text-align:center;
+  color:#6b7280;
+}
+
 @media(max-width:700px){
+
   .stats{
     grid-template-columns:repeat(2,1fr);
   }
@@ -363,15 +422,18 @@ button:disabled{
   .copy-row{
     grid-template-columns:1fr;
   }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ==============================
+
+<!-- ==================================================
 ADMIN LOGIN
-============================== -->
+================================================== -->
 
 <div id="loginPage">
 
@@ -418,9 +480,9 @@ ADMIN LOGIN
 </div>
 
 
-<!-- ==============================
+<!-- ==================================================
 ADMIN PAGE
-============================== -->
+================================================== -->
 
 <div id="adminPage">
 
@@ -441,9 +503,9 @@ ADMIN PAGE
 </header>
 
 
-<!-- ==============================
+<!-- ==================================================
 NAVIGATION
-============================== -->
+================================================== -->
 
 <div class="nav">
 
@@ -481,9 +543,9 @@ NAVIGATION
 <div class="container">
 
 
-<!-- ==============================
+<!-- ==================================================
 DASHBOARD
-============================== -->
+================================================== -->
 
 <section id="dashboard" class="section active">
 
@@ -533,16 +595,24 @@ DASHBOARD
 
     <div class="info-box">
 
-      🔎 <strong>Proof Account Identification:</strong>
+      🔎 <strong>User Count:</strong>
 
-      Every submitted task proof now displays the
-      Firebase UID belonging to the account that
-      submitted it.
+      The Users count is calculated directly from
+      the current <strong>users</strong> collection.
+      When your delete-user Cloud Function removes
+      the user's Firestore document, that user will
+      automatically disappear from this count.
 
-      <br><br>
+    </div>
 
-      This helps you distinguish users who have
-      multiple accounts.
+    <div class="warning-box">
+
+      ⚠️ <strong>Important:</strong>
+
+      A browser admin page cannot directly list Firebase
+      Authentication users. If an Authentication account
+      is deleted, your Cloud Function should also delete
+      its matching <strong>users/{uid}</strong> document.
 
     </div>
 
@@ -558,9 +628,9 @@ DASHBOARD
 </section>
 
 
-<!-- ==============================
+<!-- ==================================================
 TASKS
-============================== -->
+================================================== -->
 
 <section id="tasks" class="section">
 
@@ -629,9 +699,9 @@ TASKS
 </section>
 
 
-<!-- ==============================
+<!-- ==================================================
 PROOFS
-============================== -->
+================================================== -->
 
 <section id="proofs" class="section">
 
@@ -640,13 +710,24 @@ PROOFS
     <h2>🖼️ Task Proof Images</h2>
 
     <p class="small">
-      Each proof below is connected to the Firebase
-      UID stored when the user submitted the task.
+      Proofs are arranged by the actual submission date
+      and time. Newest submissions appear first.
     </p>
 
     <div class="info-box">
 
+      🕐 <strong>Date & Time:</strong>
+
+      A proof submitted on 28/05/2026 will appear
+      under the 28/05/2026 date heading and will be
+      sorted by its exact submission time.
+
+    </div>
+
+    <div class="info-box">
+
       🆔 <strong>Account identification:</strong>
+
       Always check the Firebase UID before approving
       a proof when you suspect duplicate accounts.
 
@@ -668,9 +749,9 @@ PROOFS
 </section>
 
 
-<!-- ==============================
+<!-- ==================================================
 USERS
-============================== -->
+================================================== -->
 
 <section id="users" class="section">
 
@@ -679,8 +760,17 @@ USERS
     <h2>👥 Registered Users</h2>
 
     <p class="small">
-      View registered accounts and manage balances.
+      View currently stored user accounts and manage
+      balances and warnings.
     </p>
+
+    <div class="info-box">
+
+      👥 The count below represents the current
+      Firestore <strong>users</strong> collection.
+      Deleted Firestore user documents are not counted.
+
+    </div>
 
     <button
       class="btn gray"
@@ -698,9 +788,9 @@ USERS
 </section>
 
 
-<!-- ==============================
+<!-- ==================================================
 REFERRALS
-============================== -->
+================================================== -->
 
 <section id="referrals" class="section">
 
@@ -709,13 +799,19 @@ REFERRALS
     <h2>🎁 Referral Management</h2>
 
     <p class="small">
-      View referral registrations and credit bonuses.
+      All referral registrations are displayed and
+      sorted by their registration date/time.
     </p>
 
     <div class="info-box">
 
       💰 Referral Bonus:
       <strong>₦200</strong>
+
+      <br><br>
+
+      Approving a referral automatically credits the
+      ₦200 bonus to the correct referrer's balance.
 
     </div>
 
@@ -735,9 +831,9 @@ REFERRALS
 </section>
 
 
-<!-- ==============================
+<!-- ==================================================
 PROMOTIONS
-============================== -->
+================================================== -->
 
 <section id="promotions" class="section">
 
@@ -761,9 +857,9 @@ PROMOTIONS
 </section>
 
 
-<!-- ==============================
+<!-- ==================================================
 WITHDRAWALS
-============================== -->
+================================================== -->
 
 <section id="withdrawals" class="section">
 
@@ -786,20 +882,23 @@ WITHDRAWALS
 
 </section>
 
+
 </div>
 </div>
 
 
-<!-- ==============================
+<!-- ==================================================
 FIREBASE
-============================== -->
+================================================== -->
 
 <script type="module">
 
 import {
   initializeApp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 
 import {
   getAuth,
@@ -807,8 +906,10 @@ import {
   sendPasswordResetEmail,
   onAuthStateChanged,
   signOut
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
 
 import {
   getFirestore,
@@ -822,13 +923,14 @@ import {
   limit,
   serverTimestamp,
   runTransaction
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* ==============================
+/* ==================================================
 FIREBASE CONFIG
-============================== */
+================================================== */
 
 const firebaseConfig = {
 
@@ -869,19 +971,20 @@ const db =
 getFirestore(app);
 
 
-/* ==============================
-ADMIN
-============================== */
+/* ==================================================
+ADMIN SETTINGS
+================================================== */
 
 const ADMIN_EMAIL =
 "storyversetvearnhub@gmail.com";
 
-const REFERRAL_BONUS = 200;
+const REFERRAL_BONUS =
+200;
 
 
-/* ==============================
+/* ==================================================
 MESSAGE
-============================== */
+================================================== */
 
 function showMessage(
   id,
@@ -905,9 +1008,9 @@ function showMessage(
 }
 
 
-/* ==============================
-ADMIN LOGIN
-============================== */
+/* ==================================================
+LOGIN
+================================================== */
 
 window.loginAdmin =
 async function(){
@@ -969,9 +1072,9 @@ async function(){
 };
 
 
-/* ==============================
+/* ==================================================
 FORGOT PASSWORD
-============================== */
+================================================== */
 
 window.forgotPassword =
 async function(){
@@ -1019,9 +1122,9 @@ async function(){
 };
 
 
-/* ==============================
+/* ==================================================
 AUTH STATE
-============================== */
+================================================== */
 
 onAuthStateChanged(
   auth,
@@ -1058,9 +1161,9 @@ onAuthStateChanged(
 );
 
 
-/* ==============================
+/* ==================================================
 LOGOUT
-============================== */
+================================================== */
 
 window.logoutAdmin =
 async function(){
@@ -1091,9 +1194,9 @@ async function(){
 };
 
 
-/* ==============================
+/* ==================================================
 NAVIGATION
-============================== */
+================================================== */
 
 window.showSection =
 function(name){
@@ -1109,14 +1212,16 @@ function(name){
   document.getElementById(name);
 
   if(section){
+
     section.classList.add("active");
+
   }
 };
 
 
-/* ==============================
+/* ==================================================
 ADD TASK
-============================== */
+================================================== */
 
 window.addTask =
 async function(){
@@ -1148,6 +1253,7 @@ async function(){
   .getElementById("taskActive")
   .value === "true";
 
+
   if(!title){
 
     showMessage(
@@ -1158,6 +1264,7 @@ async function(){
 
     return;
   }
+
 
   if(!description){
 
@@ -1170,6 +1277,7 @@ async function(){
     return;
   }
 
+
   if(isNaN(reward) || reward < 0){
 
     showMessage(
@@ -1181,6 +1289,7 @@ async function(){
     return;
   }
 
+
   try{
 
     await addDoc(
@@ -1188,9 +1297,13 @@ async function(){
       {
 
         title,
+
         description,
+
         link,
+
         reward,
+
         active,
 
         createdBy:
@@ -1198,13 +1311,16 @@ async function(){
 
         createdAt:
         serverTimestamp()
+
       }
     );
+
 
     showMessage(
       "taskMessage",
       "Task added successfully."
     );
+
 
     document
     .getElementById("taskTitle")
@@ -1222,7 +1338,9 @@ async function(){
     .getElementById("taskReward")
     .value="";
 
+
     loadTasks();
+
 
   }catch(error){
 
@@ -1235,9 +1353,9 @@ async function(){
 };
 
 
-/* ==============================
+/* ==================================================
 LOAD TASKS
-============================== */
+================================================== */
 
 window.loadTasks =
 async function(){
@@ -1248,12 +1366,14 @@ async function(){
   list.innerHTML =
   "<p class='loading'>Loading tasks...</p>";
 
+
   try{
 
     const snap =
     await getDocs(
       collection(db,"tasks")
     );
+
 
     if(snap.empty){
 
@@ -1263,20 +1383,43 @@ async function(){
       return;
     }
 
-    list.innerHTML="";
+
+    const tasks=[];
+
 
     snap.forEach(taskDoc => {
 
-      const d=taskDoc.data();
+      tasks.push({
+        id:taskDoc.id,
+        ...taskDoc.data()
+      });
+
+    });
+
+
+    tasks.sort(
+      (a,b) =>
+      timestampMillis(b.createdAt) -
+      timestampMillis(a.createdAt)
+    );
+
+
+    list.innerHTML="";
+
+
+    tasks.forEach(d => {
 
       const div =
       document.createElement("div");
 
       div.className="task-card";
 
+
       div.innerHTML=`
 
-        <h3>📋 ${safe(d.title || "Task")}</h3>
+        <h3>
+          📋 ${safe(d.title || "Task")}
+        </h3>
 
         <p style="margin-top:8px;">
           ${safe(d.description || "")}
@@ -1294,7 +1437,21 @@ async function(){
           ${d.active ? "🟢 Active" : "🔴 Inactive"}
         </p>
 
+        ${
+          d.createdAt
+          ?
+          `
+          <p class="small">
+            Created:
+            ${safe(formatTimestamp(d.createdAt))}
+          </p>
+          `
+          :
+          ""
+        }
+
       `;
+
 
       if(d.link){
 
@@ -1303,39 +1460,55 @@ async function(){
 
         row.className="copy-row";
 
+
         const input =
         document.createElement("input");
 
         input.value=d.link;
+
         input.readOnly=true;
+
 
         const button =
         document.createElement("button");
 
         button.className="btn purple";
+
         button.textContent="📋 Copy";
 
+
         button.onclick =
-        () => copyText(d.link,button);
+        () =>
+        copyText(
+          d.link,
+          button
+        );
+
 
         row.appendChild(input);
+
         row.appendChild(button);
 
         div.appendChild(row);
+
       }
+
 
       const button =
       document.createElement("button");
+
 
       button.className =
       d.active
       ? "btn red"
       : "btn green";
 
+
       button.textContent =
       d.active
       ? "Disable Task"
       : "Activate Task";
+
 
       button.onclick =
       async function(){
@@ -1343,7 +1516,7 @@ async function(){
         try{
 
           await updateDoc(
-            doc(db,"tasks",taskDoc.id),
+            doc(db,"tasks",d.id),
             {
               active:!d.active
             }
@@ -1354,13 +1527,18 @@ async function(){
         }catch(error){
 
           alert(error.message);
+
         }
+
       };
+
 
       div.appendChild(button);
 
       list.appendChild(div);
+
     });
+
 
   }catch(error){
 
@@ -1368,13 +1546,15 @@ async function(){
     "<p class='small'>"+
     safe(error.message)+
     "</p>";
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
 LOAD USERS
-============================== */
+================================================== */
 
 window.loadUsers =
 async function(){
@@ -1385,6 +1565,7 @@ async function(){
   list.innerHTML =
   "<p class='loading'>Loading users...</p>";
 
+
   try{
 
     const snap =
@@ -1392,33 +1573,62 @@ async function(){
       collection(db,"users")
     );
 
+
+    const users=[];
+
+
+    snap.forEach(userDoc => {
+
+      users.push({
+        id:userDoc.id,
+        ...userDoc.data()
+      });
+
+    });
+
+
     document
     .getElementById("totalUsers")
-    .textContent=snap.size;
+    .textContent=users.length;
 
-    if(snap.empty){
+
+    if(users.length===0){
 
       list.innerHTML =
-      "<p class='small'>No users found.</p>";
+      "<div class='no-record'>No users found.</div>";
 
       return;
     }
 
+
+    users.sort(
+      (a,b) =>
+      timestampMillis(b.createdAt) -
+      timestampMillis(a.createdAt)
+    );
+
+
     list.innerHTML="";
 
-    snap.forEach(userDoc => {
 
-      const d=userDoc.data();
+    users.forEach(d => {
+
+      const userDocId =
+      d.id;
 
       const uid =
-      d.uid || userDoc.id;
+      d.uid ||
+      userDocId;
+
 
       const balance =
       Number(d.balance||0);
 
+
       const referralCode =
       d.referralCode ||
       "Not generated";
+
 
       const referredBy =
       d.referredByCode ||
@@ -1426,13 +1636,21 @@ async function(){
       d.referredBy ||
       "None";
 
+
       const referralCredited =
       d.referralBonusCredited===true;
+
+
+      const warningCount =
+      Number(d.warningCount||0);
+
 
       const div =
       document.createElement("div");
 
+
       div.className="user-card";
+
 
       div.innerHTML=`
 
@@ -1444,50 +1662,157 @@ async function(){
           )}
         </h3>
 
+
         <p style="margin-top:8px;">
           📧 Email:
           ${safe(d.email || "No email")}
         </p>
 
+
         <div class="uid-box">
+
           🆔 <strong>Firebase UID:</strong><br>
+
           ${safe(uid)}
+
         </div>
 
-        <p style="margin-top:8px;">
-          🗂️ Firestore User ID:
-          ${safe(userDoc.id)}
-        </p>
 
         <p style="margin-top:8px;">
-          💰 Balance:
-          <strong class="money">
-          ₦${balance.toLocaleString()}
-          </strong>
+
+          🗂️ Firestore User ID:
+
+          ${safe(userDocId)}
+
         </p>
+
+
+        <p style="margin-top:8px;">
+
+          💰 Balance:
+
+          <strong class="money">
+
+          ₦${balance.toLocaleString()}
+
+          </strong>
+
+        </p>
+
+
+        ${
+          d.createdAt
+          ?
+          `
+          <p class="small">
+
+            🕐 Registered:
+
+            ${safe(formatTimestamp(d.createdAt))}
+
+          </p>
+          `
+          :
+          ""
+        }
+
 
         <div class="referral-code">
+
           🎁 Referral Code:
+
           ${safe(referralCode)}
+
         </div>
 
-        <p>
-          👥 Referred By:
-          <strong>${safe(referredBy)}</strong>
-        </p>
 
         <p>
+
+          👥 Referred By:
+
+          <strong>
+          ${safe(referredBy)}
+          </strong>
+
+        </p>
+
+
+        <p>
+
           Referral Bonus:
+
           ${
             referredBy!=="None"
-            ? (
+
+            ?
+
+            (
+
               referralCredited
-              ? '<span class="status credited">✅ Credited</span>'
-              : '<span class="status notcredited">⏳ Not Credited</span>'
+
+              ?
+
+              '<span class="status credited">✅ Credited</span>'
+
+              :
+
+              '<span class="status notcredited">⏳ Not Credited</span>'
+
             )
-            : '<span class="small">No referral</span>'
+
+            :
+
+            '<span class="small">No referral</span>'
           }
+
         </p>
+
+
+        ${
+          warningCount>0
+
+          ?
+
+          `
+          <div class="warning-box">
+
+            ⚠️
+
+            <strong>
+            Warnings: ${warningCount}
+            </strong>
+
+            ${
+              d.warningMessage
+              ?
+              `
+              <br><br>
+              Latest warning:
+              ${safe(d.warningMessage)}
+              `
+              :
+              ""
+            }
+
+            ${
+              d.warningAt
+              ?
+              `
+              <br>
+              ${safe(formatTimestamp(d.warningAt))}
+              `
+              :
+              ""
+            }
+
+          </div>
+          `
+
+          :
+
+          ""
+        }
+
 
         <hr style="
           margin:15px 0;
@@ -1495,105 +1820,330 @@ async function(){
           border-top:1px solid #ddd;
         ">
 
+
         <h3>💰 Add Money</h3>
+
 
         <input
           type="number"
-          id="credit-${safeAttribute(userDoc.id)}"
+          id="credit-${safeAttribute(userDocId)}"
           placeholder="Amount to add"
           min="1"
         >
 
+
         <input
           type="text"
-          id="creditReason-${safeAttribute(userDoc.id)}"
+          id="creditReason-${safeAttribute(userDocId)}"
           placeholder="Reason"
         >
+
 
         <button
           class="btn green"
           onclick="creditUser(
-            '${safeAttribute(userDoc.id)}'
+            '${safeAttribute(userDocId)}'
           )"
         >
+
           ➕ Add Balance
+
         </button>
+
 
         <h3 style="margin-top:20px;">
           ➖ Deduct Money
         </h3>
 
+
         <input
           type="number"
-          id="debit-${safeAttribute(userDoc.id)}"
+          id="debit-${safeAttribute(userDocId)}"
           placeholder="Amount to deduct"
           min="1"
         >
 
+
         <input
           type="text"
-          id="debitReason-${safeAttribute(userDoc.id)}"
+          id="debitReason-${safeAttribute(userDocId)}"
           placeholder="Reason"
         >
+
 
         <button
           class="btn red"
           onclick="debitUser(
-            '${safeAttribute(userDoc.id)}'
+            '${safeAttribute(userDocId)}'
           )"
         >
+
           ➖ Deduct Balance
+
         </button>
 
+
         ${
-          referredBy!=="None" && !referralCredited
-          ? `
+          referredBy!=="None" &&
+          !referralCredited
+
+          ?
+
+          `
           <button
             class="btn gold"
             onclick="creditReferralBonus(
-              '${safeAttribute(userDoc.id)}'
+              '${safeAttribute(userDocId)}'
             )"
           >
-            🎁 Credit ₦200 Referral Bonus
+
+            🎁 Approve Referral + Credit ₦200
+
           </button>
           `
-          : ""
+
+          :
+
+          ""
         }
+
+
+        <button
+          class="btn warning"
+          onclick="warnUser(
+            '${safeAttribute(userDocId)}'
+          )"
+        >
+
+          ⚠️ Warn This User
+
+        </button>
+
 
         <button
           class="btn purple"
           onclick="loadUserTransactions(
-            '${safeAttribute(userDoc.id)}'
+            '${safeAttribute(userDocId)}'
           )"
         >
+
           📜 View Transaction History
+
         </button>
 
+
         <div
-          id="transactions-${safeAttribute(userDoc.id)}"
+          id="transactions-${safeAttribute(userDocId)}"
           style="display:none;margin-top:15px;"
         ></div>
 
       `;
 
+
       list.appendChild(div);
+
     });
+
 
   }catch(error){
 
     console.error(error);
 
+
     list.innerHTML =
     "<p class='small'>Could not load users: "+
     safe(error.message)+
     "</p>";
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
+WARN USER
+================================================== */
+
+window.warnUser =
+async function(userDocId){
+
+  const userRef =
+  doc(
+    db,
+    "users",
+    userDocId
+  );
+
+
+  let userSnap;
+
+
+  try{
+
+    userSnap =
+    await getDocs(
+      query(
+        collection(db,"users"),
+        where(
+          "__name__",
+          "==",
+          userDocId
+        ),
+        limit(1)
+      )
+    );
+
+
+    if(userSnap.empty){
+
+      alert(
+        "❌ User account was not found."
+      );
+
+      return;
+    }
+
+
+    const userData =
+    userSnap.docs[0].data();
+
+
+    const userName =
+    userData.name ||
+    userData.email ||
+    "this user";
+
+
+    const message =
+    prompt(
+      "⚠️ Warning for "+userName+
+      "\n\nEnter the reason for this warning:"
+    );
+
+
+    if(message===null){
+
+      return;
+    }
+
+
+    const cleanMessage =
+    message.trim();
+
+
+    if(!cleanMessage){
+
+      alert(
+        "Please enter a warning message."
+      );
+
+      return;
+    }
+
+
+    if(
+      !confirm(
+        "Send this warning?\n\n"+
+        cleanMessage
+      )
+    ){
+
+      return;
+    }
+
+
+    const uid =
+    userData.uid ||
+    userDocId;
+
+
+    /*
+     * Store complete warning record.
+     */
+
+    await addDoc(
+      collection(db,"warnings"),
+      {
+
+        uid,
+
+        userId:userDocId,
+
+        email:
+        userData.email||"",
+
+        name:
+        userData.name||"",
+
+        message:
+        cleanMessage,
+
+        warnedBy:
+        auth.currentUser.email,
+
+        createdAt:
+        serverTimestamp(),
+
+        read:false
+
+      }
+    );
+
+
+    /*
+     * Also keep latest warning directly
+     * on the user's account.
+     */
+
+    await updateDoc(
+      userRef,
+      {
+
+        warningMessage:
+        cleanMessage,
+
+        warningAt:
+        serverTimestamp(),
+
+        warningBy:
+        auth.currentUser.email,
+
+        warningCount:
+        Number(
+          userData.warningCount||0
+        )+1,
+
+        hasWarning:true
+
+      }
+    );
+
+
+    alert(
+      "⚠️ Warning sent successfully."
+    );
+
+
+    loadUsers();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Could not warn user:\n"+
+      error.message
+    );
+
+  }
+
+};
+
+
+/* ==================================================
 CREDIT USER
-============================== */
+================================================== */
 
 window.creditUser =
 async function(userDocId){
@@ -1605,17 +2155,21 @@ async function(userDocId){
     ).value
   );
 
+
   const reason =
   document.getElementById(
     "creditReason-"+userDocId
   ).value.trim()
   || "Admin credit";
 
+
   if(!amount || amount<=0){
 
     alert("Enter a valid amount.");
+
     return;
   }
+
 
   if(
     !confirm(
@@ -1625,20 +2179,35 @@ async function(userDocId){
     )
   ) return;
 
+
   try{
 
     const userRef =
-    doc(db,"users",userDocId);
+    doc(
+      db,
+      "users",
+      userDocId
+    );
+
 
     const transactionRef =
-    doc(collection(db,"transactions"));
+    doc(
+      collection(
+        db,
+        "transactions"
+      )
+    );
+
 
     await runTransaction(
       db,
       async transaction => {
 
         const userSnap =
-        await transaction.get(userRef);
+        await transaction.get(
+          userRef
+        );
+
 
         if(!userSnap.exists()){
 
@@ -1647,14 +2216,20 @@ async function(userDocId){
           );
         }
 
+
         const data =
         userSnap.data();
 
+
         const oldBalance =
-        Number(data.balance||0);
+        Number(
+          data.balance||0
+        );
+
 
         const newBalance =
         oldBalance+amount;
+
 
         transaction.update(
           userRef,
@@ -1663,15 +2238,20 @@ async function(userDocId){
           }
         );
 
+
         transaction.set(
           transactionRef,
           {
 
-            uid:data.uid||userDocId,
+            uid:
+            data.uid||
+            userDocId,
 
-            userId:userDocId,
+            userId:
+            userDocId,
 
-            email:data.email||"",
+            email:
+            data.email||"",
 
             type:"credit",
 
@@ -1688,10 +2268,13 @@ async function(userDocId){
 
             createdAt:
             serverTimestamp()
+
           }
         );
+
       }
     );
+
 
     alert(
       "₦"+
@@ -1699,7 +2282,9 @@ async function(userDocId){
       " added successfully."
     );
 
+
     loadUsers();
+
 
   }catch(error){
 
@@ -1707,13 +2292,15 @@ async function(userDocId){
       "Could not add balance:\n"+
       error.message
     );
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
 DEDUCT USER
-============================== */
+================================================== */
 
 window.debitUser =
 async function(userDocId){
@@ -1725,17 +2312,21 @@ async function(userDocId){
     ).value
   );
 
+
   const reason =
   document.getElementById(
     "debitReason-"+userDocId
   ).value.trim()
   || "Admin deduction";
 
+
   if(!amount || amount<=0){
 
     alert("Enter a valid amount.");
+
     return;
   }
+
 
   if(
     !confirm(
@@ -1745,20 +2336,35 @@ async function(userDocId){
     )
   ) return;
 
+
   try{
 
     const userRef =
-    doc(db,"users",userDocId);
+    doc(
+      db,
+      "users",
+      userDocId
+    );
+
 
     const transactionRef =
-    doc(collection(db,"transactions"));
+    doc(
+      collection(
+        db,
+        "transactions"
+      )
+    );
+
 
     await runTransaction(
       db,
       async transaction => {
 
         const userSnap =
-        await transaction.get(userRef);
+        await transaction.get(
+          userRef
+        );
+
 
         if(!userSnap.exists()){
 
@@ -1767,11 +2373,16 @@ async function(userDocId){
           );
         }
 
+
         const data =
         userSnap.data();
 
+
         const oldBalance =
-        Number(data.balance||0);
+        Number(
+          data.balance||0
+        );
+
 
         if(amount>oldBalance){
 
@@ -1780,8 +2391,10 @@ async function(userDocId){
           );
         }
 
+
         const newBalance =
         oldBalance-amount;
+
 
         transaction.update(
           userRef,
@@ -1790,15 +2403,20 @@ async function(userDocId){
           }
         );
 
+
         transaction.set(
           transactionRef,
           {
 
-            uid:data.uid||userDocId,
+            uid:
+            data.uid||
+            userDocId,
 
-            userId:userDocId,
+            userId:
+            userDocId,
 
-            email:data.email||"",
+            email:
+            data.email||"",
 
             type:"debit",
 
@@ -1815,10 +2433,13 @@ async function(userDocId){
 
             createdAt:
             serverTimestamp()
+
           }
         );
+
       }
     );
+
 
     alert(
       "₦"+
@@ -1826,7 +2447,9 @@ async function(userDocId){
       " deducted successfully."
     );
 
+
     loadUsers();
+
 
   }catch(error){
 
@@ -1834,13 +2457,15 @@ async function(userDocId){
       "Could not deduct balance:\n"+
       error.message
     );
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
 TRANSACTION HISTORY
-============================== */
+================================================== */
 
 window.loadUserTransactions =
 async function(userDocId){
@@ -1850,28 +2475,42 @@ async function(userDocId){
     "transactions-"+userDocId
   );
 
+
   if(box.style.display==="block"){
 
     box.style.display="none";
+
     return;
   }
 
+
   box.style.display="block";
+
 
   box.innerHTML =
   "<p class='small'>Loading transactions...</p>";
+
 
   try{
 
     const q =
     query(
-      collection(db,"transactions"),
-      where("userId","==",userDocId),
+      collection(
+        db,
+        "transactions"
+      ),
+      where(
+        "userId",
+        "==",
+        userDocId
+      ),
       limit(100)
     );
 
+
     const snap =
     await getDocs(q);
+
 
     if(snap.empty){
 
@@ -1881,7 +2520,9 @@ async function(userDocId){
       return;
     }
 
+
     const transactions=[];
+
 
     snap.forEach(txDoc => {
 
@@ -1889,42 +2530,35 @@ async function(userDocId){
         id:txDoc.id,
         ...txDoc.data()
       });
+
     });
+
 
     transactions.sort(
       (a,b) =>
-      (b.createdAt?.seconds||0) -
-      (a.createdAt?.seconds||0)
+      timestampMillis(b.createdAt) -
+      timestampMillis(a.createdAt)
     );
+
 
     box.innerHTML =
     "<h3>📜 Transaction History</h3>";
+
 
     transactions.forEach(tx => {
 
       const isCredit =
       tx.type==="credit";
 
+
       const div =
       document.createElement("div");
+
 
       div.className =
       "transaction "+
       (isCredit?"credit":"debit");
 
-      let dateText="Date unavailable";
-
-      if(tx.createdAt){
-
-        try{
-
-          dateText =
-          new Date(
-            tx.createdAt.seconds*1000
-          ).toLocaleString();
-
-        }catch(e){}
-      }
 
       div.innerHTML=`
 
@@ -1950,38 +2584,58 @@ async function(userDocId){
 
         </p>
 
-        <p class="small">
-          Reason:
-          ${safe(tx.reason||"")}
-        </p>
 
         <p class="small">
+
+          Reason:
+          ${safe(tx.reason||"")}
+
+        </p>
+
+
+        <p class="small">
+
           Previous Balance:
           ₦${Number(
             tx.oldBalance||0
           ).toLocaleString()}
+
         </p>
 
+
         <p class="small">
+
           Balance After:
           ₦${Number(
             tx.newBalance||0
           ).toLocaleString()}
+
         </p>
 
+
         <p class="small">
+
           By:
           ${safe(tx.createdBy||"Admin")}
+
         </p>
 
+
         <p class="small">
-          ${safe(dateText)}
+
+          ${safe(
+            formatTimestamp(tx.createdAt)
+          )}
+
         </p>
 
       `;
 
+
       box.appendChild(div);
+
     });
+
 
   }catch(error){
 
@@ -1989,13 +2643,15 @@ async function(userDocId){
     "<p class='small'>"+
     safe(error.message)+
     "</p>";
+
   }
+
 };
 
 
-/* ==============================
-REFERRALS
-============================== */
+/* ==================================================
+LOAD REFERRALS
+================================================== */
 
 window.loadReferrals =
 async function(){
@@ -2005,8 +2661,10 @@ async function(){
     "referralList"
   );
 
+
   list.innerHTML =
   "<p class='loading'>Loading referrals...</p>";
+
 
   try{
 
@@ -2015,7 +2673,9 @@ async function(){
       collection(db,"users")
     );
 
+
     const users=[];
+
 
     snap.forEach(userDoc => {
 
@@ -2023,7 +2683,9 @@ async function(){
         id:userDoc.id,
         ...userDoc.data()
       });
+
     });
+
 
     const referrals =
     users.filter(user =>
@@ -2032,9 +2694,19 @@ async function(){
       user.referredBy
     );
 
+
+    referrals.sort(
+      (a,b) =>
+      timestampMillis(b.createdAt) -
+      timestampMillis(a.createdAt)
+    );
+
+
     document
     .getElementById("totalReferrals")
-    .textContent=referrals.length;
+    .textContent=
+    referrals.length;
+
 
     const credited =
     referrals.filter(
@@ -2042,28 +2714,62 @@ async function(){
       user.referralBonusCredited===true
     ).length;
 
+
     document
     .getElementById("creditedReferrals")
-    .textContent=credited;
+    .textContent=
+    credited;
+
 
     if(referrals.length===0){
 
       list.innerHTML =
-      "<p class='small'>No referrals found.</p>";
+      "<div class='no-record'>No referrals found.</div>";
 
       return;
     }
 
+
     list.innerHTML="";
+
+
+    let lastDate="";
+
 
     referrals.forEach(
       referredUser => {
+
+        const currentDate =
+        getDateOnly(
+          referredUser.createdAt
+        );
+
+
+        if(currentDate!==lastDate){
+
+          const heading =
+          document.createElement("div");
+
+          heading.className=
+          "date-heading";
+
+          heading.textContent =
+          "📅 "+currentDate;
+
+
+          list.appendChild(heading);
+
+          lastDate=currentDate;
+
+        }
+
 
         const usedCode =
         referredUser.referredByCode ||
         referredUser.referralCodeUsed ||
         referredUser.referredBy ||
         "";
+
 
         const referrer =
         users.find(
@@ -2075,81 +2781,154 @@ async function(){
           .toLowerCase()
         );
 
+
         const credited =
         referredUser.referralBonusCredited===true;
+
 
         const div =
         document.createElement("div");
 
-        div.className="referral-card";
+
+        div.className=
+        "referral-card";
+
 
         div.innerHTML=`
 
-          <h3>🎁 Referral Registration</h3>
+          <h3>
+            🎁 Referral Registration
+          </h3>
+
+
+          ${
+            referredUser.createdAt
+            ?
+            `
+            <span class="time-badge">
+
+              🕐
+
+              ${safe(
+                formatTimestamp(
+                  referredUser.createdAt
+                )
+              )}
+
+            </span>
+            `
+            :
+            ""
+          }
+
 
           <p style="margin-top:10px;">
+
             New User:
+
             ${safe(
               referredUser.name ||
               referredUser.email ||
               "User"
             )}
+
           </p>
 
+
           <p>
+
             Email:
+
             ${safe(
               referredUser.email||""
             )}
+
           </p>
 
+
           <p>
+
             Firebase UID:
+
             <strong>
+
             ${safe(
               referredUser.uid||
               referredUser.id
             )}
+
             </strong>
+
           </p>
+
 
           <p>
+
             Referral Code Used:
+
             <strong>
+
             ${safe(usedCode)}
+
             </strong>
+
           </p>
 
+
           <p style="margin-top:10px;">
+
             Referrer:
+
             ${
               referrer
-              ? safe(
+
+              ?
+
+              safe(
                 referrer.name ||
                 referrer.email ||
                 "Referrer"
               )
-              : "Referrer not found"
+
+              :
+
+              "⚠️ Referrer not found"
             }
+
           </p>
 
+
           <p>
+
             Bonus:
+
             <strong>
             ₦${REFERRAL_BONUS.toLocaleString()}
             </strong>
+
           </p>
 
+
           <p>
+
             Status:
+
             ${
               credited
-              ? '<span class="status credited">✅ Credited</span>'
-              : '<span class="status notcredited">⏳ Waiting</span>'
+
+              ?
+
+              '<span class="status credited">✅ Credited</span>'
+
+              :
+
+              '<span class="status notcredited">⏳ Waiting for approval</span>'
             }
+
           </p>
 
         `;
+
 
         if(
           referrer &&
@@ -2159,10 +2938,14 @@ async function(){
           const button =
           document.createElement("button");
 
-          button.className="btn gold";
 
-          button.textContent =
-          "🎁 Credit ₦200 to Referrer";
+          button.className=
+          "btn gold";
+
+
+          button.textContent=
+          "🎁 Approve Referral + Credit ₦200";
+
 
           button.onclick =
           () =>
@@ -2170,12 +2953,17 @@ async function(){
             referredUser.id
           );
 
+
           div.appendChild(button);
+
         }
 
+
         list.appendChild(div);
+
       }
     );
+
 
   }catch(error){
 
@@ -2183,13 +2971,15 @@ async function(){
     "<p class='small'>"+
     safe(error.message)+
     "</p>";
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
 CREDIT REFERRAL
-============================== */
+================================================== */
 
 window.creditReferralBonus =
 async function(
@@ -2198,9 +2988,12 @@ async function(
 
   if(
     !confirm(
-      "Credit ₦200 referral bonus?"
+      "Approve this referral and credit ₦"+
+      REFERRAL_BONUS+
+      " to the referrer?"
     )
   ) return;
+
 
   try{
 
@@ -2211,120 +3004,213 @@ async function(
       referredUserId
     );
 
+
+    /*
+     * Find the referral first.
+     */
+
+    const referredSnap =
+    await getDocs(
+      query(
+        collection(db,"users"),
+        where(
+          "__name__",
+          "==",
+          referredUserId
+        ),
+        limit(1)
+      )
+    );
+
+
+    if(referredSnap.empty){
+
+      throw new Error(
+        "Referred user was not found."
+      );
+    }
+
+
+    const referredData =
+    referredSnap.docs[0].data();
+
+
+    if(
+      referredData.referralBonusCredited===true
+    ){
+
+      throw new Error(
+        "This referral has already been credited."
+      );
+
+    }
+
+
+    const usedCode =
+    referredData.referredByCode ||
+    referredData.referralCodeUsed ||
+    referredData.referredBy;
+
+
+    if(!usedCode){
+
+      throw new Error(
+        "Referral code not found."
+      );
+
+    }
+
+
+    /*
+     * Find the referrer.
+     */
+
+    const referrerQuery =
+    query(
+      collection(db,"users"),
+      where(
+        "referralCode",
+        "==",
+        usedCode
+      ),
+      limit(1)
+    );
+
+
+    const referrerSnap =
+    await getDocs(
+      referrerQuery
+    );
+
+
+    if(referrerSnap.empty){
+
+      throw new Error(
+        "Referrer account was not found."
+      );
+
+    }
+
+
+    const referrerDoc =
+    referrerSnap.docs[0];
+
+
+    const referrerRef =
+    doc(
+      db,
+      "users",
+      referrerDoc.id
+    );
+
+
+    const transactionRef =
+    doc(
+      collection(
+        db,
+        "transactions"
+      )
+    );
+
+
     await runTransaction(
       db,
       async transaction => {
 
-        const referredSnap =
+        const referredSnapAgain =
         await transaction.get(
           referredUserRef
         );
 
-        if(!referredSnap.exists()){
-
-          throw new Error(
-            "Referred user was not found."
-          );
-        }
-
-        const referredData =
-        referredSnap.data();
-
-        if(
-          referredData.referralBonusCredited
-          ===true
-        ){
-
-          throw new Error(
-            "This referral has already been credited."
-          );
-        }
-
-        const usedCode =
-        referredData.referredByCode ||
-        referredData.referralCodeUsed ||
-        referredData.referredBy;
-
-        if(!usedCode){
-
-          throw new Error(
-            "Referral code not found."
-          );
-        }
-
-        const referrerQuery =
-        query(
-          collection(db,"users"),
-          where(
-            "referralCode",
-            "==",
-            usedCode
-          ),
-          limit(1)
-        );
-
-        const referrerSnap =
-        await getDocs(referrerQuery);
-
-        if(referrerSnap.empty){
-
-          throw new Error(
-            "Referrer account was not found."
-          );
-        }
-
-        const referrerDoc =
-        referrerSnap.docs[0];
-
-        const referrerRef =
-        doc(
-          db,
-          "users",
-          referrerDoc.id
-        );
 
         const referrerSnapAgain =
         await transaction.get(
           referrerRef
         );
 
+
+        if(
+          !referredSnapAgain.exists()
+        ){
+
+          throw new Error(
+            "Referred user was not found."
+          );
+
+        }
+
+
+        if(
+          !referrerSnapAgain.exists()
+        ){
+
+          throw new Error(
+            "Referrer account was not found."
+          );
+
+        }
+
+
+        const referredDataAgain =
+        referredSnapAgain.data();
+
+
         const referrerData =
         referrerSnapAgain.data();
+
+
+        if(
+          referredDataAgain
+          .referralBonusCredited===true
+        ){
+
+          throw new Error(
+            "This referral has already been credited."
+          );
+
+        }
+
 
         const oldBalance =
         Number(
           referrerData.balance||0
         );
 
-        const newBalance =
-        oldBalance+REFERRAL_BONUS;
 
-        const transactionRef =
-        doc(collection(db,"transactions"));
+        const newBalance =
+        oldBalance+
+        REFERRAL_BONUS;
+
 
         transaction.update(
           referrerRef,
           {
 
-            balance:newBalance,
+            balance:
+            newBalance,
 
             totalReferralBonus:
             Number(
               referrerData.totalReferralBonus||0
-            )+REFERRAL_BONUS,
+            )+
+            REFERRAL_BONUS,
 
             totalReferralsCredited:
             Number(
               referrerData.totalReferralsCredited||0
-            )+1
+            )+
+            1
+
           }
         );
+
 
         transaction.update(
           referredUserRef,
           {
 
-            referralBonusCredited:true,
+            referralBonusCredited:
+            true,
 
             referralBonusAmount:
             REFERRAL_BONUS,
@@ -2334,8 +3220,10 @@ async function(
 
             referralBonusCreditedBy:
             auth.currentUser.email
+
           }
         );
+
 
         transaction.set(
           transactionRef,
@@ -2360,37 +3248,55 @@ async function(
 
             newBalance,
 
-            reason:"Referral bonus",
+            reason:
+            "Referral bonus",
 
             createdBy:
             auth.currentUser.email,
 
+            relatedReferral:
+            referredUserId,
+
             createdAt:
             serverTimestamp()
+
           }
         );
+
       }
     );
 
+
     alert(
-      "✅ Referral bonus credited."
+      "✅ Referral approved.\n\n"+
+      "₦"+
+      REFERRAL_BONUS+
+      " has been credited to the referrer."
     );
 
+
     loadReferrals();
+
     loadUsers();
 
+
   }catch(error){
+
+    console.error(error);
 
     alert(
       "Could not credit referral:\n"+
       error.message
     );
+
   }
+
 };
 
 
 /* ==================================================
 LOAD PROOFS
+SORTED BY DATE + TIME
 ================================================== */
 
 window.loadProofs =
@@ -2401,16 +3307,16 @@ async function(){
     "proofList"
   );
 
+
   list.innerHTML =
   "<p class='loading'>Loading proofs...</p>";
+
 
   try{
 
     /*
-     * Load all users first.
-     * This lets the admin page match the UID
-     * stored on each proof with the actual
-     * account in the users collection.
+     * Load users so the proof UID can be matched
+     * with the correct account.
      */
 
     const usersSnap =
@@ -2418,27 +3324,33 @@ async function(){
       collection(db,"users")
     );
 
-    const usersByUid = {};
+
+    const usersByUid={};
+
 
     usersSnap.forEach(userDoc => {
 
       const user =
       userDoc.data();
 
-      const userUid =
-      user.uid || userDoc.id;
 
-      usersByUid[userUid] = {
+      const userUid =
+      user.uid ||
+      userDoc.id;
+
+
+      usersByUid[userUid]={
 
         id:userDoc.id,
 
         uid:userUid,
 
-        name:user.name || "",
+        name:user.name||"",
 
-        email:user.email || ""
+        email:user.email||""
 
       };
+
     });
 
 
@@ -2450,42 +3362,127 @@ async function(){
       )
     );
 
+
+    const proofs=[];
+
+
+    snap.forEach(subDoc => {
+
+      proofs.push({
+
+        id:subDoc.id,
+
+        ...subDoc.data()
+
+      });
+
+    });
+
+
+    /*
+     * Sort newest first.
+     */
+
+    proofs.sort(
+      (a,b) =>
+      timestampMillis(
+        getProofTimestamp(b)
+      )
+      -
+      timestampMillis(
+        getProofTimestamp(a)
+      )
+    );
+
+
     let pending=0;
+
+
+    proofs.forEach(d => {
+
+      if(
+        (d.status||"Pending")
+        ==="Pending"
+      ){
+
+        pending++;
+
+      }
+
+    });
+
 
     document
     .getElementById(
       "pendingProofs"
     )
-    .textContent="0";
+    .textContent=
+    pending;
 
-    if(snap.empty){
+
+    if(proofs.length===0){
 
       list.innerHTML =
-      "<p class='small'>No task proofs found.</p>";
+      "<div class='no-record'>No task proofs found.</div>";
 
       return;
     }
 
+
     list.innerHTML="";
 
 
-    snap.forEach(subDoc => {
+    /*
+     * Group by date.
+     */
 
-      const d =
-      subDoc.data();
+    let lastDate="";
+
+
+    proofs.forEach(d => {
 
       const status =
-      d.status || "Pending";
+      d.status ||
+      "Pending";
 
-      if(status==="Pending"){
-        pending++;
+
+      const proofTimestamp =
+      getProofTimestamp(d);
+
+
+      const currentDate =
+      getDateOnly(
+        proofTimestamp
+      );
+
+
+      if(currentDate!==lastDate){
+
+        const heading =
+        document.createElement("div");
+
+
+        heading.className=
+        "date-heading";
+
+
+        heading.textContent =
+        "📅 "+currentDate;
+
+
+        list.appendChild(
+          heading
+        );
+
+
+        lastDate=
+        currentDate;
+
       }
 
 
       /*
-       * IMPORTANT:
-       * The UID stored inside the submission
-       * identifies the account that sent the proof.
+       * Exact UID from proof.
        */
 
       const proofUid =
@@ -2520,37 +3517,90 @@ async function(){
       const div =
       document.createElement("div");
 
-      div.className="proof-card";
+
+      div.className=
+      "proof-card";
 
 
       div.innerHTML=`
 
         <h3>
+
           📝 ${safe(
             d.taskTitle ||
             d.title ||
             "Task Proof"
           )}
+
         </h3>
+
+
+        ${
+          proofTimestamp
+
+          ?
+
+          `
+          <span class="time-badge">
+
+            🕐
+
+            ${safe(
+              formatTimestamp(
+                proofTimestamp
+              )
+            )}
+
+          </span>
+          `
+
+          :
+
+          `
+          <span class="time-badge">
+            🕐 Date/time not stored
+          </span>
+          `
+        }
 
 
         <div class="account-identifier">
 
-          🔐 <strong>EXACT ACCOUNT THAT SUBMITTED THIS PROOF</strong>
+          🔐
 
-          <div class="uid-box"
-               style="
-               background:#fff;
-               color:#111827;
-               margin-top:10px;
-               ">
+          <strong>
+          EXACT ACCOUNT THAT SUBMITTED THIS PROOF
+          </strong>
 
-            🆔 <strong>Firebase UID:</strong><br>
+
+          <div
+            class="uid-box"
+            style="
+            background:#fff;
+            color:#111827;
+            margin-top:10px;
+            "
+          >
+
+            🆔
+
+            <strong>
+            Firebase UID:
+            </strong>
+
+            <br>
+
 
             ${
               proofUid
-              ? safe(proofUid)
-              : "⚠️ UID NOT STORED IN THIS PROOF"
+
+              ?
+
+              safe(proofUid)
+
+              :
+
+              "⚠️ UID NOT STORED IN THIS PROOF"
             }
 
           </div>
@@ -2561,30 +3611,58 @@ async function(){
         <div class="proof-user-box">
 
           <p>
-            👤 <strong>Name:</strong>
+
+            👤
+
+            <strong>
+            Name:
+            </strong>
+
             ${safe(userName)}
+
           </p>
 
+
           <p style="margin-top:7px;">
-            📧 <strong>Email:</strong>
+
+            📧
+
+            <strong>
+            Email:
+            </strong>
+
             ${safe(userEmail)}
+
           </p>
 
+
           <p style="margin-top:7px;">
-            🗂️ <strong>Firestore User ID:</strong>
+
+            🗂️
+
+            <strong>
+            Firestore User ID:
+            </strong>
+
             ${safe(userDocId)}
+
           </p>
 
         </div>
 
 
         <p style="margin-top:12px;">
+
           💰 Reward:
+
           <strong class="money">
+
           ₦${Number(
             d.reward||0
           ).toLocaleString()}
+
           </strong>
+
         </p>
 
 
@@ -2594,10 +3672,23 @@ async function(){
 
           <span class="status ${
             status==="Approved"
-            ?"approved"
-            :status==="Rejected"
-            ?"rejected"
-            :"pending"
+
+            ?
+
+            "approved"
+
+            :
+
+            status==="Rejected"
+
+            ?
+
+            "rejected"
+
+            :
+
+            "pending"
+
           }">
 
             ${safe(status)}
@@ -2608,13 +3699,28 @@ async function(){
 
 
         ${
-          d.submittedAt
+          d.rejectionReason
+
           ?
-          `<p class="small">
-            Submitted:
-            ${safe(formatTimestamp(d.submittedAt))}
-          </p>`
+
+          `
+          <div class="warning-box">
+
+            ❌
+
+            <strong>
+            Rejection reason:
+            </strong>
+
+            ${safe(
+              d.rejectionReason
+            )}
+
+          </div>
+          `
+
           :
+
           ""
         }
 
@@ -2622,7 +3728,7 @@ async function(){
 
 
       /*
-       * Proof image
+       * Proof image.
        */
 
       const imageUrl =
@@ -2638,27 +3744,44 @@ async function(){
         const img =
         document.createElement("img");
 
-        img.src=imageUrl;
 
-        img.className="proof-image";
+        img.src=
+        imageUrl;
 
-        img.alt="Task proof submitted by user";
+
+        img.className=
+        "proof-image";
+
+
+        img.alt=
+        "Task proof submitted by user";
+
 
         img.onerror =
         function(){
 
-          this.style.display="none";
+          this.style.display=
+          "none";
+
 
           const errorText =
           document.createElement("p");
 
-          errorText.className="small";
+
+          errorText.className=
+          "small";
+
 
           errorText.textContent =
           "⚠️ Proof image could not be loaded.";
 
-          div.appendChild(errorText);
+
+          div.appendChild(
+            errorText
+          );
+
         };
+
 
         div.appendChild(img);
 
@@ -2667,18 +3790,24 @@ async function(){
         const noImage =
         document.createElement("div");
 
-        noImage.className="info-box";
+
+        noImage.className=
+        "info-box";
+
 
         noImage.textContent =
         "⚠️ No proof image URL was found.";
 
-        div.appendChild(noImage);
+
+        div.appendChild(
+          noImage
+        );
+
       }
 
 
       /*
-       * Approve / reject buttons only appear
-       * while the proof is Pending.
+       * Approval buttons.
        */
 
       if(status==="Pending"){
@@ -2686,9 +3815,12 @@ async function(){
         const approve =
         document.createElement("button");
 
-        approve.className="btn green";
 
-        approve.textContent =
+        approve.className=
+        "btn green";
+
+
+        approve.textContent=
         "✅ Approve Proof + Credit Reward";
 
 
@@ -2696,23 +3828,30 @@ async function(){
         function(){
 
           approveProof(
-            subDoc.id,
+            d.id,
             proofUid,
-            Number(d.reward||0)
+            Number(
+              d.reward||0
+            )
           );
 
         };
 
 
-        div.appendChild(approve);
+        div.appendChild(
+          approve
+        );
 
 
         const reject =
         document.createElement("button");
 
-        reject.className="btn red";
 
-        reject.textContent =
+        reject.className=
+        "btn red";
+
+
+        reject.textContent=
         "❌ Reject Proof";
 
 
@@ -2720,27 +3859,24 @@ async function(){
         function(){
 
           rejectProof(
-            subDoc.id
+            d.id
           );
 
         };
 
 
-        div.appendChild(reject);
+        div.appendChild(
+          reject
+        );
 
       }
 
 
-      list.appendChild(div);
+      list.appendChild(
+        div
+      );
 
     });
-
-
-    document
-    .getElementById(
-      "pendingProofs"
-    )
-    .textContent=pending;
 
 
   }catch(error){
@@ -2750,16 +3886,20 @@ async function(){
       error
     );
 
+
     list.innerHTML =
     "<p class='small'>"+
     safe(error.message)+
     "</p>";
+
   }
+
 };
 
 
 /* ==================================================
 APPROVE PROOF
+AUTOMATICALLY CREDIT REWARD
 ================================================== */
 
 window.approveProof =
@@ -2773,9 +3913,17 @@ async function(
 
     alert(
       "❌ This proof does not contain a Firebase UID.\n\n"+
-      "For account protection, the proof cannot be "+
-      "automatically credited because the exact account "+
-      "cannot be identified."
+      "The exact account cannot be identified, so no money was added."
+    );
+
+    return;
+  }
+
+
+  if(reward<0){
+
+    alert(
+      "❌ Invalid reward amount."
     );
 
     return;
@@ -2789,7 +3937,9 @@ async function(
       uid+
       "\n\n"+
       "Reward: ₦"+
-      reward.toLocaleString()
+      reward.toLocaleString()+
+      "\n\n"+
+      "The reward will be credited automatically."
     )
   ) return;
 
@@ -2797,58 +3947,93 @@ async function(
   try{
 
     /*
-     * Find the exact user by Firebase UID.
+     * First find the exact user by UID.
      */
 
-    const q =
+    let userDoc=null;
+
+
+    const uidQuery =
     query(
       collection(db,"users"),
-      where("uid","==",uid),
+      where(
+        "uid",
+        "==",
+        uid
+      ),
       limit(1)
     );
 
 
-    const userSnap =
-    await getDocs(q);
+    const uidSnap =
+    await getDocs(
+      uidQuery
+    );
 
 
-    if(userSnap.empty){
+    if(!uidSnap.empty){
+
+      userDoc=
+      uidSnap.docs[0];
+
+    }else{
 
       /*
-       * Some older accounts may use their
-       * Firestore document ID as their UID.
+       * Older accounts may use their Firestore
+       * document ID as the UID.
        */
 
-      const directUser =
-      await getDocs(
-        query(
-          collection(db,"users"),
-          where(
-            "__name__",
-            "==",
-            uid
-          ),
-          limit(1)
-        )
+      const directRef =
+      doc(
+        db,
+        "users",
+        uid
       );
 
 
-      if(directUser.empty){
+      /*
+       * We cannot use transaction.get outside
+       * transaction here, so use a direct query.
+       */
 
-        alert(
-          "❌ Exact user account was not found for this UID:\n\n"+
-          uid+
-          "\n\nNo money was added."
-        );
+      const directQuery =
+      query(
+        collection(db,"users"),
+        where(
+          "__name__",
+          "==",
+          uid
+        ),
+        limit(1)
+      );
 
-        return;
+
+      const directSnap =
+      await getDocs(
+        directQuery
+      );
+
+
+      if(!directSnap.empty){
+
+        userDoc=
+        directSnap.docs[0];
+
       }
 
     }
 
 
-    const userDoc =
-    userSnap.docs[0];
+    if(!userDoc){
+
+      alert(
+        "❌ Exact user account was not found for this Firebase UID:\n\n"+
+        uid+
+        "\n\nNo money was added."
+      );
+
+      return;
+    }
 
 
     const userRef =
@@ -2897,6 +4082,7 @@ async function(
           throw new Error(
             "User record not found."
           );
+
         }
 
 
@@ -2905,6 +4091,7 @@ async function(
           throw new Error(
             "Submission not found."
           );
+
         }
 
 
@@ -2912,13 +4099,19 @@ async function(
         submission.data();
 
 
+        /*
+         * Prevent duplicate approval.
+         */
+
         if(
-          submissionData.status==="Approved"
+          submissionData.status==="Approved" ||
+          submissionData.rewardCredited===true
         ){
 
           throw new Error(
-            "This proof is already approved."
+            "This proof has already been approved or credited."
           );
+
         }
 
 
@@ -2933,38 +4126,69 @@ async function(
 
 
         const newBalance =
-        oldBalance+reward;
+        oldBalance+
+        reward;
 
+
+        /*
+         * Update user balance.
+         */
 
         transaction.update(
           userRef,
           {
-            balance:newBalance
+
+            balance:
+            newBalance,
+
+            totalTaskRewards:
+            Number(
+              data.totalTaskRewards||0
+            )+
+            reward
+
           }
         );
 
+
+        /*
+         * Mark proof approved and credited.
+         */
 
         transaction.update(
           submissionRef,
           {
 
-            status:"Approved",
+            status:
+            "Approved",
+
+            rewardCredited:
+            true,
+
+            rewardCreditedAmount:
+            reward,
 
             approvedAt:
             serverTimestamp(),
 
             approvedBy:
             auth.currentUser.email
+
           }
         );
 
+
+        /*
+         * Transaction history.
+         */
 
         transaction.set(
           transactionRef,
           {
 
             uid:
-            data.uid||uid,
+            data.uid||
+            uid,
 
             userId:
             userDoc.id,
@@ -2972,15 +4196,18 @@ async function(
             email:
             data.email||"",
 
-            type:"credit",
+            type:
+            "credit",
 
-            amount:reward,
+            amount:
+            reward,
 
             oldBalance,
 
             newBalance,
 
-            reason:"Task reward",
+            reason:
+            "Task reward",
 
             createdBy:
             auth.currentUser.email,
@@ -2990,6 +4217,7 @@ async function(
 
             createdAt:
             serverTimestamp()
+
           }
         );
 
@@ -2998,15 +4226,15 @@ async function(
 
 
     alert(
-      "✅ Proof approved.\n\n"+
+      "✅ Proof approved successfully.\n\n"+
       "₦"+
       reward.toLocaleString()+
-      " was added to the account identified by:\n\n"+
-      uid
+      " has been credited automatically."
     );
 
 
     loadProofs();
+
     loadUsers();
 
 
@@ -3014,11 +4242,14 @@ async function(
 
     console.error(error);
 
+
     alert(
       "❌ Could not approve proof:\n\n"+
       error.message
     );
+
   }
+
 };
 
 
@@ -3050,15 +4281,18 @@ async function(
       ),
       {
 
-        status:"Rejected",
+        status:
+        "Rejected",
 
-        rejectionReason:reason,
+        rejectionReason:
+        reason,
 
         rejectedAt:
         serverTimestamp(),
 
         rejectedBy:
         auth.currentUser.email
+
       }
     );
 
@@ -3077,13 +4311,15 @@ async function(
       "Could not reject proof:\n"+
       error.message
     );
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
 PROMOTIONS
-============================== */
+================================================== */
 
 window.loadPromotions =
 async function(){
@@ -3093,8 +4329,10 @@ async function(){
     "promotionList"
   );
 
+
   list.innerHTML =
   "<p class='loading'>Loading promotions...</p>";
+
 
   try{
 
@@ -3106,84 +4344,177 @@ async function(){
       )
     );
 
+
+    const orders=[];
+
+
+    snap.forEach(orderDoc => {
+
+      orders.push({
+
+        id:orderDoc.id,
+
+        ...orderDoc.data()
+
+      });
+
+    });
+
+
+    orders.sort(
+      (a,b) =>
+      timestampMillis(
+        getOrderTimestamp(b)
+      )
+      -
+      timestampMillis(
+        getOrderTimestamp(a)
+      )
+    );
+
+
     let pending=0;
 
-    if(snap.empty){
+
+    orders.forEach(d => {
+
+      if(
+        (d.promotionStatus||"Pending")
+        ==="Pending"
+      ){
+
+        pending++;
+
+      }
+
+    });
+
+
+    document
+    .getElementById(
+      "pendingPromotions"
+    )
+    .textContent=
+    pending;
+
+
+    if(orders.length===0){
 
       list.innerHTML =
-      "<p class='small'>No promotion orders.</p>";
-
-      document
-      .getElementById(
-        "pendingPromotions"
-      )
-      .textContent="0";
+      "<div class='no-record'>No promotion orders.</div>";
 
       return;
     }
 
+
     list.innerHTML="";
 
-    snap.forEach(orderDoc => {
 
-      const d =
-      orderDoc.data();
+    orders.forEach(d => {
 
       const status =
       d.promotionStatus||
       "Pending";
 
-      if(status==="Pending"){
-        pending++;
-      }
 
       const div =
       document.createElement("div");
 
-      div.className="order-card";
+
+      div.className=
+      "order-card";
+
 
       div.innerHTML=`
 
         <h3>
+
           📢 ${safe(
             d.promotionType||
             "Promotion"
           )}
+
         </h3>
 
-        <p>
-          User:
-          ${safe(d.email||"")}
-        </p>
+
+        ${
+          getOrderTimestamp(d)
+
+          ?
+
+          `
+          <p class="small">
+
+            🕐
+
+            ${safe(
+              formatTimestamp(
+                getOrderTimestamp(d)
+              )
+            )}
+
+          </p>
+          `
+
+          :
+
+          ""
+        }
+
 
         <p>
+
+          User:
+
+          ${safe(d.email||"")}
+
+        </p>
+
+
+        <p>
+
           UID:
+
           ${safe(
             d.uid||
             d.userId||
             "Not provided"
           )}
+
         </p>
 
+
         <p>
+
           Amount:
+
           <strong>
+
           ₦${Number(
             d.amount||0
           ).toLocaleString()}
+
           </strong>
+
         </p>
 
+
         <p>
+
           Payment Status:
+
           ${safe(
             d.paymentStatus||
             "Pending"
           )}
+
         </p>
 
+
         <p>
+
           Promotion Status:
+
           <span class="status ${
             status==="Approved"
             ?"approved"
@@ -3191,8 +4522,11 @@ async function(){
             ?"rejected"
             :"pending"
           }">
+
           ${safe(status)}
+
           </span>
+
         </p>
 
       `;
@@ -3212,19 +4546,34 @@ async function(){
         const row =
         document.createElement("div");
 
-        row.className="copy-row";
+
+        row.className=
+        "copy-row";
+
 
         const input =
         document.createElement("input");
 
-        input.value=link;
-        input.readOnly=true;
+
+        input.value=
+        link;
+
+
+        input.readOnly=
+        true;
+
 
         const button =
         document.createElement("button");
 
-        button.className="btn purple";
-        button.textContent="📋 Copy Link";
+
+        button.className=
+        "btn purple";
+
+
+        button.textContent=
+        "📋 Copy Link";
+
 
         button.onclick =
         () =>
@@ -3233,10 +4582,13 @@ async function(){
           button
         );
 
+
         row.appendChild(input);
+
         row.appendChild(button);
 
         div.appendChild(row);
+
       }
 
 
@@ -3245,16 +4597,21 @@ async function(){
         const img =
         document.createElement("img");
 
+
         img.src=
         d.paymentProofImage;
+
 
         img.className=
         "proof-image";
 
+
         img.alt=
         "Payment proof";
 
+
         div.appendChild(img);
+
       }
 
 
@@ -3263,18 +4620,22 @@ async function(){
         const approve =
         document.createElement("button");
 
+
         approve.className=
         "btn green";
+
 
         approve.textContent=
         "✅ Approve Promotion";
 
+
         approve.onclick =
         () =>
         updatePromotion(
-          orderDoc.id,
+          d.id,
           "Approved"
         );
+
 
         div.appendChild(
           approve
@@ -3284,34 +4645,33 @@ async function(){
         const reject =
         document.createElement("button");
 
+
         reject.className=
         "btn red";
+
 
         reject.textContent=
         "❌ Reject Promotion";
 
+
         reject.onclick =
         () =>
         updatePromotion(
-          orderDoc.id,
+          d.id,
           "Rejected"
         );
+
 
         div.appendChild(
           reject
         );
+
       }
 
 
       list.appendChild(div);
+
     });
-
-
-    document
-    .getElementById(
-      "pendingPromotions"
-    )
-    .textContent=pending;
 
 
   }catch(error){
@@ -3320,13 +4680,15 @@ async function(){
     "<p class='small'>"+
     safe(error.message)+
     "</p>";
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
 UPDATE PROMOTION
-============================== */
+================================================== */
 
 window.updatePromotion =
 async function(
@@ -3341,6 +4703,7 @@ async function(
     )
   ) return;
 
+
   try{
 
     await updateDoc(
@@ -3351,21 +4714,26 @@ async function(
       ),
       {
 
-        promotionStatus:status,
+        promotionStatus:
+        status,
 
         updatedAt:
         serverTimestamp(),
 
         processedBy:
         auth.currentUser.email
+
       }
     );
+
 
     alert(
       "Promotion updated."
     );
 
+
     loadPromotions();
+
 
   }catch(error){
 
@@ -3373,13 +4741,15 @@ async function(
       "Could not update promotion:\n"+
       error.message
     );
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
 WITHDRAWALS
-============================== */
+================================================== */
 
 window.loadWithdrawals =
 async function(){
@@ -3389,8 +4759,10 @@ async function(){
     "withdrawalList"
   );
 
+
   list.innerHTML =
   "<p class='loading'>Loading withdrawals...</p>";
+
 
   try{
 
@@ -3402,85 +4774,181 @@ async function(){
       )
     );
 
+
+    const withdrawals=[];
+
+
+    snap.forEach(withdrawalDoc => {
+
+      withdrawals.push({
+
+        id:
+        withdrawalDoc.id,
+
+        ...withdrawalDoc.data()
+
+      });
+
+    });
+
+
+    withdrawals.sort(
+      (a,b) =>
+      timestampMillis(
+        getWithdrawalTimestamp(b)
+      )
+      -
+      timestampMillis(
+        getWithdrawalTimestamp(a)
+      )
+    );
+
+
     let pending=0;
 
-    if(snap.empty){
+
+    withdrawals.forEach(d => {
+
+      if(
+        (d.status||"Pending")
+        ==="Pending"
+      ){
+
+        pending++;
+
+      }
+
+    });
+
+
+    document
+    .getElementById(
+      "pendingWithdrawals"
+    )
+    .textContent=
+    pending;
+
+
+    if(withdrawals.length===0){
 
       list.innerHTML =
-      "<p class='small'>No withdrawals.</p>";
-
-      document
-      .getElementById(
-        "pendingWithdrawals"
-      )
-      .textContent="0";
+      "<div class='no-record'>No withdrawals.</div>";
 
       return;
     }
 
+
     list.innerHTML="";
 
-    snap.forEach(withdrawalDoc => {
 
-      const d =
-      withdrawalDoc.data();
+    withdrawals.forEach(d => {
 
       const status =
-      d.status||"Pending";
+      d.status||
+      "Pending";
 
-      if(status==="Pending"){
-        pending++;
-      }
 
       const div =
       document.createElement("div");
 
+
       div.className=
       "withdraw-card";
+
 
       div.innerHTML=`
 
         <h3>
+
           💸 ₦${Number(
             d.amount||0
           ).toLocaleString()}
+
         </h3>
 
+
+        ${
+          getWithdrawalTimestamp(d)
+
+          ?
+
+          `
+          <p class="small">
+
+            🕐
+
+            ${safe(
+              formatTimestamp(
+                getWithdrawalTimestamp(d)
+              )
+            )}
+
+          </p>
+          `
+
+          :
+
+          ""
+        }
+
+
         <p>
+
           User:
+
           ${safe(
             d.email||
             d.uid||
             ""
           )}
+
         </p>
 
+
         <p>
+
           🆔 UID:
+
           ${safe(
             d.uid||
             d.userId||
             "Not provided"
           )}
+
         </p>
 
+
         <p>
+
           Bank:
+
           ${safe(d.bankName||"")}
+
         </p>
 
+
         <p>
+
           Account Number:
+
           ${safe(d.accountNumber||"")}
+
         </p>
 
+
         <p>
+
           Account Name:
+
           ${safe(d.accountName||"")}
+
         </p>
 
+
         <p>
+
           Status:
+
           <span class="status ${
             status==="Approved"
             ?"approved"
@@ -3488,8 +4956,11 @@ async function(){
             ?"rejected"
             :"pending"
           }">
+
           ${safe(status)}
+
           </span>
+
         </p>
 
       `;
@@ -3500,18 +4971,22 @@ async function(){
         const approve =
         document.createElement("button");
 
+
         approve.className=
         "btn green";
+
 
         approve.textContent=
         "✅ Approve";
 
+
         approve.onclick =
         () =>
         updateWithdrawal(
-          withdrawalDoc.id,
+          d.id,
           "Approved"
         );
+
 
         div.appendChild(
           approve
@@ -3521,35 +4996,35 @@ async function(){
         const reject =
         document.createElement("button");
 
+
         reject.className=
         "btn red";
+
 
         reject.textContent=
         "❌ Reject";
 
+
         reject.onclick =
         () =>
         updateWithdrawal(
-          withdrawalDoc.id,
+          d.id,
           "Rejected"
         );
+
 
         div.appendChild(
           reject
         );
+
       }
 
 
-      list.appendChild(div);
+      list.appendChild(
+        div
+      );
 
     });
-
-
-    document
-    .getElementById(
-      "pendingWithdrawals"
-    )
-    .textContent=pending;
 
 
   }catch(error){
@@ -3558,13 +5033,15 @@ async function(){
     "<p class='small'>"+
     safe(error.message)+
     "</p>";
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
 UPDATE WITHDRAWAL
-============================== */
+================================================== */
 
 window.updateWithdrawal =
 async function(
@@ -3578,6 +5055,7 @@ async function(
       status+"?"
     )
   ) return;
+
 
   try{
 
@@ -3596,14 +5074,18 @@ async function(
 
         processedBy:
         auth.currentUser.email
+
       }
     );
+
 
     alert(
       "Withdrawal updated."
     );
 
+
     loadWithdrawals();
+
 
   }catch(error){
 
@@ -3611,13 +5093,15 @@ async function(
       "Could not update withdrawal:\n"+
       error.message
     );
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
 COPY TEXT
-============================== */
+================================================== */
 
 window.copyText =
 async function(
@@ -3631,18 +5115,25 @@ async function(
       text
     );
 
+
     const old =
     button.textContent;
+
 
     button.textContent=
     "✅ Copied";
 
+
     setTimeout(
       () => {
-        button.textContent=old;
+
+        button.textContent=
+        old;
+
       },
       1500
     );
+
 
   }catch(error){
 
@@ -3651,54 +5142,211 @@ async function(
       "textarea"
     );
 
-    textarea.value=text;
+
+    textarea.value=
+    text;
+
 
     document
     .body
-    .appendChild(textarea);
+    .appendChild(
+      textarea
+    );
+
 
     textarea.select();
+
 
     document.execCommand(
       "copy"
     );
 
+
     textarea.remove();
+
 
     button.textContent=
     "✅ Copied";
+
   }
+
 };
 
 
-/* ==============================
+/* ==================================================
 REFRESH EVERYTHING
-============================== */
+================================================== */
 
 window.refreshEverything =
 async function(){
 
   if(!auth.currentUser){
+
     return;
+
   }
 
-  await loadUsers();
 
-  await loadTasks();
+  try{
 
-  await loadProofs();
+    await loadUsers();
 
-  await loadReferrals();
+    await loadTasks();
 
-  await loadPromotions();
+    await loadProofs();
 
-  await loadWithdrawals();
+    await loadReferrals();
+
+    await loadPromotions();
+
+    await loadWithdrawals();
+
+  }catch(error){
+
+    console.error(
+      "Refresh error:",
+      error
+    );
+
+  }
+
 };
 
 
-/* ==============================
+/* ==================================================
+GET TIMESTAMP MILLISECONDS
+================================================== */
+
+function timestampMillis(timestamp){
+
+  if(!timestamp){
+
+    return 0;
+
+  }
+
+
+  try{
+
+    if(
+      typeof timestamp.toMillis ===
+      "function"
+    ){
+
+      return timestamp.toMillis();
+
+    }
+
+
+    if(
+      timestamp.seconds !==
+      undefined
+    ){
+
+      return (
+        Number(timestamp.seconds)*
+        1000
+      );
+
+    }
+
+
+    if(
+      timestamp instanceof Date
+    ){
+
+      return timestamp.getTime();
+
+    }
+
+
+    if(
+      typeof timestamp ===
+      "number"
+    ){
+
+      return timestamp;
+
+    }
+
+
+    if(
+      typeof timestamp ===
+      "string"
+    ){
+
+      const parsed =
+      Date.parse(timestamp);
+
+
+      return isNaN(parsed)
+      ? 0
+      : parsed;
+
+    }
+
+  }catch(error){}
+
+
+  return 0;
+
+}
+
+
+/* ==================================================
+GET PROOF TIMESTAMP
+================================================== */
+
+function getProofTimestamp(d){
+
+  return (
+    d.submittedAt ||
+    d.createdAt ||
+    d.timestamp ||
+    d.date ||
+    null
+  );
+
+}
+
+
+/* ==================================================
+GET ORDER TIMESTAMP
+================================================== */
+
+function getOrderTimestamp(d){
+
+  return (
+    d.createdAt ||
+    d.submittedAt ||
+    d.orderDate ||
+    d.timestamp ||
+    null
+  );
+
+}
+
+
+/* ==================================================
+GET WITHDRAWAL TIMESTAMP
+================================================== */
+
+function getWithdrawalTimestamp(d){
+
+  return (
+    d.createdAt ||
+    d.requestedAt ||
+    d.timestamp ||
+    d.date ||
+    null
+  );
+
+}
+
+
+/* ==================================================
 FORMAT TIMESTAMP
-============================== */
+================================================== */
 
 function formatTimestamp(
   timestamp
@@ -3706,86 +5354,148 @@ function formatTimestamp(
 
   try{
 
-    if(
-      timestamp &&
-      timestamp.seconds
-    ){
+    const milliseconds =
+    timestampMillis(
+      timestamp
+    );
 
-      return new Date(
-        timestamp.seconds*1000
-      ).toLocaleString();
+
+    if(!milliseconds){
+
+      return "";
 
     }
 
-    return "";
+
+    return new Date(
+      milliseconds
+    ).toLocaleString(
+      undefined,
+      {
+        year:"numeric",
+        month:"2-digit",
+        day:"2-digit",
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit"
+      }
+    );
 
   }catch(error){
 
     return "";
+
   }
+
 }
 
 
-/* ==============================
+/* ==================================================
+DATE ONLY
+================================================== */
+
+function getDateOnly(
+  timestamp
+){
+
+  const milliseconds =
+  timestampMillis(
+    timestamp
+  );
+
+
+  if(!milliseconds){
+
+    return "Date not recorded";
+
+  }
+
+
+  return new Date(
+    milliseconds
+  ).toLocaleDateString(
+    undefined,
+    {
+      year:"numeric",
+      month:"2-digit",
+      day:"2-digit"
+    }
+  );
+
+}
+
+
+/* ==================================================
 SAFE HTML
-============================== */
+================================================== */
 
 function safe(value){
 
   return String(
     value ?? ""
   )
+
   .replaceAll(
     "&",
     "&amp;"
   )
+
   .replaceAll(
     "<",
     "&lt;"
   )
+
   .replaceAll(
     ">",
     "&gt;"
   )
+
   .replaceAll(
     '"',
     "&quot;"
   )
+
   .replaceAll(
     "'",
     "&#039;"
   );
+
 }
 
 
-/* ==============================
+/* ==================================================
 SAFE ATTRIBUTE
-============================== */
+================================================== */
 
 function safeAttribute(value){
 
   return String(
     value ?? ""
   )
+
   .replaceAll(
     "\\",
     "\\\\"
   )
+
   .replaceAll(
     "'",
     "\\'"
   )
+
   .replaceAll(
     "\n",
     "\\n"
   )
+
   .replaceAll(
     "\r",
     "\\r"
   );
+
 }
 
 </script>
 
 </body>
-      </html>
+  </html>
