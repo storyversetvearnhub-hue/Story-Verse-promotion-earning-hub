@@ -7,6 +7,7 @@
 <title>StoryVerse Promotion & Earning Hub</title>
 
 <style>
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -104,6 +105,7 @@ cursor:not-allowed;
 .gray{background:#4b5563}
 .whatsapp{background:#25D366}
 .orange{background:#ea580c}
+.warningBtn{background:#dc2626}
 
 .msg{
 display:none;
@@ -248,6 +250,44 @@ background:#fee2e2;
 color:#991b1b;
 }
 
+.warning{
+background:#fee2e2;
+border:2px solid #ef4444;
+color:#991b1b;
+padding:16px;
+border-radius:12px;
+margin-bottom:15px;
+}
+
+.notification{
+background:#eff6ff;
+border:1px solid #93c5fd;
+padding:16px;
+border-radius:12px;
+margin-top:12px;
+}
+
+.notification.unread{
+border-left:6px solid #2563eb;
+}
+
+.notificationTitle{
+font-size:17px;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.notificationMessage{
+line-height:1.6;
+white-space:pre-wrap;
+}
+
+.notificationDate{
+font-size:12px;
+color:#6b7280;
+margin-top:10px;
+}
+
 .small{
 font-size:13px;
 color:#6b7280;
@@ -316,95 +356,19 @@ border-radius:10px;
 margin-top:12px;
 }
 
-/* ================= ADMIN WARNING ================= */
-
-.warningCard{
-background:#fff7ed;
-border:2px solid #f97316;
-border-radius:15px;
-padding:18px;
-margin-bottom:15px;
-box-shadow:0 4px 15px rgba(249,115,22,.15);
-}
-
-.warningCard.urgent{
-background:#fef2f2;
-border-color:#dc2626;
-}
-
-.warningCard.info{
-background:#eff6ff;
-border-color:#2563eb;
-}
-
-.warningHeader{
-display:flex;
+.badge{
+display:inline-flex;
 align-items:center;
-gap:10px;
-margin-bottom:10px;
-}
-
-.warningIcon{
-font-size:28px;
-}
-
-.warningTitle{
-font-size:18px;
-font-weight:bold;
-color:#c2410c;
-}
-
-.warningCard.urgent .warningTitle{
-color:#b91c1c;
-}
-
-.warningCard.info .warningTitle{
-color:#1d4ed8;
-}
-
-.warningMessage{
-line-height:1.7;
-font-size:14px;
-white-space:pre-wrap;
-word-break:break-word;
-}
-
-.warningMeta{
-margin-top:12px;
-font-size:12px;
-color:#6b7280;
-border-top:1px solid rgba(0,0,0,.1);
-padding-top:10px;
-}
-
-.warningBadge{
-display:inline-block;
-padding:4px 8px;
+justify-content:center;
+min-width:22px;
+height:22px;
+padding:2px 7px;
 border-radius:20px;
-font-size:11px;
+background:#dc2626;
+color:white;
+font-size:12px;
 font-weight:bold;
-margin-top:8px;
-background:#fed7aa;
-color:#9a3412;
-}
-
-.warningCard.urgent .warningBadge{
-background:#fecaca;
-color:#991b1b;
-}
-
-.warningCard.info .warningBadge{
-background:#bfdbfe;
-color:#1e40af;
-}
-
-.warningEmpty{
-background:#f0fdf4;
-border:1px solid #86efac;
-color:#166534;
-padding:15px;
-border-radius:10px;
-font-size:14px;
+margin-left:4px;
 }
 
 footer{
@@ -444,12 +408,16 @@ margin:-20px -20px 20px;
 }
 
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN ================= -->
+
+<!-- ================================================= -->
+<!-- ================= LOGIN ========================== -->
+<!-- ================================================= -->
 
 <div id="authScreen">
 
@@ -522,7 +490,9 @@ onclick="contactSupport()">
 </div>
 
 
-<!-- ================= APP ================= -->
+<!-- ================================================= -->
+<!-- ================= APP ============================ -->
+<!-- ================================================= -->
 
 <div id="app">
 
@@ -537,12 +507,39 @@ onclick="contactSupport()">
 
 <nav>
 
-<button onclick="showSection('home')">🏠 Home</button>
-<button onclick="showSection('promotion')">📢 Promote</button>
-<button onclick="showSection('earning')">💰 Earn</button>
-<button onclick="showSection('withdraw')">💸 Withdraw</button>
-<button onclick="showSection('account')">👤 Account</button>
-<button onclick="showSection('support')">📞 Support</button>
+<button onclick="showSection('home')">
+🏠 Home
+</button>
+
+<button onclick="showSection('promotion')">
+📢 Promote
+</button>
+
+<button onclick="showSection('earning')">
+💰 Earn
+</button>
+
+<button onclick="showSection('withdraw')">
+💸 Withdraw
+</button>
+
+<button onclick="showSection('notifications')">
+🔔 Notice
+<span
+id="notificationBadge"
+class="badge"
+style="display:none">
+0
+</span>
+</button>
+
+<button onclick="showSection('account')">
+👤 Account
+</button>
+
+<button onclick="showSection('support')">
+📞 Support
+</button>
 
 </nav>
 
@@ -550,34 +547,18 @@ onclick="contactSupport()">
 <div class="container">
 
 
-<!-- ================= ADMIN WARNING DISPLAY ================= -->
+<!-- ================================================= -->
+<!-- ================= HOME =========================== -->
+<!-- ================================================= -->
 
-<section id="warningSection" class="section">
+<section
+id="home"
+class="section active">
 
-<div class="card">
-
-<h2>⚠️ Account Warnings</h2>
-
-<p class="small">
-Important messages sent to you by StoryVerse administrators will appear here.
-</p>
-
-<div id="warningList">
-<p class="small">Loading warnings...</p>
+<div
+id="homeWarningArea">
 </div>
 
-</div>
-
-</section>
-
-
-<!-- ================= HOME ================= -->
-
-<section id="home" class="section active">
-
-<!-- Warning preview on home -->
-
-<div id="homeWarningArea"></div>
 
 <div class="card">
 
@@ -604,6 +585,24 @@ submit proof and earn approved rewards.
 <div class="balance">
 ₦<span id="balance">0</span>
 </div>
+
+</div>
+
+
+<div class="card">
+
+<h2>🔔 Notifications</h2>
+
+<p class="small">
+Important messages and warnings from StoryVerse
+administration will appear here.
+</p>
+
+<button
+class="btn"
+onclick="showSection('notifications');loadNotifications()">
+🔔 View Notifications
+</button>
 
 </div>
 
@@ -662,10 +661,22 @@ class="referralCode">
 Loading...
 </div>
 
+<div
+id="homeReferralLink"
+class="referralLink">
+Loading...
+</div>
+
 <button
 class="btn green"
 onclick="copyReferral()">
 📋 Copy Referral Link
+</button>
+
+<button
+class="btn whatsapp"
+onclick="shareReferral()">
+📤 Share Referral Link
 </button>
 
 </div>
@@ -674,9 +685,13 @@ onclick="copyReferral()">
 </section>
 
 
-<!-- ================= PROMOTION ================= -->
+<!-- ================================================= -->
+<!-- ================ PROMOTION ====================== -->
+<!-- ================================================= -->
 
-<section id="promotion" class="section">
+<section
+id="promotion"
+class="section">
 
 <div class="card">
 
@@ -756,7 +771,8 @@ alt="Payment proof">
 
 <textarea
 id="paymentProofNote"
-placeholder="Optional payment note"></textarea>
+placeholder="Optional payment note">
+</textarea>
 
 </div>
 
@@ -768,7 +784,10 @@ onclick="submitPromotion()">
 📢 Submit Promotion
 </button>
 
-<div id="promotionMessage" class="msg"></div>
+<div
+id="promotionMessage"
+class="msg">
+</div>
 
 </div>
 
@@ -784,7 +803,9 @@ onclick="loadPromotionOrders()">
 </button>
 
 <div id="promotionOrders">
-<p class="small">Loading...</p>
+<p class="small">
+Loading...
+</p>
 </div>
 
 </div>
@@ -792,9 +813,13 @@ onclick="loadPromotionOrders()">
 </section>
 
 
-<!-- ================= EARNING ================= -->
+<!-- ================================================= -->
+<!-- ================= EARNING ======================== -->
+<!-- ================================================= -->
 
-<section id="earning" class="section">
+<section
+id="earning"
+class="section">
 
 <div class="balanceBox">
 
@@ -822,7 +847,9 @@ onclick="loadTasks()">
 </button>
 
 <div id="taskList">
-<p class="small">Loading tasks...</p>
+<p class="small">
+Loading tasks...
+</p>
 </div>
 
 </div>
@@ -839,7 +866,9 @@ onclick="loadSubmissions()">
 </button>
 
 <div id="submissionList">
-<p class="small">Loading...</p>
+<p class="small">
+Loading...
+</p>
 </div>
 
 </div>
@@ -859,11 +888,6 @@ class="referralCode">
 Loading...
 </div>
 
-<p class="small">
-Referral bonus:
-<strong>₦200</strong>.
-</p>
-
 <div
 id="referralLinkDisplay"
 class="referralLink">
@@ -876,6 +900,17 @@ onclick="copyReferral()">
 📋 Copy Referral Link
 </button>
 
+<button
+class="btn whatsapp"
+onclick="shareReferral()">
+📤 Share Referral Link
+</button>
+
+<p class="small">
+Referral bonus:
+<strong>₦200</strong>.
+</p>
+
 </div>
 
 
@@ -886,7 +921,9 @@ onclick="copyReferral()">
 <div
 id="myReferrer"
 class="task">
-<p class="small">Checking...</p>
+<p class="small">
+Checking...
+</p>
 </div>
 
 
@@ -895,7 +932,9 @@ class="task">
 <h3>My Referral History</h3>
 
 <div id="myReferralsList">
-<p class="small">Loading...</p>
+<p class="small">
+Loading...
+</p>
 </div>
 
 </div>
@@ -903,9 +942,13 @@ class="task">
 </section>
 
 
-<!-- ================= WITHDRAW ================= -->
+<!-- ================================================= -->
+<!-- ================= WITHDRAW ====================== -->
+<!-- ================================================= -->
 
-<section id="withdraw" class="section">
+<section
+id="withdraw"
+class="section">
 
 <div class="card">
 
@@ -956,7 +999,10 @@ onclick="submitWithdrawal()">
 💸 Submit Withdrawal
 </button>
 
-<div id="withdrawMessage" class="msg"></div>
+<div
+id="withdrawMessage"
+class="msg">
+</div>
 
 </div>
 
@@ -972,7 +1018,9 @@ onclick="loadWithdrawals()">
 </button>
 
 <div id="withdrawalList">
-<p class="small">Loading...</p>
+<p class="small">
+Loading...
+</p>
 </div>
 
 </div>
@@ -980,9 +1028,49 @@ onclick="loadWithdrawals()">
 </section>
 
 
-<!-- ================= ACCOUNT ================= -->
+<!-- ================================================= -->
+<!-- ============== NOTIFICATIONS ==================== -->
+<!-- ================================================= -->
 
-<section id="account" class="section">
+<section
+id="notifications"
+class="section">
+
+<div class="card">
+
+<h2>🔔 My Notifications</h2>
+
+<p class="small">
+Messages and warnings sent specifically to your account
+by StoryVerse administration will appear here.
+</p>
+
+<button
+class="btn"
+onclick="loadNotifications()">
+🔄 Refresh Notifications
+</button>
+
+<div id="notificationList">
+
+<p class="small">
+Loading notifications...
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- ================= ACCOUNT ======================= -->
+<!-- ================================================= -->
+
+<section
+id="account"
+class="section">
 
 <div class="card">
 
@@ -1016,7 +1104,9 @@ None
 
 <p>Referral Bonus:</p>
 
-<strong>₦200 per credited referral</strong>
+<strong>
+₦200 per credited referral
+</strong>
 
 <br><br>
 
@@ -1029,11 +1119,6 @@ None
 
 <hr>
 
-<button
-class="btn orange"
-onclick="showSection('warningSection');loadWarnings();">
-⚠️ View Account Warnings
-</button>
 
 <button
 class="btn"
@@ -1058,9 +1143,13 @@ onclick="logoutUser()">
 </section>
 
 
-<!-- ================= SUPPORT ================= -->
+<!-- ================================================= -->
+<!-- ================= SUPPORT ======================= -->
+<!-- ================================================= -->
 
-<section id="support" class="section">
+<section
+id="support"
+class="section">
 
 <div class="card">
 
@@ -1093,7 +1182,9 @@ onclick="contactSupport()">
 </div>
 
 
-<!-- ================= FIREBASE ================= -->
+<!-- ================================================= -->
+<!-- ================= FIREBASE ====================== -->
+<!-- ================================================= -->
 
 <script type="module">
 
@@ -1121,6 +1212,7 @@ addDoc,
 getDocs,
 getDoc,
 setDoc,
+updateDoc,
 doc,
 query,
 where,
@@ -1131,7 +1223,9 @@ orderBy
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* ================= FIREBASE CONFIG ================= */
+/* ================================================= */
+/* FIREBASE CONFIG */
+/* ================================================= */
 
 const firebaseConfig={
 
@@ -1161,22 +1255,29 @@ measurementId:
 };
 
 
-const app=initializeApp(firebaseConfig);
+const app=
+initializeApp(firebaseConfig);
 
-const auth=getAuth(app);
+const auth=
+getAuth(app);
 
-const db=getFirestore(app);
+const db=
+getFirestore(app);
+
 
 const REFERRAL_BONUS=200;
 
 const SUPPORT_1="2347035349951";
 
 
-/* ================= MESSAGE ================= */
+/* ================================================= */
+/* MESSAGE */
+/* ================================================= */
 
 function message(id,text,type="success"){
 
-const box=document.getElementById(id);
+const box=
+document.getElementById(id);
 
 if(!box)return;
 
@@ -1192,7 +1293,9 @@ box.textContent=text;
 }
 
 
-/* ================= REFERRAL CODE ================= */
+/* ================================================= */
+/* REFERRAL CODE */
+/* ================================================= */
 
 function makeReferralCode(uid){
 
@@ -1216,7 +1319,8 @@ params.get("ref")||""
 }
 
 
-const urlReferral=getUrlReferral();
+const urlReferral=
+getUrlReferral();
 
 if(urlReferral){
 
@@ -1226,13 +1330,17 @@ document.getElementById(
 );
 
 if(input){
+
 input.value=urlReferral;
-}
 
 }
 
+}
 
-/* ================= REGISTER ================= */
+
+/* ================================================= */
+/* REGISTER */
+/* ================================================= */
 
 window.registerUser=async function(){
 
@@ -1249,7 +1357,9 @@ document.getElementById(
 const enteredReferral=
 document.getElementById(
 "referralCodeInput"
-).value.trim().toUpperCase();
+).value
+.trim()
+.toUpperCase();
 
 
 if(!email||!password){
@@ -1278,12 +1388,18 @@ return;
 }
 
 
+const button=
+document.getElementById(
+"registerButton"
+);
+
+
 try{
 
-message(
-"authMessage",
-"Creating your account..."
-);
+button.disabled=true;
+
+button.textContent=
+"⏳ Creating...";
 
 
 const result=
@@ -1294,10 +1410,13 @@ password
 );
 
 
-const uid=result.user.uid;
+const uid=
+result.user.uid;
+
 
 const myReferralCode=
 makeReferralCode(uid);
+
 
 let referrerUid="";
 let referrerEmail="";
@@ -1306,7 +1425,8 @@ let referrerCode="";
 
 if(enteredReferral){
 
-const refQuery=query(
+const refQuery=
+query(
 collection(db,"users"),
 where(
 "referralCode",
@@ -1315,6 +1435,7 @@ enteredReferral
 ),
 limit(1)
 );
+
 
 const refSnap=
 await getDocs(refQuery);
@@ -1432,10 +1553,21 @@ error.message,
 
 }
 
+finally{
+
+button.disabled=false;
+
+button.textContent=
+"📝 Create Account";
+
+}
+
 };
 
 
-/* ================= LOGIN ================= */
+/* ================================================= */
+/* LOGIN */
+/* ================================================= */
 
 window.loginUser=async function(){
 
@@ -1521,24 +1653,6 @@ text=
 }
 
 else if(
-error.code==="auth/user-not-found"
-){
-
-text=
-"No account was found with this email.";
-
-}
-
-else if(
-error.code==="auth/wrong-password"
-){
-
-text=
-"Incorrect password.";
-
-}
-
-else if(
 error.code==="auth/invalid-email"
 ){
 
@@ -1585,7 +1699,9 @@ button.textContent=
 };
 
 
-/* ================= FORGOT PASSWORD ================= */
+/* ================================================= */
+/* FORGOT PASSWORD */
+/* ================================================= */
 
 window.forgotPassword=async function(){
 
@@ -1615,6 +1731,7 @@ auth,
 email
 );
 
+
 message(
 "authMessage",
 "✅ Password reset email sent."
@@ -1636,30 +1753,15 @@ error.message,
 };
 
 
-/* ================= LOGOUT ================= */
+/* ================================================= */
+/* LOGOUT */
+/* ================================================= */
 
 window.logoutUser=async function(){
 
-const button=
-document.getElementById(
-"logoutButton"
-);
-
-
 try{
 
-if(button){
-
-button.disabled=true;
-
-button.textContent=
-"⏳ Logging out...";
-
-}
-
-
 await signOut(auth);
-
 
 document.getElementById(
 "app"
@@ -1676,23 +1778,13 @@ document.getElementById(
 );
 
 if(password){
+
 password.value="";
-}
-
-
-const loginButton=
-document.getElementById(
-"loginButton"
-);
-
-if(loginButton){
-
-loginButton.disabled=false;
-
-loginButton.textContent=
-"🔐 Login";
 
 }
+
+
+showSection("home");
 
 
 message(
@@ -1700,33 +1792,14 @@ message(
 "✅ You have been logged out."
 );
 
-
-showSection("home");
-
 }
 
 catch(error){
 
-console.error(
-"LOGOUT ERROR:",
-error
-);
-
-
-if(button){
-
-button.disabled=false;
-
-button.textContent=
-"🚪 Logout";
-
-}
-
-
 message(
 "authMessage",
 "Could not log out: "+
-(error.message||"Unknown error"),
+error.message,
 "error"
 );
 
@@ -1735,7 +1808,9 @@ message(
 };
 
 
-/* ================= AUTH STATE ================= */
+/* ================================================= */
+/* AUTH STATE */
+/* ================================================= */
 
 onAuthStateChanged(
 auth,
@@ -1770,24 +1845,7 @@ document.getElementById(
 "✅ Logged In";
 
 
-try{
-
 await loadAllData();
-
-/* Load admin warnings automatically */
-
-await loadWarnings();
-
-}
-
-catch(error){
-
-console.error(
-"DATA ERROR:",
-error
-);
-
-}
 
 }
 
@@ -1801,23 +1859,15 @@ document.getElementById(
 "app"
 ).style.display="none";
 
-
-const password=
-document.getElementById(
-"authPassword"
-);
-
-if(password){
-password.value="";
-}
-
 }
 
 }
 );
 
 
-/* ================= NAVIGATION ================= */
+/* ================================================= */
+/* NAVIGATION */
+/* ================================================= */
 
 window.showSection=function(name){
 
@@ -1835,13 +1885,15 @@ document.getElementById(name);
 
 
 if(section){
+
 section.classList.add("active");
+
 }
 
 
-if(name==="warningSection"){
+if(name==="notifications"){
 
-loadWarnings();
+loadNotifications();
 
 }
 
@@ -1849,366 +1901,13 @@ loadWarnings();
 
 
 /* ================================================= */
-/* ================= ADMIN WARNINGS ================= */
+/* USER DOCUMENT */
 /* ================================================= */
-
-window.loadWarnings=async function(){
-
-const user=auth.currentUser;
-
-if(!user)return;
-
-
-const list=
-document.getElementById(
-"warningList"
-);
-
-const home=
-document.getElementById(
-"homeWarningArea"
-);
-
-
-if(list){
-
-list.innerHTML=
-"<p class='small'>Loading warnings...</p>";
-
-}
-
-
-try{
-
-/*
-Admin creates documents inside:
-
-userWarnings
-
-Each warning should contain:
-
-uid
-title
-message
-severity
-status
-createdAt
-createdBy
-*/
-
-const q=query(
-collection(db,"userWarnings"),
-where("uid","==",user.uid)
-);
-
-
-const snap=
-await getDocs(q);
-
-
-if(snap.empty){
-
-if(list){
-
-list.innerHTML=`
-<div class="warningEmpty">
-✅ No account warnings at this time.
-</div>
-`;
-
-}
-
-if(home){
-
-home.innerHTML="";
-
-}
-
-return;
-
-}
-
-
-let warnings=[];
-
-
-snap.forEach(
-warningDoc=>{
-
-warnings.push({
-id:warningDoc.id,
-...warningDoc.data()
-});
-
-});
-
-
-/*
-Sort newest first in JavaScript.
-This avoids requiring a Firestore
-composite index.
-*/
-
-warnings.sort(
-(a,b)=>{
-
-const aTime=
-a.createdAt?.seconds||
-0;
-
-const bTime=
-b.createdAt?.seconds||
-0;
-
-return bTime-aTime;
-
-});
-
-
-let html="";
-
-
-warnings.forEach(
-warning=>{
-
-const severity=
-String(
-warning.severity||
-"warning"
-).toLowerCase();
-
-
-let icon="⚠️";
-
-let className="";
-
-
-if(severity==="urgent"){
-
-icon="🚨";
-
-className="urgent";
-
-}
-
-else if(severity==="info"){
-
-icon="ℹ️";
-
-className="info";
-
-}
-
-
-const title=
-safe(
-warning.title||
-"Admin Warning"
-);
-
-
-const warningMessage=
-safe(
-warning.message||
-"An administrator has sent a warning to your account."
-);
-
-
-const status=
-safe(
-warning.status||
-"Active"
-);
-
-
-let dateText="";
-
-
-if(warning.createdAt){
-
-try{
-
-const date=
-warning.createdAt.toDate();
-
-dateText=
-date.toLocaleString();
-
-}
-
-catch(e){
-
-dateText="";
-
-}
-
-}
-
-
-html+=`
-
-<div class="warningCard ${className}">
-
-<div class="warningHeader">
-
-<div class="warningIcon">
-${icon}
-</div>
-
-<div>
-
-<div class="warningTitle">
-${title}
-</div>
-
-<span class="warningBadge">
-${status}
-</span>
-
-</div>
-
-</div>
-
-<div class="warningMessage">
-${warningMessage}
-</div>
-
-<div class="warningMeta">
-
-${dateText
-?"📅 Sent: "+safe(dateText)
-:""}
-
-${warning.createdBy
-?"<br>👤 Sent by: "+safe(warning.createdBy)
-:""}
-
-</div>
-
-</div>
-
-`;
-
-});
-
-
-if(list){
-
-list.innerHTML=html;
-
-}
-
-
-/*
-Show the newest warning on Home
-as well.
-*/
-
-if(home){
-
-home.innerHTML=
-warnings.length>0
-?html.split(
-'<div class="warningCard',
-2
-).length>1
-?`
-<div class="warningCard ${
-String(
-warnings[0].severity||
-"warning"
-).toLowerCase()==="urgent"
-?"urgent":
-String(
-warnings[0].severity||
-"warning"
-).toLowerCase()==="info"
-?"info":""
-}">
-
-<div class="warningHeader">
-
-<div class="warningIcon">
-${
-String(
-warnings[0].severity||
-"warning"
-).toLowerCase()==="urgent"
-?"🚨":
-String(
-warnings[0].severity||
-"warning"
-).toLowerCase()==="info"
-?"ℹ️":"⚠️"
-}
-</div>
-
-<div class="warningTitle">
-${safe(
-warnings[0].title||
-"Admin Warning"
-)}
-</div>
-
-</div>
-
-<div class="warningMessage">
-${safe(
-warnings[0].message||
-"An administrator has sent a warning to your account."
-)}
-</div>
-
-<button
-class="btn orange"
-onclick="showSection('warningSection')">
-⚠️ View All Warnings
-</button>
-
-</div>
-`
-:""
-:"";
-
-}
-
-}
-
-catch(error){
-
-console.error(
-"WARNING ERROR:",
-error
-);
-
-
-if(list){
-
-list.innerHTML=`
-<div class="msg error" style="display:block">
-Could not load account warnings.
-Please try again later.
-</div>
-`;
-
-}
-
-if(home){
-
-home.innerHTML="";
-
-}
-
-}
-
-};
-
-
-/* ================= USER DOCUMENT ================= */
 
 async function getUserDocument(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return null;
 
@@ -2234,7 +1933,9 @@ return snap.data();
 }
 
 
-/* ================= LOAD ALL ================= */
+/* ================================================= */
+/* LOAD ALL DATA */
+/* ================================================= */
 
 window.loadAllData=async function(){
 
@@ -2252,21 +1953,22 @@ await loadPromotionOrders();
 
 await loadReferralData();
 
-await loadWarnings();
+await loadNotifications();
 
 };
 
 
-/* ================= LOAD USER ================= */
+/* ================================================= */
+/* LOAD USER */
+/* ================================================= */
 
 async function loadUserData(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
-
-try{
 
 let data=
 await getUserDocument();
@@ -2354,6 +2056,12 @@ referralLink;
 
 
 document.getElementById(
+"homeReferralLink"
+).textContent=
+referralLink;
+
+
+document.getElementById(
 "accountReferredBy"
 ).textContent=
 data.referredByCode||
@@ -2361,36 +2069,18 @@ data.referredByCode||
 
 }
 
-catch(error){
 
-console.error(
-"USER DATA ERROR:",
-error
-);
-
-}
-
-}
-
-
-/* ================= BALANCE ================= */
+/* ================================================= */
+/* BALANCE */
+/* ================================================= */
 
 async function loadBalance(){
-
-const user=auth.currentUser;
-
-if(!user)return;
-
-
-try{
 
 const data=
 await getUserDocument();
 
 const balance=
-Number(
-data?.balance||0
-);
+Number(data?.balance||0);
 
 
 const formatted=
@@ -2416,23 +2106,324 @@ formatted;
 
 }
 
+
+/* ================================================= */
+/* NOTIFICATIONS */
+/* ================================================= */
+
+window.loadNotifications=async function(){
+
+const user=
+auth.currentUser;
+
+if(!user)return;
+
+
+const list=
+document.getElementById(
+"notificationList"
+);
+
+
+list.innerHTML=
+"<p class='small'>Loading notifications...</p>";
+
+
+try{
+
+const q=
+query(
+collection(db,"notifications"),
+where("uid","==",user.uid)
+);
+
+
+const snap=
+await getDocs(q);
+
+
+if(snap.empty){
+
+list.innerHTML=
+"<p class='small'>You have no notifications.</p>";
+
+updateNotificationBadge(0);
+
+document.getElementById(
+"homeWarningArea"
+).innerHTML="";
+
+return;
+
+}
+
+
+let notifications=[];
+
+
+snap.forEach(
+d=>{
+
+notifications.push({
+
+id:d.id,
+...d.data()
+
+});
+
+});
+
+
+notifications.sort(
+(a,b)=>{
+
+const aTime=
+a.createdAt?.seconds||0;
+
+const bTime=
+b.createdAt?.seconds||0;
+
+return bTime-aTime;
+
+}
+);
+
+
+let unread=0;
+
+list.innerHTML="";
+
+let warningHTML="";
+
+
+notifications.forEach(
+item=>{
+
+const title=
+safe(
+item.title||
+(item.type==="warning"
+?"⚠️ Warning Notice"
+:"🔔 Notification")
+);
+
+
+const msg=
+safe(
+item.message||
+""
+);
+
+
+const type=
+String(
+item.type||"notification"
+)
+.toLowerCase();
+
+
+if(
+item.read!==true
+){
+
+unread++;
+
+}
+
+
+const div=
+document.createElement("div");
+
+div.className=
+"notification "+
+(
+item.read!==true
+?"unread"
+:""
+);
+
+
+div.innerHTML=`
+
+<div class="notificationTitle">
+${title}
+</div>
+
+<div class="notificationMessage">
+${msg}
+</div>
+
+<div class="notificationDate">
+${formatDate(item.createdAt)}
+</div>
+
+${
+item.read!==true
+?
+`<button
+class="btn green"
+onclick="markNotificationRead('${item.id}')">
+✅ Mark as Read
+</button>`
+:""
+}
+
+`;
+
+
+list.appendChild(div);
+
+
+if(
+type==="warning"
+){
+
+warningHTML+=`
+
+<div class="warning">
+
+<strong>
+⚠️ ADMIN WARNING
+</strong>
+
+<br><br>
+
+${msg}
+
+<br><br>
+
+<small>
+${formatDate(item.createdAt)}
+</small>
+
+</div>
+
+`;
+
+}
+
+});
+
+
+updateNotificationBadge(unread);
+
+
+document.getElementById(
+"homeWarningArea"
+).innerHTML=
+warningHTML;
+
+}
+
 catch(error){
 
 console.error(
-"BALANCE ERROR:",
+"NOTIFICATION ERROR:",
 error
+);
+
+list.innerHTML=
+"<p class='small'>Could not load notifications. Check your Firestore rules.</p>";
+
+}
+
+};
+
+
+/* ================================================= */
+/* NOTIFICATION BADGE */
+/* ================================================= */
+
+function updateNotificationBadge(count){
+
+const badge=
+document.getElementById(
+"notificationBadge"
+);
+
+
+if(!badge)return;
+
+
+if(count>0){
+
+badge.style.display="inline-flex";
+
+badge.textContent=
+count>99
+?"99+"
+:String(count);
+
+}
+
+else{
+
+badge.style.display="none";
+
+}
+
+}
+
+
+/* ================================================= */
+/* MARK NOTIFICATION READ */
+/* ================================================= */
+
+window.markNotificationRead=
+async function(notificationId){
+
+const user=
+auth.currentUser;
+
+if(!user)return;
+
+
+try{
+
+await updateDoc(
+doc(
+db,
+"notifications",
+notificationId
+),
+{
+
+read:true,
+
+readAt:
+serverTimestamp()
+
+}
+);
+
+
+await loadNotifications();
+
+}
+
+catch(error){
+
+console.error(
+error
+);
+
+alert(
+"Could not mark notification as read."
 );
 
 }
 
-}
+};
 
 
-/* ================= TASKS ================= */
+/* ================================================= */
+/* TASKS */
+/* ================================================= */
 
 window.loadTasks=async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -2449,7 +2440,8 @@ list.innerHTML=
 
 try{
 
-const taskQuery=query(
+const taskQuery=
+query(
 collection(db,"tasks"),
 where("active","==",true)
 );
@@ -2469,7 +2461,8 @@ return;
 }
 
 
-const submissionQuery=query(
+const submissionQuery=
+query(
 collection(db,"taskSubmissions"),
 where("uid","==",user.uid)
 );
@@ -2486,10 +2479,15 @@ new Set();
 submissionSnap.forEach(
 d=>{
 
-const data=d.data();
+const data=
+d.data();
 
 if(data.taskId){
-completed.add(data.taskId);
+
+completed.add(
+data.taskId
+);
+
 }
 
 });
@@ -2501,7 +2499,8 @@ list.innerHTML="";
 taskSnap.forEach(
 taskDoc=>{
 
-const task=taskDoc.data();
+const task=
+taskDoc.data();
 
 const done=
 completed.has(taskDoc.id);
@@ -2514,7 +2513,11 @@ div.className="task";
 
 
 const title=
-safe(task.title||"Daily Task");
+safe(
+task.title||
+"Daily Task"
+);
+
 
 const description=
 safe(
@@ -2522,8 +2525,11 @@ task.description||
 "Complete this task."
 );
 
+
 const reward=
-Number(task.reward||0);
+Number(
+task.reward||0
+);
 
 
 if(done){
@@ -2570,7 +2576,9 @@ onclick="showProofForm('${taskDoc.id}')">
 🖼️ Submit Image Proof
 </button>
 
-<div id="proofArea_${taskDoc.id}"></div>
+<div
+id="proofArea_${taskDoc.id}">
+</div>
 
 `;
 
@@ -2598,7 +2606,9 @@ list.innerHTML=
 };
 
 
-/* ================= OPEN TASK ================= */
+/* ================================================= */
+/* OPEN TASK */
+/* ================================================= */
 
 window.openTask=function(encoded){
 
@@ -2625,9 +2635,12 @@ link,
 };
 
 
-/* ================= PROOF FORM ================= */
+/* ================================================= */
+/* PROOF FORM */
+/* ================================================= */
 
-window.showProofForm=async function(taskId){
+window.showProofForm=
+async function(taskId){
 
 const area=
 document.getElementById(
@@ -2637,8 +2650,6 @@ document.getElementById(
 
 if(!area)return;
 
-
-try{
 
 const taskSnap=
 await getDoc(
@@ -2690,7 +2701,8 @@ class="preview">
 
 <textarea
 id="proofText_${taskId}"
-placeholder="Optional explanation"></textarea>
+placeholder="Optional explanation">
+</textarea>
 
 <button
 class="btn green"
@@ -2713,27 +2725,18 @@ class="msg">
 
 `;
 
-}
-
-catch(error){
-
-console.error(error);
-
-area.innerHTML=
-"<div class='msg error' style='display:block'>Could not open proof form.</div>";
-
-}
-
 };
 
 
-/* ================= PROOF PREVIEW ================= */
+/* ================================================= */
+/* PROOF PREVIEW */
+/* ================================================= */
 
-window.previewProofImage=function(event,taskId){
+window.previewProofImage=
+function(event,taskId){
 
 const file=
 event.target.files[0];
-
 
 const preview=
 document.getElementById(
@@ -2763,9 +2766,11 @@ new FileReader();
 
 reader.onload=e=>{
 
-preview.src=e.target.result;
+preview.src=
+e.target.result;
 
-preview.style.display="block";
+preview.style.display=
+"block";
 
 };
 
@@ -2775,7 +2780,9 @@ reader.readAsDataURL(file);
 };
 
 
-/* ================= COMPRESS IMAGE ================= */
+/* ================================================= */
+/* COMPRESS IMAGE */
+/* ================================================= */
 
 function compressImage(file){
 
@@ -2796,9 +2803,11 @@ img.onload=()=>{
 
 const max=1200;
 
-let width=img.width;
+let width=
+img.width;
 
-let height=img.height;
+let height=
+img.height;
 
 
 if(width>max){
@@ -2826,11 +2835,15 @@ height=max;
 
 
 const canvas=
-document.createElement("canvas");
+document.createElement(
+"canvas"
+);
 
-canvas.width=width;
+canvas.width=
+width;
 
-canvas.height=height;
+canvas.height=
+height;
 
 
 const ctx=
@@ -2892,11 +2905,15 @@ reader.readAsDataURL(file);
 }
 
 
-/* ================= SUBMIT PROOF ================= */
+/* ================================================= */
+/* SUBMIT PROOF */
+/* ================================================= */
 
-window.submitProof=async function(taskId){
+window.submitProof=
+async function(taskId){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -2999,8 +3016,11 @@ messageId,
 
 setTimeout(
 ()=>{
+
 loadTasks();
+
 loadSubmissions();
+
 },
 800
 );
@@ -3026,11 +3046,15 @@ error.message,
 };
 
 
-/* ================= SUBMISSIONS ================= */
+/* ================================================= */
+/* SUBMISSIONS */
+/* ================================================= */
 
-window.loadSubmissions=async function(){
+window.loadSubmissions=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -3043,7 +3067,8 @@ document.getElementById(
 
 try{
 
-const q=query(
+const q=
+query(
 collection(db,"taskSubmissions"),
 where("uid","==",user.uid)
 );
@@ -3069,7 +3094,8 @@ list.innerHTML="";
 snap.forEach(
 d=>{
 
-const data=d.data();
+const data=
+d.data();
 
 
 const div=
@@ -3092,8 +3118,11 @@ Reward:
 
 <br>
 
-<span class="status ${getStatusClass(data.status)}">
+<span
+class="status ${getStatusClass(data.status)}">
+
 ${safe(data.status||"Pending")}
+
 </span>
 
 `;
@@ -3117,9 +3146,12 @@ list.innerHTML=
 };
 
 
-/* ================= PAYMENT PREVIEW ================= */
+/* ================================================= */
+/* PAYMENT PREVIEW */
+/* ================================================= */
 
-window.previewPaymentProof=function(event){
+window.previewPaymentProof=
+function(event){
 
 const file=
 event.target.files[0];
@@ -3133,7 +3165,8 @@ document.getElementById(
 
 if(!file){
 
-preview.style.display="none";
+preview.style.display=
+"none";
 
 return;
 
@@ -3159,9 +3192,11 @@ new FileReader();
 
 reader.onload=e=>{
 
-preview.src=e.target.result;
+preview.src=
+e.target.result;
 
-preview.style.display="block";
+preview.style.display=
+"block";
 
 };
 
@@ -3171,11 +3206,15 @@ reader.readAsDataURL(file);
 };
 
 
-/* ================= PROMOTION ================= */
+/* ================================================= */
+/* PROMOTION */
+/* ================================================= */
 
-window.submitPromotion=async function(){
+window.submitPromotion=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -3310,7 +3349,8 @@ document.getElementById(
 
 document.getElementById(
 "paymentProofPreview"
-).style.display="none";
+).style.display=
+"none";
 
 
 await loadPromotionOrders();
@@ -3342,11 +3382,15 @@ button.textContent=
 };
 
 
-/* ================= PROMOTION ORDERS ================= */
+/* ================================================= */
+/* PROMOTION ORDERS */
+/* ================================================= */
 
-window.loadPromotionOrders=async function(){
+window.loadPromotionOrders=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -3359,7 +3403,8 @@ document.getElementById(
 
 try{
 
-const q=query(
+const q=
+query(
 collection(db,"promotionOrders"),
 where("uid","==",user.uid)
 );
@@ -3385,7 +3430,8 @@ list.innerHTML="";
 snap.forEach(
 d=>{
 
-const data=d.data();
+const data=
+d.data();
 
 
 const div=
@@ -3417,27 +3463,35 @@ Promotion Link:
 
 <p
 style="word-break:break-all;color:#2563eb">
+
 ${safe(data.promotionLink||"")}
+
 </p>
 
 <br>
 
 <p>Payment:</p>
 
-<span class="status ${getStatusClass(data.paymentStatus)}">
+<span
+class="status ${getStatusClass(data.paymentStatus)}">
+
 ${safe(
 data.paymentStatus||"Pending"
 )}
+
 </span>
 
 <br><br>
 
 <p>Promotion:</p>
 
-<span class="status ${getStatusClass(data.promotionStatus)}">
+<span
+class="status ${getStatusClass(data.promotionStatus)}">
+
 ${safe(
 data.promotionStatus||"Pending"
 )}
+
 </span>
 
 `;
@@ -3461,11 +3515,15 @@ list.innerHTML=
 };
 
 
-/* ================= WITHDRAW ================= */
+/* ================================================= */
+/* WITHDRAW */
+/* ================================================= */
 
-window.submitWithdrawal=async function(){
+window.submitWithdrawal=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 
 if(!user){
@@ -3670,11 +3728,15 @@ error.message,
 };
 
 
-/* ================= WITHDRAWALS ================= */
+/* ================================================= */
+/* WITHDRAWALS */
+/* ================================================= */
 
-window.loadWithdrawals=async function(){
+window.loadWithdrawals=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -3687,7 +3749,8 @@ document.getElementById(
 
 try{
 
-const q=query(
+const q=
+query(
 collection(db,"withdrawals"),
 where("uid","==",user.uid)
 );
@@ -3713,7 +3776,8 @@ list.innerHTML="";
 snap.forEach(
 d=>{
 
-const data=d.data();
+const data=
+d.data();
 
 
 const div=
@@ -3748,8 +3812,11 @@ ${safe(data.accountName||"")}
 
 <br>
 
-<span class="status ${getStatusClass(data.status)}">
+<span
+class="status ${getStatusClass(data.status)}">
+
 ${safe(data.status||"Pending")}
+
 </span>
 
 `;
@@ -3776,11 +3843,15 @@ list.innerHTML=
 };
 
 
-/* ================= REFERRALS ================= */
+/* ================================================= */
+/* REFERRALS */
+/* ================================================= */
 
-window.loadReferralData=async function(){
+window.loadReferralData=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -3835,7 +3906,8 @@ box.innerHTML=
 }
 
 
-const q=query(
+const q=
+query(
 collection(db,"referrals"),
 where(
 "referrerUid",
@@ -3871,7 +3943,8 @@ list.innerHTML="";
 snap.forEach(
 d=>{
 
-const data=d.data();
+const data=
+d.data();
 
 
 const div=
@@ -3902,10 +3975,13 @@ REFERRAL_BONUS
 
 <br>
 
-<span class="status ${getStatusClass(data.status)}">
+<span
+class="status ${getStatusClass(data.status)}">
+
 ${safe(
 data.status||"Pending"
 )}
+
 </span>
 
 `;
@@ -3935,11 +4011,15 @@ document.getElementById(
 };
 
 
-/* ================= COPY REFERRAL ================= */
+/* ================================================= */
+/* COPY REFERRAL */
+/* ================================================= */
 
-window.copyReferral=async function(){
+window.copyReferral=
+async function(){
 
-const user=auth.currentUser;
+const user=
+auth.currentUser;
 
 if(!user)return;
 
@@ -3962,9 +4042,14 @@ window.location.pathname+
 encodeURIComponent(code);
 
 
-if(navigator.clipboard){
+if(
+navigator.clipboard
+){
 
-await navigator.clipboard.writeText(link);
+await navigator.clipboard.writeText(
+link
+);
+
 
 alert(
 "✅ Referral link copied!\n\n"+
@@ -3975,8 +4060,8 @@ link
 
 else{
 
-alert(
-"Your referral link:\n\n"+
+prompt(
+"Copy your referral link:",
 link
 );
 
@@ -3993,9 +4078,104 @@ console.error(error);
 };
 
 
-/* ================= SUPPORT ================= */
+/* ================================================= */
+/* SHARE REFERRAL */
+/* ================================================= */
 
-window.contactSupport=function(){
+window.shareReferral=
+async function(){
+
+const user=
+auth.currentUser;
+
+if(!user)return;
+
+
+try{
+
+const data=
+await getUserDocument();
+
+
+const code=
+data?.referralCode||
+makeReferralCode(user.uid);
+
+
+const link=
+window.location.origin+
+window.location.pathname+
+"?ref="+
+encodeURIComponent(code);
+
+
+const text=
+"🚀 Join StoryVerse Promotion & Earning Hub!\n\n"+
+"Promote • Earn • Grow 💰\n\n"+
+"Register using my referral link:\n"+
+link;
+
+
+if(
+navigator.share
+){
+
+await navigator.share({
+
+title:
+"StoryVerse Promotion & Earning Hub",
+
+text:text,
+
+url:link
+
+});
+
+}
+
+else if(
+navigator.clipboard
+){
+
+await navigator.clipboard.writeText(
+text
+);
+
+alert(
+"✅ Referral message copied. You can paste it on WhatsApp, Facebook, TikTok or anywhere."
+);
+
+}
+
+else{
+
+prompt(
+"Share this referral message:",
+text
+);
+
+}
+
+}
+
+catch(error){
+
+console.error(
+"SHARE ERROR:",
+error
+);
+
+}
+
+};
+
+
+/* ================================================= */
+/* SUPPORT */
+/* ================================================= */
+
+window.contactSupport=
+function(){
 
 const text=
 encodeURIComponent(
@@ -4014,12 +4194,15 @@ text,
 };
 
 
-/* ================= STATUS ================= */
+/* ================================================= */
+/* STATUS */
+/* ================================================= */
 
 function getStatusClass(status){
 
 const value=
-String(status||"").toLowerCase();
+String(status||"")
+.toLowerCase();
 
 
 if(
@@ -4032,7 +4215,9 @@ return "approved";
 }
 
 
-if(value==="rejected"){
+if(
+value==="rejected"
+){
 
 return "rejected";
 
@@ -4044,7 +4229,46 @@ return "pending";
 }
 
 
-/* ================= SAFE TEXT ================= */
+/* ================================================= */
+/* DATE */
+/* ================================================= */
+
+function formatDate(timestamp){
+
+if(!timestamp)return"";
+
+
+try{
+
+if(
+timestamp.seconds
+){
+
+return new Date(
+timestamp.seconds*1000
+).toLocaleString();
+
+}
+
+
+return new Date(
+timestamp
+).toLocaleString();
+
+}
+
+catch(error){
+
+return"";
+
+}
+
+}
+
+
+/* ================================================= */
+/* SAFE TEXT */
+/* ================================================= */
 
 function safe(value){
 
@@ -4065,4 +4289,4 @@ return String(value)
 </script>
 
 </body>
-  </html>
+</html>
