@@ -271,6 +271,11 @@ margin-top:12px;
 border-left:6px solid #2563eb;
 }
 
+.notification.warningNotification{
+background:#fff1f2;
+border-color:#ef4444;
+}
+
 .notificationTitle{
 font-size:17px;
 font-weight:bold;
@@ -389,6 +394,12 @@ padding-top:20px;
 border-top:1px solid #e5e7eb;
 }
 
+.empty{
+padding:15px;
+text-align:center;
+color:#6b7280;
+}
+
 @media(max-width:600px){
 
 header h1{
@@ -414,9 +425,8 @@ margin:-20px -20px 20px;
 
 <body>
 
-
 <!-- ================================================= -->
-<!-- ================= LOGIN ========================== -->
+<!-- LOGIN -->
 <!-- ================================================= -->
 
 <div id="authScreen">
@@ -491,7 +501,7 @@ onclick="contactSupport()">
 
 
 <!-- ================================================= -->
-<!-- ================= APP ============================ -->
+<!-- APP -->
 <!-- ================================================= -->
 
 <div id="app">
@@ -548,17 +558,12 @@ style="display:none">
 
 
 <!-- ================================================= -->
-<!-- ================= HOME =========================== -->
+<!-- HOME -->
 <!-- ================================================= -->
 
-<section
-id="home"
-class="section active">
+<section id="home" class="section active">
 
-<div
-id="homeWarningArea">
-</div>
-
+<div id="homeWarningArea"></div>
 
 <div class="card">
 
@@ -686,12 +691,10 @@ onclick="shareReferral()">
 
 
 <!-- ================================================= -->
-<!-- ================ PROMOTION ====================== -->
+<!-- PROMOTION -->
 <!-- ================================================= -->
 
-<section
-id="promotion"
-class="section">
+<section id="promotion" class="section">
 
 <div class="card">
 
@@ -784,10 +787,7 @@ onclick="submitPromotion()">
 📢 Submit Promotion
 </button>
 
-<div
-id="promotionMessage"
-class="msg">
-</div>
+<div id="promotionMessage" class="msg"></div>
 
 </div>
 
@@ -803,9 +803,7 @@ onclick="loadPromotionOrders()">
 </button>
 
 <div id="promotionOrders">
-<p class="small">
-Loading...
-</p>
+<p class="small">Loading...</p>
 </div>
 
 </div>
@@ -814,12 +812,10 @@ Loading...
 
 
 <!-- ================================================= -->
-<!-- ================= EARNING ======================== -->
+<!-- EARNING -->
 <!-- ================================================= -->
 
-<section
-id="earning"
-class="section">
+<section id="earning" class="section">
 
 <div class="balanceBox">
 
@@ -847,9 +843,7 @@ onclick="loadTasks()">
 </button>
 
 <div id="taskList">
-<p class="small">
-Loading tasks...
-</p>
+<p class="small">Loading tasks...</p>
 </div>
 
 </div>
@@ -866,9 +860,7 @@ onclick="loadSubmissions()">
 </button>
 
 <div id="submissionList">
-<p class="small">
-Loading...
-</p>
+<p class="small">Loading...</p>
 </div>
 
 </div>
@@ -882,15 +874,11 @@ Loading...
 
 <p>Your Referral Code:</p>
 
-<div
-id="referralId"
-class="referralCode">
+<div id="referralId" class="referralCode">
 Loading...
 </div>
 
-<div
-id="referralLinkDisplay"
-class="referralLink">
+<div id="referralLinkDisplay" class="referralLink">
 Loading...
 </div>
 
@@ -918,12 +906,8 @@ Referral bonus:
 
 <h3>Who Referred Me?</h3>
 
-<div
-id="myReferrer"
-class="task">
-<p class="small">
-Checking...
-</p>
+<div id="myReferrer" class="task">
+<p class="small">Checking...</p>
 </div>
 
 
@@ -932,9 +916,7 @@ Checking...
 <h3>My Referral History</h3>
 
 <div id="myReferralsList">
-<p class="small">
-Loading...
-</p>
+<p class="small">Loading...</p>
 </div>
 
 </div>
@@ -943,12 +925,10 @@ Loading...
 
 
 <!-- ================================================= -->
-<!-- ================= WITHDRAW ====================== -->
+<!-- WITHDRAW -->
 <!-- ================================================= -->
 
-<section
-id="withdraw"
-class="section">
+<section id="withdraw" class="section">
 
 <div class="card">
 
@@ -999,10 +979,7 @@ onclick="submitWithdrawal()">
 💸 Submit Withdrawal
 </button>
 
-<div
-id="withdrawMessage"
-class="msg">
-</div>
+<div id="withdrawMessage" class="msg"></div>
 
 </div>
 
@@ -1018,9 +995,7 @@ onclick="loadWithdrawals()">
 </button>
 
 <div id="withdrawalList">
-<p class="small">
-Loading...
-</p>
+<p class="small">Loading...</p>
 </div>
 
 </div>
@@ -1029,12 +1004,10 @@ Loading...
 
 
 <!-- ================================================= -->
-<!-- ============== NOTIFICATIONS ==================== -->
+<!-- NOTIFICATIONS -->
 <!-- ================================================= -->
 
-<section
-id="notifications"
-class="section">
+<section id="notifications" class="section">
 
 <div class="card">
 
@@ -1044,6 +1017,12 @@ class="section">
 Messages and warnings sent specifically to your account
 by StoryVerse administration will appear here.
 </p>
+
+<div class="infoBox">
+<strong>🔴 Real-time notifications enabled.</strong>
+<br>
+New Admin messages will appear automatically.
+</div>
 
 <button
 class="btn"
@@ -1065,12 +1044,10 @@ Loading notifications...
 
 
 <!-- ================================================= -->
-<!-- ================= ACCOUNT ======================= -->
+<!-- ACCOUNT -->
 <!-- ================================================= -->
 
-<section
-id="account"
-class="section">
+<section id="account" class="section">
 
 <div class="card">
 
@@ -1144,12 +1121,10 @@ onclick="logoutUser()">
 
 
 <!-- ================================================= -->
-<!-- ================= SUPPORT ======================= -->
+<!-- SUPPORT -->
 <!-- ================================================= -->
 
-<section
-id="support"
-class="section">
+<section id="support" class="section">
 
 <div class="card">
 
@@ -1183,7 +1158,7 @@ onclick="contactSupport()">
 
 
 <!-- ================================================= -->
-<!-- ================= FIREBASE ====================== -->
+<!-- FIREBASE -->
 <!-- ================================================= -->
 
 <script type="module">
@@ -1218,7 +1193,8 @@ query,
 where,
 limit,
 serverTimestamp,
-orderBy
+orderBy,
+onSnapshot
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
@@ -1255,19 +1231,22 @@ measurementId:
 };
 
 
-const app=
-initializeApp(firebaseConfig);
+const app=initializeApp(firebaseConfig);
 
-const auth=
-getAuth(app);
+const auth=getAuth(app);
 
-const db=
-getFirestore(app);
-
+const db=getFirestore(app);
 
 const REFERRAL_BONUS=200;
 
 const SUPPORT_1="2347035349951";
+
+
+/* ================================================= */
+/* NOTIFICATION LISTENER */
+/* ================================================= */
+
+let notificationUnsubscribe=null;
 
 
 /* ================================================= */
@@ -1276,8 +1255,7 @@ const SUPPORT_1="2347035349951";
 
 function message(id,text,type="success"){
 
-const box=
-document.getElementById(id);
+const box=document.getElementById(id);
 
 if(!box)return;
 
@@ -1294,13 +1272,12 @@ box.textContent=text;
 
 
 /* ================================================= */
-/* REFERRAL CODE */
+/* REFERRAL */
 /* ================================================= */
 
 function makeReferralCode(uid){
 
-return "SV"+
-uid.substring(0,8).toUpperCase();
+return "SV"+uid.substring(0,8).toUpperCase();
 
 }
 
@@ -1308,9 +1285,7 @@ uid.substring(0,8).toUpperCase();
 function getUrlReferral(){
 
 const params=
-new URLSearchParams(
-window.location.search
-);
+new URLSearchParams(window.location.search);
 
 return(
 params.get("ref")||""
@@ -1319,20 +1294,15 @@ params.get("ref")||""
 }
 
 
-const urlReferral=
-getUrlReferral();
+const urlReferral=getUrlReferral();
 
 if(urlReferral){
 
 const input=
-document.getElementById(
-"referralCodeInput"
-);
+document.getElementById("referralCodeInput");
 
 if(input){
-
 input.value=urlReferral;
-
 }
 
 }
@@ -1345,19 +1315,13 @@ input.value=urlReferral;
 window.registerUser=async function(){
 
 const email=
-document.getElementById(
-"authEmail"
-).value.trim();
+document.getElementById("authEmail").value.trim();
 
 const password=
-document.getElementById(
-"authPassword"
-).value;
+document.getElementById("authPassword").value;
 
 const enteredReferral=
-document.getElementById(
-"referralCodeInput"
-).value
+document.getElementById("referralCodeInput").value
 .trim()
 .toUpperCase();
 
@@ -1389,17 +1353,14 @@ return;
 
 
 const button=
-document.getElementById(
-"registerButton"
-);
+document.getElementById("registerButton");
 
 
 try{
 
 button.disabled=true;
 
-button.textContent=
-"⏳ Creating...";
+button.textContent="⏳ Creating...";
 
 
 const result=
@@ -1410,13 +1371,10 @@ password
 );
 
 
-const uid=
-result.user.uid;
-
+const uid=result.user.uid;
 
 const myReferralCode=
 makeReferralCode(uid);
-
 
 let referrerUid="";
 let referrerEmail="";
@@ -1437,8 +1395,7 @@ limit(1)
 );
 
 
-const refSnap=
-await getDocs(refQuery);
+const refSnap=await getDocs(refQuery);
 
 
 if(!refSnap.empty){
@@ -1474,20 +1431,15 @@ balance:0,
 
 role:"user",
 
-referralCode:
-myReferralCode,
+referralCode:myReferralCode,
 
-referredByUid:
-referrerUid,
+referredByUid:referrerUid,
 
-referredByEmail:
-referrerEmail,
+referredByEmail:referrerEmail,
 
-referredByCode:
-referrerCode,
+referredByCode:referrerCode,
 
-createdAt:
-serverTimestamp()
+createdAt:serverTimestamp()
 
 }
 );
@@ -1499,30 +1451,23 @@ await addDoc(
 collection(db,"referrals"),
 {
 
-referrerUid:
-referrerUid,
+referrerUid:referrerUid,
 
-referrerEmail:
-referrerEmail,
+referrerEmail:referrerEmail,
 
-referrerCode:
-referrerCode,
+referrerCode:referrerCode,
 
-referredUid:
-uid,
+referredUid:uid,
 
-referredEmail:
-email,
+referredEmail:email,
 
-bonus:
-REFERRAL_BONUS,
+bonus:REFERRAL_BONUS,
 
 status:"Pending",
 
 credited:false,
 
-createdAt:
-serverTimestamp()
+createdAt:serverTimestamp()
 
 }
 );
@@ -1539,15 +1484,11 @@ message(
 
 catch(error){
 
-console.error(
-"REGISTER ERROR:",
-error
-);
+console.error("REGISTER ERROR:",error);
 
 message(
 "authMessage",
-"Registration failed: "+
-error.message,
+"Registration failed: "+error.message,
 "error"
 );
 
@@ -1557,8 +1498,7 @@ finally{
 
 button.disabled=false;
 
-button.textContent=
-"📝 Create Account";
+button.textContent="📝 Create Account";
 
 }
 
@@ -1572,14 +1512,10 @@ button.textContent=
 window.loginUser=async function(){
 
 const email=
-document.getElementById(
-"authEmail"
-).value.trim();
+document.getElementById("authEmail").value.trim();
 
 const password=
-document.getElementById(
-"authPassword"
-).value;
+document.getElementById("authPassword").value;
 
 
 if(!email||!password){
@@ -1596,17 +1532,14 @@ return;
 
 
 const button=
-document.getElementById(
-"loginButton"
-);
+document.getElementById("loginButton");
 
 
 try{
 
 button.disabled=true;
 
-button.textContent=
-"⏳ Logging in...";
+button.textContent="⏳ Logging in...";
 
 
 await signInWithEmailAndPassword(
@@ -1625,45 +1558,31 @@ message(
 
 catch(error){
 
-console.error(
-"LOGIN ERROR:",
-error
-);
+console.error("LOGIN ERROR:",error);
 
-let text=
-"Login failed.";
+let text="Login failed.";
 
 
-if(
-error.code==="auth/invalid-credential"
-){
+if(error.code==="auth/invalid-credential"){
 
-text=
-"Incorrect email or password.";
+text="Incorrect email or password.";
 
 }
 
-else if(
-error.code==="auth/user-disabled"
-){
+else if(error.code==="auth/user-disabled"){
 
 text=
 "🚫 This account has been disabled. Please contact customer service.";
 
 }
 
-else if(
-error.code==="auth/invalid-email"
-){
+else if(error.code==="auth/invalid-email"){
 
-text=
-"Please enter a valid email address.";
+text="Please enter a valid email address.";
 
 }
 
-else if(
-error.code==="auth/too-many-requests"
-){
+else if(error.code==="auth/too-many-requests"){
 
 text=
 "Too many login attempts. Try again later.";
@@ -1672,9 +1591,7 @@ text=
 
 else{
 
-text=
-"Login error: "+
-error.message;
+text="Login error: "+error.message;
 
 }
 
@@ -1691,8 +1608,7 @@ finally{
 
 button.disabled=false;
 
-button.textContent=
-"🔐 Login";
+button.textContent="🔐 Login";
 
 }
 
@@ -1706,9 +1622,7 @@ button.textContent=
 window.forgotPassword=async function(){
 
 const email=
-document.getElementById(
-"authEmail"
-).value.trim();
+document.getElementById("authEmail").value.trim();
 
 
 if(!email){
@@ -1743,8 +1657,7 @@ catch(error){
 
 message(
 "authMessage",
-"Could not send reset email: "+
-error.message,
+"Could not send reset email: "+error.message,
 "error"
 );
 
@@ -1761,26 +1674,27 @@ window.logoutUser=async function(){
 
 try{
 
+if(notificationUnsubscribe){
+
+notificationUnsubscribe();
+
+notificationUnsubscribe=null;
+
+}
+
 await signOut(auth);
 
-document.getElementById(
-"app"
-).style.display="none";
 
-document.getElementById(
-"authScreen"
-).style.display="flex";
+document.getElementById("app").style.display="none";
+
+document.getElementById("authScreen").style.display="flex";
 
 
 const password=
-document.getElementById(
-"authPassword"
-);
+document.getElementById("authPassword");
 
 if(password){
-
 password.value="";
-
 }
 
 
@@ -1798,8 +1712,7 @@ catch(error){
 
 message(
 "authMessage",
-"Could not log out: "+
-error.message,
+"Could not log out: "+error.message,
 "error"
 );
 
@@ -1818,46 +1731,48 @@ async(user)=>{
 
 if(user){
 
-document.getElementById(
-"authScreen"
-).style.display="none";
+document.getElementById("authScreen").style.display="none";
 
-document.getElementById(
-"app"
-).style.display="block";
+document.getElementById("app").style.display="block";
 
 
-document.getElementById(
-"userEmail"
-).textContent=
+document.getElementById("userEmail").textContent=
 user.email||"";
 
 
-document.getElementById(
-"userId"
-).textContent=
+document.getElementById("userId").textContent=
 user.uid;
 
 
-document.getElementById(
-"accountStatus"
-).textContent=
+document.getElementById("accountStatus").textContent=
 "✅ Logged In";
 
 
 await loadAllData();
 
+/*
+IMPORTANT:
+Start real-time notification listener
+immediately after login.
+*/
+
+loadNotifications();
+
 }
 
 else{
 
-document.getElementById(
-"authScreen"
-).style.display="flex";
+if(notificationUnsubscribe){
 
-document.getElementById(
-"app"
-).style.display="none";
+notificationUnsubscribe();
+
+notificationUnsubscribe=null;
+
+}
+
+document.getElementById("authScreen").style.display="flex";
+
+document.getElementById("app").style.display="none";
 
 }
 
@@ -1906,19 +1821,13 @@ loadNotifications();
 
 async function getUserDocument(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return null;
 
 
 const ref=
-doc(
-db,
-"users",
-user.uid
-);
-
+doc(db,"users",user.uid);
 
 const snap=
 await getDoc(ref);
@@ -1953,25 +1862,23 @@ await loadPromotionOrders();
 
 await loadReferralData();
 
-await loadNotifications();
+loadNotifications();
 
 };
 
 
 /* ================================================= */
-/* LOAD USER */
+/* USER DATA */
 /* ================================================= */
 
 async function loadUserData(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
 
-let data=
-await getUserDocument();
+let data=await getUserDocument();
 
 
 if(!data){
@@ -2000,16 +1907,14 @@ referredByEmail:"",
 
 referredByCode:"",
 
-createdAt:
-serverTimestamp()
+createdAt:serverTimestamp()
 
 },
 {merge:true}
 );
 
 
-data=
-await getUserDocument();
+data=await getUserDocument();
 
 }
 
@@ -2022,21 +1927,15 @@ data.referralCode||
 makeReferralCode(user.uid);
 
 
-document.getElementById(
-"referralId"
-).textContent=
+document.getElementById("referralId").textContent=
 referralCode;
 
 
-document.getElementById(
-"homeReferralCode"
-).textContent=
+document.getElementById("homeReferralCode").textContent=
 referralCode;
 
 
-document.getElementById(
-"accountReferral"
-).textContent=
+document.getElementById("accountReferral").textContent=
 referralCode;
 
 
@@ -2044,28 +1943,19 @@ const referralLink=
 window.location.origin+
 window.location.pathname+
 "?ref="+
-encodeURIComponent(
-referralCode
-);
+encodeURIComponent(referralCode);
 
 
-document.getElementById(
-"referralLinkDisplay"
-).textContent=
+document.getElementById("referralLinkDisplay").textContent=
 referralLink;
 
 
-document.getElementById(
-"homeReferralLink"
-).textContent=
+document.getElementById("homeReferralLink").textContent=
 referralLink;
 
 
-document.getElementById(
-"accountReferredBy"
-).textContent=
-data.referredByCode||
-"None";
+document.getElementById("accountReferredBy").textContent=
+data.referredByCode||"None";
 
 }
 
@@ -2076,53 +1966,40 @@ data.referredByCode||
 
 async function loadBalance(){
 
-const data=
-await getUserDocument();
+const data=await getUserDocument();
 
-const balance=
-Number(data?.balance||0);
+const balance=Number(data?.balance||0);
 
-
-const formatted=
-balance.toLocaleString();
+const formatted=balance.toLocaleString();
 
 
-document.getElementById(
-"balance"
-).textContent=
+document.getElementById("balance").textContent=
 formatted;
 
-
-document.getElementById(
-"earningBalance"
-).textContent=
+document.getElementById("earningBalance").textContent=
 formatted;
 
-
-document.getElementById(
-"withdrawBalance"
-).textContent=
+document.getElementById("withdrawBalance").textContent=
 formatted;
 
 }
 
 
 /* ================================================= */
-/* NOTIFICATIONS */
+/* REAL-TIME NOTIFICATIONS */
 /* ================================================= */
 
 window.loadNotifications=async function(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
 
 const list=
-document.getElementById(
-"notificationList"
-);
+document.getElementById("notificationList");
+
+if(!list)return;
 
 
 list.innerHTML=
@@ -2131,6 +2008,19 @@ list.innerHTML=
 
 try{
 
+/*
+Stop old listener before creating a new one.
+*/
+
+if(notificationUnsubscribe){
+
+notificationUnsubscribe();
+
+notificationUnsubscribe=null;
+
+}
+
+
 const q=
 query(
 collection(db,"notifications"),
@@ -2138,9 +2028,11 @@ where("uid","==",user.uid)
 );
 
 
-const snap=
-await getDocs(q);
+notificationUnsubscribe=
+onSnapshot(
+q,
 
+(snap)=>{
 
 if(snap.empty){
 
@@ -2149,9 +2041,15 @@ list.innerHTML=
 
 updateNotificationBadge(0);
 
-document.getElementById(
-"homeWarningArea"
-).innerHTML="";
+
+const warningArea=
+document.getElementById("homeWarningArea");
+
+if(warningArea){
+
+warningArea.innerHTML="";
+
+}
 
 return;
 
@@ -2167,12 +2065,17 @@ d=>{
 notifications.push({
 
 id:d.id,
+
 ...d.data()
 
 });
 
 });
 
+
+/*
+Newest notification first.
+*/
 
 notifications.sort(
 (a,b)=>{
@@ -2191,40 +2094,44 @@ return bTime-aTime;
 
 let unread=0;
 
-list.innerHTML="";
-
 let warningHTML="";
+
+
+list.innerHTML="";
 
 
 notifications.forEach(
 item=>{
 
+const type=
+String(
+item.type||"notification"
+).toLowerCase();
+
+
+const isWarning=
+type==="warning"||
+type==="admin_warning";
+
+
 const title=
 safe(
 item.title||
-(item.type==="warning"
-?"⚠️ Warning Notice"
-:"🔔 Notification")
+(
+isWarning
+?"⚠️ Admin Warning"
+:"🔔 Notification"
+)
 );
 
 
 const msg=
 safe(
-item.message||
-""
+item.message||""
 );
 
 
-const type=
-String(
-item.type||"notification"
-)
-.toLowerCase();
-
-
-if(
-item.read!==true
-){
+if(item.read!==true){
 
 unread++;
 
@@ -2234,11 +2141,17 @@ unread++;
 const div=
 document.createElement("div");
 
+
 div.className=
 "notification "+
 (
 item.read!==true
-?"unread"
+?"unread "
+:""
+)+
+(
+isWarning
+?"warningNotification"
 :""
 );
 
@@ -2254,18 +2167,29 @@ ${msg}
 </div>
 
 <div class="notificationDate">
-${formatDate(item.createdAt)}
+🕒 ${formatDate(item.createdAt)}
 </div>
 
 ${
 item.read!==true
 ?
-`<button
+`
+<button
 class="btn green"
 onclick="markNotificationRead('${item.id}')">
+
 ✅ Mark as Read
-</button>`
-:""
+
+</button>
+`
+:
+`
+<br>
+
+<span class="status approved">
+✓ Read
+</span>
+`
 }
 
 `;
@@ -2274,9 +2198,11 @@ onclick="markNotificationRead('${item.id}')">
 list.appendChild(div);
 
 
-if(
-type==="warning"
-){
+/*
+Show every warning on Home.
+*/
+
+if(isWarning){
 
 warningHTML+=`
 
@@ -2288,12 +2214,18 @@ warningHTML+=`
 
 <br><br>
 
+<strong>
+${title}
+</strong>
+
+<br><br>
+
 ${msg}
 
 <br><br>
 
 <small>
-${formatDate(item.createdAt)}
+🕒 ${formatDate(item.createdAt)}
 </small>
 
 </div>
@@ -2308,10 +2240,50 @@ ${formatDate(item.createdAt)}
 updateNotificationBadge(unread);
 
 
-document.getElementById(
-"homeWarningArea"
-).innerHTML=
+const warningArea=
+document.getElementById("homeWarningArea");
+
+
+if(warningArea){
+
+warningArea.innerHTML=
 warningHTML;
+
+}
+
+},
+
+(error)=>{
+
+console.error(
+"REAL-TIME NOTIFICATION ERROR:",
+error
+);
+
+
+list.innerHTML=`
+
+<div
+class="msg error"
+style="display:block">
+
+❌ Could not load notifications.
+
+<br><br>
+
+Please check your Firestore rules.
+
+<br><br>
+
+${safe(error.message)}
+
+</div>
+
+`;
+
+}
+
+);
 
 }
 
@@ -2322,8 +2294,20 @@ console.error(
 error
 );
 
-list.innerHTML=
-"<p class='small'>Could not load notifications. Check your Firestore rules.</p>";
+
+list.innerHTML=`
+
+<div
+class="msg error"
+style="display:block">
+
+❌ Notification error:
+
+${safe(error.message)}
+
+</div>
+
+`;
 
 }
 
@@ -2337,9 +2321,7 @@ list.innerHTML=
 function updateNotificationBadge(count){
 
 const badge=
-document.getElementById(
-"notificationBadge"
-);
+document.getElementById("notificationBadge");
 
 
 if(!badge)return;
@@ -2372,8 +2354,7 @@ badge.style.display="none";
 window.markNotificationRead=
 async function(notificationId){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
@@ -2390,20 +2371,17 @@ notificationId
 
 read:true,
 
-readAt:
-serverTimestamp()
+readAt:serverTimestamp()
 
 }
 );
-
-
-await loadNotifications();
 
 }
 
 catch(error){
 
 console.error(
+"MARK READ ERROR:",
 error
 );
 
@@ -2422,16 +2400,13 @@ alert(
 
 window.loadTasks=async function(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
 
 const list=
-document.getElementById(
-"taskList"
-);
+document.getElementById("taskList");
 
 
 list.innerHTML=
@@ -2472,21 +2447,17 @@ const submissionSnap=
 await getDocs(submissionQuery);
 
 
-const completed=
-new Set();
+const completed=new Set();
 
 
 submissionSnap.forEach(
 d=>{
 
-const data=
-d.data();
+const data=d.data();
 
 if(data.taskId){
 
-completed.add(
-data.taskId
-);
+completed.add(data.taskId);
 
 }
 
@@ -2499,8 +2470,7 @@ list.innerHTML="";
 taskSnap.forEach(
 taskDoc=>{
 
-const task=
-taskDoc.data();
+const task=taskDoc.data();
 
 const done=
 completed.has(taskDoc.id);
@@ -2513,23 +2483,13 @@ div.className="task";
 
 
 const title=
-safe(
-task.title||
-"Daily Task"
-);
-
+safe(task.title||"Daily Task");
 
 const description=
-safe(
-task.description||
-"Complete this task."
-);
-
+safe(task.description||"Complete this task.");
 
 const reward=
-Number(
-task.reward||0
-);
+Number(task.reward||0);
 
 
 if(done){
@@ -2545,7 +2505,11 @@ div.innerHTML=`
 </div>
 
 <div class="infoBox">
-<strong>✅ Already submitted</strong>
+
+<strong>
+✅ Already submitted
+</strong>
+
 </div>
 
 `;
@@ -2567,18 +2531,20 @@ div.innerHTML=`
 <button
 class="btn"
 onclick="openTask('${encodeURIComponent(task.link||"#")}')">
+
 🔗 Open Task
+
 </button>
 
 <button
 class="btn green"
 onclick="showProofForm('${taskDoc.id}')">
+
 🖼️ Submit Image Proof
+
 </button>
 
-<div
-id="proofArea_${taskDoc.id}">
-</div>
+<div id="proofArea_${taskDoc.id}"></div>
 
 `;
 
@@ -2627,10 +2593,7 @@ return;
 }
 
 
-window.open(
-link,
-"_blank"
-);
+window.open(link,"_blank");
 
 };
 
@@ -2651,6 +2614,8 @@ document.getElementById(
 if(!area)return;
 
 
+try{
+
 const taskSnap=
 await getDoc(
 doc(db,"tasks",taskId)
@@ -2667,8 +2632,7 @@ return;
 }
 
 
-const task=
-taskSnap.data();
+const task=taskSnap.data();
 
 
 area.innerHTML=`
@@ -2707,13 +2671,17 @@ placeholder="Optional explanation">
 <button
 class="btn green"
 onclick="submitProof('${taskId}')">
+
 ✅ Submit Proof
+
 </button>
 
 <button
 class="btn gray"
 onclick="loadTasks()">
+
 ← Cancel
+
 </button>
 
 <div
@@ -2724,6 +2692,15 @@ class="msg">
 </div>
 
 `;
+
+}
+
+catch(error){
+
+area.innerHTML=
+"<div class='msg error' style='display:block'>Could not load task.</div>";
+
+}
 
 };
 
@@ -2760,17 +2737,14 @@ return;
 }
 
 
-const reader=
-new FileReader();
+const reader=new FileReader();
 
 
 reader.onload=e=>{
 
-preview.src=
-e.target.result;
+preview.src=e.target.result;
 
-preview.style.display=
-"block";
+preview.style.display="block";
 
 };
 
@@ -2789,33 +2763,27 @@ function compressImage(file){
 return new Promise(
 (resolve,reject)=>{
 
-const reader=
-new FileReader();
+const reader=new FileReader();
 
 
 reader.onload=event=>{
 
-const img=
-new Image();
+const img=new Image();
 
 
 img.onload=()=>{
 
 const max=1200;
 
-let width=
-img.width;
+let width=img.width;
 
-let height=
-img.height;
+let height=img.height;
 
 
 if(width>max){
 
 height=
-Math.round(
-height*max/width
-);
+Math.round(height*max/width);
 
 width=max;
 
@@ -2825,9 +2793,7 @@ width=max;
 if(height>max){
 
 width=
-Math.round(
-width*max/height
-);
+Math.round(width*max/height);
 
 height=max;
 
@@ -2835,15 +2801,12 @@ height=max;
 
 
 const canvas=
-document.createElement(
-"canvas"
-);
+document.createElement("canvas");
 
-canvas.width=
-width;
 
-canvas.height=
-height;
+canvas.width=width;
+
+canvas.height=height;
 
 
 const ctx=
@@ -2872,16 +2835,13 @@ canvas.toDataURL(
 img.onerror=()=>{
 
 reject(
-new Error(
-"Could not process image."
-)
+new Error("Could not process image.")
 );
 
 };
 
 
-img.src=
-event.target.result;
+img.src=event.target.result;
 
 };
 
@@ -2889,9 +2849,7 @@ event.target.result;
 reader.onerror=()=>{
 
 reject(
-new Error(
-"Could not read image."
-)
+new Error("Could not read image.")
 );
 
 };
@@ -2912,8 +2870,7 @@ reader.readAsDataURL(file);
 window.submitProof=
 async function(taskId){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
@@ -2968,9 +2925,7 @@ return;
 }
 
 
-const task=
-taskSnap.data();
-
+const task=taskSnap.data();
 
 const image=
 await compressImage(
@@ -2988,21 +2943,17 @@ email:user.email||"",
 
 taskId:taskId,
 
-taskTitle:
-task.title||"Task",
+taskTitle:task.title||"Task",
 
-reward:
-Number(task.reward||0),
+reward:Number(task.reward||0),
 
 proofImage:image,
 
-proofText:
-text?.value.trim()||"",
+proofText:text?.value.trim()||"",
 
 status:"Pending",
 
-submittedAt:
-serverTimestamp()
+submittedAt:serverTimestamp()
 
 }
 );
@@ -3036,8 +2987,7 @@ error
 
 message(
 messageId,
-"Could not submit proof: "+
-error.message,
+"Could not submit proof: "+error.message,
 "error"
 );
 
@@ -3053,16 +3003,13 @@ error.message,
 window.loadSubmissions=
 async function(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
 
 const list=
-document.getElementById(
-"submissionList"
-);
+document.getElementById("submissionList");
 
 
 try{
@@ -3074,8 +3021,7 @@ where("uid","==",user.uid)
 );
 
 
-const snap=
-await getDocs(q);
+const snap=await getDocs(q);
 
 
 if(snap.empty){
@@ -3088,19 +3034,41 @@ return;
 }
 
 
+let records=[];
+
+
+snap.forEach(d=>{
+
+records.push({
+id:d.id,
+...d.data()
+});
+
+});
+
+
+records.sort(
+(a,b)=>{
+
+const aTime=
+a.submittedAt?.seconds||0;
+
+const bTime=
+b.submittedAt?.seconds||0;
+
+return bTime-aTime;
+
+}
+);
+
+
 list.innerHTML="";
 
 
-snap.forEach(
-d=>{
-
-const data=
-d.data();
-
+records.forEach(data=>{
 
 const div=
 document.createElement("div");
-
 
 div.className="task";
 
@@ -3114,6 +3082,11 @@ ${safe(data.taskTitle||"Task")}
 <p>
 Reward:
 ₦${Number(data.reward||0).toLocaleString()}
+</p>
+
+<p>
+Submitted:
+${formatDate(data.submittedAt)}
 </p>
 
 <br>
@@ -3156,7 +3129,6 @@ function(event){
 const file=
 event.target.files[0];
 
-
 const preview=
 document.getElementById(
 "paymentProofPreview"
@@ -3165,8 +3137,7 @@ document.getElementById(
 
 if(!file){
 
-preview.style.display=
-"none";
+preview.style.display="none";
 
 return;
 
@@ -3186,17 +3157,14 @@ return;
 }
 
 
-const reader=
-new FileReader();
+const reader=new FileReader();
 
 
 reader.onload=e=>{
 
-preview.src=
-e.target.result;
+preview.src=e.target.result;
 
-preview.style.display=
-"block";
+preview.style.display="block";
 
 };
 
@@ -3213,43 +3181,27 @@ reader.readAsDataURL(file);
 window.submitPromotion=
 async function(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
 
 const type=
-document.getElementById(
-"promotionType"
-).value;
-
+document.getElementById("promotionType").value;
 
 const link=
-document.getElementById(
-"promotionLink"
-).value.trim();
-
+document.getElementById("promotionLink").value.trim();
 
 const amount=
 Number(
-document.getElementById(
-"promotionPackage"
-).value
+document.getElementById("promotionPackage").value
 );
-
 
 const proof=
-document.getElementById(
-"paymentProofImage"
-);
-
+document.getElementById("paymentProofImage");
 
 const note=
-document.getElementById(
-"paymentProofNote"
-).value.trim();
-
+document.getElementById("paymentProofNote").value.trim();
 
 const button=
 document.getElementById(
@@ -3287,8 +3239,7 @@ try{
 
 button.disabled=true;
 
-button.textContent=
-"⏳ Processing...";
+button.textContent="⏳ Processing...";
 
 
 const image=
@@ -3319,8 +3270,7 @@ paymentStatus:"Pending",
 
 promotionStatus:"Pending",
 
-createdAt:
-serverTimestamp()
+createdAt:serverTimestamp()
 
 }
 );
@@ -3332,25 +3282,13 @@ message(
 );
 
 
-document.getElementById(
-"promotionLink"
-).value="";
+document.getElementById("promotionLink").value="";
 
+document.getElementById("paymentProofImage").value="";
 
-document.getElementById(
-"paymentProofImage"
-).value="";
+document.getElementById("paymentProofNote").value="";
 
-
-document.getElementById(
-"paymentProofNote"
-).value="";
-
-
-document.getElementById(
-"paymentProofPreview"
-).style.display=
-"none";
+document.getElementById("paymentProofPreview").style.display="none";
 
 
 await loadPromotionOrders();
@@ -3363,8 +3301,7 @@ console.error(error);
 
 message(
 "promotionMessage",
-"Could not submit promotion: "+
-error.message,
+"Could not submit promotion: "+error.message,
 "error"
 );
 
@@ -3374,8 +3311,7 @@ finally{
 
 button.disabled=false;
 
-button.textContent=
-"📢 Submit Promotion";
+button.textContent="📢 Submit Promotion";
 
 }
 
@@ -3389,16 +3325,13 @@ button.textContent=
 window.loadPromotionOrders=
 async function(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
 
 const list=
-document.getElementById(
-"promotionOrders"
-);
+document.getElementById("promotionOrders");
 
 
 try{
@@ -3410,8 +3343,7 @@ where("uid","==",user.uid)
 );
 
 
-const snap=
-await getDocs(q);
+const snap=await getDocs(q);
 
 
 if(snap.empty){
@@ -3424,19 +3356,41 @@ return;
 }
 
 
+let records=[];
+
+
+snap.forEach(d=>{
+
+records.push({
+id:d.id,
+...d.data()
+});
+
+});
+
+
+records.sort(
+(a,b)=>{
+
+const aTime=
+a.createdAt?.seconds||0;
+
+const bTime=
+b.createdAt?.seconds||0;
+
+return bTime-aTime;
+
+}
+);
+
+
 list.innerHTML="";
 
 
-snap.forEach(
-d=>{
-
-const data=
-d.data();
-
+records.forEach(data=>{
 
 const div=
 document.createElement("div");
-
 
 div.className="task";
 
@@ -3444,17 +3398,12 @@ div.className="task";
 div.innerHTML=`
 
 <h3>
-📢 ${safe(
-data.promotionType||
-"Promotion"
-)}
+📢 ${safe(data.promotionType||"Promotion")}
 </h3>
 
 <p>
 Amount:
-₦${Number(
-data.amount||0
-).toLocaleString()}
+₦${Number(data.amount||0).toLocaleString()}
 </p>
 
 <p>
@@ -3475,9 +3424,7 @@ ${safe(data.promotionLink||"")}
 <span
 class="status ${getStatusClass(data.paymentStatus)}">
 
-${safe(
-data.paymentStatus||"Pending"
-)}
+${safe(data.paymentStatus||"Pending")}
 
 </span>
 
@@ -3488,11 +3435,16 @@ data.paymentStatus||"Pending"
 <span
 class="status ${getStatusClass(data.promotionStatus)}">
 
-${safe(
-data.promotionStatus||"Pending"
-)}
+${safe(data.promotionStatus||"Pending")}
 
 </span>
+
+<br><br>
+
+<p class="small">
+Submitted:
+${formatDate(data.createdAt)}
+</p>
 
 `;
 
@@ -3522,8 +3474,7 @@ list.innerHTML=
 window.submitWithdrawal=
 async function(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 
 if(!user){
@@ -3541,28 +3492,17 @@ return;
 
 const amount=
 Number(
-document.getElementById(
-"withdrawAmount"
-).value
+document.getElementById("withdrawAmount").value
 );
 
-
 const bank=
-document.getElementById(
-"bankName"
-).value.trim();
-
+document.getElementById("bankName").value.trim();
 
 const account=
-document.getElementById(
-"accountNumber"
-).value.trim();
-
+document.getElementById("accountNumber").value.trim();
 
 const name=
-document.getElementById(
-"accountName"
-).value.trim();
+document.getElementById("accountName").value.trim();
 
 
 if(!amount||!bank||!account||!name){
@@ -3607,12 +3547,7 @@ return;
 try{
 
 const userRef=
-doc(
-db,
-"users",
-user.uid
-);
-
+doc(db,"users",user.uid);
 
 const userSnap=
 await getDoc(userRef);
@@ -3631,14 +3566,10 @@ return;
 }
 
 
-const userData=
-userSnap.data();
-
+const userData=userSnap.data();
 
 const balance=
-Number(
-userData.balance||0
-);
+Number(userData.balance||0);
 
 
 if(amount>balance){
@@ -3672,8 +3603,7 @@ accountName:name,
 
 status:"Pending",
 
-createdAt:
-serverTimestamp()
+createdAt:serverTimestamp()
 
 }
 );
@@ -3685,24 +3615,13 @@ message(
 );
 
 
-document.getElementById(
-"withdrawAmount"
-).value="";
+document.getElementById("withdrawAmount").value="";
 
+document.getElementById("bankName").value="";
 
-document.getElementById(
-"bankName"
-).value="";
+document.getElementById("accountNumber").value="";
 
-
-document.getElementById(
-"accountNumber"
-).value="";
-
-
-document.getElementById(
-"accountName"
-).value="";
+document.getElementById("accountName").value="";
 
 
 await loadWithdrawals();
@@ -3718,8 +3637,7 @@ error
 
 message(
 "withdrawMessage",
-"Could not submit withdrawal: "+
-error.message,
+"Could not submit withdrawal: "+error.message,
 "error"
 );
 
@@ -3735,16 +3653,13 @@ error.message,
 window.loadWithdrawals=
 async function(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
 
 const list=
-document.getElementById(
-"withdrawalList"
-);
+document.getElementById("withdrawalList");
 
 
 try{
@@ -3756,8 +3671,7 @@ where("uid","==",user.uid)
 );
 
 
-const snap=
-await getDocs(q);
+const snap=await getDocs(q);
 
 
 if(snap.empty){
@@ -3770,19 +3684,41 @@ return;
 }
 
 
+let records=[];
+
+
+snap.forEach(d=>{
+
+records.push({
+id:d.id,
+...d.data()
+});
+
+});
+
+
+records.sort(
+(a,b)=>{
+
+const aTime=
+a.createdAt?.seconds||0;
+
+const bTime=
+b.createdAt?.seconds||0;
+
+return bTime-aTime;
+
+}
+);
+
+
 list.innerHTML="";
 
 
-snap.forEach(
-d=>{
-
-const data=
-d.data();
-
+records.forEach(data=>{
 
 const div=
 document.createElement("div");
-
 
 div.className="task";
 
@@ -3790,9 +3726,7 @@ div.className="task";
 div.innerHTML=`
 
 <h3>
-₦${Number(
-data.amount||0
-).toLocaleString()}
+₦${Number(data.amount||0).toLocaleString()}
 </h3>
 
 <p>
@@ -3818,6 +3752,13 @@ class="status ${getStatusClass(data.status)}">
 ${safe(data.status||"Pending")}
 
 </span>
+
+<br><br>
+
+<p class="small">
+Submitted:
+${formatDate(data.createdAt)}
+</p>
 
 `;
 
@@ -3850,16 +3791,14 @@ list.innerHTML=
 window.loadReferralData=
 async function(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
 
 try{
 
-const data=
-await getUserDocument();
+const data=await getUserDocument();
 
 
 if(data){
@@ -3867,14 +3806,11 @@ if(data){
 document.getElementById(
 "accountReferredBy"
 ).textContent=
-data.referredByCode||
-"None";
+data.referredByCode||"None";
 
 
 const box=
-document.getElementById(
-"myReferrer"
-);
+document.getElementById("myReferrer");
 
 
 if(data.referredByUid){
@@ -3909,22 +3845,15 @@ box.innerHTML=
 const q=
 query(
 collection(db,"referrals"),
-where(
-"referrerUid",
-"==",
-user.uid
-)
+where("referrerUid","==",user.uid)
 );
 
 
-const snap=
-await getDocs(q);
+const snap=await getDocs(q);
 
 
 const list=
-document.getElementById(
-"myReferralsList"
-);
+document.getElementById("myReferralsList");
 
 
 if(snap.empty){
@@ -3937,19 +3866,41 @@ return;
 }
 
 
+let referrals=[];
+
+
+snap.forEach(d=>{
+
+referrals.push({
+id:d.id,
+...d.data()
+});
+
+});
+
+
+referrals.sort(
+(a,b)=>{
+
+const aTime=
+a.createdAt?.seconds||0;
+
+const bTime=
+b.createdAt?.seconds||0;
+
+return bTime-aTime;
+
+}
+);
+
+
 list.innerHTML="";
 
 
-snap.forEach(
-d=>{
-
-const data=
-d.data();
-
+referrals.forEach(data=>{
 
 const div=
 document.createElement("div");
-
 
 div.className="task";
 
@@ -3957,18 +3908,14 @@ div.className="task";
 div.innerHTML=`
 
 <h3>
-👤 ${safe(
-data.referredEmail||
-"New User"
-)}
+👤 ${safe(data.referredEmail||"New User")}
 </h3>
 
 <p>
 Referral Bonus:
 <strong>
 ₦${Number(
-data.bonus||
-REFERRAL_BONUS
+data.bonus||REFERRAL_BONUS
 ).toLocaleString()}
 </strong>
 </p>
@@ -3978,9 +3925,7 @@ REFERRAL_BONUS
 <span
 class="status ${getStatusClass(data.status)}">
 
-${safe(
-data.status||"Pending"
-)}
+${safe(data.status||"Pending")}
 
 </span>
 
@@ -4018,16 +3963,14 @@ document.getElementById(
 window.copyReferral=
 async function(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
 
 try{
 
-const data=
-await getUserDocument();
+const data=await getUserDocument();
 
 
 const code=
@@ -4042,18 +3985,12 @@ window.location.pathname+
 encodeURIComponent(code);
 
 
-if(
-navigator.clipboard
-){
+if(navigator.clipboard){
 
-await navigator.clipboard.writeText(
-link
-);
-
+await navigator.clipboard.writeText(link);
 
 alert(
-"✅ Referral link copied!\n\n"+
-link
+"✅ Referral link copied!\n\n"+link
 );
 
 }
@@ -4085,16 +4022,14 @@ console.error(error);
 window.shareReferral=
 async function(){
 
-const user=
-auth.currentUser;
+const user=auth.currentUser;
 
 if(!user)return;
 
 
 try{
 
-const data=
-await getUserDocument();
+const data=await getUserDocument();
 
 
 const code=
@@ -4116,9 +4051,7 @@ const text=
 link;
 
 
-if(
-navigator.share
-){
+if(navigator.share){
 
 await navigator.share({
 
@@ -4133,16 +4066,12 @@ url:link
 
 }
 
-else if(
-navigator.clipboard
-){
+else if(navigator.clipboard){
 
-await navigator.clipboard.writeText(
-text
-);
+await navigator.clipboard.writeText(text);
 
 alert(
-"✅ Referral message copied. You can paste it on WhatsApp, Facebook, TikTok or anywhere."
+"✅ Referral message copied."
 );
 
 }
@@ -4174,8 +4103,7 @@ error
 /* SUPPORT */
 /* ================================================= */
 
-window.contactSupport=
-function(){
+window.contactSupport=function(){
 
 const text=
 encodeURIComponent(
@@ -4201,13 +4129,13 @@ text,
 function getStatusClass(status){
 
 const value=
-String(status||"")
-.toLowerCase();
+String(status||"").toLowerCase();
 
 
 if(
 value==="approved"||
-value==="credited"
+value==="credited"||
+value==="completed"
 ){
 
 return "approved";
@@ -4216,7 +4144,8 @@ return "approved";
 
 
 if(
-value==="rejected"
+value==="rejected"||
+value==="failed"
 ){
 
 return "rejected";
@@ -4251,9 +4180,16 @@ timestamp.seconds*1000
 }
 
 
-return new Date(
-timestamp
-).toLocaleString();
+if(
+timestamp.toDate
+){
+
+return timestamp.toDate().toLocaleString();
+
+}
+
+
+return new Date(timestamp).toLocaleString();
 
 }
 
@@ -4289,4 +4225,4 @@ return String(value)
 </script>
 
 </body>
-</html>
+  </html>
